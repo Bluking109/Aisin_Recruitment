@@ -11,11 +11,15 @@
 |
 */
 
-Auth::routes();
+Route::namespace('Admin')->group(function() {
+	Route::group(['prefix' => AIIASetting::getValue('admin_base_route'), 'as' => 'admin.'], function() {
+		Auth::routes();
+		Route::get('/', 'DashboardController@index');
+		Route::get('home', 'DashboardController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => 'auth'], function() {
-	Route::resource('users', 'UserController');
+		Route::group(['middleware' => 'auth'], function() {
+			Route::resource('users', 'UserController');
+			Route::resource('settings', 'SettingController');
+		});
+	});
 });

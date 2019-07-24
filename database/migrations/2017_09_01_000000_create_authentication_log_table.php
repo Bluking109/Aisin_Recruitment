@@ -15,7 +15,7 @@ class CreateAuthenticationLogTable extends Migration
     {
         Schema::create('authentication_log', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->morphs('authenticatable');
+            $table->morphs('authenticatable', 'authentication_log_authenticatable_type_authenticatable_id_index');
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->timestamp('login_at')->nullable();

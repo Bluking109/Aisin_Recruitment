@@ -11,6 +11,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+    	DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+    	$tableNames = Schema::getConnection()->getDoctrineSchemaManager()->listTableNames();
+        foreach ($tableNames as $name) {
+            $prefix = env('DB_PREFIX', '');
+
+            if (substr($name, 0, strlen($prefix)) == $prefix) {
+                $name = substr($name, strlen($prefix));
+            }
+
+            if ($name === 'migrations') {
+                continue;
+            }
+
+            DB::table($name)->truncate();
+        }
+
         $this->call(UsersSeeder::class);
+        $this->call(SettingsSeeder::class);
+        $this->call(RolePermissionSeeder::class);
     }
 }

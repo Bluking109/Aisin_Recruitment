@@ -177,6 +177,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class, //spatie laravel permission
 
+        // Provider helper
+        App\Providers\SettingServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +230,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // alias setting
+        'AIIASetting' => App\Helpers\Setting::class,
 
     ],
 
