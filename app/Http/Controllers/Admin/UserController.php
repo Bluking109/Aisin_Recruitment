@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User as UserRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -12,19 +16,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.pages.users.index');
-    }
+        if ($request->ajax()) {
+            $users = User::select('id', 'name', 'email', 'created_at' );
+            return DataTables::eloquent($users)->toJson();
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('admin.pages.users.index');
     }
 
     /**
@@ -33,31 +32,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
-    }
+        $data = $request->except('password');
+        $data['password'] = $request->password ? Hash::make($request->password) : Hash::make('aiia');
+        $newUser = User::create($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Inserted !',
+                'message' => $data['name'].' has been inserted'
+            ], 200);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->back()->with([
+            'success' => true
+        ]);
+
     }
 
     /**
@@ -67,9 +59,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $updateUser = User::findOrFail($id);
+        $updateUser->fill([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+
+        if ($updateUser->isClean()) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'error' => 'At least one value must change'
+                ], 402);
+            }
+            return redirect()->back()->with([
+                'success' => true
+            ]);
+        }
+
+        $updateUser->save();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Updated !',
+                'message' => $data['name'].' has been updated'
+            ], 200);
+        }
+
+        return redirect()->back()->with([
+            'success' => true
+        ]);
     }
 
     /**
@@ -80,6 +101,19 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        if (request()->ajax()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Deleted !',
+                'message' => $user['name'].' has been deleted'
+            ], 200);
+        };
+
+        return redirect()->back()->with([
+            'message' => 'success'
+        ]);
     }
 }

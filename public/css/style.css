@@ -11521,9 +11521,9 @@ input[type="button"].btn-block {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fade {
+  /*.fade {
     transition: none;
-  }
+  }*/
 }
 
 .fade:not(.show) {
@@ -20250,10 +20250,10 @@ code {
 }
 
 .card .card-title {
-  color: #001737;
+  color: #808080;
   margin-bottom: 1.5rem;
   text-transform: capitalize;
-  font-size: 1.125rem;
+  font-size: 2.125rem;
   font-weight: bold;
 }
 
@@ -21888,7 +21888,7 @@ dl li {
 }
 
 .auth .brand-logo img {
-  width: 150px;
+  width: 300px;
 }
 
 .auth form .form-group {
@@ -22012,7 +22012,7 @@ dl li {
 
 .horizontal-menu .top-navbar .navbar-brand-wrapper .navbar-brand img {
   max-width: 100%;
-  height: 40px;
+  height: 30px;
   margin: auto;
   vertical-align: middle;
 }
@@ -22823,4 +22823,25 @@ dl li {
 
 li.nav-item.active a span {
   color: #0ddbb9 !important
+}
+
+.auth-form-btn {
+  background: #0ddbb9;
+  border-color: #0ddbb9;
+  color: white;
+}
+
+.auth-form-btn:hover, .auth-form-btn:active {
+  background: #04cfad;
+  cursor: pointer;
+  border-color: #04cfad;
+  color: white;
+}
+
+.text-teal {
+  color: #04cfad;
+}
+
+.btn-success {
+  color: white;
 }

@@ -18,7 +18,7 @@ Route::namespace('Admin')->group(function() {
 		Route::get('home', 'DashboardController@index')->name('home');
 
 		Route::group(['middleware' => 'auth'], function() {
-			Route::resource('users', 'UserController');
+			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
 			Route::resource('settings', 'SettingController');
 		});
 	});

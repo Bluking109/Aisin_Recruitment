@@ -45,6 +45,7 @@
       <!-- End plugin js for this page-->
       <!-- inject:js -->
       <script src="{{ asset('js/template.js') }}"></script>
+      <script src="{{ asset('vendors/sweet-alert/sweetalert2.all.min.js') }}"></script>
       <!-- endinject -->
       <!-- js for this page -->
       @stack('bottom_scripts')
