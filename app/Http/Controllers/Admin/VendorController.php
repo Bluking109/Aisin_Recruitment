@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User as UserRequest;
-use App\Models\User;
+use App\Http\Requests\Admin\Vendor as VendorRequest;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 
-class UserController extends Controller
+class VendorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +19,12 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $users = User::select('id', 'name', 'email', 'created_at' );
-            return DataTables::eloquent($users)->toJson();
+            $vendors = Vendor::select('id', 'name', 'contact', 'address', 'created_at' );
+            return DataTables::eloquent($vendors)->toJson();
         }
 
-        return view('admin.pages.users.index');
+        return view('admin.pages.vendors.index');
+
     }
 
     /**
@@ -32,24 +33,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(VendorRequest $request)
     {
-        $data = $request->except('password');
-        $data['password'] = $request->password ? Hash::make($request->password) : Hash::make('aiia');
-        $newUser = User::create($data);
+        $newVendor = Vendor::create($request->all());
 
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Inserted !',
-                'message' => $data['name'].' has been inserted'
+                'message' => $request['name'].' has been inserted'
             ], 200);
         }
 
         return redirect()->back()->with([
             'success' => true
         ]);
-
     }
 
     /**
@@ -59,15 +57,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(VendorRequest $request, $id)
     {
-        $updateUser = User::findOrFail($id);
-        $updateUser->fill([
+        $updateVendor = Vendor::findOrFail($id);
+        $updateVendor->fill([
             'name' => $request->name,
-            'email' => $request->email
+            'contact' => $request->contact,
+            'address' => $request->address
         ]);
 
-        if ($updateUser->isClean()) {
+        if ($updateVendor->isClean()) {
             if ($request->ajax()) {
                 return response()->json([
                     'error' => 'At least one value must change'
@@ -78,13 +77,13 @@ class UserController extends Controller
             ]);
         }
 
-        $updateUser->save();
+        $updateVendor->save();
 
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Updated !',
-                'message' => $data['name'].' has been updated'
+                'message' => $request['name'].' has been updated'
             ], 200);
         }
 
@@ -101,14 +100,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $vendor = Vendor::findOrFail($id);
+        $vendor->delete();
 
         if (request()->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Deleted !',
-                'message' => $user['name'].' has been deleted'
+                'message' => $vendor['name'].' has been deleted'
             ], 200);
         };
 

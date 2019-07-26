@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Setting extends FormRequest
+class Permission extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class Setting extends FormRequest
      */
     public function authorize()
     {
-        return auth()->user();
+        return true;
     }
 
     /**
@@ -23,8 +23,11 @@ class Setting extends FormRequest
      */
     public function rules()
     {
-        return [
-            'settings' => 'required|array',
+        $rules = [
+            'name' => 'required|max:50',
+            'guard_name' => 'required|max:50'
         ];
+
+        return $rules;
     }
 }

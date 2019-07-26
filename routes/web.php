@@ -18,8 +18,11 @@ Route::namespace('Admin')->group(function() {
 		Route::get('home', 'DashboardController@index')->name('home');
 
 		Route::group(['middleware' => 'auth'], function() {
-			Route::resource('users', 'UserController');
+			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
 			Route::resource('settings', 'SettingController');
+			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
+			Route::resource('degrees', 'DegreeController')->except('edit', 'show', 'create');
+			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');
 		});
 	});
 });
