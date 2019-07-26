@@ -43,7 +43,8 @@
                 <div class="submenu">
                     <ul>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Recruitment Stage</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Degree</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.degrees.index') }}">Degree</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendors</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Provinces</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">District</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Sub-District</a></li>
@@ -60,7 +61,7 @@
                 <div class="submenu">
                     <ul>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.users.index') }}">List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Permissions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.permissions.index') }}">Permissions</a></li>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Roles</a></li>
                     </ul>
                 </div>

@@ -2,9 +2,6 @@
     <div class="container-fluid">
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
             <ul class="navbar-nav navbar-nav-left">
-                <li class="nav-item ml-0 mr-5 d-lg-flex d-none">
-                    <a href="#" class="nav-link horizontal-nav-left-menu"><i class="mdi mdi-format-list-bulleted"></i></a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
                         <i class="mdi mdi-bell mx-0"></i>
@@ -100,8 +97,8 @@
                 </li>
             </ul>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('images/logo/logo.png') }}" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('images/logo/aiia-logo.png') }}" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="{{ route('admin.home') }}"><img src="{{ asset('images/logo/logo.png') }}" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ route('admin.home') }}"><img src="{{ asset('images/logo/aiia-logo.png') }}" alt="logo"/></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">

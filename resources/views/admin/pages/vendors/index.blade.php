@@ -1,20 +1,21 @@
 @extends('admin.layouts.master')
-@section('title', 'Users')
+@section('title', 'Vendors')
 @section('pages')
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title">Users</h1>
+                    <h1 class="card-title">Vendors</h1>
                     <button type="button" class="btn btn-success btn-white-text mb-3 mt-3" id="btn-add">Add</button>
                     <div class="table-responsive">
-                        <table id="users-table" class="table table-striped table-bordered" style="width:100%">
+                        <table id="vendors-table" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Address</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -27,7 +28,7 @@
     </div>
 </div>
 
-@include('admin.pages.users.modal')
+@include('admin.pages.vendors.modal')
 
 @endsection
 
@@ -43,23 +44,24 @@
                 buttonsStyling: false,
             })
 
-        let table =  $('#users-table').DataTable( {
+        let table =  $('#vendors-table').DataTable( {
             responsive : true,
             processing : true,
             serverSide : true,
-            ajax : "{{ route('admin.users.index') }}",
+            ajax : "{{ route('admin.vendors.index') }}",
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
-                { data : 'email', name : 'email' },
+                { data : 'contact', name : 'contact' },
+                { data : 'address', name : 'address' },
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
                     className: "center",
                     render: function(data){
                         return `<div class="text-center">
-                                    <button type="button" data-id="${data.id}" data-user='${JSON.stringify(data)}' class="btn btn-outline-info btn-fw btn-update btn-sm">
+                                    <button type="button" data-id="${data.id}" data-vendor='${JSON.stringify(data)}' class="btn btn-outline-info btn-fw btn-update btn-sm">
                                         <i class="mdi mdi-grease-pencil"></i>
                                     </button>
                                     <button type="button" data-id="${data.id}" class="btn btn-outline-danger btn-fw btn-delete btn-sm">
@@ -71,7 +73,7 @@
             ]
         });
 
-        $('#users-table').on('click', '.btn-delete', function(){
+        $('#vendors-table').on('click', '.btn-delete', function(){
             let id = $(this).data('id');
 
             swalWithBootstrapButtons.fire({
@@ -88,7 +90,7 @@
                         data: {
                             _token: "{{ csrf_token() }}"
                         },
-                        url: "{{ url(AIIASetting::getValue('admin_base_route').'/users') }}/"+id,
+                        url: "{{ url(AIIASetting::getValue('admin_base_route').'/vendors') }}/"+id,
                         type: "delete",
                         dataType: "json",
                         success: function (data) {
@@ -114,19 +116,20 @@
             })
         });
 
-        $('#users-table').on('click', '.btn-update', function(){
+        $('#vendors-table').on('click', '.btn-update', function(){
             let id = $(this).data('id');
-            $('#frm-insert').attr('action', "{{ url(AIIASetting::getValue('admin_base_route').'/users') }}/"+id).attr('method', 'PUT');
-            $('#title-modal').text('Update User');
-            let user = $(this).data('user');
-            $('#name').val(user.name);
-            $('#email').val(user.email);
+            $('#frm-insert').attr('action', "{{ url(AIIASetting::getValue('admin_base_route').'/vendors') }}/"+id).attr('method', 'PUT');
+            $('#title-modal').text('Update Vendor');
+            let vendor = $(this).data('vendor');
+            $('#name').val(vendor.name);
+            $('#address').val(vendor.address);
+            $('#contact').val(vendor.contact);
             $('#mdl-insert-update').modal('show');
         } );
 
         $('#btn-add').on('click', function() {
-            $('#frm-insert').attr('action', "{{ route('admin.users.store') }}").attr('method', 'POST');
-            $('#title-modal').text('Add User');
+            $('#frm-insert').attr('action', "{{ route('admin.vendors.store') }}").attr('method', 'POST');
+            $('#title-modal').text('Add Vendor');
             $('#frm-insert')[0].reset();
             $('#mdl-insert-update').modal('show');
         });
