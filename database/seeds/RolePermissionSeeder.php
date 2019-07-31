@@ -30,6 +30,7 @@ class RolePermissionSeeder extends Seeder
             foreach ($models as $model) {
                 $name = [
                     'name' => "{$value}_{$model}",
+                    'display_name' => ucwords("{$value} {$model}"),
                 ];
                 // create permission
                 Permission::create($name);
@@ -37,8 +38,8 @@ class RolePermissionSeeder extends Seeder
         }
 
         // Create role
-        $hrd = Role::create(['name' => 'hrd']);
-        $admin = Role::create(['name' => 'admin']);
+        $hrd = Role::create(['name' => 'hrd', 'display_name' => 'HRD']);
+        $admin = Role::create(['name' => 'admin', 'display_name' => 'Admin']);
 
         // Assign permission to role
         $admin->givePermissionTo(Permission::all());

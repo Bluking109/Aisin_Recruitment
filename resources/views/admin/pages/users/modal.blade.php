@@ -16,10 +16,10 @@
 						<div class="form-group row">
 							<label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
 							<div class="col-sm-9">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+								<input type="text" class="form-control" id="email" name="email" placeholder="Email">
 							</div>
 						</div>
-						<div class="form-group row">
+						<div class="form-group row" id="password-wrapper">
 							<label for="exampleInputEmail2" class="col-sm-3 col-form-label">Password</label>
 							<div class="col-sm-9">
 								<input type="password" class="form-control" id="password" name="password" placeholder="Password">

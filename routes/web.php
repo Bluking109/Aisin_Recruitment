@@ -23,6 +23,9 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::resource('degrees', 'DegreeController')->except('edit', 'show', 'create');
 			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');
+			Route::get('permissions/get-and-group', 'PermissionController@getAndGroup')->name('permissions.getandgroup');
+			Route::resource('roles', 'RolesController')->except('edit', 'show', 'create');
+
 		});
 	});
 });

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Permission as PermissionRequest;
-use App\Models\Permission;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 
@@ -19,7 +19,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $permissions = Permission::select('id', 'name', 'guard_name', 'created_at' );
+            $permissions = Permission::select('id', 'name', 'display_name', 'guard_name', 'created_at' );
             return DataTables::eloquent($permissions)->toJson();
         }
 
@@ -59,17 +59,12 @@ class PermissionController extends Controller
     public function update(PermissionRequest $request, $id)
     {
         $updatePermission = Permission::findOrFail($id);
-        $updatePermission->fill([
-            'name' => $request->name,
-            'contact' => $request->contact,
-            'address' => $request->address
-        ]);
-
+        $updatePermission->fill($request->except(['_token']));
         if ($updatePermission->isClean()) {
             if ($request->ajax()) {
                 return response()->json([
-                    'error' => 'At least one value must change'
-                ], 402);
+                    'error' => 'no changes'
+                ], 422);
             }
             return redirect()->back()->with([
                 'success' => true
@@ -114,4 +109,22 @@ class PermissionController extends Controller
             'message' => 'success'
         ]);
     }
+
+    /**
+     * Get permission list and group by name.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAndGroup()
+    {
+        $permissions = Permission::all();
+        $data = $permissions->groupBy(function($item, $key){
+            $gettype = explode("_", $item['name']);
+            return end($gettype);
+        });
+        return response()->json([
+            'data' => $data,
+        ], 200);
+    }
+
 }

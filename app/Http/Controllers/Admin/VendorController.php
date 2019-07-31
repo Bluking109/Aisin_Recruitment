@@ -70,7 +70,7 @@ class VendorController extends Controller
             if ($request->ajax()) {
                 return response()->json([
                     'error' => 'At least one value must change'
-                ], 402);
+                ], 422);
             }
             return redirect()->back()->with([
                 'success' => true

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Permission extends FormRequest
+class Role extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,15 @@ class Permission extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|max:50|alpha_dash|unique:permissions,name',
+            'name' => 'required|max:50|alpha_dash|unique:roles,name',
             'display_name' => 'required|max:50',
-            'guard_name' => 'required|max:50|in:web,api'
+            'guard_name' => 'required|max:50|in:web,api',
+            'permissions' => 'array|nullable',
+            'permissions.*' => 'exists:permissions,name',
         ];
 
-        if ($this->permission) {
-            $concatId = ',' . $this->permission;
+        if ($this->role) {
+            $concatId = ',' . $this->role;
 
             $rules['name'] .= $concatId;
 

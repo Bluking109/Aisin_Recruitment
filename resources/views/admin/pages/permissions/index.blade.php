@@ -14,6 +14,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>Display Name</th>
                                     <th>Guard Name</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
@@ -52,6 +53,7 @@
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
+                { data : 'display_name', name : 'display_name' },
                 { data : 'guard_name', name : 'guard_name' },
                 { data : 'created_at', name : 'created_at' },
                 {
@@ -115,17 +117,19 @@
         });
 
         $('#permissions-table').on('click', '.btn-update', function(){
+            $('#frm-insert').find('.text-error').remove();
             let id = $(this).data('id');
             $('#frm-insert').attr('action', "{{ url(AIIASetting::getValue('admin_base_route').'/permissions') }}/"+id).attr('method', 'PUT');
             $('#title-modal').text('Update Permission');
             let permission = $(this).data('permission');
             $('#name').val(permission.name);
-            $('#address').val(permission.address);
-            $('#contact').val(permission.contact);
+            $('#display_name').val(permission.display_name);
+            $('#guard_name').val(permission.guard_name);
             $('#mdl-insert-update').modal('show');
         } );
 
         $('#btn-add').on('click', function() {
+            $('#frm-insert').find('.text-error').remove();
             $('#frm-insert').attr('action', "{{ route('admin.permissions.store') }}").attr('method', 'POST');
             $('#title-modal').text('Add permission');
             $('#frm-insert')[0].reset();
@@ -156,6 +160,20 @@
                             'Error, data not found',
                             'error'
                         )
+                    },
+                    422 : function (data) {
+                        let response = data.responseJSON;
+                        if (response.error === 'no changes') {
+                            $('#mdl-insert-update').modal('hide');
+                            return ;
+                        }
+                        let errors = response.errors
+                        for (error in errors){
+                            let element = $("#frm-insert").find('[name="'+error+'"]');
+                            element.next('span').remove();
+                            element.after('<span class="text-danger text-error">'+errors[error].join('. ')+'</span>');
+
+                        }
                     }
                 }
             });
