@@ -45,10 +45,10 @@
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Recruitment Stage</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.degrees.index') }}">Degree</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendors</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Provinces</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">District</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Sub-District</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Villages</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.provinces.index') }}">Provinces</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.districts.index') }}">District</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.sub-districts.index') }}">Sub-District</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.villages.index') }}">Villages</a></li>
                     </ul>
                 </div>
             </li>
