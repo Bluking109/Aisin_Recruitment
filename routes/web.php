@@ -25,11 +25,13 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');
 			Route::get('permissions/get-and-group', 'PermissionController@getAndGroup')->name('permissions.getandgroup');
 			Route::resource('roles', 'RolesController')->except('edit', 'show', 'create');
-			Route::resource('roles', 'RolesController')->except('edit', 'show', 'create');
 			Route::resource('provinces', 'ProvinceController')->except('edit', 'show', 'create');
 			Route::resource('districts', 'DistrictController')->except('edit', 'show', 'create');
-			Route::resource('sub-districts', 'SubDistrictController')->except('edit', 'show', 'create');
+			Route::get('districts/get-province', 'DistrictController@getProvince')->name('districts.getprovince');
+			Route::resource('subdistricts', 'SubDistrictController')->except('edit', 'show', 'create');
+			Route::get('subdistricts/get-district', 'SubDistrictController@getDistrict')->name('subdistricts.getdistrict');
 			Route::resource('villages', 'VillageController')->except('edit', 'show', 'create');
+			Route::get('villages/get-subdistrict', 'VillageController@getSubDistrict')->name('villages.getsubdistrict');
 		});
 	});
 });

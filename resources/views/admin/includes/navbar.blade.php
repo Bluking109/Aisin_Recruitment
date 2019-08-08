@@ -47,7 +47,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendors</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.provinces.index') }}">Provinces</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.districts.index') }}">District</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.sub-districts.index') }}">Sub-District</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.subdistricts.index') }}">Sub-District</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.villages.index') }}">Villages</a></li>
                     </ul>
                 </div>

@@ -15,4 +15,13 @@ class Province extends Model
         'name'
     ];
 
+    /**
+     * relations district
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public function districts()
+    {
+    	$this->hasMany('App\Models\District', 'province_id');
+    }
+
 }

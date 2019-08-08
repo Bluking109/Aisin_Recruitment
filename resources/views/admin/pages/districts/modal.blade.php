@@ -8,23 +8,15 @@ Modal Insert-->
 					<form class="forms-sample" id="frm-insert" action="" method="">
 						@csrf
 						<div class="form-group row">
-							<label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name Permission</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Name Permission">
+							<label for="name" class="col-sm-3 col-form-label">Name</label>
+							<div class="col-sm-9 input-wrapper">
+								<input type="text" class="form-control" id="name" name="name" placeholder="District Name">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="exampleInputUsername2" class="col-sm-3 col-form-label">Display Name</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="display_name" name="display_name" placeholder="Display Name Permission">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="exampleInputGuard2" class="col-sm-3 col-form-label">Guard Name</label>
-							<div class="col-sm-9">
-								<select class="form-control " id="guard_name" name="guard_name">
-									<option value="web" >Web</option>
-									<option value="api" >Api</option>
+							<label for="name" class="col-sm-3 col-form-label">Province</label>
+							<div class="col-sm-9 input-wrapper">
+								<select class="province-ajax form-control" id="province" name="province" style="width: 100%; height: auto;">
 								</select>
 							</div>
 						</div>
