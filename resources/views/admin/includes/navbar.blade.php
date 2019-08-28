@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.jobvacancies.index') }}" class="nav-link">
                     <i class="mdi mdi-newspaper menu-icon"></i>
                     <span class="menu-title">Job Vacancy</span>
                     <i class="menu-arrow"></i>
@@ -43,11 +43,14 @@
                 <div class="submenu">
                     <ul>
                         <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Recruitment Stage</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.degrees.index') }}">Degree</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.departments.index') }}">Departments</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.sections.index') }}">Sections</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.positions.index') }}">Positions</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.education-levels.index') }}">Education Levels</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendors</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.provinces.index') }}">Provinces</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.districts.index') }}">District</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.subdistricts.index') }}">Sub-District</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.districts.index') }}">Districts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.subdistricts.index') }}">Sub-Districts</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.villages.index') }}">Villages</a></li>
                     </ul>
                 </div>

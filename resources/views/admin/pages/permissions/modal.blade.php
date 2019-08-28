@@ -28,7 +28,7 @@ Modal Insert-->
 								</select>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-success btn-white-text" id="add-new-btn">Submit</button>
+						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					</form>
 				</div>

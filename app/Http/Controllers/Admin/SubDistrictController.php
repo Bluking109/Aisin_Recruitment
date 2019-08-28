@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SubDistrict as SubDistrictRequest;
 use App\Models\SubDistrict;
-use App\Models\District;
 use DataTables;
 
 class SubDistrictController extends Controller
@@ -30,11 +29,11 @@ class SubDistrictController extends Controller
      * getDistrict to select2
      * @return json
      */
-    public function getDistrict(Request $request)
+    public function getSubDistrict(Request $request)
     {
         $search = $request->search;
-        $districts = District::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
-        return \Response::json($districts);
+        $subdistricts = SubDistrict::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
+        return \Response::json($subdistricts);
 
     }
 

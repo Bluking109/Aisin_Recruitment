@@ -22575,11 +22575,11 @@ dl li {
   position: absolute;
   left: 0;
   bottom: 0;
-  border-bottom: 2px solid #0ddbb9;
+  border-bottom: 2px solid #464dee;
 }
 
 .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-icon {
-  color: #0ddbb9;
+  /*color: #0ddbb9;*/
 }
 
 .horizontal-menu .bottom-navbar .page-navigation > .nav-item.active > .nav-link .menu-title,
@@ -22813,37 +22813,37 @@ dl li {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #0ddbb9;
-    border-color: #0ddbb9;
+/*    background-color: #0ddbb9;
+    border-color: #0ddbb9;*/
 }
 
 .page-link {
-    color: #0ddbb9;
+    /*color: #0ddbb9;*/
 }
 
 .page-link:hover {
-    color: #0ddbb9;
+    /*color: #0ddbb9;*/
 }
 
 li.nav-item.active a span {
-  color: #0ddbb9 !important
+  /*color: #0ddbb9 !important*/
 }
 
 .auth-form-btn {
-  background: #0ddbb9;
-  border-color: #0ddbb9;
+  background: #0066ff;
+  border-color: #0066ff;
   color: white;
 }
 
 .auth-form-btn:hover, .auth-form-btn:active {
-  background: #04cfad;
+  background: #0059de;
   cursor: pointer;
-  border-color: #04cfad;
+  border-color: #0059de;
   color: white;
 }
 
 .text-teal {
-  color: #04cfad;
+  /*color: #04cfad;*/
 }
 
 .btn-success {
@@ -22856,7 +22856,7 @@ li.nav-item {
 
 .custom-checkbox .primay-checkbox:checked ~ .custom-control-label::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-    background-color: #04cfad !important;
+    /*background-color: #04cfad !important;*/
 }
 
 .select2-container .select2-selection--single {

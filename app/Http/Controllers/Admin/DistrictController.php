@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\District as DistrictRequest;
 use App\Models\District;
-use App\Models\Province;
 use DataTables;
 
 class DistrictController extends Controller
@@ -23,18 +22,18 @@ class DistrictController extends Controller
             return DataTables::eloquent($districts)->toJson();
         }
 
-        return view('admin.pages.subdistricts.index');
+        return view('admin.pages.districts.index');
     }
 
     /**
-     * getProvince to select2
+     * getDistrict to select2
      * @return json
      */
-    public function getProvince(Request $request)
+    public function getDistrict(Request $request)
     {
         $search = $request->search;
-        $provinces = Province::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
-        return \Response::json($provinces);
+        $districts = District::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
+        return response()->json($districts);
 
     }
 

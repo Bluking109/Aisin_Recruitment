@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Roles</h1>
-                    <button type="button" class="btn btn-success btn-white-text mb-3 mt-3" id="btn-add">Add</button>
+                    <button type="button" class="btn btn-primary btn-white-text mb-3 mt-3" id="btn-add">Add</button>
                     <div class="table-responsive">
                         <table id="roles-table" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -127,7 +127,7 @@
                     className: "center",
                     render: function(data){
                         return `<div class="text-center">
-                                    <button type="button" data-id="${data.id}" data-role='${JSON.stringify(data)}' class="btn btn-outline-info btn-fw btn-update btn-sm">
+                                    <button type="button" data-id="${data.id}" data-role='${JSON.stringify(data)}' class="btn btn-outline-primary btn-fw btn-update btn-sm">
                                         <i class="mdi mdi-grease-pencil"></i>
                                     </button>
                                     <button type="button" data-id="${data.id}" class="btn btn-outline-danger btn-fw btn-delete btn-sm">

@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Districts')
+@section('title', 'Villages')
 @push('optional_vendor_css')
 <link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Villages</h1>
-                    <button type="button" class="btn btn-success btn-white-text mb-3 mt-3" id="btn-add">Add</button>
+                    <button type="button" class="btn btn-primary btn-white-text mb-3 mt-3" id="btn-add">Add</button>
                     <div class="table-responsive">
                         <table id="villages-table" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -67,7 +67,7 @@
                     searchable: false,
                     render: function(data){
                         return `<div class="text-center">
-                                    <button type="button" data-id="${data.id}" data-village='${JSON.stringify(data)}' class="btn btn-outline-info btn-fw btn-update btn-sm">
+                                    <button type="button" data-id="${data.id}" data-village='${JSON.stringify(data)}' class="btn btn-outline-primary btn-fw btn-update btn-sm">
                                         <i class="mdi mdi-grease-pencil"></i>
                                     </button>
                                     <button type="button" data-id="${data.id}" class="btn btn-outline-danger btn-fw btn-delete btn-sm">
@@ -147,7 +147,7 @@
             minimumInputLength: 2,
             width: 'resolve',
             ajax: {
-                url: "{{ route('admin.villages.getsubdistrict') }}",
+                url: "{{ route('admin.subdistricts.getsubdistrict') }}",
                 dataType: "json",
                 data: function (params) {
                     return {
