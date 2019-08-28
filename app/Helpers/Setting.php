@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Setting as Model;
+use Schema;
 
 class Setting
 {
@@ -28,10 +29,14 @@ class Setting
      */
     public static function getValue($name, $default = '')
     {
-        $setting = Model::where('name', $name)->first();
+        $tableName = (new Model)->getTable();
 
-        if ($setting) {
-        	return $setting->value;
+        if (Schema::hasTable($tableName)) {
+            $setting = Model::where('name', $name)->first();
+
+            if ($setting) {
+                return $setting->value;
+            }
         }
 
         return $default;

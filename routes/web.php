@@ -19,14 +19,14 @@
 | Untuk base admin route bisa di setting melalui menu setting
 */
 Route::namespace('Admin')->group(function() {
-	Route::group(['prefix' => AIIASetting::getValue('admin_base_route'), 'as' => 'admin.'], function() {
+	Route::group(['prefix' => AIIASetting::getValue('admin_base_route', config('aiia.default_url_admin')), 'as' => 'admin.'], function() {
 		Auth::routes();
 		Route::get('/', 'DashboardController@index');
 		Route::get('home', 'DashboardController@index')->name('home');
 
 		Route::group(['middleware' => 'auth'], function() {
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
-			Route::resource('settings', 'SettingController');
+			Route::resource('settings', 'SettingController')->only('index', 'store');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::resource('degrees', 'DegreeController')->except('edit', 'show', 'create');
 			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');

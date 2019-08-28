@@ -11,6 +11,7 @@
                             <h3 class="card-title text-center">Setting</h3>
                             <br>
                             <form action="{{ route('admin.settings.store') }}" method="post" id="form-setting">
+                                {{-- Jangan menggunakan ajax karena mengubah base uri admin --}}
                                 @csrf
                                 <div id="item-wrapper">
 
@@ -18,7 +19,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-12 text-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-primary" id="btn-save">Save</button>
                                     </div>
                                 </div>
                             </form>
@@ -85,23 +86,42 @@
     }
 
     $(document).ready(function() {
+        @if(session()->has('message'))
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        })
+
+        Toast.fire({
+            type: 'success',
+            title: "{{ session()->get('message') }}"
+        })
+        @endif
+
         settingInit();
 
-        $('#form-setting').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: "{{ route('admin.settings.store') }}",
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function(result) {
-                    if (result.success) {
-                        settingInit();
-                    }
-                },
-                statusCode : {
-                    500 : function(responseObject) {
-                        console.log('Error bro !!')
-                    }
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-primary ml-1 mr-1',
+                cancelButton: 'btn btn-danger ml-1 mr-1'
+            },
+            buttonsStyling: false,
+        });
+
+        $('#btn-save').on('click', function(e) {
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: 'You will change the settings of this application',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, change it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+            }).then((result) => {
+                if ( result.value ) {
+                    $('#form-setting').submit();
                 }
             });
         });
