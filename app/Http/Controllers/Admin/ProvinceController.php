@@ -26,6 +26,18 @@ class ProvinceController extends Controller
     }
 
     /**
+     * getProvince to select2
+     * @return json
+     */
+    public function getProvince(Request $request)
+    {
+        $search = $request->search;
+        $provinces = Province::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
+        return response()->json($provinces);
+
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

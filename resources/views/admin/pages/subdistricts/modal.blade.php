@@ -1,4 +1,3 @@
-Modal Insert-->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mdl-insert-update" aria-hidden="true" id="mdl-insert-update">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -20,7 +19,7 @@ Modal Insert-->
 								</select>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-success btn-white-text" id="add-new-btn">Submit</button>
+						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					</form>
 				</div>
@@ -28,4 +27,3 @@ Modal Insert-->
     	</div>
 	</div>
 </div>
-<!--Modal Insert

@@ -69,7 +69,7 @@ class VendorController extends Controller
         if ($updateVendor->isClean()) {
             if ($request->ajax()) {
                 return response()->json([
-                    'error' => 'At least one value must change'
+                    'error' => 'no changes'
                 ], 422);
             }
             return redirect()->back()->with([

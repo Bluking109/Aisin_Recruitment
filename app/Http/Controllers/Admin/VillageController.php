@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Village as VillageRequest;
 use App\Models\Village;
-use App\Models\SubDistrict;
 use DataTables;
 
 class VillageController extends Controller
@@ -24,18 +23,6 @@ class VillageController extends Controller
         }
 
         return view('admin.pages.villages.index');
-    }
-
-    /**
-     * getDistrict to select2
-     * @return json
-     */
-    public function getSubDistrict(Request $request)
-    {
-        $search = $request->search;
-        $subdistricts = SubDistrict::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
-        return \Response::json($subdistricts);
-
     }
 
     /**
