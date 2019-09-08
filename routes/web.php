@@ -103,10 +103,17 @@ Route::namespace('Website')->group(function() {
 		Route::get('personal-identity/photo', 'PersonalController@getPhoto')->name('personal-identity.getphoto');
 	});
 
+	Route::group([
+		'as' => 'contact.',
+		'prefix' => 'contact'
+	], function() {
+		Route::get('/', 'ContactController@index')->name('index');
+		Route::post('/', 'ContactController@store')->name('store');
+	});
+
 	Route::get('/', 'PageController@home');
 	Route::get('home', 'PageController@home')->name('home');
 	Route::get('about-us', 'PageController@aboutUs')->name('about-us');
-	Route::get('contact', 'ContactController@index')->name('contact.index');
 	Route::get('jobs', 'JobController@index')->name('jobs.index');
 	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
 

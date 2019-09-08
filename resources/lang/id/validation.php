@@ -143,6 +143,9 @@ return [
     |
     */
     'attributes' => [
+        'name' => 'Nama',
+        'message' => 'Pesan',
+        'subject' => 'Subjek',
         'identity_number' => 'Nomer KTP',
         'place_of_birth' => 'Tempat lahir',
         'date_of_birth' => 'Tanggal lahir',

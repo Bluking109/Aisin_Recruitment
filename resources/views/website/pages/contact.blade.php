@@ -36,32 +36,52 @@
 			 	<div class="col-lg-6 column">
 			 		<div class="contact-form">
 			 			<h4>Tinggalkan Pesan <br><br></h4>
-			 			<form>
+			 			<form action="{{ route('contact.store') }}" method="post">
+			 				@csrf
 			 				<div class="row">
-			 					<div class="col-lg-12">
+			 					<div class="col-lg-12 pt-3">
 			 						<span class="pf-title">Nama Lengkap</span>
 			 						<div class="pf-field">
-			 							<input type="text" placeholder="Nama Lengkap" />
+			 							<input type="text" placeholder="Nama Lengkap" name="name" value="{{ auth()->guard('job_seekers')->user() ? auth()->guard('job_seekers')->user()->name : '' }}" />
+			 							@error('name')
+										    <span class="text-danger">{{ $message }}</span>
+										@enderror
 			 						</div>
 			 					</div>
-			 					<div class="col-lg-12">
+			 					<div class="col-lg-12 pt-3">
 			 						<span class="pf-title">E-mail</span>
 			 						<div class="pf-field">
-			 							<input type="text" placeholder="E-mail" />
+			 							<input type="text" placeholder="E-mail" name="email" value="{{ auth()->guard('job_seekers')->user() ? auth()->guard('job_seekers')->user()->email : '' }}" />
+			 							@error('email')
+										    <span class="text-danger">{{ $message }}</span>
+										@enderror
 			 						</div>
 			 					</div>
-			 					<div class="col-lg-12">
+			 					<div class="col-lg-12 pt-3">
 			 						<span class="pf-title">Subjek</span>
 			 						<div class="pf-field">
-			 							<input type="text" placeholder="Subjek" />
+			 							<input type="text" placeholder="Subjek" name="subject" />
+			 							@error('subject')
+										    <span class="text-danger">{{ $message }}</span>
+										@enderror
+			 						</div>
+			 					</div>
+			 					<div class="col-lg-12 pt-3">
+			 						<span class="pf-title">Pesan</span>
+			 						<div class="pf-field">
+			 							<textarea placeholder="Pesan" name="message"></textarea>
+			 							@error('message')
+										    <span class="text-danger">{{ $message }}</span>
+										@enderror
 			 						</div>
 			 					</div>
 			 					<div class="col-lg-12">
-			 						<span class="pf-title">Pesan</span>
-			 						<div class="pf-field">
-			 							<textarea placeholder="Pesan"></textarea>
-			 						</div>
+			 						<p class="google-term">This site is protected by reCAPTCHA and the Google
+									    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+									    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+									</p>
 			 					</div>
+			 					<input type="hidden" name="recaptcha_key" id="recaptcha-key">
 			 					<div class="col-lg-12">
 			 						<button type="submit">Kirim</button>
 			 					</div>
@@ -85,3 +105,27 @@
 	</div>
 </section>
 @endsection
+
+@push('additional_js')
+<script>
+let recaptchaReset = function() {
+    grecaptcha.ready(function() {
+        grecaptcha.execute(siteKey, {action: 'contact'}).then(function(token) {
+            $('#recaptcha-key').val(token);
+        });
+    });
+}
+
+$(function() {
+	recaptchaReset();
+
+	@if (session('error'))
+		toastr.error("{{ session('error') }}");
+	@endif
+
+	@if (session('success'))
+		toastr.success("{{ session('success') }}");
+	@endif
+})
+</script>
+@endpush

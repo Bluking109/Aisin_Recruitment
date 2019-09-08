@@ -312,7 +312,11 @@ $drivingLicences = $jobSeeker->driving_licences;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-12">
-				 						<br><br>
+				 						<br>
+				 						<p class="google-term">This site is protected by reCAPTCHA and the Google
+										    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+										    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+										</p>
 				 						<button type="button" id="btn-update" disabled><span class="submit-text">Update</span> <span class="loading">Wait... <i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></span></button>
 				 					</div>
 				 				</div>
