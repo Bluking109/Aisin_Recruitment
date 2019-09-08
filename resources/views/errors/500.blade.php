@@ -9,7 +9,7 @@
 					<h2 class="error-title">Oops !!</h2>
 					<p class="error-subtitle">Maaf saat ini server kami sedang mengalami gangguan :(</p>
 					<p>Silahkan hubungi kami apabila anda menemukan kendala.</p>
-					<a class="btn btn-primary btn-rounded">Kembali Ke Beranda</a>
+					<a href="/" class="btn btn-primary btn-rounded">Kembali Ke Beranda</a>
 				</div>
 			</div>
 		</div>

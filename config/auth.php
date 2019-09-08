@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'job_seekers' => [
+            'driver' => 'session',
+            'provider' => 'job_seekers',
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'job_seekers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\JobSeeker::class,
         ],
 
         // 'users' => [

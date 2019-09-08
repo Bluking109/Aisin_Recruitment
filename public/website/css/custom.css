@@ -333,3 +333,45 @@ input[type="radio"]:disabled + label::before {
 .chosen-container .chosen-results li.no-results {
 	background: none;
 }
+
+.error-auth {
+	margin-left: 5px;
+}
+
+.loading {
+	display: none;
+}
+
+.term {
+	float: left;
+    width: calc(100% + 80px);
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.google-term {
+	margin-top: 10px;
+	font-size: 10px;
+}
+
+.google-term a {
+	color: #03a6ff
+}
+
+.grecaptcha-badge { visibility: hidden !important; }
+
+.dropdown-field .chosen-single {
+	padding: 14px 10px;
+}
+
+.profile-img {
+	width: 40px;
+}
+
+.photo-img {
+	width: 200px;
+	height: 160px;
+}

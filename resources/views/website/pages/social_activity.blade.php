@@ -49,7 +49,7 @@
 				 					<div class="col-md-2">
 				 						<span class="pf-title">No. Telp.</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="No. Telp" name="friends[0][phone_number]" class="friend-phone-number cleave friend-element" disabled />
+				 							<input type="text" placeholder="No. Telp" name="friends[0][phone_number]" class="friend-phone-number phone-number friend-element" disabled />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-2">
@@ -138,18 +138,7 @@
 
 @push('additional_js')
 <script src="{{ asset('website/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-<script src="{{ asset('website/js/cleave.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('website/js/cleave-phone.id.js') }}" type="text/javascript"></script>
 <script>
-	const cleaveJsInit = function() {
-		$('.cleave').each(function() {
-			new Cleave(this, {
-			    phone: true,
-    			phoneRegionCode: 'ID'
-			});
-		});
-	}
-
 	const initRangeMonthDatePicker = function() {
 		const rangeDatePickerClasses = [
 			{
@@ -184,8 +173,6 @@
 	}
 
 	$(function(){
-		cleaveJsInit();
-
 		$('#organization-form').on('click', '.add-non-formal', function() {
 			let parentRow = $(this).closest('form').find('.organization-row');
 

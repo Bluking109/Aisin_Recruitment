@@ -1,3 +1,34 @@
+const cleaveJsInit = function() {
+    $('.phone-number').each(function() {
+        new Cleave(this, {
+            delimiters: [' ', ' ', ' '],
+            blocks: [4, 4, 5]
+        });
+    });
+
+    $(".phone-number").on("keypress keyup blur",function (event) {
+        $(this).val($(this).val().replace(/[^\d\s].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $(".number").on("keypress keyup blur",function (event) {
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+    $('.thousand').each(function() {
+        new Cleave(this, {
+            numeral: true,
+            numeralThousandsGroupStyle: 'thousand'
+        });
+    });
+}
+
 $(document).on('ready',function(){
     "use strict";
 
@@ -228,10 +259,6 @@ $(document).on('ready',function(){
         $(this).parent().fadeOut();
     });
 
-    $('.upload-img-bar > span i').on('click', function(){
-        $(this).parent().parent().fadeOut();
-    });
-
     $('.del-resume').on('click', function(){
         $(this).parent().fadeOut();
         return false;
@@ -278,8 +305,6 @@ $(document).on('ready',function(){
     $('.manage-jobs-sec > table').parent().addClass('addscroll')
 
 });
-
-
 
 $(window).on('load',function(){
     "use strict";

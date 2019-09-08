@@ -2,8 +2,8 @@
 $currentUrl = url()->current();
 @endphp
 <ul class="jobseeker-menu">
-	<li @if($currentUrl === route('profiles.idenity.show'))class="active"@endif>
-		<a href="{{ route('profiles.idenity.show') }}">
+	<li @if($currentUrl === route('profiles.personal-identity.index'))class="active"@endif>
+		<a href="{{ route('profiles.personal-identity.index') }}">
 			<i class="fa fa-user"></i>Identitas Pribadi
 		</a>
 	</li>
@@ -55,7 +55,7 @@ $currentUrl = url()->current();
 		</a>
 	</li>
 	<li>
-		<a href="#" title="">
+		<a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 			<i class="fa fa-sign-out"></i>Logout
 		</a>
 	</li>

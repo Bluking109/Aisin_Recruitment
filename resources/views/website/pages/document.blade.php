@@ -88,20 +88,12 @@
 
 @push('additional_js')
 <script src="{{ asset('website/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-<script src="{{ asset('website/js/cleave.min.js') }}" type="text/javascript"></script>
 <script>
 	$(function(){
 		$('.datepicker').datepicker({
 		    format: 'dd-mm-yyyy',
     		autoclose: true,
     		orientation: "bottom"
-		});
-
-		$('.cleave').each(function() {
-			new Cleave(this, {
-			    numeral: true,
-			    numeralThousandsGroupStyle: 'thousand'
-			});
 		});
 
 		$('input[type="radio"][name="working_environtment_like"]').on('change', function() {
