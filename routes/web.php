@@ -29,6 +29,7 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('settings', 'SettingController');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::resource('education-levels', 'EducationLevelController')->except('edit', 'show', 'create');
+			Route::get('education-levels/get-education-level', 'EducationLevelController@getEducationLevel')->name('education-levels.geteducationlevel');
 			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');
 			Route::get('permissions/get-and-group', 'PermissionController@getAndGroup')->name('permissions.getandgroup');
 			Route::resource('roles', 'RolesController')->except('edit', 'show', 'create');
@@ -41,10 +42,11 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('villages', 'VillageController')->except('edit', 'show', 'create');
 			Route::resource('jobvacancies', 'JobVacancyController')->except('edit', 'show', 'create');
 			Route::resource('departments', 'DepartmentController')->except('edit', 'show', 'create');
-			Route::get('departments/get-department', 'DepartmentController@getDepartment')->name('departments.getdepartments');
+			Route::get('departments/get-department', 'DepartmentController@getDepartment')->name('departments.getdepartment');
 			Route::resource('sections', 'SectionController')->except('edit', 'show', 'create');
 			Route::get('sections/get-section', 'SectionController@getSection')->name('sections.getsections');
 			Route::resource('positions', 'PositionController')->except('edit', 'show', 'create');
+			Route::get('positions/get-position', 'PositionController@getPosition')->name('positions.getposition');
 		});
 	});
 });

@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 @section('title', 'Job Vacancies')
 @push('optional_vendor_css')
-<link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 @endpush
 @section('pages')
 <div class="content-wrapper">
@@ -43,10 +43,19 @@
 
 @push('bottom_scripts')
 
-<script src="{{ asset('vendors/datatables/datatable.min.js') }}"></script>
-<script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset('admin/js/bootstrap-datepicker.js') }}"></script>
 <script>
     $(document).ready(function() {
+        // Date picker
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d',
+            autoclose: true
+        });
+
+        // End date picker
         const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-primary ml-1 mr-1',
@@ -123,7 +132,7 @@
                             404 : function (data) {
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
-                                    'Error Cuk, Id ra nemu',
+                                    'Error, Id Not Found',
                                     'error'
                                 )
                             }
@@ -157,12 +166,54 @@
             $('#mdl-insert-update').modal('show');
         });
 
-        $('.department-ajax').select2({
-            placeholder: 'Select Department',
+        $('.position-ajax').select2({
+            placeholder: 'Select Position',
             minimumInputLength: 2,
             width: 'resolve',
             ajax: {
-                url: "{{ route('admin.departments.getdepartments') }}",
+                url: "{{ route('admin.positions.getposition') }}",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        search : $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
+        // Select2 gender
+        var data = [
+            {
+                id: 1,
+                text: 'enhancement'
+            },
+            {
+                id: 2,
+                text: 'bug'
+            },
+            {
+                id: 3,
+                text: 'duplicate'
+            }
+        ];
+
+        $('.select2').select2({
+            placeholder: 'Select Education Level',
+            width: 'resolve',
+            results: data
+        });
+
+
+        $('.educationlevel-ajax').select2({
+            placeholder: 'Select Education Level',
+            width: 'resolve',
+            ajax: {
+                url: "{{ route('admin.education-levels.geteducationlevel') }}",
                 dataType: "json",
                 data: function (params) {
                     return {
@@ -226,5 +277,6 @@
 @endpush
 
 @push('optional_vendor_css')
-<link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/datatable.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/datatables/datatable.min.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/bootstrap-datepicker.css') }}"> -->
 @endpush

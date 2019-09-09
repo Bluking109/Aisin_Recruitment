@@ -27,6 +27,20 @@ class EducationLevelController extends Controller
     }
 
     /**
+     * [getEducationLevel description]
+     * @return [type] [description]
+     */
+    public function getEducationLevel(Request $request)
+    {
+        $search = $request->search;
+        $educationLevels = EducationLevel::select('id', 'name as text')
+            ->where('name','like', '%'.$search.'%',)
+            ->get();
+        return response()->json($educationLevels);
+
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

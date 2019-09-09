@@ -6,16 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Recruitment - @yield('title')</title>
         <!-- base:css -->
-        <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('vendors/base/vendor.bundle.base.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin/vendors/base/vendor.bundle.base.css') }}">
         @stack('optional_vendor_css')
         <!-- endinject -->
         <!-- plugin css for this page -->
         <!-- End plugin css for this page -->
         <!-- inject:css -->
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
         <!-- endinject -->
-        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
     </head>
     <body>
         <div class="container-scroller">
@@ -39,13 +39,13 @@
         </div>
       <!-- container-scroller -->
       <!-- base:js -->
-      <script src="{{ asset('vendors/base/vendor.bundle.base.js') }}"></script>
+      <script src="{{ asset('admin/vendors/base/vendor.bundle.base.js') }}"></script>
       <!-- endinject -->
       <!-- Plugin js for this page-->
       <!-- End plugin js for this page-->
       <!-- inject:js -->
-      <script src="{{ asset('js/template.js') }}"></script>
-      <script src="{{ asset('vendors/sweet-alert/sweetalert2.all.min.js') }}"></script>
+      <script src="{{ asset('admin/js/template.js') }}"></script>
+      <script src="{{ asset('admin/vendors/sweet-alert/sweetalert2.all.min.js') }}"></script>
       <!-- endinject -->
       <!-- js for this page -->
       @stack('bottom_scripts')

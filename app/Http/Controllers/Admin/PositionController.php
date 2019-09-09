@@ -26,6 +26,21 @@ class PositionController extends Controller
     }
 
     /**
+     * [getPosition description]
+     * @return [type] [description]
+     */
+    public function getPosition(Request $request)
+    {
+        $search = $request->search;
+        $positions = Position::select('id', 'name as text')
+            ->where('name','like', '%'.$search.'%',)
+            ->orWhere('code','like', '%'.$search.'%',)
+            ->get();
+        return response()->json($positions);
+
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

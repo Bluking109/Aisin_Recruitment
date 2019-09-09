@@ -59,7 +59,7 @@
                         <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="{{ asset('images/faces/face4.jpg') }}" alt="image" class="profile-pic">
+                                <img src="{{ asset('admin/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
                             </div>
                             <div class="preview-item-content flex-grow">
                                 <h6 class="preview-subject ellipsis font-weight-normal">David Grey
@@ -71,7 +71,7 @@
                         </a>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="{{ asset('images/faces/face2.jpg') }}" alt="image" class="profile-pic">
+                                <img src="{{ asset('admin/images/faces/face2.jpg') }}" alt="image" class="profile-pic">
                             </div>
                             <div class="preview-item-content flex-grow">
                                 <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
@@ -97,15 +97,15 @@
                 </li>
             </ul>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="{{ route('admin.home') }}"><img src="{{ asset('images/logo/logo.png') }}" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="{{ route('admin.home') }}"><img src="{{ asset('images/logo/aiia-logo.png') }}" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" href="{{ route('admin.home') }}"><img src="{{ asset('admin/images/logo/logo.png') }}" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ route('admin.home') }}"><img src="{{ asset('admin/images/logo/aiia-logo.png') }}" alt="logo"/></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                         <span class="nav-profile-name">{{ auth()->user()->name }}</span>
                         <span class="online-status"></span>
-                        <img src="{{ asset('images/avatar/avatar.jpg') }}" alt="profile"/>
+                        <img src="{{ asset('admin/images/avatar/avatar.jpg') }}" alt="profile"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="{{ route('admin.settings.index') }}">

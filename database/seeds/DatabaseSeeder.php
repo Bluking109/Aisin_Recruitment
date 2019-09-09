@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
 
             if (substr($name, 0, strlen($prefix)) == $prefix) {
                 $name = substr($name, strlen($prefix));
-            }
+                $this->call(EducationLevelsTableSeeder::class);
+        $this->call(PositionsTableSeeder::class);
+    }
 
             if ($name === 'migrations') {
                 continue;

@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 @section('title', 'Department')
 @push('optional_vendor_css')
-<link rel="stylesheet" href="{{ asset('vendors/select2/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 @endpush
 @section('pages')
 <div class="content-wrapper">
@@ -39,8 +39,8 @@
 
 @push('bottom_scripts')
 
-<script src="{{ asset('vendors/datatables/datatable.min.js') }}"></script>
-<script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -115,7 +115,7 @@
                             404 : function (data) {
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
-                                    'Error Cuk, Id ra nemu',
+                                    'Error, Id Not Found',
                                     'error'
                                 )
                             }
@@ -197,5 +197,5 @@
 @endpush
 
 @push('optional_vendor_css')
-<link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/datatable.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/datatables/datatable.min.css') }}">
 @endpush

@@ -22,8 +22,8 @@
 						</div>
 						<div class="form-group row">
 							<label for="open_date" class="col-sm-3 col-form-label">Open Date</label>
-							<div class="col-sm-9 input-wrapper">
-								<input type="text" class="form-control" id="open_date" name="open_date" placeholder="Open Date">
+							<div class="col-sm-9 input-wrapper date" >
+							    <input type="text" class="form-control" data-provide="datepicker" data-date-container='#mdl-insert-update'>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -35,10 +35,10 @@
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Gender</label>
 							<div class="col-sm-9 input-wrapper">
-								<select class="form-control" id="gender_id" name="gender_id" style="width: 100%; height: auto;">
-									<option value="1"> Male </option>
-									<option value="2"> Female </option>
-									<option value="3"> Male and Female </option>
+								<select class="select2 form-control" name="gender" style="width: 100%;">
+									<option value="1">Male</option>
+									<option value="2">Female</option>
+									<option value="3">Transgender</option>
 								</select>
 							</div>
 						</div>

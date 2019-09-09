@@ -99,14 +99,14 @@ class JobVacancyController extends Controller
      */
     public function destroy($id)
     {
-        $section = Section::findOrFail($id);
-        $section->delete();
+        $jobvacancy = JobVacancy::findOrFail($id);
+        $jobvacancy->delete();
 
         if (request()->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Deleted !',
-                'message' => $section['name'].' has been deleted'
+                'message' => $jobvacancy->position->name.' has been deleted'
             ], 200);
         };
 

@@ -31,7 +31,7 @@
 @endsection
 
 @push('bottom_scripts')
-<script src="{{ asset('vendors/datatables/datatable.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -103,7 +103,7 @@
                             404 : function (data) {
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
-                                    'Error Cuk, Id ra nemu',
+                                    'Error, Id Not Found',
                                     'error'
                                 )
                             }
@@ -183,5 +183,5 @@
 @endpush
 
 @push('optional_vendor_css')
-<link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/datatable.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/datatables/datatable.min.css') }}">
 @endpush
