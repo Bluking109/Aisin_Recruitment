@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Auth\AuthenticationException;
 
 class LoginController extends Controller
 {

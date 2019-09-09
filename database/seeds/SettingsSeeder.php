@@ -27,6 +27,13 @@ class SettingsSeeder extends Seeder
                 'value' => '1',
                 'type' => 'boolean'
             ],
+            [
+                'name' => 'email_contact',
+                'display_name' => 'Contact Email',
+                'description' => 'The email address that will receive the message, when there is a message from the visitor',
+                'value' => 'ali.usman@aiia.co.id',
+                'type' => 'text'
+            ],
         ];
 
         DB::table('settings')->insert($settings);

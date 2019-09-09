@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Website;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Website\ContactRequest;
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMessage;
+use Illuminate\Support\Facades\Mail;
+use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class ContactController extends Controller
 {
@@ -18,68 +23,26 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
-    }
+        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+            ->setExpectedHostname(env('APP_HOSTNAME'))
+            ->setExpectedAction('contact')
+            ->verify($request->recaptcha_key, $request->ip());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        if (!$response->isSuccess()) {
+            return redirect()->back()->with('error', 'ReCaptcha Error');
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $data = $request->all();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        Mail::to(AIIASetting::getValue('email_contact'))->send(new ContactMessage($data));
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Pesan terkirim, Terimakasih');
     }
 }

@@ -9,20 +9,11 @@
 		<meta name="author" content="PT. Aisin Indonesia Automotive">
 
 		<!-- Styles -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/bootstrap-grid.css') }}" />
-		<link rel="stylesheet" href="{{ asset('website/css/icons.css') }}">
-		<link rel="stylesheet" href="{{ asset('website/css/animate.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/style.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/responsive.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/chosen.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/colors/colors.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/bootstrap.css') }}" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i,800,800i|Quicksand:300,400,500,700">
+		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/all.css') }}" />
 		@stack('additional_css')
-		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/custom.css') }}" />
 	</head>
 	<body class="primary-bg">
-
 		<div class="page-loading">
 			<img src="{{ asset('website/images/loader.gif') }}" alt="" />
 		</div>
@@ -35,72 +26,81 @@
 
 			@include('website.includes.footer')
 		</div>
-
-		<div class="account-popup-area signin-popup-box">
+		@if(!auth()->guard('job_seekers')->check())
+		<div class="account-popup-area signin-popup-box" id="modal-login">
 			<div class="account-popup">
 				<span class="close-popup"><i class="la la-close"></i></span>
-				<h3>Login</h3>
-				<form>
+				<h3 id="login-title">Login</h3>
+				<form action="{{ route('auth.login.post') }}" method="POST" id="form-login">
+					@csrf
+					<input type="hidden" name="recaptcha_key" id="login-recaptcha-key">
 					<div class="cfield">
-						<input type="text" placeholder="Email" />
+						<input type="text" placeholder="Email" name="email" />
 						<i class="fa fa-at"></i>
 					</div>
 					<div class="cfield">
-						<input type="password" placeholder="Password" />
+						<input type="password" placeholder="Password" name="password" />
 						<i class="fa fa-unlock-alt"></i>
 					</div>
 					<p class="remember-label">
-						<input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>
+						<input type="checkbox" name="remember" id="cb1"><label for="cb1">Remember me</label>
 					</p>
 					<a href="#" title="">Lupa Password?</a>
-					<button type="submit">Login</button>
+					<button class="submit-button" type="submit"><span class="submit-text">Login</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
 				</form>
-				<div class="extra-login">
-					<span>Atau login via google</span>
-					<div class="login-social">
-						<a class="google-login" href="#" title=""><i class="fa fa-google"></i></a>
-					</div>
+				<div class="term-login">
+					<p class="google-term">This site is protected by reCAPTCHA and the Google
+				    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+				    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+					</p>
 				</div>
 			</div>
 		</div><!-- LOGIN POPUP -->
-		<div class="account-popup-area signup-popup-box">
+		<div class="account-popup-area" id="modal-register">
 			<div class="account-popup">
 				<span class="close-popup"><i class="la la-close"></i></span>
-				<h3>Daftar</h3>
-				<form>
+				<h3 id="register-title">Daftar</h3>
+				<form action="{{ route('auth.register.post') }}" method="POST" id="form-register">
+					@csrf
+					<input type="hidden" name="recaptcha_key" id="register-recaptcha-key">
 					<div class="cfield">
-						<input type="text" placeholder="Nama sesuai KTP" />
+						<input type="text" placeholder="Nama sesuai KTP" name="name" />
 						<i class="fa fa-user"></i>
 					</div>
 					<div class="cfield">
-						<input type="text" placeholder="Email" />
+						<input type="text" placeholder="Email" name="email" />
 						<i class="fa fa-at"></i>
 					</div>
 					<div class="cfield">
-						<input type="password" placeholder="Password" />
+						<input type="password" placeholder="Password" name="password" />
 						<i class="fa fa-unlock-alt"></i>
 					</div>
 					<div class="cfield">
-						<input type="password" placeholder="Konfirmasi Password" />
+						<input type="password" placeholder="Konfirmasi Password" name="password_confirmation" />
 						<i class="fa fa-unlock-alt"></i>
 					</div>
 					<div class="cfield">
-						<input type="text" placeholder="Nomer HP" />
+						<input type="text" placeholder="Nomer HP" name="handphone_number" class="phone-number" />
 						<i class="fa fa-mobile-phone"></i>
 					</div>
-					<button type="submit">Daftar</button>
-				</form>
-				<div class="extra-login">
-					<span>Atau daftar via google</span>
-					<div class="login-social">
-						<a class="google-login" href="#" title=""><i class="fa fa-google"></i></a>
+					<div class="dropdown-field">
+						<select class="chosen" id="education-select" name="education_level_id">
+
+						</select>
 					</div>
+					<button type="submit" class="submit-button"><span class="submit-text">Daftar</span> <i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
+				</form>
+				<div class="term-register">
+					<p class="google-term">This site is protected by reCAPTCHA and the Google
+				    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+				    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+					</p>
 				</div>
 			</div>
 		</div><!-- SIGNUP POPUP -->
-
+		@else
 		{{-- Validasi jika login --}}
-		<div class="account-popup-area change-password-popup-box">
+		<div class="account-popup-area change-password-popup-box" id="modal-change-password">
 			<div class="account-popup">
 				<span class="close-popup"><i class="la la-close"></i></span>
 				<h3>Ganti Password</h3>
@@ -121,17 +121,29 @@
 				</form>
 			</div>
 		</div><!-- CHANGE PASSWORD POPUP -->
+		@endif
 
+		@if(auth()->guard('job_seekers')->check())
 		@include('website.includes.profile_sidebar')
+		@endif
 
-		<script src="{{ asset('website/js/jquery.min.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/modernizr.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/script.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/bootstrap.min.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/wow.min.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/slick.min.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/parallax.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('website/js/select-chosen.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('website/js/all.js') }}" type="text/javascript"></script>
+		<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
+
+		<script type="text/javascript">
+			let siteKey = "{{ env('RECAPTCHA_SITE_KEY') }}";
+
+			$(function() {
+				cleaveJsInit();
+
+				console.log('%c ITD Department is Hiring Now', 'font-weight: bold; font-size: 20px; color: #0066ff;');
+				console.log('%c Daripada coba-coba inspect element mending gabung dengan kami :)', 'font-size: 20px; color: #1c1c1c;');
+			});
+		</script>
+
+		@if(!auth()->guard('job_seekers')->check())
+		<script src="{{ asset('website/js/dynamic_page/login-register.min.js') }}" type="text/javascript"></script>
+		@endif
 		@stack('additional_js')
 	</body>
 </html>

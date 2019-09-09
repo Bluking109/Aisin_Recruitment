@@ -7,15 +7,19 @@ $url = url()->current();
 			<div class="logo">
 				<a href="index.html"><img class="showsticky primary-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a>
 			</div><!-- Logo -->
+			{{-- Jika user login --}}
+			@if(auth()->guard('job_seekers')->check())
 			<div class="my-profiles-sec">
-				<span><img src="http://placehold.it/50x50" alt="" /> M Ali Usman <i class="la la-bars"></i></span>
+				<span><img src="{{ $user->photo ?? asset('website/images/avatar/avatar.jpg') }}" class="profile-img" alt="" /> {{ auth()->guard('job_seekers')->user()->name }} <i class="la la-bars"></i></span>
 			</div>
+			@else
 			<div class="btn-extars">
 				<ul class="account-btns">
 					<li class="signup-popup"><a href="#"><b><i class="fa fa-user"></i> Daftar</b></a></li>
 					<li class="signin-popup"><a href="#"><b><i class="fa fa-sign-in"></i> Login</b></a></li>
 				</ul>
 			</div><!-- Btn Extras -->
+			@endif
 			<nav>
 				<ul>
 					<li class="menu-item @if($url == url('/') || $url == route('home')) active @endif">

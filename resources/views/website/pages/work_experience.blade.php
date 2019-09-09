@@ -40,7 +40,7 @@
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Gaji (IDR)</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Gaji" name="work_experiences[0][salary]" class="work-experience-salary cleave" />
+				 							<input type="text" placeholder="Gaji" name="work_experiences[0][salary]" class="work-experience-salary thousand" />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-6">
@@ -157,7 +157,6 @@
 
 @push('additional_js')
 <script src="{{ asset('website/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-<script src="{{ asset('website/js/cleave.min.js') }}" type="text/javascript"></script>
 <script>
 	const datePickerInit = function() {
 		$('.datepicker').datepicker({
@@ -167,18 +166,8 @@
 		});
 	}
 
-	const cleaveJsInit = function() {
-		$('.cleave').each(function() {
-			new Cleave(this, {
-			    numeral: true,
-			    numeralThousandsGroupStyle: 'thousand'
-			});
-		});
-	}
-
 	$(function(){
 		datePickerInit();
-		cleaveJsInit();
 
 		$('#work-experience-form').on('click', '.add-work-experience', function() {
 			let parentRow = $(this).closest('form').find('.work-experience-row');

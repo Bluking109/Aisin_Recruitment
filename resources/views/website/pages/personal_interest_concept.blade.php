@@ -68,7 +68,7 @@
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Sebutkan gaji yang Anda inginkan !</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Gaji yang diharapkan" name="" class="work-experience-salary cleave" />
+				 							<input type="text" placeholder="Gaji yang diharapkan" name="" class="work-experience-salary thousand" />
 				 						</div>
 				 					</div>
 				 					{{-- D3 / S1 --}}
@@ -173,20 +173,12 @@
 
 @push('additional_js')
 <script src="{{ asset('website/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-<script src="{{ asset('website/js/cleave.min.js') }}" type="text/javascript"></script>
 <script>
 	$(function(){
 		$('.datepicker').datepicker({
 		    format: 'dd-mm-yyyy',
     		autoclose: true,
     		orientation: "bottom"
-		});
-
-		$('.cleave').each(function() {
-			new Cleave(this, {
-			    numeral: true,
-			    numeralThousandsGroupStyle: 'thousand'
-			});
 		});
 
 		$('input[type="radio"][name="working_environtment_like"]').on('change', function() {
