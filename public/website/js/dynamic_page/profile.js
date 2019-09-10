@@ -79,4 +79,12 @@ $(function() {
         autoclose: true,
         orientation: 'bottom'
     });
+
+    $('.year-input').datepicker({
+        format: 'yyyy',
+        viewMode: "years",
+        minViewMode: "years",
+        autoclose: true,
+        orientation: "bottom"
+    });
 });

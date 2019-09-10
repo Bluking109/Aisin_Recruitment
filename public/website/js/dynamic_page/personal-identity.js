@@ -29,6 +29,7 @@ $(function(){
 	        	422 : function (data) {
 	        		recaptchaReset('personal_identity');
 	        		afterSubmit();
+	        		toastr.error('Mohon koreksi ulang inputan Anda');
 	        		let response = data.responseJSON;
 				    let errors = response.errors
 				    for (error in errors){

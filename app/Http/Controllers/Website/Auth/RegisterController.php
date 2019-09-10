@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:job_seekers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'handphone_number' => ['required', 'max:30']
+            'handphone_number' => ['required', 'max:30'],
+            'education_level_id' => ['required', 'exists:education_levels,id']
         ]);
     }
 
@@ -72,7 +73,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'handphone_number' => str_replace(' ', '', $data['handphone_number'])
+            'handphone_number' => str_replace(' ', '', $data['handphone_number']),
+            'education_level_id' => $data['education_level_id']
         ]);
     }
 

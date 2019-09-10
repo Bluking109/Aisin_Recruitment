@@ -7,8 +7,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-user"></i>Identitas Pribadi
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.education.show'))class="active"@endif>
-		<a href="{{ route('profiles.education.show') }}">
+	<li @if($currentUrl === route('profiles.education.index'))class="active"@endif>
+		<a href="{{ route('profiles.education.index') }}">
 			<i class="fa fa-graduation-cap"></i>Pendidikan
 		</a>
 	</li>

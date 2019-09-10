@@ -2,5 +2,6 @@
     "/website/css/all.css": "/website/css/all.css",
     "/website/js/all.js": "/website/js/all.js",
     "/website/js/dynamic_page/login-register.min.js": "/website/js/dynamic_page/login-register.min.js",
-    "/website/js/dynamic_page/personal-identity.min.js": "/website/js/dynamic_page/personal-identity.min.js"
+    "/website/js/dynamic_page/personal-identity.min.js": "/website/js/dynamic_page/personal-identity.min.js",
+    "/website/js/dynamic_page/education.min.js": "/website/js/dynamic_page/education.min.js"
 }

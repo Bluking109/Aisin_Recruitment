@@ -104,10 +104,12 @@ $(function() {
                     $('.term-register').hide();
                 	$('#form-register').remove();
                 	$('#register-title').text('Pendaftaran Berhasil')
-                	$('.account-popup').append(`<div>
+                	$('#modal-register').find('.account-popup').append(`<div>
                 			<br><hr>
 							<p class="text-success text-center">Pendaftaran anda berhasil, mohon cek email untuk konfirmasi dan melanjutkan proses lamaran Anda</p>
                 		</div>`);
+
+                    recaptchaReset();
                 }
             },
             statusCode: {

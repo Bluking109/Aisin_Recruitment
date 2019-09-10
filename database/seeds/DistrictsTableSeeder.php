@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DistrictsTableSeeder extends Seeder
 {
@@ -12,12 +13,12 @@ class DistrictsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('districts')->delete();
-        
-        \DB::table('districts')->insert(array (
-            0 => 
+
+        DB::table('districts')->delete();
+
+        DB::table('districts')->insert(array (
+            0 =>
             array (
                 'id' => 1101,
                 'province_id' => 11,
@@ -25,7 +26,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 1102,
                 'province_id' => 11,
@@ -33,7 +34,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 1103,
                 'province_id' => 11,
@@ -41,7 +42,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 1104,
                 'province_id' => 11,
@@ -49,7 +50,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 1105,
                 'province_id' => 11,
@@ -57,7 +58,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 1106,
                 'province_id' => 11,
@@ -65,7 +66,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 1107,
                 'province_id' => 11,
@@ -73,7 +74,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 1108,
                 'province_id' => 11,
@@ -81,7 +82,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 1109,
                 'province_id' => 11,
@@ -89,7 +90,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 1110,
                 'province_id' => 11,
@@ -97,7 +98,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 1111,
                 'province_id' => 11,
@@ -105,7 +106,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 1112,
                 'province_id' => 11,
@@ -113,7 +114,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 1113,
                 'province_id' => 11,
@@ -121,7 +122,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 1114,
                 'province_id' => 11,
@@ -129,7 +130,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 1115,
                 'province_id' => 11,
@@ -137,7 +138,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 1116,
                 'province_id' => 11,
@@ -145,7 +146,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 1117,
                 'province_id' => 11,
@@ -153,7 +154,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 1118,
                 'province_id' => 11,
@@ -161,7 +162,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 1171,
                 'province_id' => 11,
@@ -169,7 +170,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 1172,
                 'province_id' => 11,
@@ -177,7 +178,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 1173,
                 'province_id' => 11,
@@ -185,7 +186,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 1174,
                 'province_id' => 11,
@@ -193,7 +194,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 1175,
                 'province_id' => 11,
@@ -201,7 +202,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 1201,
                 'province_id' => 12,
@@ -209,7 +210,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 1202,
                 'province_id' => 12,
@@ -217,7 +218,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 1203,
                 'province_id' => 12,
@@ -225,7 +226,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 1204,
                 'province_id' => 12,
@@ -233,7 +234,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 1205,
                 'province_id' => 12,
@@ -241,7 +242,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            28 => 
+            28 =>
             array (
                 'id' => 1206,
                 'province_id' => 12,
@@ -249,7 +250,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            29 => 
+            29 =>
             array (
                 'id' => 1207,
                 'province_id' => 12,
@@ -257,7 +258,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            30 => 
+            30 =>
             array (
                 'id' => 1208,
                 'province_id' => 12,
@@ -265,7 +266,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            31 => 
+            31 =>
             array (
                 'id' => 1209,
                 'province_id' => 12,
@@ -273,7 +274,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            32 => 
+            32 =>
             array (
                 'id' => 1210,
                 'province_id' => 12,
@@ -281,7 +282,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            33 => 
+            33 =>
             array (
                 'id' => 1211,
                 'province_id' => 12,
@@ -289,7 +290,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            34 => 
+            34 =>
             array (
                 'id' => 1212,
                 'province_id' => 12,
@@ -297,7 +298,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            35 => 
+            35 =>
             array (
                 'id' => 1213,
                 'province_id' => 12,
@@ -305,7 +306,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            36 => 
+            36 =>
             array (
                 'id' => 1214,
                 'province_id' => 12,
@@ -313,7 +314,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            37 => 
+            37 =>
             array (
                 'id' => 1215,
                 'province_id' => 12,
@@ -321,7 +322,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            38 => 
+            38 =>
             array (
                 'id' => 1216,
                 'province_id' => 12,
@@ -329,7 +330,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            39 => 
+            39 =>
             array (
                 'id' => 1217,
                 'province_id' => 12,
@@ -337,7 +338,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            40 => 
+            40 =>
             array (
                 'id' => 1218,
                 'province_id' => 12,
@@ -345,7 +346,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            41 => 
+            41 =>
             array (
                 'id' => 1219,
                 'province_id' => 12,
@@ -353,7 +354,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            42 => 
+            42 =>
             array (
                 'id' => 1220,
                 'province_id' => 12,
@@ -361,7 +362,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            43 => 
+            43 =>
             array (
                 'id' => 1221,
                 'province_id' => 12,
@@ -369,7 +370,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            44 => 
+            44 =>
             array (
                 'id' => 1222,
                 'province_id' => 12,
@@ -377,7 +378,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            45 => 
+            45 =>
             array (
                 'id' => 1223,
                 'province_id' => 12,
@@ -385,7 +386,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            46 => 
+            46 =>
             array (
                 'id' => 1224,
                 'province_id' => 12,
@@ -393,7 +394,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            47 => 
+            47 =>
             array (
                 'id' => 1225,
                 'province_id' => 12,
@@ -401,7 +402,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            48 => 
+            48 =>
             array (
                 'id' => 1271,
                 'province_id' => 12,
@@ -409,7 +410,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            49 => 
+            49 =>
             array (
                 'id' => 1272,
                 'province_id' => 12,
@@ -417,7 +418,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            50 => 
+            50 =>
             array (
                 'id' => 1273,
                 'province_id' => 12,
@@ -425,7 +426,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            51 => 
+            51 =>
             array (
                 'id' => 1274,
                 'province_id' => 12,
@@ -433,7 +434,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            52 => 
+            52 =>
             array (
                 'id' => 1275,
                 'province_id' => 12,
@@ -441,7 +442,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            53 => 
+            53 =>
             array (
                 'id' => 1276,
                 'province_id' => 12,
@@ -449,7 +450,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            54 => 
+            54 =>
             array (
                 'id' => 1277,
                 'province_id' => 12,
@@ -457,7 +458,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            55 => 
+            55 =>
             array (
                 'id' => 1278,
                 'province_id' => 12,
@@ -465,7 +466,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            56 => 
+            56 =>
             array (
                 'id' => 1301,
                 'province_id' => 13,
@@ -473,7 +474,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            57 => 
+            57 =>
             array (
                 'id' => 1302,
                 'province_id' => 13,
@@ -481,7 +482,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            58 => 
+            58 =>
             array (
                 'id' => 1303,
                 'province_id' => 13,
@@ -489,7 +490,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            59 => 
+            59 =>
             array (
                 'id' => 1304,
                 'province_id' => 13,
@@ -497,7 +498,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            60 => 
+            60 =>
             array (
                 'id' => 1305,
                 'province_id' => 13,
@@ -505,7 +506,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            61 => 
+            61 =>
             array (
                 'id' => 1306,
                 'province_id' => 13,
@@ -513,7 +514,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            62 => 
+            62 =>
             array (
                 'id' => 1307,
                 'province_id' => 13,
@@ -521,7 +522,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            63 => 
+            63 =>
             array (
                 'id' => 1308,
                 'province_id' => 13,
@@ -529,7 +530,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            64 => 
+            64 =>
             array (
                 'id' => 1309,
                 'province_id' => 13,
@@ -537,7 +538,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            65 => 
+            65 =>
             array (
                 'id' => 1310,
                 'province_id' => 13,
@@ -545,7 +546,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            66 => 
+            66 =>
             array (
                 'id' => 1311,
                 'province_id' => 13,
@@ -553,7 +554,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            67 => 
+            67 =>
             array (
                 'id' => 1312,
                 'province_id' => 13,
@@ -561,7 +562,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            68 => 
+            68 =>
             array (
                 'id' => 1371,
                 'province_id' => 13,
@@ -569,7 +570,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            69 => 
+            69 =>
             array (
                 'id' => 1372,
                 'province_id' => 13,
@@ -577,7 +578,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            70 => 
+            70 =>
             array (
                 'id' => 1373,
                 'province_id' => 13,
@@ -585,7 +586,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            71 => 
+            71 =>
             array (
                 'id' => 1374,
                 'province_id' => 13,
@@ -593,7 +594,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            72 => 
+            72 =>
             array (
                 'id' => 1375,
                 'province_id' => 13,
@@ -601,7 +602,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            73 => 
+            73 =>
             array (
                 'id' => 1376,
                 'province_id' => 13,
@@ -609,7 +610,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            74 => 
+            74 =>
             array (
                 'id' => 1377,
                 'province_id' => 13,
@@ -617,7 +618,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            75 => 
+            75 =>
             array (
                 'id' => 1401,
                 'province_id' => 14,
@@ -625,7 +626,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            76 => 
+            76 =>
             array (
                 'id' => 1402,
                 'province_id' => 14,
@@ -633,7 +634,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            77 => 
+            77 =>
             array (
                 'id' => 1403,
                 'province_id' => 14,
@@ -641,7 +642,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            78 => 
+            78 =>
             array (
                 'id' => 1404,
                 'province_id' => 14,
@@ -649,7 +650,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            79 => 
+            79 =>
             array (
                 'id' => 1405,
                 'province_id' => 14,
@@ -657,7 +658,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            80 => 
+            80 =>
             array (
                 'id' => 1406,
                 'province_id' => 14,
@@ -665,7 +666,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            81 => 
+            81 =>
             array (
                 'id' => 1407,
                 'province_id' => 14,
@@ -673,7 +674,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            82 => 
+            82 =>
             array (
                 'id' => 1408,
                 'province_id' => 14,
@@ -681,7 +682,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            83 => 
+            83 =>
             array (
                 'id' => 1409,
                 'province_id' => 14,
@@ -689,7 +690,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            84 => 
+            84 =>
             array (
                 'id' => 1410,
                 'province_id' => 14,
@@ -697,7 +698,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            85 => 
+            85 =>
             array (
                 'id' => 1471,
                 'province_id' => 14,
@@ -705,7 +706,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            86 => 
+            86 =>
             array (
                 'id' => 1473,
                 'province_id' => 14,
@@ -713,7 +714,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            87 => 
+            87 =>
             array (
                 'id' => 1501,
                 'province_id' => 15,
@@ -721,7 +722,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            88 => 
+            88 =>
             array (
                 'id' => 1502,
                 'province_id' => 15,
@@ -729,7 +730,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            89 => 
+            89 =>
             array (
                 'id' => 1503,
                 'province_id' => 15,
@@ -737,7 +738,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            90 => 
+            90 =>
             array (
                 'id' => 1504,
                 'province_id' => 15,
@@ -745,7 +746,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            91 => 
+            91 =>
             array (
                 'id' => 1505,
                 'province_id' => 15,
@@ -753,7 +754,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            92 => 
+            92 =>
             array (
                 'id' => 1506,
                 'province_id' => 15,
@@ -761,7 +762,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            93 => 
+            93 =>
             array (
                 'id' => 1507,
                 'province_id' => 15,
@@ -769,7 +770,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            94 => 
+            94 =>
             array (
                 'id' => 1508,
                 'province_id' => 15,
@@ -777,7 +778,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            95 => 
+            95 =>
             array (
                 'id' => 1509,
                 'province_id' => 15,
@@ -785,7 +786,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            96 => 
+            96 =>
             array (
                 'id' => 1571,
                 'province_id' => 15,
@@ -793,7 +794,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            97 => 
+            97 =>
             array (
                 'id' => 1572,
                 'province_id' => 15,
@@ -801,7 +802,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            98 => 
+            98 =>
             array (
                 'id' => 1601,
                 'province_id' => 16,
@@ -809,7 +810,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            99 => 
+            99 =>
             array (
                 'id' => 1602,
                 'province_id' => 16,
@@ -817,7 +818,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            100 => 
+            100 =>
             array (
                 'id' => 1603,
                 'province_id' => 16,
@@ -825,7 +826,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            101 => 
+            101 =>
             array (
                 'id' => 1604,
                 'province_id' => 16,
@@ -833,7 +834,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            102 => 
+            102 =>
             array (
                 'id' => 1605,
                 'province_id' => 16,
@@ -841,7 +842,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            103 => 
+            103 =>
             array (
                 'id' => 1606,
                 'province_id' => 16,
@@ -849,7 +850,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            104 => 
+            104 =>
             array (
                 'id' => 1607,
                 'province_id' => 16,
@@ -857,7 +858,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            105 => 
+            105 =>
             array (
                 'id' => 1608,
                 'province_id' => 16,
@@ -865,7 +866,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            106 => 
+            106 =>
             array (
                 'id' => 1609,
                 'province_id' => 16,
@@ -873,7 +874,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            107 => 
+            107 =>
             array (
                 'id' => 1610,
                 'province_id' => 16,
@@ -881,7 +882,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            108 => 
+            108 =>
             array (
                 'id' => 1611,
                 'province_id' => 16,
@@ -889,7 +890,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            109 => 
+            109 =>
             array (
                 'id' => 1612,
                 'province_id' => 16,
@@ -897,7 +898,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            110 => 
+            110 =>
             array (
                 'id' => 1613,
                 'province_id' => 16,
@@ -905,7 +906,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            111 => 
+            111 =>
             array (
                 'id' => 1671,
                 'province_id' => 16,
@@ -913,7 +914,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            112 => 
+            112 =>
             array (
                 'id' => 1672,
                 'province_id' => 16,
@@ -921,7 +922,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            113 => 
+            113 =>
             array (
                 'id' => 1673,
                 'province_id' => 16,
@@ -929,7 +930,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            114 => 
+            114 =>
             array (
                 'id' => 1674,
                 'province_id' => 16,
@@ -937,7 +938,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            115 => 
+            115 =>
             array (
                 'id' => 1701,
                 'province_id' => 17,
@@ -945,7 +946,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            116 => 
+            116 =>
             array (
                 'id' => 1702,
                 'province_id' => 17,
@@ -953,7 +954,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            117 => 
+            117 =>
             array (
                 'id' => 1703,
                 'province_id' => 17,
@@ -961,7 +962,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            118 => 
+            118 =>
             array (
                 'id' => 1704,
                 'province_id' => 17,
@@ -969,7 +970,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            119 => 
+            119 =>
             array (
                 'id' => 1705,
                 'province_id' => 17,
@@ -977,7 +978,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            120 => 
+            120 =>
             array (
                 'id' => 1706,
                 'province_id' => 17,
@@ -985,7 +986,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            121 => 
+            121 =>
             array (
                 'id' => 1707,
                 'province_id' => 17,
@@ -993,7 +994,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            122 => 
+            122 =>
             array (
                 'id' => 1708,
                 'province_id' => 17,
@@ -1001,7 +1002,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            123 => 
+            123 =>
             array (
                 'id' => 1709,
                 'province_id' => 17,
@@ -1009,7 +1010,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            124 => 
+            124 =>
             array (
                 'id' => 1771,
                 'province_id' => 17,
@@ -1017,7 +1018,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            125 => 
+            125 =>
             array (
                 'id' => 1801,
                 'province_id' => 18,
@@ -1025,7 +1026,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            126 => 
+            126 =>
             array (
                 'id' => 1802,
                 'province_id' => 18,
@@ -1033,7 +1034,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            127 => 
+            127 =>
             array (
                 'id' => 1803,
                 'province_id' => 18,
@@ -1041,7 +1042,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            128 => 
+            128 =>
             array (
                 'id' => 1804,
                 'province_id' => 18,
@@ -1049,7 +1050,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            129 => 
+            129 =>
             array (
                 'id' => 1805,
                 'province_id' => 18,
@@ -1057,7 +1058,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            130 => 
+            130 =>
             array (
                 'id' => 1806,
                 'province_id' => 18,
@@ -1065,7 +1066,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            131 => 
+            131 =>
             array (
                 'id' => 1807,
                 'province_id' => 18,
@@ -1073,7 +1074,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            132 => 
+            132 =>
             array (
                 'id' => 1808,
                 'province_id' => 18,
@@ -1081,7 +1082,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            133 => 
+            133 =>
             array (
                 'id' => 1809,
                 'province_id' => 18,
@@ -1089,7 +1090,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            134 => 
+            134 =>
             array (
                 'id' => 1810,
                 'province_id' => 18,
@@ -1097,7 +1098,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            135 => 
+            135 =>
             array (
                 'id' => 1811,
                 'province_id' => 18,
@@ -1105,7 +1106,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            136 => 
+            136 =>
             array (
                 'id' => 1812,
                 'province_id' => 18,
@@ -1113,7 +1114,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            137 => 
+            137 =>
             array (
                 'id' => 1813,
                 'province_id' => 18,
@@ -1121,7 +1122,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            138 => 
+            138 =>
             array (
                 'id' => 1871,
                 'province_id' => 18,
@@ -1129,7 +1130,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            139 => 
+            139 =>
             array (
                 'id' => 1872,
                 'province_id' => 18,
@@ -1137,7 +1138,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            140 => 
+            140 =>
             array (
                 'id' => 1901,
                 'province_id' => 19,
@@ -1145,7 +1146,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            141 => 
+            141 =>
             array (
                 'id' => 1902,
                 'province_id' => 19,
@@ -1153,7 +1154,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            142 => 
+            142 =>
             array (
                 'id' => 1903,
                 'province_id' => 19,
@@ -1161,7 +1162,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            143 => 
+            143 =>
             array (
                 'id' => 1904,
                 'province_id' => 19,
@@ -1169,7 +1170,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            144 => 
+            144 =>
             array (
                 'id' => 1905,
                 'province_id' => 19,
@@ -1177,7 +1178,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            145 => 
+            145 =>
             array (
                 'id' => 1906,
                 'province_id' => 19,
@@ -1185,7 +1186,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            146 => 
+            146 =>
             array (
                 'id' => 1971,
                 'province_id' => 19,
@@ -1193,7 +1194,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            147 => 
+            147 =>
             array (
                 'id' => 2101,
                 'province_id' => 21,
@@ -1201,7 +1202,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            148 => 
+            148 =>
             array (
                 'id' => 2102,
                 'province_id' => 21,
@@ -1209,7 +1210,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            149 => 
+            149 =>
             array (
                 'id' => 2103,
                 'province_id' => 21,
@@ -1217,7 +1218,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            150 => 
+            150 =>
             array (
                 'id' => 2104,
                 'province_id' => 21,
@@ -1225,7 +1226,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            151 => 
+            151 =>
             array (
                 'id' => 2105,
                 'province_id' => 21,
@@ -1233,7 +1234,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            152 => 
+            152 =>
             array (
                 'id' => 2171,
                 'province_id' => 21,
@@ -1241,7 +1242,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            153 => 
+            153 =>
             array (
                 'id' => 2172,
                 'province_id' => 21,
@@ -1249,7 +1250,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            154 => 
+            154 =>
             array (
                 'id' => 3101,
                 'province_id' => 31,
@@ -1257,7 +1258,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            155 => 
+            155 =>
             array (
                 'id' => 3171,
                 'province_id' => 31,
@@ -1265,7 +1266,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            156 => 
+            156 =>
             array (
                 'id' => 3172,
                 'province_id' => 31,
@@ -1273,7 +1274,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            157 => 
+            157 =>
             array (
                 'id' => 3173,
                 'province_id' => 31,
@@ -1281,7 +1282,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            158 => 
+            158 =>
             array (
                 'id' => 3174,
                 'province_id' => 31,
@@ -1289,7 +1290,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            159 => 
+            159 =>
             array (
                 'id' => 3175,
                 'province_id' => 31,
@@ -1297,7 +1298,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            160 => 
+            160 =>
             array (
                 'id' => 3201,
                 'province_id' => 32,
@@ -1305,7 +1306,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            161 => 
+            161 =>
             array (
                 'id' => 3202,
                 'province_id' => 32,
@@ -1313,7 +1314,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            162 => 
+            162 =>
             array (
                 'id' => 3203,
                 'province_id' => 32,
@@ -1321,7 +1322,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            163 => 
+            163 =>
             array (
                 'id' => 3204,
                 'province_id' => 32,
@@ -1329,7 +1330,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            164 => 
+            164 =>
             array (
                 'id' => 3205,
                 'province_id' => 32,
@@ -1337,7 +1338,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            165 => 
+            165 =>
             array (
                 'id' => 3206,
                 'province_id' => 32,
@@ -1345,7 +1346,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            166 => 
+            166 =>
             array (
                 'id' => 3207,
                 'province_id' => 32,
@@ -1353,7 +1354,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            167 => 
+            167 =>
             array (
                 'id' => 3208,
                 'province_id' => 32,
@@ -1361,7 +1362,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            168 => 
+            168 =>
             array (
                 'id' => 3209,
                 'province_id' => 32,
@@ -1369,7 +1370,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            169 => 
+            169 =>
             array (
                 'id' => 3210,
                 'province_id' => 32,
@@ -1377,7 +1378,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            170 => 
+            170 =>
             array (
                 'id' => 3211,
                 'province_id' => 32,
@@ -1385,7 +1386,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            171 => 
+            171 =>
             array (
                 'id' => 3212,
                 'province_id' => 32,
@@ -1393,7 +1394,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            172 => 
+            172 =>
             array (
                 'id' => 3213,
                 'province_id' => 32,
@@ -1401,7 +1402,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            173 => 
+            173 =>
             array (
                 'id' => 3214,
                 'province_id' => 32,
@@ -1409,7 +1410,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            174 => 
+            174 =>
             array (
                 'id' => 3215,
                 'province_id' => 32,
@@ -1417,7 +1418,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            175 => 
+            175 =>
             array (
                 'id' => 3216,
                 'province_id' => 32,
@@ -1425,7 +1426,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            176 => 
+            176 =>
             array (
                 'id' => 3217,
                 'province_id' => 32,
@@ -1433,7 +1434,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            177 => 
+            177 =>
             array (
                 'id' => 3218,
                 'province_id' => 32,
@@ -1441,7 +1442,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            178 => 
+            178 =>
             array (
                 'id' => 3271,
                 'province_id' => 32,
@@ -1449,7 +1450,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            179 => 
+            179 =>
             array (
                 'id' => 3272,
                 'province_id' => 32,
@@ -1457,7 +1458,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            180 => 
+            180 =>
             array (
                 'id' => 3273,
                 'province_id' => 32,
@@ -1465,7 +1466,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            181 => 
+            181 =>
             array (
                 'id' => 3274,
                 'province_id' => 32,
@@ -1473,7 +1474,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            182 => 
+            182 =>
             array (
                 'id' => 3275,
                 'province_id' => 32,
@@ -1481,7 +1482,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            183 => 
+            183 =>
             array (
                 'id' => 3276,
                 'province_id' => 32,
@@ -1489,7 +1490,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            184 => 
+            184 =>
             array (
                 'id' => 3277,
                 'province_id' => 32,
@@ -1497,7 +1498,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            185 => 
+            185 =>
             array (
                 'id' => 3278,
                 'province_id' => 32,
@@ -1505,7 +1506,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            186 => 
+            186 =>
             array (
                 'id' => 3279,
                 'province_id' => 32,
@@ -1513,7 +1514,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            187 => 
+            187 =>
             array (
                 'id' => 3301,
                 'province_id' => 33,
@@ -1521,7 +1522,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            188 => 
+            188 =>
             array (
                 'id' => 3302,
                 'province_id' => 33,
@@ -1529,7 +1530,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            189 => 
+            189 =>
             array (
                 'id' => 3303,
                 'province_id' => 33,
@@ -1537,7 +1538,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            190 => 
+            190 =>
             array (
                 'id' => 3304,
                 'province_id' => 33,
@@ -1545,7 +1546,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            191 => 
+            191 =>
             array (
                 'id' => 3305,
                 'province_id' => 33,
@@ -1553,7 +1554,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            192 => 
+            192 =>
             array (
                 'id' => 3306,
                 'province_id' => 33,
@@ -1561,7 +1562,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            193 => 
+            193 =>
             array (
                 'id' => 3307,
                 'province_id' => 33,
@@ -1569,7 +1570,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            194 => 
+            194 =>
             array (
                 'id' => 3308,
                 'province_id' => 33,
@@ -1577,7 +1578,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            195 => 
+            195 =>
             array (
                 'id' => 3309,
                 'province_id' => 33,
@@ -1585,7 +1586,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            196 => 
+            196 =>
             array (
                 'id' => 3310,
                 'province_id' => 33,
@@ -1593,7 +1594,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            197 => 
+            197 =>
             array (
                 'id' => 3311,
                 'province_id' => 33,
@@ -1601,7 +1602,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            198 => 
+            198 =>
             array (
                 'id' => 3312,
                 'province_id' => 33,
@@ -1609,7 +1610,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            199 => 
+            199 =>
             array (
                 'id' => 3313,
                 'province_id' => 33,
@@ -1617,7 +1618,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            200 => 
+            200 =>
             array (
                 'id' => 3314,
                 'province_id' => 33,
@@ -1625,7 +1626,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            201 => 
+            201 =>
             array (
                 'id' => 3315,
                 'province_id' => 33,
@@ -1633,7 +1634,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            202 => 
+            202 =>
             array (
                 'id' => 3316,
                 'province_id' => 33,
@@ -1641,7 +1642,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            203 => 
+            203 =>
             array (
                 'id' => 3317,
                 'province_id' => 33,
@@ -1649,7 +1650,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            204 => 
+            204 =>
             array (
                 'id' => 3318,
                 'province_id' => 33,
@@ -1657,7 +1658,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            205 => 
+            205 =>
             array (
                 'id' => 3319,
                 'province_id' => 33,
@@ -1665,7 +1666,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            206 => 
+            206 =>
             array (
                 'id' => 3320,
                 'province_id' => 33,
@@ -1673,7 +1674,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            207 => 
+            207 =>
             array (
                 'id' => 3321,
                 'province_id' => 33,
@@ -1681,7 +1682,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            208 => 
+            208 =>
             array (
                 'id' => 3322,
                 'province_id' => 33,
@@ -1689,7 +1690,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            209 => 
+            209 =>
             array (
                 'id' => 3323,
                 'province_id' => 33,
@@ -1697,7 +1698,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            210 => 
+            210 =>
             array (
                 'id' => 3324,
                 'province_id' => 33,
@@ -1705,7 +1706,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            211 => 
+            211 =>
             array (
                 'id' => 3325,
                 'province_id' => 33,
@@ -1713,7 +1714,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            212 => 
+            212 =>
             array (
                 'id' => 3326,
                 'province_id' => 33,
@@ -1721,7 +1722,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            213 => 
+            213 =>
             array (
                 'id' => 3327,
                 'province_id' => 33,
@@ -1729,7 +1730,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            214 => 
+            214 =>
             array (
                 'id' => 3328,
                 'province_id' => 33,
@@ -1737,7 +1738,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            215 => 
+            215 =>
             array (
                 'id' => 3329,
                 'province_id' => 33,
@@ -1745,7 +1746,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            216 => 
+            216 =>
             array (
                 'id' => 3371,
                 'province_id' => 33,
@@ -1753,7 +1754,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            217 => 
+            217 =>
             array (
                 'id' => 3372,
                 'province_id' => 33,
@@ -1761,7 +1762,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            218 => 
+            218 =>
             array (
                 'id' => 3373,
                 'province_id' => 33,
@@ -1769,7 +1770,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            219 => 
+            219 =>
             array (
                 'id' => 3374,
                 'province_id' => 33,
@@ -1777,7 +1778,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            220 => 
+            220 =>
             array (
                 'id' => 3375,
                 'province_id' => 33,
@@ -1785,7 +1786,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            221 => 
+            221 =>
             array (
                 'id' => 3376,
                 'province_id' => 33,
@@ -1793,7 +1794,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            222 => 
+            222 =>
             array (
                 'id' => 3401,
                 'province_id' => 34,
@@ -1801,7 +1802,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            223 => 
+            223 =>
             array (
                 'id' => 3402,
                 'province_id' => 34,
@@ -1809,7 +1810,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            224 => 
+            224 =>
             array (
                 'id' => 3403,
                 'province_id' => 34,
@@ -1817,7 +1818,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            225 => 
+            225 =>
             array (
                 'id' => 3404,
                 'province_id' => 34,
@@ -1825,7 +1826,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            226 => 
+            226 =>
             array (
                 'id' => 3471,
                 'province_id' => 34,
@@ -1833,7 +1834,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            227 => 
+            227 =>
             array (
                 'id' => 3501,
                 'province_id' => 35,
@@ -1841,7 +1842,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            228 => 
+            228 =>
             array (
                 'id' => 3502,
                 'province_id' => 35,
@@ -1849,7 +1850,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            229 => 
+            229 =>
             array (
                 'id' => 3503,
                 'province_id' => 35,
@@ -1857,7 +1858,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            230 => 
+            230 =>
             array (
                 'id' => 3504,
                 'province_id' => 35,
@@ -1865,7 +1866,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            231 => 
+            231 =>
             array (
                 'id' => 3505,
                 'province_id' => 35,
@@ -1873,7 +1874,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            232 => 
+            232 =>
             array (
                 'id' => 3506,
                 'province_id' => 35,
@@ -1881,7 +1882,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            233 => 
+            233 =>
             array (
                 'id' => 3507,
                 'province_id' => 35,
@@ -1889,7 +1890,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            234 => 
+            234 =>
             array (
                 'id' => 3508,
                 'province_id' => 35,
@@ -1897,7 +1898,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            235 => 
+            235 =>
             array (
                 'id' => 3509,
                 'province_id' => 35,
@@ -1905,7 +1906,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            236 => 
+            236 =>
             array (
                 'id' => 3510,
                 'province_id' => 35,
@@ -1913,7 +1914,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            237 => 
+            237 =>
             array (
                 'id' => 3511,
                 'province_id' => 35,
@@ -1921,7 +1922,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            238 => 
+            238 =>
             array (
                 'id' => 3512,
                 'province_id' => 35,
@@ -1929,7 +1930,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            239 => 
+            239 =>
             array (
                 'id' => 3513,
                 'province_id' => 35,
@@ -1937,7 +1938,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            240 => 
+            240 =>
             array (
                 'id' => 3514,
                 'province_id' => 35,
@@ -1945,7 +1946,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            241 => 
+            241 =>
             array (
                 'id' => 3515,
                 'province_id' => 35,
@@ -1953,7 +1954,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            242 => 
+            242 =>
             array (
                 'id' => 3516,
                 'province_id' => 35,
@@ -1961,7 +1962,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            243 => 
+            243 =>
             array (
                 'id' => 3517,
                 'province_id' => 35,
@@ -1969,7 +1970,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            244 => 
+            244 =>
             array (
                 'id' => 3518,
                 'province_id' => 35,
@@ -1977,7 +1978,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            245 => 
+            245 =>
             array (
                 'id' => 3519,
                 'province_id' => 35,
@@ -1985,7 +1986,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            246 => 
+            246 =>
             array (
                 'id' => 3520,
                 'province_id' => 35,
@@ -1993,7 +1994,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            247 => 
+            247 =>
             array (
                 'id' => 3521,
                 'province_id' => 35,
@@ -2001,7 +2002,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            248 => 
+            248 =>
             array (
                 'id' => 3522,
                 'province_id' => 35,
@@ -2009,7 +2010,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            249 => 
+            249 =>
             array (
                 'id' => 3523,
                 'province_id' => 35,
@@ -2017,7 +2018,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            250 => 
+            250 =>
             array (
                 'id' => 3524,
                 'province_id' => 35,
@@ -2025,7 +2026,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            251 => 
+            251 =>
             array (
                 'id' => 3525,
                 'province_id' => 35,
@@ -2033,7 +2034,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            252 => 
+            252 =>
             array (
                 'id' => 3526,
                 'province_id' => 35,
@@ -2041,7 +2042,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            253 => 
+            253 =>
             array (
                 'id' => 3527,
                 'province_id' => 35,
@@ -2049,7 +2050,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            254 => 
+            254 =>
             array (
                 'id' => 3528,
                 'province_id' => 35,
@@ -2057,7 +2058,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            255 => 
+            255 =>
             array (
                 'id' => 3529,
                 'province_id' => 35,
@@ -2065,7 +2066,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            256 => 
+            256 =>
             array (
                 'id' => 3571,
                 'province_id' => 35,
@@ -2073,7 +2074,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            257 => 
+            257 =>
             array (
                 'id' => 3572,
                 'province_id' => 35,
@@ -2081,7 +2082,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            258 => 
+            258 =>
             array (
                 'id' => 3573,
                 'province_id' => 35,
@@ -2089,7 +2090,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            259 => 
+            259 =>
             array (
                 'id' => 3574,
                 'province_id' => 35,
@@ -2097,7 +2098,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            260 => 
+            260 =>
             array (
                 'id' => 3575,
                 'province_id' => 35,
@@ -2105,7 +2106,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            261 => 
+            261 =>
             array (
                 'id' => 3576,
                 'province_id' => 35,
@@ -2113,7 +2114,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            262 => 
+            262 =>
             array (
                 'id' => 3577,
                 'province_id' => 35,
@@ -2121,7 +2122,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            263 => 
+            263 =>
             array (
                 'id' => 3578,
                 'province_id' => 35,
@@ -2129,7 +2130,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            264 => 
+            264 =>
             array (
                 'id' => 3579,
                 'province_id' => 35,
@@ -2137,7 +2138,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            265 => 
+            265 =>
             array (
                 'id' => 3601,
                 'province_id' => 36,
@@ -2145,7 +2146,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            266 => 
+            266 =>
             array (
                 'id' => 3602,
                 'province_id' => 36,
@@ -2153,7 +2154,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            267 => 
+            267 =>
             array (
                 'id' => 3603,
                 'province_id' => 36,
@@ -2161,7 +2162,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            268 => 
+            268 =>
             array (
                 'id' => 3604,
                 'province_id' => 36,
@@ -2169,7 +2170,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            269 => 
+            269 =>
             array (
                 'id' => 3671,
                 'province_id' => 36,
@@ -2177,7 +2178,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            270 => 
+            270 =>
             array (
                 'id' => 3672,
                 'province_id' => 36,
@@ -2185,7 +2186,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            271 => 
+            271 =>
             array (
                 'id' => 3673,
                 'province_id' => 36,
@@ -2193,7 +2194,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            272 => 
+            272 =>
             array (
                 'id' => 3674,
                 'province_id' => 36,
@@ -2201,7 +2202,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            273 => 
+            273 =>
             array (
                 'id' => 5101,
                 'province_id' => 51,
@@ -2209,7 +2210,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            274 => 
+            274 =>
             array (
                 'id' => 5102,
                 'province_id' => 51,
@@ -2217,7 +2218,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            275 => 
+            275 =>
             array (
                 'id' => 5103,
                 'province_id' => 51,
@@ -2225,7 +2226,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            276 => 
+            276 =>
             array (
                 'id' => 5104,
                 'province_id' => 51,
@@ -2233,7 +2234,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            277 => 
+            277 =>
             array (
                 'id' => 5105,
                 'province_id' => 51,
@@ -2241,7 +2242,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            278 => 
+            278 =>
             array (
                 'id' => 5106,
                 'province_id' => 51,
@@ -2249,7 +2250,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            279 => 
+            279 =>
             array (
                 'id' => 5107,
                 'province_id' => 51,
@@ -2257,7 +2258,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            280 => 
+            280 =>
             array (
                 'id' => 5108,
                 'province_id' => 51,
@@ -2265,7 +2266,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            281 => 
+            281 =>
             array (
                 'id' => 5171,
                 'province_id' => 51,
@@ -2273,7 +2274,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            282 => 
+            282 =>
             array (
                 'id' => 5201,
                 'province_id' => 52,
@@ -2281,7 +2282,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            283 => 
+            283 =>
             array (
                 'id' => 5202,
                 'province_id' => 52,
@@ -2289,7 +2290,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            284 => 
+            284 =>
             array (
                 'id' => 5203,
                 'province_id' => 52,
@@ -2297,7 +2298,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            285 => 
+            285 =>
             array (
                 'id' => 5204,
                 'province_id' => 52,
@@ -2305,7 +2306,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            286 => 
+            286 =>
             array (
                 'id' => 5205,
                 'province_id' => 52,
@@ -2313,7 +2314,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            287 => 
+            287 =>
             array (
                 'id' => 5206,
                 'province_id' => 52,
@@ -2321,7 +2322,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            288 => 
+            288 =>
             array (
                 'id' => 5207,
                 'province_id' => 52,
@@ -2329,7 +2330,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            289 => 
+            289 =>
             array (
                 'id' => 5208,
                 'province_id' => 52,
@@ -2337,7 +2338,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            290 => 
+            290 =>
             array (
                 'id' => 5271,
                 'province_id' => 52,
@@ -2345,7 +2346,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            291 => 
+            291 =>
             array (
                 'id' => 5272,
                 'province_id' => 52,
@@ -2353,7 +2354,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            292 => 
+            292 =>
             array (
                 'id' => 5301,
                 'province_id' => 53,
@@ -2361,7 +2362,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            293 => 
+            293 =>
             array (
                 'id' => 5302,
                 'province_id' => 53,
@@ -2369,7 +2370,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            294 => 
+            294 =>
             array (
                 'id' => 5303,
                 'province_id' => 53,
@@ -2377,7 +2378,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            295 => 
+            295 =>
             array (
                 'id' => 5304,
                 'province_id' => 53,
@@ -2385,7 +2386,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            296 => 
+            296 =>
             array (
                 'id' => 5305,
                 'province_id' => 53,
@@ -2393,7 +2394,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            297 => 
+            297 =>
             array (
                 'id' => 5306,
                 'province_id' => 53,
@@ -2401,7 +2402,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            298 => 
+            298 =>
             array (
                 'id' => 5307,
                 'province_id' => 53,
@@ -2409,7 +2410,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            299 => 
+            299 =>
             array (
                 'id' => 5308,
                 'province_id' => 53,
@@ -2417,7 +2418,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            300 => 
+            300 =>
             array (
                 'id' => 5309,
                 'province_id' => 53,
@@ -2425,7 +2426,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            301 => 
+            301 =>
             array (
                 'id' => 5310,
                 'province_id' => 53,
@@ -2433,7 +2434,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            302 => 
+            302 =>
             array (
                 'id' => 5311,
                 'province_id' => 53,
@@ -2441,7 +2442,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            303 => 
+            303 =>
             array (
                 'id' => 5312,
                 'province_id' => 53,
@@ -2449,7 +2450,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            304 => 
+            304 =>
             array (
                 'id' => 5313,
                 'province_id' => 53,
@@ -2457,7 +2458,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            305 => 
+            305 =>
             array (
                 'id' => 5314,
                 'province_id' => 53,
@@ -2465,7 +2466,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            306 => 
+            306 =>
             array (
                 'id' => 5315,
                 'province_id' => 53,
@@ -2473,7 +2474,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            307 => 
+            307 =>
             array (
                 'id' => 5316,
                 'province_id' => 53,
@@ -2481,7 +2482,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            308 => 
+            308 =>
             array (
                 'id' => 5317,
                 'province_id' => 53,
@@ -2489,7 +2490,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            309 => 
+            309 =>
             array (
                 'id' => 5318,
                 'province_id' => 53,
@@ -2497,7 +2498,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            310 => 
+            310 =>
             array (
                 'id' => 5319,
                 'province_id' => 53,
@@ -2505,7 +2506,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            311 => 
+            311 =>
             array (
                 'id' => 5320,
                 'province_id' => 53,
@@ -2513,7 +2514,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            312 => 
+            312 =>
             array (
                 'id' => 5321,
                 'province_id' => 53,
@@ -2521,7 +2522,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            313 => 
+            313 =>
             array (
                 'id' => 5371,
                 'province_id' => 53,
@@ -2529,7 +2530,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            314 => 
+            314 =>
             array (
                 'id' => 6101,
                 'province_id' => 61,
@@ -2537,7 +2538,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            315 => 
+            315 =>
             array (
                 'id' => 6102,
                 'province_id' => 61,
@@ -2545,7 +2546,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            316 => 
+            316 =>
             array (
                 'id' => 6103,
                 'province_id' => 61,
@@ -2553,7 +2554,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            317 => 
+            317 =>
             array (
                 'id' => 6104,
                 'province_id' => 61,
@@ -2561,7 +2562,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            318 => 
+            318 =>
             array (
                 'id' => 6105,
                 'province_id' => 61,
@@ -2569,7 +2570,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            319 => 
+            319 =>
             array (
                 'id' => 6106,
                 'province_id' => 61,
@@ -2577,7 +2578,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            320 => 
+            320 =>
             array (
                 'id' => 6107,
                 'province_id' => 61,
@@ -2585,7 +2586,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            321 => 
+            321 =>
             array (
                 'id' => 6108,
                 'province_id' => 61,
@@ -2593,7 +2594,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            322 => 
+            322 =>
             array (
                 'id' => 6109,
                 'province_id' => 61,
@@ -2601,7 +2602,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            323 => 
+            323 =>
             array (
                 'id' => 6110,
                 'province_id' => 61,
@@ -2609,7 +2610,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            324 => 
+            324 =>
             array (
                 'id' => 6111,
                 'province_id' => 61,
@@ -2617,7 +2618,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            325 => 
+            325 =>
             array (
                 'id' => 6112,
                 'province_id' => 61,
@@ -2625,7 +2626,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            326 => 
+            326 =>
             array (
                 'id' => 6171,
                 'province_id' => 61,
@@ -2633,7 +2634,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            327 => 
+            327 =>
             array (
                 'id' => 6172,
                 'province_id' => 61,
@@ -2641,7 +2642,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            328 => 
+            328 =>
             array (
                 'id' => 6201,
                 'province_id' => 62,
@@ -2649,7 +2650,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            329 => 
+            329 =>
             array (
                 'id' => 6202,
                 'province_id' => 62,
@@ -2657,7 +2658,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            330 => 
+            330 =>
             array (
                 'id' => 6203,
                 'province_id' => 62,
@@ -2665,7 +2666,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            331 => 
+            331 =>
             array (
                 'id' => 6204,
                 'province_id' => 62,
@@ -2673,7 +2674,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            332 => 
+            332 =>
             array (
                 'id' => 6205,
                 'province_id' => 62,
@@ -2681,7 +2682,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            333 => 
+            333 =>
             array (
                 'id' => 6206,
                 'province_id' => 62,
@@ -2689,7 +2690,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            334 => 
+            334 =>
             array (
                 'id' => 6207,
                 'province_id' => 62,
@@ -2697,7 +2698,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            335 => 
+            335 =>
             array (
                 'id' => 6208,
                 'province_id' => 62,
@@ -2705,7 +2706,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            336 => 
+            336 =>
             array (
                 'id' => 6209,
                 'province_id' => 62,
@@ -2713,7 +2714,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            337 => 
+            337 =>
             array (
                 'id' => 6210,
                 'province_id' => 62,
@@ -2721,7 +2722,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            338 => 
+            338 =>
             array (
                 'id' => 6211,
                 'province_id' => 62,
@@ -2729,7 +2730,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            339 => 
+            339 =>
             array (
                 'id' => 6212,
                 'province_id' => 62,
@@ -2737,7 +2738,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            340 => 
+            340 =>
             array (
                 'id' => 6213,
                 'province_id' => 62,
@@ -2745,7 +2746,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            341 => 
+            341 =>
             array (
                 'id' => 6271,
                 'province_id' => 62,
@@ -2753,7 +2754,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            342 => 
+            342 =>
             array (
                 'id' => 6301,
                 'province_id' => 63,
@@ -2761,7 +2762,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            343 => 
+            343 =>
             array (
                 'id' => 6302,
                 'province_id' => 63,
@@ -2769,7 +2770,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            344 => 
+            344 =>
             array (
                 'id' => 6303,
                 'province_id' => 63,
@@ -2777,7 +2778,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            345 => 
+            345 =>
             array (
                 'id' => 6304,
                 'province_id' => 63,
@@ -2785,7 +2786,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            346 => 
+            346 =>
             array (
                 'id' => 6305,
                 'province_id' => 63,
@@ -2793,7 +2794,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            347 => 
+            347 =>
             array (
                 'id' => 6306,
                 'province_id' => 63,
@@ -2801,7 +2802,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            348 => 
+            348 =>
             array (
                 'id' => 6307,
                 'province_id' => 63,
@@ -2809,7 +2810,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            349 => 
+            349 =>
             array (
                 'id' => 6308,
                 'province_id' => 63,
@@ -2817,7 +2818,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            350 => 
+            350 =>
             array (
                 'id' => 6309,
                 'province_id' => 63,
@@ -2825,7 +2826,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            351 => 
+            351 =>
             array (
                 'id' => 6310,
                 'province_id' => 63,
@@ -2833,7 +2834,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            352 => 
+            352 =>
             array (
                 'id' => 6311,
                 'province_id' => 63,
@@ -2841,7 +2842,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            353 => 
+            353 =>
             array (
                 'id' => 6371,
                 'province_id' => 63,
@@ -2849,7 +2850,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            354 => 
+            354 =>
             array (
                 'id' => 6372,
                 'province_id' => 63,
@@ -2857,7 +2858,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            355 => 
+            355 =>
             array (
                 'id' => 6401,
                 'province_id' => 64,
@@ -2865,7 +2866,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            356 => 
+            356 =>
             array (
                 'id' => 6402,
                 'province_id' => 64,
@@ -2873,7 +2874,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            357 => 
+            357 =>
             array (
                 'id' => 6403,
                 'province_id' => 64,
@@ -2881,7 +2882,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            358 => 
+            358 =>
             array (
                 'id' => 6404,
                 'province_id' => 64,
@@ -2889,7 +2890,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            359 => 
+            359 =>
             array (
                 'id' => 6405,
                 'province_id' => 64,
@@ -2897,7 +2898,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            360 => 
+            360 =>
             array (
                 'id' => 6409,
                 'province_id' => 64,
@@ -2905,7 +2906,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            361 => 
+            361 =>
             array (
                 'id' => 6411,
                 'province_id' => 64,
@@ -2913,7 +2914,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            362 => 
+            362 =>
             array (
                 'id' => 6471,
                 'province_id' => 64,
@@ -2921,7 +2922,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            363 => 
+            363 =>
             array (
                 'id' => 6472,
                 'province_id' => 64,
@@ -2929,7 +2930,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            364 => 
+            364 =>
             array (
                 'id' => 6474,
                 'province_id' => 64,
@@ -2937,7 +2938,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            365 => 
+            365 =>
             array (
                 'id' => 6501,
                 'province_id' => 65,
@@ -2945,7 +2946,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            366 => 
+            366 =>
             array (
                 'id' => 6502,
                 'province_id' => 65,
@@ -2953,7 +2954,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            367 => 
+            367 =>
             array (
                 'id' => 6503,
                 'province_id' => 65,
@@ -2961,7 +2962,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            368 => 
+            368 =>
             array (
                 'id' => 6504,
                 'province_id' => 65,
@@ -2969,7 +2970,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            369 => 
+            369 =>
             array (
                 'id' => 6571,
                 'province_id' => 65,
@@ -2977,7 +2978,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            370 => 
+            370 =>
             array (
                 'id' => 7101,
                 'province_id' => 71,
@@ -2985,7 +2986,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            371 => 
+            371 =>
             array (
                 'id' => 7102,
                 'province_id' => 71,
@@ -2993,7 +2994,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            372 => 
+            372 =>
             array (
                 'id' => 7103,
                 'province_id' => 71,
@@ -3001,7 +3002,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            373 => 
+            373 =>
             array (
                 'id' => 7104,
                 'province_id' => 71,
@@ -3009,7 +3010,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            374 => 
+            374 =>
             array (
                 'id' => 7105,
                 'province_id' => 71,
@@ -3017,7 +3018,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            375 => 
+            375 =>
             array (
                 'id' => 7106,
                 'province_id' => 71,
@@ -3025,7 +3026,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            376 => 
+            376 =>
             array (
                 'id' => 7107,
                 'province_id' => 71,
@@ -3033,7 +3034,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            377 => 
+            377 =>
             array (
                 'id' => 7108,
                 'province_id' => 71,
@@ -3041,7 +3042,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            378 => 
+            378 =>
             array (
                 'id' => 7109,
                 'province_id' => 71,
@@ -3049,7 +3050,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            379 => 
+            379 =>
             array (
                 'id' => 7110,
                 'province_id' => 71,
@@ -3057,7 +3058,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            380 => 
+            380 =>
             array (
                 'id' => 7111,
                 'province_id' => 71,
@@ -3065,7 +3066,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            381 => 
+            381 =>
             array (
                 'id' => 7171,
                 'province_id' => 71,
@@ -3073,7 +3074,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            382 => 
+            382 =>
             array (
                 'id' => 7172,
                 'province_id' => 71,
@@ -3081,7 +3082,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            383 => 
+            383 =>
             array (
                 'id' => 7173,
                 'province_id' => 71,
@@ -3089,7 +3090,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            384 => 
+            384 =>
             array (
                 'id' => 7174,
                 'province_id' => 71,
@@ -3097,7 +3098,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            385 => 
+            385 =>
             array (
                 'id' => 7201,
                 'province_id' => 72,
@@ -3105,7 +3106,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            386 => 
+            386 =>
             array (
                 'id' => 7202,
                 'province_id' => 72,
@@ -3113,7 +3114,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            387 => 
+            387 =>
             array (
                 'id' => 7203,
                 'province_id' => 72,
@@ -3121,7 +3122,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            388 => 
+            388 =>
             array (
                 'id' => 7204,
                 'province_id' => 72,
@@ -3129,7 +3130,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            389 => 
+            389 =>
             array (
                 'id' => 7205,
                 'province_id' => 72,
@@ -3137,7 +3138,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            390 => 
+            390 =>
             array (
                 'id' => 7206,
                 'province_id' => 72,
@@ -3145,7 +3146,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            391 => 
+            391 =>
             array (
                 'id' => 7207,
                 'province_id' => 72,
@@ -3153,7 +3154,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            392 => 
+            392 =>
             array (
                 'id' => 7208,
                 'province_id' => 72,
@@ -3161,7 +3162,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            393 => 
+            393 =>
             array (
                 'id' => 7209,
                 'province_id' => 72,
@@ -3169,7 +3170,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            394 => 
+            394 =>
             array (
                 'id' => 7210,
                 'province_id' => 72,
@@ -3177,7 +3178,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            395 => 
+            395 =>
             array (
                 'id' => 7211,
                 'province_id' => 72,
@@ -3185,7 +3186,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            396 => 
+            396 =>
             array (
                 'id' => 7212,
                 'province_id' => 72,
@@ -3193,7 +3194,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            397 => 
+            397 =>
             array (
                 'id' => 7271,
                 'province_id' => 72,
@@ -3201,7 +3202,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            398 => 
+            398 =>
             array (
                 'id' => 7301,
                 'province_id' => 73,
@@ -3209,7 +3210,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            399 => 
+            399 =>
             array (
                 'id' => 7302,
                 'province_id' => 73,
@@ -3217,7 +3218,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            400 => 
+            400 =>
             array (
                 'id' => 7303,
                 'province_id' => 73,
@@ -3225,7 +3226,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            401 => 
+            401 =>
             array (
                 'id' => 7304,
                 'province_id' => 73,
@@ -3233,7 +3234,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            402 => 
+            402 =>
             array (
                 'id' => 7305,
                 'province_id' => 73,
@@ -3241,7 +3242,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            403 => 
+            403 =>
             array (
                 'id' => 7306,
                 'province_id' => 73,
@@ -3249,7 +3250,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            404 => 
+            404 =>
             array (
                 'id' => 7307,
                 'province_id' => 73,
@@ -3257,7 +3258,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            405 => 
+            405 =>
             array (
                 'id' => 7308,
                 'province_id' => 73,
@@ -3265,7 +3266,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            406 => 
+            406 =>
             array (
                 'id' => 7309,
                 'province_id' => 73,
@@ -3273,7 +3274,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            407 => 
+            407 =>
             array (
                 'id' => 7310,
                 'province_id' => 73,
@@ -3281,7 +3282,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            408 => 
+            408 =>
             array (
                 'id' => 7311,
                 'province_id' => 73,
@@ -3289,7 +3290,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            409 => 
+            409 =>
             array (
                 'id' => 7312,
                 'province_id' => 73,
@@ -3297,7 +3298,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            410 => 
+            410 =>
             array (
                 'id' => 7313,
                 'province_id' => 73,
@@ -3305,7 +3306,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            411 => 
+            411 =>
             array (
                 'id' => 7314,
                 'province_id' => 73,
@@ -3313,7 +3314,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            412 => 
+            412 =>
             array (
                 'id' => 7315,
                 'province_id' => 73,
@@ -3321,7 +3322,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            413 => 
+            413 =>
             array (
                 'id' => 7316,
                 'province_id' => 73,
@@ -3329,7 +3330,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            414 => 
+            414 =>
             array (
                 'id' => 7317,
                 'province_id' => 73,
@@ -3337,7 +3338,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            415 => 
+            415 =>
             array (
                 'id' => 7318,
                 'province_id' => 73,
@@ -3345,7 +3346,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            416 => 
+            416 =>
             array (
                 'id' => 7322,
                 'province_id' => 73,
@@ -3353,7 +3354,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            417 => 
+            417 =>
             array (
                 'id' => 7325,
                 'province_id' => 73,
@@ -3361,7 +3362,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            418 => 
+            418 =>
             array (
                 'id' => 7326,
                 'province_id' => 73,
@@ -3369,7 +3370,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            419 => 
+            419 =>
             array (
                 'id' => 7371,
                 'province_id' => 73,
@@ -3377,7 +3378,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            420 => 
+            420 =>
             array (
                 'id' => 7372,
                 'province_id' => 73,
@@ -3385,7 +3386,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            421 => 
+            421 =>
             array (
                 'id' => 7373,
                 'province_id' => 73,
@@ -3393,7 +3394,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            422 => 
+            422 =>
             array (
                 'id' => 7401,
                 'province_id' => 74,
@@ -3401,7 +3402,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            423 => 
+            423 =>
             array (
                 'id' => 7402,
                 'province_id' => 74,
@@ -3409,7 +3410,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            424 => 
+            424 =>
             array (
                 'id' => 7403,
                 'province_id' => 74,
@@ -3417,7 +3418,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            425 => 
+            425 =>
             array (
                 'id' => 7404,
                 'province_id' => 74,
@@ -3425,7 +3426,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            426 => 
+            426 =>
             array (
                 'id' => 7405,
                 'province_id' => 74,
@@ -3433,7 +3434,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            427 => 
+            427 =>
             array (
                 'id' => 7406,
                 'province_id' => 74,
@@ -3441,7 +3442,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            428 => 
+            428 =>
             array (
                 'id' => 7407,
                 'province_id' => 74,
@@ -3449,7 +3450,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            429 => 
+            429 =>
             array (
                 'id' => 7408,
                 'province_id' => 74,
@@ -3457,7 +3458,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            430 => 
+            430 =>
             array (
                 'id' => 7409,
                 'province_id' => 74,
@@ -3465,7 +3466,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            431 => 
+            431 =>
             array (
                 'id' => 7410,
                 'province_id' => 74,
@@ -3473,7 +3474,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            432 => 
+            432 =>
             array (
                 'id' => 7411,
                 'province_id' => 74,
@@ -3481,7 +3482,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            433 => 
+            433 =>
             array (
                 'id' => 7412,
                 'province_id' => 74,
@@ -3489,7 +3490,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            434 => 
+            434 =>
             array (
                 'id' => 7413,
                 'province_id' => 74,
@@ -3497,7 +3498,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            435 => 
+            435 =>
             array (
                 'id' => 7414,
                 'province_id' => 74,
@@ -3505,7 +3506,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            436 => 
+            436 =>
             array (
                 'id' => 7415,
                 'province_id' => 74,
@@ -3513,7 +3514,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            437 => 
+            437 =>
             array (
                 'id' => 7471,
                 'province_id' => 74,
@@ -3521,7 +3522,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            438 => 
+            438 =>
             array (
                 'id' => 7472,
                 'province_id' => 74,
@@ -3529,7 +3530,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            439 => 
+            439 =>
             array (
                 'id' => 7501,
                 'province_id' => 75,
@@ -3537,7 +3538,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            440 => 
+            440 =>
             array (
                 'id' => 7502,
                 'province_id' => 75,
@@ -3545,7 +3546,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            441 => 
+            441 =>
             array (
                 'id' => 7503,
                 'province_id' => 75,
@@ -3553,7 +3554,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            442 => 
+            442 =>
             array (
                 'id' => 7504,
                 'province_id' => 75,
@@ -3561,7 +3562,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            443 => 
+            443 =>
             array (
                 'id' => 7505,
                 'province_id' => 75,
@@ -3569,7 +3570,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            444 => 
+            444 =>
             array (
                 'id' => 7571,
                 'province_id' => 75,
@@ -3577,7 +3578,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            445 => 
+            445 =>
             array (
                 'id' => 7601,
                 'province_id' => 76,
@@ -3585,7 +3586,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            446 => 
+            446 =>
             array (
                 'id' => 7602,
                 'province_id' => 76,
@@ -3593,7 +3594,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            447 => 
+            447 =>
             array (
                 'id' => 7603,
                 'province_id' => 76,
@@ -3601,7 +3602,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            448 => 
+            448 =>
             array (
                 'id' => 7604,
                 'province_id' => 76,
@@ -3609,7 +3610,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            449 => 
+            449 =>
             array (
                 'id' => 7605,
                 'province_id' => 76,
@@ -3617,7 +3618,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            450 => 
+            450 =>
             array (
                 'id' => 7606,
                 'province_id' => 76,
@@ -3625,7 +3626,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            451 => 
+            451 =>
             array (
                 'id' => 8101,
                 'province_id' => 81,
@@ -3633,7 +3634,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            452 => 
+            452 =>
             array (
                 'id' => 8102,
                 'province_id' => 81,
@@ -3641,7 +3642,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            453 => 
+            453 =>
             array (
                 'id' => 8103,
                 'province_id' => 81,
@@ -3649,7 +3650,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            454 => 
+            454 =>
             array (
                 'id' => 8104,
                 'province_id' => 81,
@@ -3657,7 +3658,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            455 => 
+            455 =>
             array (
                 'id' => 8105,
                 'province_id' => 81,
@@ -3665,7 +3666,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            456 => 
+            456 =>
             array (
                 'id' => 8106,
                 'province_id' => 81,
@@ -3673,7 +3674,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            457 => 
+            457 =>
             array (
                 'id' => 8107,
                 'province_id' => 81,
@@ -3681,7 +3682,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            458 => 
+            458 =>
             array (
                 'id' => 8108,
                 'province_id' => 81,
@@ -3689,7 +3690,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            459 => 
+            459 =>
             array (
                 'id' => 8109,
                 'province_id' => 81,
@@ -3697,7 +3698,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            460 => 
+            460 =>
             array (
                 'id' => 8171,
                 'province_id' => 81,
@@ -3705,7 +3706,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            461 => 
+            461 =>
             array (
                 'id' => 8172,
                 'province_id' => 81,
@@ -3713,7 +3714,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            462 => 
+            462 =>
             array (
                 'id' => 8201,
                 'province_id' => 82,
@@ -3721,7 +3722,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            463 => 
+            463 =>
             array (
                 'id' => 8202,
                 'province_id' => 82,
@@ -3729,7 +3730,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            464 => 
+            464 =>
             array (
                 'id' => 8203,
                 'province_id' => 82,
@@ -3737,7 +3738,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            465 => 
+            465 =>
             array (
                 'id' => 8204,
                 'province_id' => 82,
@@ -3745,7 +3746,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            466 => 
+            466 =>
             array (
                 'id' => 8205,
                 'province_id' => 82,
@@ -3753,7 +3754,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            467 => 
+            467 =>
             array (
                 'id' => 8206,
                 'province_id' => 82,
@@ -3761,7 +3762,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            468 => 
+            468 =>
             array (
                 'id' => 8207,
                 'province_id' => 82,
@@ -3769,7 +3770,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            469 => 
+            469 =>
             array (
                 'id' => 8208,
                 'province_id' => 82,
@@ -3777,7 +3778,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            470 => 
+            470 =>
             array (
                 'id' => 8271,
                 'province_id' => 82,
@@ -3785,7 +3786,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            471 => 
+            471 =>
             array (
                 'id' => 8272,
                 'province_id' => 82,
@@ -3793,7 +3794,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            472 => 
+            472 =>
             array (
                 'id' => 9101,
                 'province_id' => 91,
@@ -3801,7 +3802,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            473 => 
+            473 =>
             array (
                 'id' => 9102,
                 'province_id' => 91,
@@ -3809,7 +3810,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            474 => 
+            474 =>
             array (
                 'id' => 9103,
                 'province_id' => 91,
@@ -3817,7 +3818,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            475 => 
+            475 =>
             array (
                 'id' => 9104,
                 'province_id' => 91,
@@ -3825,7 +3826,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            476 => 
+            476 =>
             array (
                 'id' => 9105,
                 'province_id' => 91,
@@ -3833,7 +3834,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            477 => 
+            477 =>
             array (
                 'id' => 9106,
                 'province_id' => 91,
@@ -3841,7 +3842,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            478 => 
+            478 =>
             array (
                 'id' => 9107,
                 'province_id' => 91,
@@ -3849,7 +3850,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            479 => 
+            479 =>
             array (
                 'id' => 9108,
                 'province_id' => 91,
@@ -3857,7 +3858,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            480 => 
+            480 =>
             array (
                 'id' => 9109,
                 'province_id' => 91,
@@ -3865,7 +3866,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            481 => 
+            481 =>
             array (
                 'id' => 9110,
                 'province_id' => 91,
@@ -3873,7 +3874,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            482 => 
+            482 =>
             array (
                 'id' => 9111,
                 'province_id' => 91,
@@ -3881,7 +3882,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            483 => 
+            483 =>
             array (
                 'id' => 9112,
                 'province_id' => 91,
@@ -3889,7 +3890,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            484 => 
+            484 =>
             array (
                 'id' => 9171,
                 'province_id' => 91,
@@ -3897,7 +3898,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            485 => 
+            485 =>
             array (
                 'id' => 9401,
                 'province_id' => 94,
@@ -3905,7 +3906,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            486 => 
+            486 =>
             array (
                 'id' => 9402,
                 'province_id' => 94,
@@ -3913,7 +3914,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            487 => 
+            487 =>
             array (
                 'id' => 9403,
                 'province_id' => 94,
@@ -3921,7 +3922,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            488 => 
+            488 =>
             array (
                 'id' => 9404,
                 'province_id' => 94,
@@ -3929,7 +3930,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            489 => 
+            489 =>
             array (
                 'id' => 9408,
                 'province_id' => 94,
@@ -3937,7 +3938,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            490 => 
+            490 =>
             array (
                 'id' => 9409,
                 'province_id' => 94,
@@ -3945,7 +3946,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            491 => 
+            491 =>
             array (
                 'id' => 9410,
                 'province_id' => 94,
@@ -3953,7 +3954,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            492 => 
+            492 =>
             array (
                 'id' => 9411,
                 'province_id' => 94,
@@ -3961,7 +3962,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            493 => 
+            493 =>
             array (
                 'id' => 9412,
                 'province_id' => 94,
@@ -3969,7 +3970,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            494 => 
+            494 =>
             array (
                 'id' => 9413,
                 'province_id' => 94,
@@ -3977,7 +3978,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            495 => 
+            495 =>
             array (
                 'id' => 9414,
                 'province_id' => 94,
@@ -3985,7 +3986,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            496 => 
+            496 =>
             array (
                 'id' => 9415,
                 'province_id' => 94,
@@ -3993,7 +3994,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            497 => 
+            497 =>
             array (
                 'id' => 9416,
                 'province_id' => 94,
@@ -4001,7 +4002,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            498 => 
+            498 =>
             array (
                 'id' => 9417,
                 'province_id' => 94,
@@ -4009,7 +4010,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            499 => 
+            499 =>
             array (
                 'id' => 9418,
                 'province_id' => 94,
@@ -4019,7 +4020,7 @@ class DistrictsTableSeeder extends Seeder
             ),
         ));
         \DB::table('districts')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 9419,
                 'province_id' => 94,
@@ -4027,7 +4028,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 9420,
                 'province_id' => 94,
@@ -4035,7 +4036,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 9426,
                 'province_id' => 94,
@@ -4043,7 +4044,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 9427,
                 'province_id' => 94,
@@ -4051,7 +4052,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 9428,
                 'province_id' => 94,
@@ -4059,7 +4060,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 9429,
                 'province_id' => 94,
@@ -4067,7 +4068,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 9430,
                 'province_id' => 94,
@@ -4075,7 +4076,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 9431,
                 'province_id' => 94,
@@ -4083,7 +4084,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9432,
                 'province_id' => 94,
@@ -4091,7 +4092,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 9433,
                 'province_id' => 94,
@@ -4099,7 +4100,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 9434,
                 'province_id' => 94,
@@ -4107,7 +4108,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 9435,
                 'province_id' => 94,
@@ -4115,7 +4116,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 9436,
                 'province_id' => 94,
@@ -4123,7 +4124,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 9471,
                 'province_id' => 94,
@@ -4131,7 +4132,7 @@ class DistrictsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 16:10:21',
                 'updated_at' => '2019-08-05 16:10:22',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 9472,
                 'province_id' => 91,
@@ -4140,7 +4141,7 @@ class DistrictsTableSeeder extends Seeder
                 'updated_at' => '2019-08-08 03:27:37',
             ),
         ));
-        
-        
+
+
     }
 }

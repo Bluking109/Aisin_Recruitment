@@ -45,7 +45,7 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
      */
     public function educationLevel()
     {
-    	return $this->belongsTo('App\Models\EducationLevel');
+    	return $this->belongsTo('App\Models\EducationLevel', 'education_level_id');
     }
 
     /**
@@ -109,11 +109,52 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     {
         $licences = json_decode($value, true);
         $returnData = [];
-
-        foreach ($licences as $key => $value) {
-            $returnData[$value['type']] = $value['value'];
+        if ($licences) {
+            foreach ($licences as $key => $value) {
+                $returnData[$value['type']] = $value['value'];
+            }
         }
 
         return $this->attributes['driving_licences'] = $returnData;
+    }
+
+    /**
+     * formal education relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function formalEducations()
+    {
+        return $this->hasMany('App\Models\FormalEducation', 'job_seeker_id');
+    }
+
+    /**
+     * non formal education relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function nonFormalEducations()
+    {
+        return $this->hasMany('App\Models\NonFormalEducation', 'job_seeker_id');
+    }
+
+    /**
+     * education detail relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function educationDetail()
+    {
+        return $this->hasOne('App\Models\EducationDetail', 'job_seeker_id');
+    }
+
+    /**
+     * education detail relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function foreignLanguages()
+    {
+        return $this->hasMany('App\Models\ForeignLanguage', 'job_seeker_id');
     }
 }

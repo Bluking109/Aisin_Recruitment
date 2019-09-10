@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EducationLevelsTableSeeder extends Seeder
 {
@@ -12,12 +13,12 @@ class EducationLevelsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('education_levels')->delete();
-        
-        \DB::table('education_levels')->insert(array (
-            0 => 
+
+        DB::table('education_levels')->delete();
+
+        DB::table('education_levels')->insert(array (
+            0 =>
             array (
                 'id' => 2,
                 'name' => 'D3',
@@ -25,7 +26,7 @@ class EducationLevelsTableSeeder extends Seeder
                 'created_at' => '2019-08-13 04:23:43',
                 'updated_at' => '2019-09-02 02:54:59',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 3,
                 'name' => 'D4 / S1',
@@ -33,7 +34,7 @@ class EducationLevelsTableSeeder extends Seeder
                 'created_at' => '2019-08-13 04:23:51',
                 'updated_at' => '2019-09-02 02:55:06',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 4,
                 'name' => 'SMA',
@@ -41,7 +42,7 @@ class EducationLevelsTableSeeder extends Seeder
                 'created_at' => '2019-08-13 04:24:19',
                 'updated_at' => '2019-09-02 02:54:40',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 5,
                 'name' => 'SMK',
@@ -50,7 +51,7 @@ class EducationLevelsTableSeeder extends Seeder
                 'updated_at' => '2019-09-02 02:54:52',
             ),
         ));
-        
-        
+
+
     }
 }

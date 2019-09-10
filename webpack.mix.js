@@ -49,4 +49,9 @@ mix.scripts([
     'public/website/js/dynamic_page/personal-identity.js',
 ], 'public/website/js/dynamic_page/personal-identity.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/education.js',
+], 'public/website/js/dynamic_page/education.min.js');
+
 
