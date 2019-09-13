@@ -35,6 +35,7 @@ class CreateJobSeekersTable extends Migration
             $table->foreign('domicile_village_id')->references('id')->on('villages')->onDelete('set null');
             $table->string('domicile_telephone_number', 16)->nullable();
             $table->string('handphone_number', 16);
+            $table->tinyInteger('birth_order')->default(1);
             $table->string('driving_licences')->nullable();
             $table->enum('religion', ['1','2','3','4','5'])->default('1')->comment = '1 = islam, 2 = hindu, 3 = budha, 4 = katolik, 5 = protestan';
             $table->enum('is_blacklist', ['0', '1'])->default('0')->comment = '0 = Tidak terblacklist, 1 = terblacklist';

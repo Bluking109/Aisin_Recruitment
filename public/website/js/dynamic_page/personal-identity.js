@@ -20,7 +20,10 @@ $(function(){
 		    processData: false,
 	        success: function (data) {
 	        	if (data.success) {
-	        		toastr.success(data.message);
+	        		Toast.fire({
+					    type: 'success',
+					    title: data.message
+					});
 	        		recaptchaReset('personal_identity');
 	        		afterSubmit();
 	        	}
@@ -29,7 +32,10 @@ $(function(){
 	        	422 : function (data) {
 	        		recaptchaReset('personal_identity');
 	        		afterSubmit();
-	        		toastr.error('Mohon koreksi ulang inputan Anda');
+	        		Toast.fire({
+					    type: 'error',
+					    title: 'Mohon koreksi ulang inputan Anda'
+					});
 	        		let response = data.responseJSON;
 				    let errors = response.errors
 				    for (error in errors){
@@ -57,12 +63,18 @@ $(function(){
 				    }
 	        	},
 	        	400 : function (data) {
-	        		toastr.error(data.responseJSON.message);
+	        		Toast.fire({
+					    type: 'error',
+					    title: data.responseJSON.message
+					});
 	        		recaptchaReset('personal_identity');
 	        		afterSubmit();
 	        	},
 	            500 : function (data) {
-	                toastr.error('Internal server error');
+	            	Toast.fire({
+					    type: 'error',
+					    title: 'Internal server error'
+					});
 	        		recaptchaReset('personal_identity');
 	        		afterSubmit();
 	            }

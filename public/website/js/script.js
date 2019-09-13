@@ -29,9 +29,15 @@ const cleaveJsInit = function() {
     });
 }
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 6000
+});
+
 $(document).on('ready',function(){
     "use strict";
-
 
     /* =============== Ajax Contact Form ===================== */
     $('#contactform').submit(function(){
@@ -310,5 +316,4 @@ $(window).on('load',function(){
     "use strict";
 
     $('.page-loading').fadeOut();
-
 });

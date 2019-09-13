@@ -93,7 +93,7 @@ return [
     'present'              => ':attribute wajib ada.',
     'regex'                => 'Format :attribute tidak valid.',
     'required'             => ':attribute wajib diisi.',
-    'required_if'          => ':attribute wajib diisi bila :other adalah :value.',
+    'required_if'          => ':attribute wajib diisi.',
     'required_unless'      => ':attribute wajib diisi kecuali :other memiliki nilai :values.',
     'required_with'        => ':attribute wajib diisi.',
     'required_with_all'    => ':attribute wajib diisi bila terdapat :values.',
@@ -134,6 +134,9 @@ return [
         'educations.4.name_of_institution' => [
             'required_without_all' => ':attribute wajib diisi'
         ],
+        'birth_order' => [
+            'between' => 'Tidak valid'
+        ],
     ],
     /*
     |---------------------------------------------------------------------------------------
@@ -163,6 +166,7 @@ return [
         'driving_licences.*.type' => 'Jenis SIM',
         'driving_licences.*.value' => 'Nomer SIM',
         'handphone_number' => 'Nomer handphone',
+        'birth_order' => 'Anak ke',
         'blood_type' => 'Golongan darah',
         'religion' => 'Agama',
         'height' => 'Tinggi badan',
@@ -214,6 +218,30 @@ return [
         'essay' => 'Karya ilmiah',
         'non_formal_educations.*.place' => 'Tempat pelatihan',
         'non_formal_educations.*.start_date' => 'Tanggal mulai',
-        'non_formal_educations.*.end_date' => 'Tanggal selesai'
+        'non_formal_educations.*.end_date' => 'Tanggal selesai',
+        'marital_status_date_ktp' => 'Tanggal',
+        'marital_status_date_actual' => 'Tanggal',
+        'partner_place_of_birth' => 'Tempat lahir',
+        'partner_date_of_birth' => 'Tanggal lahir',
+        'partner_last_education' => 'Pendidikan terakhir',
+        'partner_job' => 'Pekerjaan pasangan',
+        'children.*.place_of_birth' => 'Tempat lahir anak',
+        'children.*.date_of_birth' => 'Tanggal lahir anak',
+        'children.*.last_education' => 'Pendidikan terakhir anak',
+        'children.*.job' => 'Pekerjaan anak',
+        'father_name' => 'Nama Ayah',
+        'father_place_of_birth' => 'Tempat lahir Ayah',
+        'father_date_of_birth' => 'Tanggal lahir Ayah',
+        'father_last_education' => 'Pendidikan terakhir Ayah',
+        'father_job' => 'Pekerjaan Ayah',
+        'mother_name' => 'Nama Ibu',
+        'mother_place_of_birth' => 'Tempat lahir Ibu',
+        'mother_date_of_birth' => 'Tanggal lahir Ibu',
+        'mother_last_education' => 'Pendidikan terakhir Ibu',
+        'mother_job' => 'Pekerjaan Ibu',
+        'siblings.*.place_of_birth' => 'Tempat lahir saudara',
+        'siblings.*.date_of_birth' => 'Tanggal lahir saudara',
+        'siblings.*.last_education' => 'Pendidikan terakhir saudara',
+        'siblings.*.job' => 'Pekerjaan saudara',
     ],
 ];

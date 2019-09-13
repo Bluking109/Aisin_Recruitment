@@ -232,12 +232,20 @@ $drivingLicences = $jobSeeker->driving_licences;
 				 							<input type="text" id="sim-c-number" placeholder="Nomer SIM C" name="driving_licences[2][value]" class="number" maxlength="16" @if(isset($drivingLicences['C'])) value="{{ $drivingLicences['C'] }}" @else disabled @endif />
 				 						</div>
 				 					</div>
-				 					<div class="col-md-12">
+				 					<div class="col-md-9">
 				 						<span class="pf-title">Nomer Handphone
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
 				 							<input type="text" placeholder="Nomer Handphone" class="phone-number" name="handphone_number" value="{{ $jobSeeker->handphone_number ?? old('handphone_number') }}" />
+				 						</div>
+				 					</div>
+				 					<div class="col-md-3">
+				 						<span class="pf-title">Anak Ke
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
+				 						<div class="pf-field">
+				 							<input type="number" placeholder="Anak ke" name="birth_order" value="{{ $jobSeeker->birth_order ?? old('birth_order') }}" min="1" />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-6">

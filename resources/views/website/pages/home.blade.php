@@ -14,8 +14,8 @@
 						</div>
 						<div class="job-search-sec">
 							<div class="job-search">
-								<h3>Mari Bergabung Bersama Kami</h3>
-								<span>Kembangkan Kemampuan dan Tingkatkan Karirmu Disini</span>
+								<h3>PT. Aisin Indonesia Automotive</h3>
+								<span>Perusahaan Manufaktur Terbaik di Dunia</span>
 								<form>
 									<div class="row">
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -117,8 +117,8 @@
 				<div class="col-lg-12">
 					<a href="{{ route('contact.index') }}">
 						<div class="simple-text">
-							<h3>Ada Pertanyaan?</h3>
-							<span>Kami sangat bahagia apabila bisa membantu Anda :)</span>
+							<h3>Lowongan Kerja</h3>
+							<span>Saat ini kami sedang membuka lowongan untuk beberapa posisi</span>
 						</div>
 					</a>
 				</div>

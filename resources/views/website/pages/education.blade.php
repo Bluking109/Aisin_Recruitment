@@ -1,10 +1,6 @@
 @extends('website.layouts.master')
 @section('title', 'Education')
 
-@push('additional_css')
-<link rel="stylesheet" type="text/css" href="{{ asset('website/css/bootstrap-datepicker.css') }}" />
-@endpush
-
 @section('pages')
 @php
 $primarySchool = App\Models\FormalEducation::EDU_PRIMARY_SCHOOL;

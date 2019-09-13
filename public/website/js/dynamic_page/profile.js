@@ -73,12 +73,35 @@ const buildQuery = function (data) {
     return query.join('&');
 };
 
-$(function() {
+const datePickerInit = function() {
     $('.datepicker').datepicker({
         format: 'dd-mm-yyyy',
         autoclose: true,
-        orientation: 'bottom'
+        orientation: "bottom"
     });
+}
+
+$(function() {
+    if ($(window).width() < 800) {
+        if (localStorage.getItem('keep_use_device') != 1) {
+            Swal.fire({
+              title: 'Device Kurang Lebar :(',
+              text: "Demi kemudahan Anda, untuk pengisian form kami sarankan menggunakan laptop atau komputer",
+              type: 'info',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#ccc',
+              confirmButtonText: 'Gunakan device ini',
+              cancelButtonText: 'Tutup',
+            }).then((result) => {
+              if (result.value) {
+                localStorage.setItem('keep_use_device','1');
+              }
+            })
+        }
+    }
+
+    datePickerInit();
 
     $('.year-input').datepicker({
         format: 'yyyy',

@@ -120,11 +120,17 @@ $(function() {
 	recaptchaReset();
 
 	@if (session('error'))
-		toastr.error("{{ session('error') }}");
+		Toast.fire({
+		    type: 'error',
+		    title: "{{ session('error') }}"
+		});
 	@endif
 
 	@if (session('success'))
-		toastr.success("{{ session('success') }}");
+		Toast.fire({
+		    type: 'success',
+		    title: "{{ session('success') }}"
+		});
 	@endif
 })
 </script>

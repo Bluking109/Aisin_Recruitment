@@ -149,12 +149,62 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * education detail relationship
+     * language relationship
      *
      * @return  Illuminate\Database\Eloquent\Model
      */
     public function foreignLanguages()
     {
         return $this->hasMany('App\Models\ForeignLanguage', 'job_seeker_id');
+    }
+
+    /**
+     * marital status relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function maritalStatus()
+    {
+        return $this->hasOne('App\Models\MaritalStatus', 'job_seeker_id');
+    }
+
+    /**
+     * partner relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function partner()
+    {
+        return $this->hasOne('App\Models\Partner', 'job_seeker_id');
+    }
+
+    /**
+     * childs relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function children()
+    {
+        return $this->hasMany('App\Models\Child', 'job_seeker_id');
+    }
+
+    /**
+     * parents relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function parents()
+    {
+        return $this->hasMany('App\Models\BiologicalParent', 'job_seeker_id');
+    }
+
+    /**
+     * siblings relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function siblings()
+    {
+        return $this->hasMany('App\Models\Sibling', 'job_seeker_id');
     }
 }

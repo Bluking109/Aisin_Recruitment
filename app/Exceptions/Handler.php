@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,12 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof TokenMismatchException) {
             return redirect()->back();
+        }
+
+        if (!env('APP_DEBUG', true)) {
+            if ($exception instanceof FatalThrowableError) {
+                abort(500);
+            }
         }
 
         return parent::render($request, $exception);

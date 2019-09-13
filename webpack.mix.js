@@ -23,7 +23,6 @@ mix.styles([
     'public/website/css/colors/colors.css',
     'public/website/css/bootstrap.css',
     'public/website/css/bootstrap-datepicker.css',
-    'public/website/css/toastr.min.css',
     'public/website/css/slick.css',
     'public/website/css/custom.css'
 ], 'public/website/css/all.css');
@@ -32,11 +31,11 @@ mix.scripts([
     'public/website/js/jquery.min.js',
     'public/website/js/modernizr.js',
     'public/website/js/cleave.min.js',
+    'public/website/js/sweetalert.min.js',
     'public/website/js/script.js',
     'public/website/js/bootstrap.min.js',
     'public/website/js/slick.min.js',
     'public/website/js/select-chosen.js',
-    'public/website/js/toastr.min.js',
     'public/website/js/bootstrap-datepicker.js'
 ], 'public/website/js/all.js');
 
@@ -53,5 +52,10 @@ mix.scripts([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/education.js',
 ], 'public/website/js/dynamic_page/education.min.js');
+
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/family.js',
+], 'public/website/js/dynamic_page/family.min.js');
 
 

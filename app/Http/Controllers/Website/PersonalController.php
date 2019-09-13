@@ -68,6 +68,7 @@ class PersonalController extends Controller
                 'domicile_village_id' => $request->domicile_village_id,
                 'domicile_telephone_number' => $request->domicile_telephone_number,
                 'handphone_number' => $request->handphone_number,
+                'birth_order' => $request->birth_order,
                 'driving_licences' => json_encode($request->driving_licences),
                 'religion' => $request->religion,
                 'height' => $request->height,

@@ -12,8 +12,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-graduation-cap"></i>Pendidikan
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.family-environment.show'))class="active"@endif>
-		<a href="{{ route('profiles.family-environment.show') }}" title="">
+	<li @if($currentUrl === route('profiles.family.index'))class="active"@endif>
+		<a href="{{ route('profiles.family.index') }}" title="">
 			<i class="fa fa-group"></i>Lingkungan Keluarga
 		</a>
 	</li>

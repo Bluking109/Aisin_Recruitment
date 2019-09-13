@@ -49,6 +49,7 @@ class PersonalRequest extends FormRequest
             "driving_licences.*.value" => "required_with:driving_licences.*.type|max:16",
             "domicile_telephone_number" => "nullable|max:16|regex:/^[0-9 ]+$/",
             "handphone_number" => "required|max:16|regex:/^[0-9 ]+$/",
+            "birth_order" => "required|numeric|between:1,40",
             "blood_type" => "required|in:A,B,AB,O",
             "religion" => "required|in:".JobSeeker::RELIGION_ISLAM.','.JobSeeker::RELIGION_HINDU.','.JobSeeker::RELIGION_BUDHA.','.JobSeeker::RELIGION_KATOLIK.','.JobSeeker::RELIGION_PROTESTAN,
             "height" => "required|numeric|min:1",
