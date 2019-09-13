@@ -33,14 +33,6 @@ class JobVacancy extends FormRequest
             'descriptions' => 'required',
             'requirements' => 'required'
         ];
-
-        if ($this->jobvacancy) {
-            $concatId = ',' . $this->jobvacancy;
-
-            $rules['name'] .= $concatId;
-
-        }
-
         return $rules;
     }
 }

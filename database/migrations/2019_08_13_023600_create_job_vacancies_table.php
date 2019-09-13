@@ -22,7 +22,7 @@ class CreateJobVacanciesTable extends Migration
             $table->date('open_date');
             $table->date('close_date');
             $table->enum('gender', ['1', '2', '3'])->comment = " 1 = Male , 2 = Female, 3 = Male and Female ";
-            $table->integer('min_gpa');
+            $table->float('min_gpa');
             $table->text('descriptions');
             $table->text('requirements');
             $table->timestamps();

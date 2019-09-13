@@ -1,9 +1,5 @@
 @extends('admin.layouts.master')
 @section('title', 'Job Vacancies')
-@push('optional_vendor_css')
-<link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
-@endpush
 @section('pages')
 <div class="content-wrapper">
     <div class="row">
@@ -23,8 +19,6 @@
                                     <th>Close Date</th>
                                     <th>Gender</th>
                                     <th>Min GPA</th>
-                                    <th>Description</th>
-                                    <th>Requirements</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -46,16 +40,23 @@
 <script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset('admin/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('admin/vendors/ckeditor/ckeditor.js') }}"></script>
 <script>
+    const initCKEditor = function() {
+        CKEDITOR.replace( 'descriptions' );
+        CKEDITOR.replace( 'requirements' );
+    }
+
     $(document).ready(function() {
         // Date picker
         $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '-3d',
+            format: "yyyy-mm-dd",
+            textAlign: 'left',
             autoclose: true
         });
-
         // End date picker
+
+        initCKEditor();
         const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-primary ml-1 mr-1',
@@ -78,8 +79,6 @@
                 { data : 'close_date', name : 'close_date' },
                 { data : 'gender', name : 'gender' },
                 { data : 'min_gpa', name : 'min_gpa' },
-                { data : 'descriptions', name : 'description' },
-                { data : 'requirements', name : 'requirements' },
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
@@ -147,21 +146,27 @@
             $('#frm-insert').find('.text-error').remove();
             let id = $(this).data('id');
             $('#frm-insert').attr('action', "{{ url(AIIASetting::getValue('admin_base_route').'/jobvacancies') }}/"+id).attr('method', 'PUT');
-            $('#title-modal').text('Update Section');
-            let jobvacancies = $(this).data('section');
-            $('#code').val(jobvacancies.code);
-            $('#name').val(jobvacancies.name);
-            $('#pic').val(jobvacancies.pic);
-            $('#pic_email').val(jobvacancies.pic_email);
-            $('#department_id').append('<option value="'+jobvacancies.department.id+'" selected="selected">'+jobvacancies.department.name+'</option>');
+            $('#title-modal').text('Update Job Vacancy');
+            let jobvacancies = $(this).data('jobvacancy');
+            $('#open_date').val(jobvacancies.open_date);
+            $('#close_date').val(jobvacancies.close_date);
+            $('#min_gpa').val(jobvacancies.min_gpa);
+            $('#gender').val(jobvacancies.gender);
+            CKEDITOR.instances['requirements'].setData(jobvacancies.requirements);
+            CKEDITOR.instances['descriptions'].setData(jobvacancies.descriptions);
+            $('#position_id').append('<option value="'+jobvacancies.position.id+'" selected="selected">'+jobvacancies.position.name+'</option>');
+            $('#education_level_id').append('<option value="'+jobvacancies.education_level.id+'" selected="selected">'+jobvacancies.education_level.name+'</option>');
             $('#mdl-insert-update').modal('show');
         } );
 
         $('#btn-add').on('click', function() {
             $('#frm-insert').find('.text-error').remove();
-            $('#frm-insert').find('option').remove();
             $('#frm-insert').attr('action', "{{ route('admin.jobvacancies.store') }}").attr('method', 'POST');
-            $('#title-modal').text('Add Section');
+            $('#title-modal').text('Add Job Vacancy');
+            $('#position_id').find('option').remove();
+            $('#education_level_id').find('option').remove();
+            CKEDITOR.instances['requirements'].setData("");
+            CKEDITOR.instances['descriptions'].setData("");
             $('#frm-insert')[0].reset();
             $('#mdl-insert-update').modal('show');
         });
@@ -186,28 +191,6 @@
                 cache: true
             }
         });
-        // Select2 gender
-        var data = [
-            {
-                id: 1,
-                text: 'enhancement'
-            },
-            {
-                id: 2,
-                text: 'bug'
-            },
-            {
-                id: 3,
-                text: 'duplicate'
-            }
-        ];
-
-        $('.select2').select2({
-            placeholder: 'Select Education Level',
-            width: 'resolve',
-            results: data
-        });
-
 
         $('.educationlevel-ajax').select2({
             placeholder: 'Select Education Level',
@@ -232,10 +215,26 @@
         // DRY : Don't repeat yourself
         $("#frm-insert").submit(function(e){
             e.preventDefault()
+            let reqEditor = CKEDITOR.instances.requirements;
+            let desEditor = CKEDITOR.instances.descriptions;
+
+            let data = $(this).serializeArray();
+            let dataToSend = {};
+
+            data.forEach((v, i) => {
+                if (v.name == 'requirements') {
+                    dataToSend[data[i]['name']] = reqEditor.getData();
+                } else if (v.name == 'descriptions') {
+                    dataToSend[data[i]['name']] = desEditor.getData();
+                } else {
+                    dataToSend[data[i]['name']] = data[i]['value'];
+                }
+            });
+
             $.ajax({
                 url: $(this).attr('action'),
                 type: $(this).attr('method'),
-                data: $(this).serialize(),
+                data: dataToSend,
                 dataType: "json",
                 success: function (data) {
                     $('#mdl-insert-update').modal('hide');
@@ -277,6 +276,8 @@
 @endpush
 
 @push('optional_vendor_css')
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/datatables/datatable.min.css') }}">
-<!-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/bootstrap-datepicker.css') }}"> -->
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/summernote/summernote-lite.css') }}">
 @endpush

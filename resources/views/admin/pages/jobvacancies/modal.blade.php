@@ -16,29 +16,29 @@
 						<div class="form-group row">
 							<label for="educationlevel_id" class="col-sm-3 col-form-label">Education Level</label>
 							<div class="col-sm-9 input-wrapper">
-								<select class="educationlevel-ajax form-control" id="educationlevel_id" name="educationlevel_id" style="width: 100%; height: auto;">
+								<select class="educationlevel-ajax form-control" id="education_level_id" name="education_level_id" style="width: 100%; height: auto;">
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="open_date" class="col-sm-3 col-form-label">Open Date</label>
 							<div class="col-sm-9 input-wrapper date" >
-							    <input type="text" class="form-control" data-provide="datepicker" data-date-container='#mdl-insert-update'>
+							    <input type="text" class="datepicker form-control" data-date-container='#mdl-insert-update' id="open_date" name="open_date" placeholder="Open Date">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="close_date" class="col-sm-3 col-form-label">Close Date</label>
 							<div class="col-sm-9 input-wrapper">
-								<input type="text" class="form-control" id="close_date" name="close_date" placeholder="Close Date">
+								<input type="text" class="datepicker form-control" ddata-date-container='#mdl-insert-update' id="close_date" name="close_date" placeholder="Close Date">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-3 col-form-label">Gender</label>
 							<div class="col-sm-9 input-wrapper">
-								<select class="select2 form-control" name="gender" style="width: 100%;">
+								<select class="form-control standard" name="gender" style="width: 100%;">
 									<option value="1">Male</option>
 									<option value="2">Female</option>
-									<option value="3">Transgender</option>
+									<option value="3">Male / Female</option>
 								</select>
 							</div>
 						</div>
@@ -51,13 +51,13 @@
 						<div class="form-group row">
 							<label for="descriptions" class="col-sm-3 col-form-label">Descriptions</label>
 							<div class="col-sm-9 input-wrapper">
-								<input type="text" class="form-control" id="descriptions" name="descriptions" placeholder="Descriptions">
+								<textarea class="summernote" id="descriptions" name="descriptions"> </textarea>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="requirements" class="col-sm-3 col-form-label">Requirements</label>
 							<div class="col-sm-9 input-wrapper">
-								<input type="text" class="form-control" id="requirements" name="requirements" placeholder="Requirements">
+								<textarea class="summernote" id="requirements" name="requirements"> </textarea>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>

@@ -22,6 +22,17 @@
 								</select>
 							</div>
 						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label">Gender</label>
+							<div class="col-sm-9 input-wrapper">
+								<select class="form-control" name="gender" style="width: 100%;">
+									<option value="1">Male</option>
+									<option value="2">Female</option>
+									<option value="3">Transgender</option>
+								</select>
+							</div>
+						</div>
 						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					</form>

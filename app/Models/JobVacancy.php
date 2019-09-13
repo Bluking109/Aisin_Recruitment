@@ -17,7 +17,7 @@ class JobVacancy extends Model
     	'close_date',
     	'gender',
     	'min_gpa',
-    	'description',
+    	'descriptions',
     	'requirements'
     ];
 

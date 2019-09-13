@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\JobVacany as JobVacanyRequest;
+use App\Http\Requests\Admin\JobVacancy as JobVacanyRequest;
 use App\Models\JobVacancy;
 use DataTables;
 
@@ -33,7 +33,8 @@ class JobVacancyController extends Controller
      */
     public function store(JobVacanyRequest $request)
     {
-        $newSections = Section::create($request->all());
+        // dd($request->all());
+        $newJob = JobVacancy::create($request->all());
 
         if ($request->ajax()) {
             return response()->json([
@@ -57,15 +58,19 @@ class JobVacancyController extends Controller
      */
     public function update(JobVacanyRequest $request, $id)
     {
-        $updateDepartment = Department::findOrFail($id);
-        $updateDepartment->fill([
-            'code' => $request->code,
-            'name' => $request->name,
-            'pic' => $request->pic,
-            'pic_email' => $request->pic_email
+        $updateJob = JobVacancy::findOrFail($id);
+        $updateJob->fill([
+            'position_id' => $request->position_id,
+            'education_level_id' => $request->education_level_id,
+            'open_date' => $request->open_date,
+            'close_date' => $request->close_date,
+            'gender' => $request->gender,
+            'min_gpa' => $request->min_gpa,
+            'descriptions' => $request->descriptions,
+            'requirements' => $request->requirements,
         ]);
 
-        if ($updateDepartment->isClean()) {
+        if ($updateJob->isClean()) {
             if ($request->ajax()) {
                 return response()->json([
                     'error' => 'no changes'
@@ -76,13 +81,13 @@ class JobVacancyController extends Controller
             ]);
         }
 
-        $updateDepartment->save();
+        $updateJob->save();
 
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Updated !',
-                'message' => $request['name'].' has been updated'
+                'message' => 'Job Vacancy has been updated'
             ], 200);
         }
 
