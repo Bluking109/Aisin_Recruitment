@@ -53,10 +53,11 @@ class FamilyController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error',
+                'message' => 'ReCaptcha Error, tolong ulangi lagi',
                 'success' => false
             ], 400);
         }
+
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
 

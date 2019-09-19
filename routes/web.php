@@ -109,6 +109,9 @@ Route::namespace('Website')->group(function() {
 
 		Route::get('family', 'FamilyController@index')->name('family.index');
 		Route::put('family', 'FamilyController@update')->name('family.update');
+
+		Route::get('work-experience', 'WorkExperienceController@index')->name('work-experience.index');
+		Route::put('work-experience', 'WorkExperienceController@update')->name('work-experience.update');
 	});
 
 	Route::group([
@@ -125,7 +128,6 @@ Route::namespace('Website')->group(function() {
 	Route::get('jobs', 'JobController@index')->name('jobs.index');
 	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
 
-	Route::get('profiles/work-experiences', 'ProfileController@indexWorkExperience')->name('profiles.work-experiences.show');
 	Route::get('profiles/personal-interests-concepts', 'ProfileController@indexPersonalInterestConcept')->name('profiles.personal-interests-concepts.show');
 	Route::get('profiles/documents', 'ProfileController@indexDocument')->name('profiles.documents.show');
 	Route::get('profiles/social-activities', 'ProfileController@indexSocialActivity')->name('profiles.social-activities.show');

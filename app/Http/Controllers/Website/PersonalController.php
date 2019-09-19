@@ -43,7 +43,7 @@ class PersonalController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error',
+                'message' => 'ReCaptcha Error, tolong ulangi lagi',
                 'success' => false
             ], 400);
         }

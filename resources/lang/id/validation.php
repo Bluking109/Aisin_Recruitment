@@ -243,5 +243,18 @@ return [
         'siblings.*.date_of_birth' => 'Tanggal lahir saudara',
         'siblings.*.last_education' => 'Pendidikan terakhir saudara',
         'siblings.*.job' => 'Pekerjaan saudara',
+        'position_description' => 'Field ini',
+        'problems_and_solutions' => 'Field ini',
+        'impression_on_company' => 'Field ini',
+        'improvement_on_company' => 'Field ini',
+        'who_pushed' => 'Field ini',
+        'how_make_decisions' => 'Field ini',
+        'work_experiences.*.position' => 'Jabatan',
+        'work_experiences.*.salary' => 'Gaji terakhir',
+        'work_experiences.*.join_date' => 'Tanggal masuk',
+        'work_experiences.*.end_date' => 'Tanggal keluar',
+        'work_experiences.*.reason_to_move' => 'Alasan keluar',
+        'work_experiences.*.boss_name' => 'Nama atasan',
+        'work_experiences.*.boss_position' => 'Jabatan atasan'
     ],
 ];

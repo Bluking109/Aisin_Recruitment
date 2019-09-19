@@ -207,4 +207,24 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\Sibling', 'job_seeker_id');
     }
+
+    /**
+     * working experience relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function workExperiences()
+    {
+        return $this->hasMany('App\Models\WorkExperience', 'job_seeker_id');
+    }
+
+    /**
+     * working experience detail relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function workExperienceDetail()
+    {
+        return $this->hasOne('App\Models\WorkExperienceDetail', 'job_seeker_id');
+    }
 }

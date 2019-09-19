@@ -58,4 +58,9 @@ mix.scripts([
     'public/website/js/dynamic_page/family.js',
 ], 'public/website/js/dynamic_page/family.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/work-experience.js',
+], 'public/website/js/dynamic_page/work-experience.min.js');
+
 

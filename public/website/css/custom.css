@@ -375,3 +375,7 @@ input[type="radio"]:disabled + label::before {
 	width: 200px;
 	height: 160px;
 }
+
+.pf-field > textarea {
+    color: #1c1c1c;
+}

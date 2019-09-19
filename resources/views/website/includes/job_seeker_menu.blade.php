@@ -17,8 +17,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-group"></i>Lingkungan Keluarga
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.work-experiences.show'))class="active"@endif>
-		<a href="{{ route('profiles.work-experiences.show') }}" title="">
+	<li @if($currentUrl === route('profiles.work-experience.index'))class="active"@endif>
+		<a href="{{ route('profiles.work-experience.index') }}" title="">
 			<i class="fa fa-suitcase"></i>Riwayat Pekerjaan
 		</a>
 	</li>

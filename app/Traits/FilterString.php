@@ -22,4 +22,15 @@ trait FilterString
 
         return $data;
     }
+
+    /**
+     * Fungsi untuk menghilangkan comma
+     *
+     * @param  Array  $data
+     * @return Array
+     */
+    protected function removeComma($string) : string
+    {
+        return str_replace(',', '', $string);
+    }
 }
