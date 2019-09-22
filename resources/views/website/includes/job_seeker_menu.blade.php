@@ -22,8 +22,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-suitcase"></i>Riwayat Pekerjaan
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.personal-interests-concepts.show'))class="active"@endif>
-		<a href="{{ route('profiles.personal-interests-concepts.show') }}" title="">
+	<li @if($currentUrl === route('profiles.interest-concept.index'))class="active"@endif>
+		<a href="{{ route('profiles.interest-concept.index') }}" title="">
 			<i class="fa fa-life-ring"></i>Minat Dan Konsep Pribadi
 		</a>
 	</li>

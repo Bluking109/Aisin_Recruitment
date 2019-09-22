@@ -96,7 +96,7 @@
     		orientation: "bottom"
 		});
 
-		$('input[type="radio"][name="working_environtment_like"]').on('change', function() {
+		$('input[type="radio"][name="working_environment_like"]').on('change', function() {
 			if ($(this).val() === 'other') {
 				$('.working-env-other-like-input').prop('disabled', false).fadeIn();
 			} else {
@@ -104,7 +104,7 @@
 			}
 		});
 
-		$('input[type="radio"][name="working_environtment_dislike"]').on('change', function() {
+		$('input[type="radio"][name="working_environment_dislike"]').on('change', function() {
 			if ($(this).val() === 'other') {
 				$('.working-env-other-dislike-input').prop('disabled', false).fadeIn();
 			} else {

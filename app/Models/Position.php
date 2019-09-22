@@ -12,7 +12,6 @@ class Position extends Model
     	'section_id'
     ];
 
-
     /**
      * [section description]
      * @return [type] [description]

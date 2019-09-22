@@ -63,4 +63,9 @@ mix.scripts([
     'public/website/js/dynamic_page/work-experience.js',
 ], 'public/website/js/dynamic_page/work-experience.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/interest-concept.js',
+], 'public/website/js/dynamic_page/interest-concept.min.js');
+
 
