@@ -25,8 +25,8 @@ $(function(){
 					    title: data.message
 					});
 	        		recaptchaReset('personal_identity');
-	        		afterSubmit();
 	        	}
+	        	afterSubmit();
 	        },
 	        statusCode: {
 	        	422 : function (data) {

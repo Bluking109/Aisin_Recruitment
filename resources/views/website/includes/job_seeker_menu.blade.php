@@ -27,8 +27,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-life-ring"></i>Minat Dan Konsep Pribadi
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.documents.show'))class="active"@endif>
-		<a href="{{ route('profiles.documents.show') }}" title="">
+	<li @if($currentUrl === route('profiles.document.index'))class="active"@endif>
+		<a href="{{ route('profiles.document.index') }}" title="">
 			<i class="fa fa-file-text"></i>Dokumen Pendukung
 		</a>
 	</li>

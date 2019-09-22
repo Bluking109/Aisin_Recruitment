@@ -60,7 +60,6 @@ $(function(){
 					    title: data.message
 					});
 	        		recaptchaReset('work_experience');
-	        		afterSubmit();
 	        	}
 	        	afterSubmit();
 	        },

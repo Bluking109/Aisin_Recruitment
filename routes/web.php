@@ -115,6 +115,10 @@ Route::namespace('Website')->group(function() {
 
 		Route::get('interest-concept', 'InterestConceptController@index')->name('interest-concept.index');
 		Route::put('interest-concept', 'InterestConceptController@update')->name('interest-concept.update');
+
+		Route::get('document', 'DocumentController@index')->name('document.index');
+		Route::put('document', 'DocumentController@update')->name('document.update');
+		Route::get('document/download/{type}', 'DocumentController@getFile')->name('document.getfile');
 	});
 
 	Route::group([
@@ -131,7 +135,6 @@ Route::namespace('Website')->group(function() {
 	Route::get('jobs', 'JobController@index')->name('jobs.index');
 	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
 
-	Route::get('profiles/documents', 'ProfileController@indexDocument')->name('profiles.documents.show');
 	Route::get('profiles/social-activities', 'ProfileController@indexSocialActivity')->name('profiles.social-activities.show');
 	Route::get('profiles/others', 'ProfileController@indexOther')->name('profiles.others.show');
 	Route::get('profiles/applied-jobs', 'ProfileController@indexAppliedJob')->name('profiles.applied-jobs.show');

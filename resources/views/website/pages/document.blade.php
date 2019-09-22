@@ -23,57 +23,67 @@
 				 			<h3>Dokumen Pendukung</h3>
 				 		</div>
 				 		<div class="profile-form-edit">
-				 			<form>
+				 			<form id="document-form">
+				 				@csrf
+				 				@method('PUT')
+				 				<input type="hidden" name="recaptcha_key" id="recaptcha-key">
+				 				<input type="file" name="photo" id="photo" class="d-none">
 				 				<div class="row">
-				 					<div class="col-lg-12">
-				 						<span class="pf-title">Cover Letter</span>
-				 						<div class="pf-field">
-				 							<textarea placeholder="Cover Letter"></textarea>
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">CV</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Ijazah</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Transkip Nilai</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">KTP</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">NPWP</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">KK</span>
-				 						<div class="pf-field no-margin">
-					 						<input type="file" name="myfile" />
-										</div>
+				 					<div class="manage-jobs-sec">
+				 						<table>
+								 			<thead>
+								 				<tr>
+								 					<td>File</td>
+								 					<td>Nama File</td>
+								 					<td>Syarat</td>
+								 					<td></td>
+								 				</tr>
+								 			</thead>
+								 			<tbody>
+								 				@foreach(config('aiia.document_types') as $value)
+								 				<tr>
+								 					<td>
+								 						<div class="table-list-title">
+								 							<h3>{{ $value['display_name'] }}</h3>
+								 						</div>
+								 					</td>
+								 					<td>
+								 						<div class="table-list-title">
+								 							<p class="filename">{{ $document->{$value['name']} ?? 'Belum ada file dipilih' }}</p>
+								 						</div>
+								 					</td>
+								 					<td>
+								 						@foreach($value['rules'] as $val)
+														<span>{{ $val }}</span><br />
+								 						@endforeach
+								 					</td>
+								 					<td>
+								 						<input type="file" name="{{ $value['name'] }}" class="d-none file-upload">
+								 						<ul class="action_job">
+								 							<li><span>Upload File</span><a href="#" title="" class="upload"><i class="fa fa-upload"></i></a></li>
+								 							@if($document)
+								 							@if($document->{$value['name']})
+								 							<li><span>Download File</span><a href="{{ route('profiles.document.getfile', $value['name']) }}" title=""><i class="fa fa-download"></i></a></li>
+								 							@endif
+								 							@endif
+								 						</ul>
+								 					</td>
+								 				</tr>
+								 				@endforeach
+								 			</tbody>
+								 		</table>
 				 					</div>
 				 				</div>
 				 			</form>
 				 			<form>
 				 				<div class="row mb-5">
 				 					<div class="col-md-12">
-				 						<br><br>
-				 						<button type="submit">Update</button>
+				 						<br>
+				 						<p class="google-term d-none">This site is protected by reCAPTCHA and the Google
+										    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+										    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+										</p>
+				 						<button type="button" id="btn-update" disabled><span class="submit-text">Update</span> <span class="loading">Wait... <i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></span></button>
 				 					</div>
 				 				</div>
 				 			</form>
@@ -87,32 +97,5 @@
 @endsection
 
 @push('additional_js')
-<script src="{{ asset('website/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-<script>
-	$(function(){
-		$('.datepicker').datepicker({
-		    format: 'dd-mm-yyyy',
-    		autoclose: true,
-    		orientation: "bottom"
-		});
-
-		$('input[type="radio"][name="working_environment_like"]').on('change', function() {
-			if ($(this).val() === 'other') {
-				$('.working-env-other-like-input').prop('disabled', false).fadeIn();
-			} else {
-				$('.working-env-other-like-input').prop('disabled', true).fadeOut();
-			}
-		});
-
-		$('input[type="radio"][name="working_environment_dislike"]').on('change', function() {
-			if ($(this).val() === 'other') {
-				$('.working-env-other-dislike-input').prop('disabled', false).fadeIn();
-			} else {
-				$('.working-env-other-dislike-input').prop('disabled', true).fadeOut();
-			}
-		});
-
-		$(".chosen-multi").chosen({max_selected_options: 3});
-	});
-</script>
+<script src="{{ asset('website/js/dynamic_page/document.min.js') }}" type="text/javascript"></script>
 @endpush

@@ -383,3 +383,7 @@ input[type="radio"]:disabled + label::before {
 .no-float {
 	float: none !important;
 }
+
+.download-file:hover {
+	cursor: pointer;
+}

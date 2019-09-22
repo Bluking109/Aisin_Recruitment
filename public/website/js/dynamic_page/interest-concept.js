@@ -37,7 +37,6 @@ $(function(){
 					    title: data.message
 					});
 	        		recaptchaReset('interest_concept');
-	        		afterSubmit();
 	        	}
 	        	afterSubmit();
 	        },

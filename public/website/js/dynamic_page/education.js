@@ -151,7 +151,6 @@ $(function(){
 					    title: data.message
 					});
 	        		recaptchaReset('education');
-	        		afterSubmit();
 	        	}
 	        	afterSubmit();
 	        },

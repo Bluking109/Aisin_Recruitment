@@ -113,7 +113,6 @@ $(function(){
 					    title: data.message
 					});
 	        		recaptchaReset('family');
-	        		afterSubmit();
 	        	}
 	        	afterSubmit();
 	        },

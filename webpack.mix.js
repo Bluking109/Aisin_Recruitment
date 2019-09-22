@@ -68,4 +68,9 @@ mix.scripts([
     'public/website/js/dynamic_page/interest-concept.js',
 ], 'public/website/js/dynamic_page/interest-concept.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/document.js',
+], 'public/website/js/dynamic_page/document.min.js');
+
 

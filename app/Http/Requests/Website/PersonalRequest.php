@@ -15,7 +15,7 @@ class PersonalRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guard('job_seekers')->user();
+        return auth()->user();
     }
 
     /**
