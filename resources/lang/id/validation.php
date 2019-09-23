@@ -275,6 +275,14 @@ return [
         'ktp' => 'KTP',
         'npwp' => 'NPWP',
         'cover_letter' => 'Cover letter',
-        'cv' => 'CV'
+        'cv' => 'CV',
+        'friends.*.name' => 'Nama',
+        'friends.*.position' => 'Jabatan',
+        'friends.*.telephone_number' => 'Nomer telepon',
+        'friends.*.relationship' => 'Hubungan',
+        'organizations.*.place' => 'Tempat',
+        'organizations.*.position' => 'Jabatan',
+        'organizations.*.start_date' => 'Tanggal mulai menjabat',
+        'organizations.*.end_date' => 'Tanggal akhir jabatan'
     ],
 ];

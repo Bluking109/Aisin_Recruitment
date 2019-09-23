@@ -73,4 +73,9 @@ mix.scripts([
     'public/website/js/dynamic_page/document.js',
 ], 'public/website/js/dynamic_page/document.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/social-activity.js',
+], 'public/website/js/dynamic_page/social-activity.min.js');
+
 

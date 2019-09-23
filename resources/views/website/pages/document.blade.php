@@ -27,7 +27,6 @@
 				 				@csrf
 				 				@method('PUT')
 				 				<input type="hidden" name="recaptcha_key" id="recaptcha-key">
-				 				<input type="file" name="photo" id="photo" class="d-none">
 				 				<div class="row">
 				 					<div class="manage-jobs-sec">
 				 						<table>

@@ -32,8 +32,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-file-text"></i>Dokumen Pendukung
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.social-activities.show'))class="active"@endif>
-		<a href="{{ route('profiles.social-activities.show') }}" title="">
+	<li @if($currentUrl === route('profiles.social-activity.index'))class="active"@endif>
+		<a href="{{ route('profiles.social-activity.index') }}" title="">
 			<i class="fa fa-share-alt"></i>Aktivitas Sosial
 		</a>
 	</li>
