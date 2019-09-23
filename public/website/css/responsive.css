@@ -8,6 +8,9 @@
 
 @media (max-width:1200px){
 
+.new-slide-3 {
+    height: 300px;
+}
 
 .job-search-sec{
     width: 95%;
@@ -265,7 +268,6 @@ header {
     width: 100%;
 }
 .job-search-sec .job-search > h3 {
-    font-size: 22px;
     margin: 0;
     line-height: 20px;
 }
@@ -275,7 +277,6 @@ header {
 .job-search form {
     margin-top: 22px;
 }
-
 
 
 select {

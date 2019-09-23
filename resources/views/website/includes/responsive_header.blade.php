@@ -22,9 +22,9 @@
 				<li class="menu-item">
 					<a href="{{ route('home') }}" title="">Beranda</a>
 				</li>
-				<li class="menu-item">
+				{{-- <li class="menu-item">
 					<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
-				</li>
+				</li> --}}
 				<li class="menu-item">
 					<a href="{{ route('jobs.index') }}" title="">Lowongan</a>
 				</li>

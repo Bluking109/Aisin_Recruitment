@@ -131,7 +131,7 @@ Route::namespace('Website')->group(function() {
 
 	Route::get('/', 'PageController@home');
 	Route::get('home', 'PageController@home')->name('home');
-	Route::get('about-us', 'PageController@aboutUs')->name('about-us');
+	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::get('jobs', 'JobController@index')->name('jobs.index');
 	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
 

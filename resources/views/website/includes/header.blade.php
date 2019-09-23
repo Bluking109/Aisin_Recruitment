@@ -25,9 +25,9 @@ $url = url()->current();
 					<li class="menu-item @if($url == url('/') || $url == route('home')) active @endif">
 						<a href="{{ route('home') }}" title="">Beranda</a>
 					</li>
-					<li class="menu-item @if($url == route('about-us')) active @endif">
+					{{-- <li class="menu-item @if($url == route('about-us')) active @endif">
 						<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
-					</li>
+					</li> --}}
 					<li class="menu-item @if($url == route('jobs.index')) active @endif">
 						<a href="{{ route('jobs.index') }}" title="">Lowongan</a>
 					</li>

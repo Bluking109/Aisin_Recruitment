@@ -1077,7 +1077,7 @@ label::after {
     float: left;
     width: 100%;
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 .job-search > h3 {
     float: left;
@@ -11625,7 +11625,7 @@ footer.ft .scrollup {
 
 
 .new-slide-3{
-    height: 700px;
+    height: 600px;
     overflow: hidden;
     position: relative;
     background: #f4f5fa;
