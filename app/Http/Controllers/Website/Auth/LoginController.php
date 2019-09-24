@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->redirectTo = route('home');
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:job_seekers')->except('logout');
     }
 
     public function guard()
