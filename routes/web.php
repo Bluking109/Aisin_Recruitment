@@ -22,7 +22,7 @@ Route::namespace('Admin')->group(function() {
 	Route::group(['prefix' => AIIASetting::getValue('admin_base_route', config('aiia.default_url_admin')), 'as' => 'admin.'], function() {
 		Auth::routes();
 
-		Route::group(['middleware' => 'auth'], function() {
+		Route::group(['middleware' => ['auth', 'admin.locale']], function() {
 			Route::get('/', 'DashboardController@index');
 			Route::get('home', 'DashboardController@index')->name('home');
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
