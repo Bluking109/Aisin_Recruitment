@@ -82,5 +82,15 @@ return [
     			'Ukuran Maksimal 200KB'
     		]
     	],
-    ]
+    ],
+    'diseases' => [
+        'Asma',
+        'Paru-Paru Basah',
+        'Flex Paru',
+        'TBC',
+        'Hepatitis',
+        'Hernia',
+        'Patah Tulang',
+        'Ambeien',
+    ],
 ];

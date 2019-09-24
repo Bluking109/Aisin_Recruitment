@@ -111,7 +111,7 @@ $(function(){
 		e.preventDefault();
 		prepareSubmit();
 
-		let form = $('#friend-form, #organization-form');
+		let form = $('#friend-form, #organization-form, #aggrement-form');
 
 		$.ajax({
 	        url: '/profiles/social-activity',
@@ -123,7 +123,7 @@ $(function(){
 					    type: 'success',
 					    title: data.message
 					});
-	        		recaptchaReset('education');
+	        		recaptchaReset('social_activity');
 	        	}
 	        	afterSubmit();
 	        },
