@@ -122,6 +122,9 @@ Route::namespace('Website')->group(function() {
 
 		Route::get('social-activity', 'SocialActivityController@index')->name('social-activity.index');
 		Route::put('social-activity', 'SocialActivityController@update')->name('social-activity.update');
+
+		Route::get('other', 'OtherController@index')->name('other.index');
+		Route::put('other', 'OtherController@update')->name('other.update');
 	});
 
 	Route::group([
@@ -138,6 +141,5 @@ Route::namespace('Website')->group(function() {
 	Route::get('jobs', 'JobController@index')->name('jobs.index');
 	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
 
-	Route::get('profiles/others', 'ProfileController@indexOther')->name('profiles.others.show');
 	Route::get('profiles/applied-jobs', 'ProfileController@indexAppliedJob')->name('profiles.applied-jobs.show');
 });

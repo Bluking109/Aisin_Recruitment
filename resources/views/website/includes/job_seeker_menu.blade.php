@@ -37,8 +37,8 @@ $currentUrl = url()->current();
 			<i class="fa fa-share-alt"></i>Aktivitas Sosial
 		</a>
 	</li>
-	<li @if($currentUrl === route('profiles.others.show'))class="active"@endif>
-		<a href="{{ route('profiles.others.show') }}" title="">
+	<li @if($currentUrl === route('profiles.other.index'))class="active"@endif>
+		<a href="{{ route('profiles.other.index') }}" title="">
 			<i class="fa fa-puzzle-piece"></i>Lain-Lain
 		</a>
 	</li>
