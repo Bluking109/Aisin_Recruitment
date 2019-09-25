@@ -47,6 +47,8 @@ Route::namespace('Admin')->group(function() {
 			Route::get('sections/get-section', 'SectionController@getSection')->name('sections.getsections');
 			Route::resource('positions', 'PositionController')->except('edit', 'show', 'create');
 			Route::get('positions/get-position', 'PositionController@getPosition')->name('positions.getposition');
+
+			Route::resource('about-us', 'AboutController')->except('edit', 'show', 'create');
 		});
 	});
 });

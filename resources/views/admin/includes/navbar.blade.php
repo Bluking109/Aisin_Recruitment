@@ -36,6 +36,18 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
+                    <i class="mdi mdi-book-open-page-variant menu-icon"></i>
+                    <span class="menu-title">Pages</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                    <ul>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.about-us.index') }}">About</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
                     <i class="mdi mdi-database menu-icon"></i>
                     <span class="menu-title">Master Data</span>
                     <i class="menu-arrow"></i>

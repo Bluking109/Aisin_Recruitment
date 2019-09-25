@@ -19,16 +19,20 @@ trait FileHandler
      * @param  string $deletedFiles file yang akan di replace
      * @return string untuk multiple string berupa json
      */
-    protected function uploadFiles($files, $type, $title, $deletedFiles = null)
+    protected function uploadFiles($files, $type, $title, $deletedFiles = null, $isPublic = false)
     {
         $deletedFiles = json_decode($deletedFiles, true) ?? $deletedFiles;
+        $folder = 'uploads';
+        if ($isPublic) {
+            $folder = 'public';
+        }
 
         if (is_array($deletedFiles)) {
             foreach ($deletedFiles as $key => $value) {
-                $deletedFiles[$key] = 'uploads/' . $type . '/' . $value;
+                $deletedFiles[$key] = $folder . '/' . $type . '/' . $value;
             }
         } elseif (is_string($deletedFiles)) {
-            $deletedFiles = 'uploads/' . $type . '/' . $deletedFiles;
+            $deletedFiles = $folder . '/' . $type . '/' . $deletedFiles;
         }
 
         if ($deletedFiles) {
@@ -39,7 +43,7 @@ trait FileHandler
             $filenames = [];
 
             foreach ($files as $value) {
-                $filenames[] = uploadFiles($value, $type, $title);
+                $filenames[] = $this->uploadFiles($value, $type, $title, null, $isPublic);
             }
 
             return json_encode($filenames);
@@ -47,7 +51,7 @@ trait FileHandler
             $filename = uniqid($type . '-' . str_replace(' ', '-', strtolower($title)) . '-') . '.' . $files->getClientOriginalExtension();
 
             $files->storeAs(
-                'uploads/' . $type . '/', $filename
+                $folder . '/' . $type . '/', $filename
             );
 
             return $filename;

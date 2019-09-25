@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\About;
 
 class PageController extends Controller
 {
@@ -14,16 +15,8 @@ class PageController extends Controller
      */
     public function home(Request $request)
     {
-        return view('website.pages.home');
-    }
+        $about = About::active()->first();
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function aboutUs(Request $request)
-    {
-        return view('website.pages.about');
+        return view('website.pages.home', compact('about'));
     }
 }
