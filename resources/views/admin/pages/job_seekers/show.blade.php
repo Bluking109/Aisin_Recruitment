@@ -631,19 +631,19 @@
                                     $workDetail = $jobSeeker->workExperienceDetail;
                                     @endphp
                                     <p><b>1. A brief description of the positions that have been held : </b></p>
-                                    <p>{{ $workDetail->position_description }}</p>
+                                    <p>{{ $workDetail->position_description ?? '-' }}</p>
                                     <br>
                                     <p><b>2. Problems that have been faced and how to overcome them : </b></p>
-                                    <p>{{ $workDetail->problems_and_solutions }}</p>
+                                    <p>{{ $workDetail->problems_and_solutions ?? '-' }}</p>
                                     <br>
                                     <p><b>3. Impressions on the company : </b></p>
-                                    <p>{{ $workDetail->impression_on_company }}</p>
+                                    <p>{{ $workDetail->impression_on_company ?? '-' }}</p>
                                     <br>
                                     <p><b>4. Motivating person : </b></p>
-                                    <p>{{ $workDetail->who_pushed }}</p>
+                                    <p>{{ $workDetail->who_pushed ?? '-' }}</p>
                                     <br>
                                     <p><b>5. How to deal with problems and make decisions : </b></p>
-                                    <p>{{ $workDetail->how_make_decisions }}</p>
+                                    <p>{{ $workDetail->how_make_decisions ?? '-' }}</p>
                                 </div>
                             </div>
                         </div>
