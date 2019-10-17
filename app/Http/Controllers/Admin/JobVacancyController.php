@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\JobVacancy as JobVacanyRequest;
 use App\Models\JobVacancy;
@@ -18,8 +20,8 @@ class JobVacancyController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $jobvacancies = JobVacancy::with('position', 'education_level')->select('job_vacancies.*');
-            return DataTables::eloquent($jobvacancies)->toJson();
+            $jobvacancies = JobVacancy::with('position', 'educationLevel', 'section')->orderBy('id', 'desc')->get();
+            return DataTables::collection($jobvacancies)->toJson();
         }
 
         return view('admin.pages.jobvacancies.index');
@@ -33,20 +35,75 @@ class JobVacancyController extends Controller
      */
     public function store(JobVacanyRequest $request)
     {
-        // dd($request->all());
-        $newJob = JobVacancy::create($request->all());
+        DB::transaction(function () use ($request) {
+            $section = $request->section;
+
+            $secType = explode('_', $section);
+
+            $newJob = JobVacancy::create([
+                'position_id' => $request->position_id,
+                'section_type' => $secType[0],
+                'section_id' => $secType[1],
+                'image' => $request->image,
+                'education_level_id' => $request->education_level_id,
+                'open_date' => $request->open_date,
+                'close_date' => $request->close_date,
+                'gender' => $request->gender,
+                'min_gpa' => $request->min_gpa,
+                'descriptions' => $request->descriptions,
+                'requirements' => $request->requirements,
+            ]);
+
+            $stages = [];
+            foreach ($request->stages as $key => $value) {
+                $stages[$value] = [
+                    'order_index' => (int) $key + 1
+                ];
+            }
+
+            $newJob->stages()->attach($stages);
+
+            $newJob->update([
+                'slug' => Str::slug($newJob->position->name . ' ' . $newJob->section->name . ' ' . uniqid(), '-')
+            ]);
+        });
 
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
                 'title' => 'Inserted !',
-                'message' => $request['name'].' has been inserted'
+                'message' => 'Data has been inserted'
             ], 200);
         }
 
-        return redirect()->back()->with([
-            'success' => true
-        ]);
+        return redirect()->route('admin.job-vacancies.index')
+            ->with('success', true)
+            ->with('message', 'Job Vacancy has been inserted');
+    }
+
+    /**
+     * Show edit page
+     *
+     * @param  integer $id id of vacancies
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $jobVacancy = JobVacancy::with('position', 'educationLevel', 'section')->with(['stages' => function($q) {
+            $q->orderBy('order_index', 'asc');
+        }])->findOrFail($id);
+
+        return view('admin.pages.jobvacancies.create_update', compact('jobVacancy'));
+    }
+
+    /**
+     * Create view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.pages.jobvacancies.create_update');
     }
 
     /**
@@ -58,30 +115,41 @@ class JobVacancyController extends Controller
      */
     public function update(JobVacanyRequest $request, $id)
     {
-        $updateJob = JobVacancy::findOrFail($id);
-        $updateJob->fill([
-            'position_id' => $request->position_id,
-            'education_level_id' => $request->education_level_id,
-            'open_date' => $request->open_date,
-            'close_date' => $request->close_date,
-            'gender' => $request->gender,
-            'min_gpa' => $request->min_gpa,
-            'descriptions' => $request->descriptions,
-            'requirements' => $request->requirements,
-        ]);
+        DB::transaction(function () use ($request, $id) {
+            $section = $request->section;
 
-        if ($updateJob->isClean()) {
-            if ($request->ajax()) {
-                return response()->json([
-                    'error' => 'no changes'
-                ], 422);
-            }
-            return redirect()->back()->with([
-                'success' => true
+            $secType = explode('_', $section);
+
+            $updtJob = JobVacancy::findOrFail($id);
+
+            $updtJob->update([
+                'position_id' => $request->position_id,
+                'section_type' => $secType[0],
+                'section_id' => $secType[1],
+                'image' => $request->image,
+                'education_level_id' => $request->education_level_id,
+                'open_date' => $request->open_date,
+                'close_date' => $request->close_date,
+                'gender' => $request->gender,
+                'min_gpa' => $request->min_gpa,
+                'descriptions' => $request->descriptions,
+                'requirements' => $request->requirements,
             ]);
-        }
 
-        $updateJob->save();
+            $stages = [];
+
+            foreach ($request->stages as $key => $value) {
+                $stages[$value] = [
+                    'order_index' => (int) $key + 1
+                ];
+            }
+
+            $updtJob->stages()->sync($stages);
+
+            $updtJob->update([
+                'slug' => Str::slug($updtJob->position->name . ' ' . $updtJob->section->name . ' ' . uniqid(), '-')
+            ]);
+        });
 
         if ($request->ajax()) {
             return response()->json([
@@ -91,9 +159,9 @@ class JobVacancyController extends Controller
             ], 200);
         }
 
-        return redirect()->back()->with([
-            'success' => true
-        ]);
+        return redirect()->route('admin.job-vacancies.index')
+            ->with('success', true)
+            ->with('message', 'Job Vacancy has been updated');
     }
 
     /**

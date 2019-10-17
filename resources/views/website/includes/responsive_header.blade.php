@@ -26,7 +26,7 @@
 					<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
 				</li> --}}
 				<li class="menu-item">
-					<a href="{{ route('jobs.index') }}" title="">Lowongan</a>
+					<a href="{{ route('job-vacancies.index') }}" title="">Lowongan</a>
 				</li>
 				<li class="menu-item">
 					<a href="{{ route('contact.index') }}" title="">Contact Us</a>

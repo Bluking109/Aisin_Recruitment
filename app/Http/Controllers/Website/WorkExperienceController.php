@@ -44,7 +44,7 @@ class WorkExperienceController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error, tolong ulangi lagi',
+                'message' => 'ReCaptcha Error, mohon ulangi lagi',
                 'success' => false
             ], 400);
         }
@@ -69,9 +69,9 @@ class WorkExperienceController extends Controller
                         'salary' => $value['salary'],
                         'join_date' => $value['join_date'],
                         'end_date' => $value['end_date'],
-                        'boss_name' => $value['boss_name'],
-                        'boss_position' => $value['boss_position'],
-                        'number_of_subordinates' => $value['number_of_subordinates'],
+                        'boss_name' => isset($value['boss_name']) ? $value['boss_name'] : null,
+                        'boss_position' => isset($value['boss_position']) ? $value['boss_position'] : null,
+                        'number_of_subordinates' => isset($value['number_of_subordinates']) ? $value['number_of_subordinates'] : 0,
                         'reason_to_move' => $value['reason_to_move'],
                     ]);
                 }

@@ -17,8 +17,6 @@ class CreatePositionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('code',10);
             $table->string('name', 100);
-            $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->timestamps();
         });
     }

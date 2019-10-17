@@ -25,13 +25,6 @@ class DocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'cover_letter' => [
-                'bail',
-                'file',
-                Rule::requiredIf(!$this->attributeExist('cover_letter')),
-                'mimes:pdf,doc,docx',
-                'max:300'
-            ],
             'cv' => [
                 'bail',
                 'file',

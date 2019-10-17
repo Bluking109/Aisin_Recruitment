@@ -1,6 +1,6 @@
 $(function(){
 	recaptchaReset('personal_identity');
-	let defaultPhoto = "/website/images/avatar/avatar.jpg";
+	let defaultPhoto = "/website/images/avatar/avatar.png";
 
 	getRegions('/ajax/provinces', '#province-address');
 	getRegions('/ajax/provinces', '#province-domicile');

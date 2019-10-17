@@ -51,4 +51,66 @@ class MaritalStatus extends Model
             $this->attributes['date_actual'] = $value;
         }
     }
+
+    /**
+     * Accessor marital status label
+     * @return  string
+     */
+    public function getMaritalKtpLabelAttribute()
+    {
+        $status = $this->status_ktp;
+
+        switch ($status) {
+            case self::STATUS_SINGLE:
+                return 'Single';
+                break;
+
+            case self::STATUS_ENGAGED:
+                return 'Engaged';
+                break;
+
+            case self::STATUS_MARRIED:
+                return 'Married';
+                break;
+
+            case self::STATUS_DIVORCED:
+                return 'Divorced';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
+
+    /**
+     * Accessor marital status actual label
+     * @return  string
+     */
+    public function getMaritalActualLabelAttribute()
+    {
+        $status = $this->status_actual;
+
+        switch ($status) {
+            case self::STATUS_SINGLE:
+                return 'Single';
+                break;
+
+            case self::STATUS_ENGAGED:
+                return 'Engaged';
+                break;
+
+            case self::STATUS_MARRIED:
+                return 'Married';
+                break;
+
+            case self::STATUS_DIVORCED:
+                return 'Divorced';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
 }

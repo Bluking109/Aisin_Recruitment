@@ -17,6 +17,8 @@ class CreateJobVacanciesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('position_id');
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
+            $table->morphs('section');
+            $table->string('image');
             $table->unsignedBigInteger('education_level_id');
             $table->foreign('education_level_id')->references('id')->on('education_levels')->onDelete('cascade');
             $table->date('open_date');
@@ -25,6 +27,7 @@ class CreateJobVacanciesTable extends Migration
             $table->float('min_gpa');
             $table->text('descriptions');
             $table->text('requirements');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

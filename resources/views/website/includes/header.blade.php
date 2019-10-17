@@ -10,7 +10,7 @@ $url = url()->current();
 			{{-- Jika user login --}}
 			@if(auth()->guard('job_seekers')->check())
 			<div class="my-profiles-sec">
-				<span><img src="{{ $user->photo ?? asset('website/images/avatar/avatar.jpg') }}" class="profile-img" alt="" /> {{ auth()->guard('job_seekers')->user()->name }} <i class="la la-bars"></i></span>
+				<span><img src="{{ $user->photo ?? asset('website/images/avatar/avatar.png') }}" class="profile-img" alt="" /> {{ auth()->guard('job_seekers')->user()->name }} <i class="la la-bars"></i></span>
 			</div>
 			@else
 			<div class="btn-extars">
@@ -25,11 +25,8 @@ $url = url()->current();
 					<li class="menu-item @if($url == url('/') || $url == route('home')) active @endif">
 						<a href="{{ route('home') }}" title="">Beranda</a>
 					</li>
-					{{-- <li class="menu-item @if($url == route('about-us')) active @endif">
-						<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
-					</li> --}}
-					<li class="menu-item @if($url == route('jobs.index')) active @endif">
-						<a href="{{ route('jobs.index') }}" title="">Lowongan</a>
+					<li class="menu-item @if($url == route('job-vacancies.index')) active @endif">
+						<a href="{{ route('job-vacancies.index') }}" title="">Lowongan</a>
 					</li>
 					<li class="menu-item @if($url == route('contact.index')) active @endif">
 						<a href="{{ route('contact.index') }}" title="">Contact Us</a>

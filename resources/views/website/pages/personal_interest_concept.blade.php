@@ -76,7 +76,7 @@
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Tanggal dapat mulai bekerja" name="join_date" class="datepicker" value="{{ $interest->join_date ? date('d-m-Y', strtotime($interest->join_date)) : old('join_date') }}" />
+				 							<input type="text" placeholder="Tanggal dapat mulai bekerja" name="join_date" class="datepicker" value="{{ $interest ? date('d-m-Y', strtotime($interest->join_date)) : old('join_date') }}" />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
@@ -120,15 +120,17 @@
 												<input type="Radio" name="favored_environment" id="working-env-other-like" value="other" @if($interest) @if(!in_array($interest->favored_environment, config('aiia.working_environments'))) checked @endif @endif><label for="working-env-other-like">Lain - Lain</label>
 											</p>
 											<input type="text" placeholder="Lingkungan yang disenangi" name="favored_environment_other" class="working-env-other-like-input
-											@if($interest) @if(in_array($interest->favored_environment, config('aiia.working_environments'))) hidden-display @endif @endif"
-												@if($interest)
-													@if(in_array($interest->favored_environment, config('aiia.working_environments')))
-														disabled
-													@endif
-													@if(!in_array($interest->favored_environment, config('aiia.working_environments')))
-														value="{{ $interest->favored_environment }}"
-													@endif
-												@endif />
+											@if($interest) @if(in_array($interest->favored_environment, config('aiia.working_environments'))) hidden-display @endif @else hidden-display @endif"
+											@if($interest)
+												@if(in_array($interest->favored_environment, config('aiia.working_environments')))
+													disabled
+												@endif
+												@if(!in_array($interest->favored_environment, config('aiia.working_environments')))
+													value="{{ $interest->favored_environment }}"
+												@endif
+											@else
+											disabled
+											@endif />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-6">
@@ -154,15 +156,18 @@
 												<label for="working-env-other-dislike">Lain - Lain</label>
 											</p>
 											<input type="text" placeholder="Lingkungan yang disenangi" name="unfavored_environment_other" class="working-env-other-dislike-input
-											@if($interest) @if(in_array($interest->unfavored_environment, config('aiia.working_environments'))) hidden-display @endif @endif"
-												@if($interest)
-													@if(in_array($interest->unfavored_environment, config('aiia.working_environments')))
-														disabled
-													@endif
-													@if(!in_array($interest->unfavored_environment, config('aiia.working_environments')))
-														value="{{ $interest->unfavored_environment }}"
-													@endif
-												@endif />
+											@if($interest) @if(in_array($interest->unfavored_environment, config('aiia.working_environments'))) hidden-display @endif @else hidden-display @endif"
+											@if($interest)
+												@if(in_array($interest->unfavored_environment, config('aiia.working_environments')))
+													disabled
+												@endif
+												@if(!in_array($interest->unfavored_environment, config('aiia.working_environments')))
+													value="{{ $interest->unfavored_environment }}"
+												@endif
+											@else
+												disabled
+											@endif
+											/>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-12">
@@ -190,7 +195,7 @@
 				 							@php
 											// ambil dari data
 											$fields = $interest->field_of_works ?? '[]';
-											$fields = json_decode($interest->field_of_works, true);
+											$fields = json_decode($fields, true);
 
 											// untuk mengatasi urutan array
 											$sections = array_diff(config('aiia.sections'), $fields);

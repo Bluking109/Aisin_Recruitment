@@ -28,11 +28,12 @@ class Section extends Model
     }
 
     /**
-     * [position description]
-     * @return Array [description]
+     * Get all of the post's vacancies.
+     *
+     * @return Illuminate\Database\Eloquent\Model
      */
-    public function position()
+    public function jobVacancies()
     {
-        return $this->hasMany('App\Models\Position', 'section_id');
+        return $this->morphMany('App\Models\JobVacancy', 'section');
     }
 }

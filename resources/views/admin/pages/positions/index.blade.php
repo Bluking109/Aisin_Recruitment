@@ -19,7 +19,6 @@
                                     <th>No</th>
                                     <th>Code</th>
                                     <th>Name</th>
-                                    <th>Sections</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -60,7 +59,6 @@
                  return meta.row + meta.settings._iDisplayStart + 1;} },
                 { data : 'code', name : 'code' },
                 { data : 'name', name : 'name' },
-                { data : 'section.name', name : 'section.name' },
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
@@ -132,8 +130,6 @@
             let position = $(this).data('position');
             $('#code').val(position.code);
             $('#name').val(position.name);
-            console.log(position);
-            $('#section_id').append('<option value="'+position.section.id+'" selected="selected">'+position.section.name+'</option>');
             $('#mdl-insert-update').modal('show');
         } );
 
@@ -146,31 +142,9 @@
             $('#mdl-insert-update').modal('show');
         });
 
-        $('.section-ajax').select2({
-            placeholder: 'Select Section',
-            minimumInputLength: 2,
-            width: 'resolve',
-            ajax: {
-                url: "{{ route('admin.sections.getsections') }}",
-                dataType: "json",
-                data: function (params) {
-                    return {
-                        search : $.trim(params.term)
-                    };
-                },
-                processResults: function (data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
-        });
-
         // DRY : Don't repeat yourself
         $("#frm-insert").submit(function(e){
             e.preventDefault()
-            console.log($(this).serialize());
             $.ajax({
                 url: $(this).attr('action'),
                 type: $(this).attr('method'),

@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.jobvacancies.index') }}" class="nav-link">
+                <a href="{{ route('admin.job-vacancies.index') }}" class="nav-link">
                     <i class="mdi mdi-newspaper menu-icon"></i>
                     <span class="menu-title">Job Vacancy</span>
                     <i class="menu-arrow"></i>
@@ -22,8 +22,8 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">White List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">Black List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-seekers.index') }}">List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-seekers.indexblacklist') }}">Black List</a></li>
                     </ul>
                 </div>
             </li>
@@ -54,7 +54,7 @@
                 </a>
                 <div class="submenu">
                     <ul>
-                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Recruitment Stage</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.recruitment-stages.index') }}">Recruitment Stage</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.departments.index') }}">Departments</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.sections.index') }}">Sections</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.positions.index') }}">Positions</a></li>

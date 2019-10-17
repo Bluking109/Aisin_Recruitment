@@ -50,12 +50,18 @@ class AboutController extends Controller
             }
         }
 
-        $about = About::create([
+        $data = [
             'title' => $request->title,
             'content' => $request->content,
             'is_active' => $request->is_active,
-            'images' => $this->uploadFiles($request->file('images'), 'pages', 'about', null, true),
-        ]);
+            'images' => json_encode([])
+        ];
+
+        if ($request->file('images')) {
+            $data['images'] = $this->uploadFiles($request->file('images'), 'pages', 'about', null, true);
+        }
+
+        $about = About::create($data);
 
         if ($request->ajax()) {
             return response()->json([

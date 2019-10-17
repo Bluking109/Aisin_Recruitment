@@ -27,14 +27,6 @@ return [
     ],
     'document_types' => [
     	[
-    		'name' => 'cover_letter',
-    		'display_name' => 'Cover Letter',
-    		'rules' => [
-    			'Format file (pdf, doc, docx)',
-    			'Ukuran Maksimal 300KB'
-    		]
-    	],
-    	[
     		'name' => 'cv',
     		'display_name' => 'CV',
     		'rules' => [
@@ -92,5 +84,13 @@ return [
         'Hernia',
         'Patah Tulang',
         'Ambeien',
+    ],
+    'vacancy_images' => [
+        '1.jpg',
+        '2.jpg',
+        '1.jpg',
+        '1.jpg',
+        '2.jpg',
+        '1.jpg',
     ],
 ];

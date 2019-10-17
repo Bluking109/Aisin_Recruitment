@@ -29,4 +29,27 @@ class Child extends Model
     {
         $this->attributes['date_of_birth'] = date('Y-m-d', strtotime($value));
     }
+
+    /**
+     * Acessor religion label
+     * @return string
+     */
+    public function getGenderLabelAttribute()
+    {
+        $gender = $this->gender;
+
+        switch ($gender) {
+            case self::GENDER_WOMAN:
+                return 'Perempuan';
+                break;
+
+            case self::GENDER_MAN:
+                return 'Laki-Laki';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
 }

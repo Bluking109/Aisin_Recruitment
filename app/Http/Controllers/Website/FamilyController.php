@@ -53,7 +53,7 @@ class FamilyController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error, tolong ulangi lagi',
+                'message' => 'ReCaptcha Error, mohon ulangi lagi',
                 'success' => false
             ], 400);
         }
@@ -70,14 +70,16 @@ class FamilyController extends Controller
             ]);
 
             $jobSeeker->partner()->delete();
-            $jobSeeker->partner()->create([
-                'name' => $request->partner_name,
-                'place_of_birth' => $request->partner_place_of_birth,
-                'date_of_birth' => $request->partner_date_of_birth,
-                'gender' => $request->partner_gender,
-                'last_education' => $request->partner_last_education,
-                'job' => $request->partner_job,
-            ]);
+            if ($request->partner_name) {
+                $jobSeeker->partner()->create([
+                    'name' => $request->partner_name,
+                    'place_of_birth' => $request->partner_place_of_birth,
+                    'date_of_birth' => $request->partner_date_of_birth,
+                    'gender' => $request->partner_gender,
+                    'last_education' => $request->partner_last_education,
+                    'job' => $request->partner_job,
+                ]);
+            }
 
             $jobSeeker->children()->delete();
             foreach ($request->children as $key => $value) {

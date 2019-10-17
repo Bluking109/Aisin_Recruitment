@@ -4530,6 +4530,11 @@ section.overlape {
     background-color: #0066ff;
     border-color: #0066ff;
 }
+
+.pagination li.active a, .pagination li a:hover i {
+    color: #ffffff;
+}
+
 .pagination li .delimeter {
     display: block;
     padding-top: 6px;

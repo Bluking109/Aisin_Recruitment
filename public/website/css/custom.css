@@ -387,3 +387,14 @@ input[type="radio"]:disabled + label::before {
 .download-file:hover {
 	cursor: pointer;
 }
+
+.job-grid .job-title-sec {
+	min-height: 420px;
+}
+
+.pagination li.disabled a, .pagination li.disabled a:hover, .pagination li.disabled a i {
+    color: #ffffff;
+    background-color: #4f95ff;
+    border-color: #4f95ff;
+	cursor: default;
+}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Section as SectionRequest;
 use App\Models\Section;
+use App\Models\Department;
 use DataTables;
 
 class SectionController extends Controller
@@ -32,12 +33,34 @@ class SectionController extends Controller
     public function getSection(Request $request)
     {
         $search = $request->search;
-        $sections = Section::select('id', 'name as text')
-            ->where('name','like', '%'.$search.'%',)
-            ->orWhere('code','like', '%'.$search.'%',)
-            ->get();
-        return response()->json($sections);
 
+        $sections = Section::where('name','like', '%'.$search.'%',)
+            ->orWhere('code','like', '%'.$search.'%',)
+            ->get()->toArray();
+
+        $resp = [];
+
+        foreach ($sections as $key => $value) {
+            $resp[] = [
+                'id' => 'section_'.$value['id'],
+                'text' => $value['name']
+            ];
+        }
+
+        if ($request->with_dept == 1) {
+            $departments = Department::where('name','like', '%'.$search.'%',)
+                ->orWhere('code','like', '%'.$search.'%',)
+                ->get()->toArray();
+
+            foreach ($departments as $key => $value) {
+                $resp[] = [
+                    'id' => 'department_'.$value['id'],
+                    'text' => $value['name']
+                ];
+            }
+        }
+
+        return response()->json($resp);
     }
 
     /**

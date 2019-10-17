@@ -21,8 +21,8 @@ class CreateSiblingsTable extends Migration
             $table->string('place_of_birth', 100);
             $table->date('date_of_birth');
             $table->enum('gender', ['1','2'])->default('2')->comment = '1 = Laki-laki, 2 = Perempuan';
-            $table->string('last_education', 50);
-            $table->string('job', 100);
+            $table->string('last_education', 50)->nullable();
+            $table->string('job', 100)->nullable();
             $table->timestamps();
         });
     }

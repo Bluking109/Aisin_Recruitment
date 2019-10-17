@@ -12,16 +12,16 @@
 						<div class="job-search-sec">
 							<div class="job-search">
 								<h4 class="text-left">Cari Pekerjaan Yang Sesuai Kualifikasi Anda</h4>
-								<form>
+								<form id="form-search">
 									<div class="row">
 										<div class="col-lg-7">
 											<div class="job-field">
-												<input type="text" placeholder="Cari" />
+												<input type="text" placeholder="Cari" id="search-input" value="{{ request()->query('s') }}" />
 												<i class="la la-keyboard-o"></i>
 											</div>
 										</div>
 										<div class="col-lg-1">
-											<button type="submit"><i class="la la-search"></i></button>
+											<button type="button" id="search-submit"><i class="la la-search"></i></button>
 										</div>
 									</div>
 								</form>
@@ -39,133 +39,99 @@
 			 <div class="row">
 			 	<div class="col-lg-12">
 			 		<div class="filterbar">
-			 			<h5>98 Lowongan Pekerjaan Tersedia</h5>
+			 			<h5>{{ $jobs->total() }} Lowongan Pekerjaan Tersedia</h5>
 			 			<div class="sortby-sec">
 			 				<span>Filter</span>
-			 				<select data-placeholder="Pendidikan" class="chosen">
-								<option>SMA</option>
-								<option>D3</option>
-								<option>S1</option>
+			 				<select data-placeholder="Pendidikan" class="chosen" id="filter-edu">
+			 					<option value="">- No Filter -</option>
+			 					@foreach($educationLevels as $value)
+								<option value="{{ $value->name }}" @if(request()->query('f') == $value->name) selected @endif>{{ $value->name }}</option>
+			 					@endforeach
 							</select>
 			 			</div>
 			 		</div>
 			 		<div class="job-grid-sec">
 						<div class="row">
+							@foreach($jobs as $job)
 							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 								<div class="job-grid border">
 									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Massimo Artemisis</span>
+										<div class="c-logo">
+											<a href="{{ route('job-vacancies.show', ['job_vacancy' => $job->slug]) }}">
+												<img src="{{ asset('admin/images/vacancies/' . $job->image) }}" alt="" />
+											</a>
+										</div>
+										<h3>
+											<a href="{{ route('job-vacancies.show', ['job_vacancy' => $job->slug]) }}" title="">{{ $job->position->name . ' - ' . $job->section->name }}</a>
+										</h3>
+										<span><i class="fa fa-clock-o"></i> Ditutup : {{ date('d M Y', strtotime($job->close_date)) }}</span>
 									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
+									<span class="job-lctn">Minimal Pendidikan {{ $job->educationLevel->name }}</span>
 									<a  href="#" title="">Lamar</a>
 								</div><!-- JOB Grid -->
 							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Marketing Director</a></h3>
-										<span>Massimo Artemisis</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Application Developer For Android</a></h3>
-										<span>Altes Bank</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
-							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-								<div class="job-grid border">
-									<div class="job-title-sec">
-										<div class="c-logo"> <a href="{{ route('jobs.show', ['slug' => 'ppic']) }}"><img src="{{ asset('website/images/ppic.jpg') }}" alt="" /></a> </div>
-										<h3><a href="#" title="">Web Designer / Developer</a></h3>
-										<span>Batas Lamaran : 07 Agustus 2019</span>
-									</div>
-									<span class="job-lctn">Karawang, Jawa Barat</span>
-									<a  href="#" title="">Lamar</a>
-								</div><!-- JOB Grid -->
-							</div>
+							@endforeach
 						</div>
 					</div>
-					<div class="pagination">
-						<ul>
-							<li class="prev"><a href=""><i class="la la-long-arrow-left"></i> Prev</a></li>
-							<li><a href="">1</a></li>
-							<li class="active"><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><span class="delimeter">...</span></li>
-							<li><a href="">14</a></li>
-							<li class="next"><a href="">Next <i class="la la-long-arrow-right"></i></a></li>
-						</ul>
-					</div><!-- Pagination -->
+					{{ $jobs->appends(request()->except('page'))->links() }}
 			 	</div>
 			 </div>
 		</div>
 	</div>
 </section>
 @endsection
+
+@push('additional_js')
+<script type="text/javascript">
+	$(function() {
+		let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search.slice(1));
+
+		$('#filter-edu').on('change', function() {
+            let val = $(this).val();
+
+            // Delete the f param.
+            params.delete('f');
+            params.delete('page');
+
+            if (val != null && val != undefined && val != '') {
+                params.append('f', val);
+            }
+
+            window.location.href = window.location.href.split('?')[0] + '?' + params.toString();
+		});
+
+		$('#form-search').on('keypress', function(e) {
+			if(e.which == 13) {
+				e.preventDefault();
+			}
+		})
+
+		$('#search-input').on('keypress',function(e) {
+		    if(e.which == 13) {
+		        let val = $(this).val();
+		        params.delete('page');
+		        params.delete('s');
+
+	            if (val != null && val != undefined && val != '') {
+	                params.append('s', val);
+	            }
+
+	            window.location.href = window.location.href.split('?')[0] + '?' + params.toString();
+		    }
+		});
+
+		$('#search-submit').on('click', function() {
+			let val = $('#search-input').val();
+	        params.delete('page');
+	        params.delete('s');
+
+            if (val != null && val != undefined && val != '') {
+                params.append('s', val);
+            }
+
+            window.location.href = window.location.href.split('?')[0] + '?' + params.toString();
+		});
+	});
+</script>
+@endpush

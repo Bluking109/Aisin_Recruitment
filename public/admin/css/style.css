@@ -20710,7 +20710,7 @@ code {
 .form-control, .typeahead,
 .tt-query,
 .tt-hint {
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   font-weight: 400;
   font-size: 0.875rem;
   height: auto;
@@ -22884,13 +22884,33 @@ li.nav-item {
   text-align: left;
 }
 
+.datepicker-switch {
+    text-align: center;
+}
+
+.datepicker .next {
+    text-align: right;
+}
+
 .datepicker-dropdown.dropdown-menu {
     padding: 0.5rem 0.8rem !important;
     font-size: 1.1rem !important;
 }
 
 .datepicker-days tbody tr td {
-  padding: 10px;
+  padding: 7px;
+}
+
+.datepicker td.day.old, .datepicker td.day.new, .datepicker td.day.disabled {
+    color: #ccc;
+}
+
+.datepicker td.day:hover {
+    cursor: pointer;
+}
+
+.datepicker td.day.disabled:hover {
+    cursor: not-allowed;
 }
 
 .datepicker table tr td span {
@@ -22902,4 +22922,126 @@ li.nav-item {
     margin: 1%;
     cursor: pointer;
     border-radius: 4px;
+}
+
+.image-choosen:hover, .image-choosen.selected {
+    cursor: pointer;
+    opacity: 0.8;
+    border: 2px solid rgba(0, 89, 222, 0.7);
+}
+
+.chosen-search-input {
+  border-radius: 5px !important;
+  background-color: #ffffff !important;
+  padding: 10px 5px !important;
+  border: 1px solid #0066ff !important;
+}
+
+.chosen-container-single .chosen-single, .chosen-container-multi .chosen-choices {
+  padding: 9px 8px;
+  border: none;
+  background-image: none;
+}
+
+.chosen-container .chosen-drop {
+  background: rgba(92, 154, 255, 1) !important;
+}
+
+.chosen-container .chosen-results li, .active-result.result-selected li {
+  color: #ffffff !important;
+}
+
+.primary-bg .job-field input, .primary-bg .chosen-container-single .chosen-single {
+  box-shadow: none;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+  background: none;
+  border: none;
+}
+
+.chosen-container-active .chosen-choices {
+  box-shadow: none;
+}
+
+.chosen-disabled {
+  opacity: 1 !important;
+}
+
+input[type="text"]:disabled,
+.chosen-disabled .chosen-single,
+input[type="radio"]:disabled + label::before
+{
+  background-color: #edf6fa !important;
+}
+
+.chosen-disable .chosen-single {
+  border: 2px solid #e8ecec !important;
+}
+
+input[type="text"]:disabled:hover,
+.chosen-disabled .chosen-single:hover,
+.btn:disabled:hover,
+input[type="radio"]:disabled + label::before {
+  cursor: not-allowed;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+    position: relative;
+    margin: 1px 5px 1px 0;
+    padding: 7px 15px 7px 7px !important;
+    border: 1px solid #03a6ff;
+    max-width: 100%;
+    border-radius: 3px;
+    background-color: #ffffff;
+    background-image: none;
+    background-image: none;
+    background-size: 100% 19px;
+    background-repeat: repeat-x;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+    color: #222222;
+    line-height: 13px;
+    cursor: default;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/website/images/close.png') !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    font-size: 1px;
+}
+
+.chosen-container-multi .chosen-drop .result-selected {
+  display: none;
+}
+
+.hidden-display {
+  display: none;
+}
+
+.chosen-container .chosen-results li.no-results {
+  background: none;
+}
+
+.dropdown-field .chosen-single {
+  padding: 14px 10px;
+}
+
+.chosen-results li {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.subtitle-panel {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin-left: 13px;
 }

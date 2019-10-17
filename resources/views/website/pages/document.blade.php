@@ -59,7 +59,7 @@
 								 					<td>
 								 						<input type="file" name="{{ $value['name'] }}" class="d-none file-upload">
 								 						<ul class="action_job">
-								 							<li><span>Upload File</span><a href="#" title="" class="upload"><i class="fa fa-upload"></i></a></li>
+								 							<li><span>Upload File</span><a title="" class="upload"><i class="fa fa-upload"></i></a></li>
 								 							@if($document)
 								 							@if($document->{$value['name']})
 								 							<li><span>Download File</span><a href="{{ route('profiles.document.getfile', $value['name']) }}" title=""><i class="fa fa-download"></i></a></li>

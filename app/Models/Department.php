@@ -16,4 +16,12 @@ class Department extends Model
     	'pic',
     	'pic_email'
     ];
+
+    /**
+     * Get all of the post's vacancies.
+     */
+    public function jobVacancies()
+    {
+        return $this->morphMany('App\Models\JobVacancy', 'section');
+    }
 }

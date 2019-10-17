@@ -8,6 +8,8 @@
 		<meta name="keywords" content="Lowongan Kerja Karawang PT Aisin Indonesia Automotive {{ date('Y') }}">
 		<meta name="author" content="PT. Aisin Indonesia Automotive">
 
+		<link rel="shortcut icon" href="{{ asset('website/images/favicon.ico') }}" />
+
 		<!-- Styles -->
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i,800,800i|Quicksand:300,400,500,700">
 		<link rel="stylesheet" type="text/css" href="{{ asset('website/css/all.css') }}" />

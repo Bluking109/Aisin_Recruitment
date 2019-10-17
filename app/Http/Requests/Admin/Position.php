@@ -25,8 +25,7 @@ class Position extends FormRequest
     {
         $rules = [
             'code' => 'required|max:50|alpha_dash|unique:positions,code',
-            'name' => 'required|max:50',
-            'section_id' => 'required',
+            'name' => 'required|max:50'
         ];
 
         if ($this->position) {

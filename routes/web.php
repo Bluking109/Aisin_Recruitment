@@ -40,15 +40,26 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('subdistricts', 'SubDistrictController')->except('edit', 'show', 'create');
 			Route::get('subdistricts/get-subdistrict', 'SubDistrictController@getSubDistrict')->name('subdistricts.getsubdistrict');
 			Route::resource('villages', 'VillageController')->except('edit', 'show', 'create');
-			Route::resource('jobvacancies', 'JobVacancyController')->except('edit', 'show', 'create');
+			Route::resource('job-vacancies', 'JobVacancyController');
 			Route::resource('departments', 'DepartmentController')->except('edit', 'show', 'create');
 			Route::get('departments/get-department', 'DepartmentController@getDepartment')->name('departments.getdepartment');
 			Route::resource('sections', 'SectionController')->except('edit', 'show', 'create');
 			Route::get('sections/get-section', 'SectionController@getSection')->name('sections.getsections');
 			Route::resource('positions', 'PositionController')->except('edit', 'show', 'create');
 			Route::get('positions/get-position', 'PositionController@getPosition')->name('positions.getposition');
-
 			Route::resource('about-us', 'AboutController')->except('edit', 'show', 'create');
+			Route::resource('recruitment-stages', 'RecruitmentStageController')->except('edit', 'show', 'create');
+			Route::get('recruitment-stages/get-stages', 'RecruitmentStageController@getStage')->name('recruitment-stages.getstage');
+
+			Route::get('job-seekers/black-list', 'JobSeekerController@indexBlacklist')
+				->name('job-seekers.indexblacklist');
+			Route::resource('job-seekers', 'JobSeekerController')->only('index', 'show', 'destroy');
+			Route::put('job-seekers/{job_seeker}/black-list', 'JobSeekerController@updateBlacklist')
+				->name('job-seekers.updateblacklist');
+			Route::put('job-seekers/{job_seeker}/white-list', 'JobSeekerController@updateWhiteList')
+				->name('job-seekers.updatewhitelist');
+			Route::get('job-seekers/{job_seeker}/photo', 'JobSeekerController@getPhoto')
+				->name('job-seekers.photo');
 		});
 	});
 });
@@ -140,8 +151,7 @@ Route::namespace('Website')->group(function() {
 	Route::get('/', 'PageController@home');
 	Route::get('home', 'PageController@home')->name('home');
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
-	Route::get('jobs', 'JobController@index')->name('jobs.index');
-	Route::get('jobs/{slug}', 'JobController@show')->name('jobs.show');
+	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
 
 	Route::get('profiles/applied-jobs', 'ProfileController@indexAppliedJob')->name('profiles.applied-jobs.show');
 });

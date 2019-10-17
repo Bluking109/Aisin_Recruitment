@@ -18,7 +18,7 @@ class PositionController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()) {
-            $positions = Position::with('section')->select('positions.*');
+            $positions = Position::select('positions.*');
             return DataTables::eloquent($positions)->toJson();
         }
 
@@ -75,8 +75,7 @@ class PositionController extends Controller
         $updatePosition = Position::findOrFail($id);
         $updatePosition->fill([
             'code' => $request->code,
-            'name' => $request->name,
-            'section_id' => $request->section_id
+            'name' => $request->name
         ]);
 
         if ($updatePosition->isClean()) {

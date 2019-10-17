@@ -28,13 +28,20 @@ $(function(){
 		}
 
 		let parentEl = parentRow.last().clone();
+		let sourceId = parentEl.data('index');
 		let index = parseInt(parentEl.data('index')) + 1;
 
 		parentEl.find('input[type="text"]').val('');
 		parentEl.find('.child-name').attr('name', `children[${index}][name]`);
 		parentEl.find('.child-place-of-birth').attr('name', `children[${index}][place_of_birth]`);
 		parentEl.find('.child-date-of-birth').attr('name', `children[${index}][date_of_birth]`);
+		// gender karena memakai radio
 		parentEl.find('.child-gender').attr('name', `children[${index}][gender]`);
+		parentEl.find(`#child-gender-man-${sourceId}`).attr('id', `child-gender-man-${index}`);
+		parentEl.find(`#child-gender-women-${sourceId}`).attr('id', `child-gender-women-${index}`);
+		parentEl.find(`label[for="child-gender-man-${sourceId}"]`).attr('for', `child-gender-man-${index}`);
+		parentEl.find(`label[for="child-gender-women-${sourceId}"]`).attr('for', `child-gender-women-${index}`);
+
 		parentEl.find('.child-education').attr('name', `children[${index}][last_education]`);
 		parentEl.find('.child-job').attr('name', `children[${index}][job]`);
 
@@ -66,13 +73,20 @@ $(function(){
 		}
 
 		let parentEl = parentRow.last().clone();
+		let sourceId = parentEl.data('index');
 		let index = parseInt(parentEl.data('index')) + 1;
 
 		parentEl.find('input[type="text"]').val('');
 		parentEl.find('.sibling-name').attr('name', `siblings[${index}][name]`);
 		parentEl.find('.sibling-place-of-birth').attr('name', `siblings[${index}][place_of_birth]`);
 		parentEl.find('.sibling-date-of-birth').attr('name', `siblings[${index}][date_of_birth]`);
+		// gender menggunakan radio button
 		parentEl.find('.sibling-gender').attr('name', `siblings[${index}][gender]`);
+		parentEl.find(`#sibling-gender-man-${sourceId}`).attr('id', `sibling-gender-man-${index}`);
+		parentEl.find(`#sibling-gender-women-${sourceId}`).attr('id', `sibling-gender-women-${index}`);
+		parentEl.find(`label[for="sibling-gender-man-${sourceId}"]`).attr('for', `sibling-gender-man-${index}`);
+		parentEl.find(`label[for="sibling-gender-women-${sourceId}"]`).attr('for', `sibling-gender-women-${index}`);
+
 		parentEl.find('.sibling-job').attr('name', `siblings[${index}][job]`);
 		parentEl.find('.sibling-education').attr('name', `siblings[${index}][last_education]`);
 

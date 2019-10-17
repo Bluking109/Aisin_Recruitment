@@ -17,7 +17,6 @@ class CreateDocumentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('job_seeker_id')->nullable();
             $table->foreign('job_seeker_id')->references('id')->on('job_seekers')->onDelete('cascade');
-            $table->text('cover_letter')->nullable();
             $table->string('cv', 200);
             $table->string('certificate', 200);
             $table->string('transcripts', 200);

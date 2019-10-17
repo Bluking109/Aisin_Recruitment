@@ -38,8 +38,6 @@ class EducationRequest extends FormRequest
             'educations' . '.' . $seniorHighSchool . '.major' => 'required|max:100',
             'educations' . '.' . $seniorHighSchool . '.end_year' => 'required|date_format:Y',
             'educations' . '.' . $seniorHighSchool . '.city' => 'required|max:100',
-            'educations' . '.' . $seniorHighSchool . '.average_math_score' => 'required|between:0,100|numeric',
-            'educations' . '.' . $seniorHighSchool . '.un_math_score' => 'required|between:0,100|numeric',
             'educations' . '.' . $seniorHighSchool . '.note' => 'nullable|max:300',
             'non_formal_educations' => 'array',
             'non_formal_educations.*.training_name' => 'nullable|max:150',
@@ -56,6 +54,9 @@ class EducationRequest extends FormRequest
 
         // Apabila jenis form  =  D4/S1
         if ($jobSeeker->educationLevel->isAssociateForm()) {
+            $rules['educations' . '.' . $seniorHighSchool . '.start_year'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|date_format:Y|nullable';
+            $rules['educations' . '.' . $seniorHighSchool . '.grade_point'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|between:0,100|numeric|nullable';
+
             $rules['educations' . '.' . $diploma . '.name_of_institution'] = 'required_without_all:educations' . '.' . $bachelor . '.name_of_institution,educations' . '.' . $master . '.name_of_institution|nullable|max:100';
             $rules['educations' . '.' . $diploma . '.faculty'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
             $rules['educations' . '.' . $diploma . '.major'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
@@ -89,6 +90,9 @@ class EducationRequest extends FormRequest
 
         // Apabila jenis Form SMA
         if ($jobSeeker->educationLevel->isHighSchoolForm()) {
+            $rules['educations' . '.' . $seniorHighSchool . '.average_math_score'] = 'required|between:0,100|numeric';
+            $rules['educations' . '.' . $seniorHighSchool . '.un_math_score'] = 'required|between:0,100|numeric';
+
             $rules['educations' . '.' . $primarySchool . '.name_of_institution'] = 'required|max:100';
             $rules['educations' . '.' . $primarySchool . '.major'] = 'nullable|max:100';
             $rules['educations' . '.' . $primarySchool . '.end_year'] = 'required|date_format:Y';

@@ -21,7 +21,7 @@ $drivingLicences = $jobSeeker->driving_licences;
 				 		<div class="profile-title">
 				 			<h3>Identitas Pribadi</h3>
 				 			<div class="upload-img-bar">
-				 				<span class="round"><img src="{{ $jobSeeker->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.jpg') }}" class="photo-img" id="photo-img" alt="" /><i id="deleted-photo-icon">x</i></span>
+				 				<span class="round"><img src="{{ $jobSeeker->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.png') }}" class="photo-img" id="photo-img" alt="" /><i id="deleted-photo-icon">x</i></span>
 				 				<div class="upload-info">
 				 					<h4>Foto Terbaru</h4>
 				 					<a href="#" title="" id="browse-photo">Browse</a>

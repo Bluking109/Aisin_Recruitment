@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Yadahan\AuthenticationLog\AuthenticationLogable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\BiologicalParent;
 
 class JobSeeker extends Authenticatable implements MustVerifyEmail
 {
@@ -38,6 +40,27 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Append attribute
+     * @var array
+     */
+    protected $appends = ['gender_label', 'religion_label'];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Global scope (seperti soft delete laravel)
+        static::addGlobalScope('active', function (Builder $builder) {
+            $builder->where('is_blacklist', self::STATUS_UNBLACKLIST);
+        });
+    }
 
     /**
      * Education level relationship many to one
@@ -88,6 +111,17 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     public function scopeUnBlacklist($query)
     {
         return $query->where('is_blacklist', self::STATUS_UNBLACKLIST);
+    }
+
+    /**
+     * Get All Data blacklist or unblacklist
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAllData($query)
+    {
+        return $query->withoutGlobalScope('active');
     }
 
     /**
@@ -296,5 +330,79 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     public function otherRecruitments()
     {
         return $this->hasMany('App\Models\OtherRecruitment', 'job_seeker_id');
+    }
+
+    /**
+     * Acessor gender label
+     * @return string
+     */
+    public function getGenderLabelAttribute()
+    {
+        $gender = $this->gender;
+
+        switch ($gender) {
+            case self::GENDER_MAN:
+                return 'Male';
+                break;
+
+            case self::GENDER_WOMAN:
+                return 'Female';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
+
+    /**
+     * Acessor religion label
+     * @return string
+     */
+    public function getReligionLabelAttribute()
+    {
+        $religion = $this->religion;
+
+        switch ($religion) {
+            case self::RELIGION_ISLAM:
+                return 'Islam';
+                break;
+
+            case self::RELIGION_PROTESTAN:
+                return 'Protestan';
+                break;
+
+            case self::RELIGION_KATOLIK:
+                return 'Katolik';
+                break;
+
+            case self::RELIGION_HINDU:
+                return 'Hindu';
+                break;
+
+            case self::RELIGION_BUDHA:
+                return 'Budha';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
+
+    /**
+     * Accessor father
+     */
+    public function getFatherAttribute()
+    {
+        return $this->parents()->where('is', BiologicalParent::IS_FATHER)->first();
+    }
+
+    /**
+     * Accessor mother
+     */
+    public function getMotherAttribute()
+    {
+        return $this->parents()->where('is', BiologicalParent::IS_MOTHER)->first();
     }
 }

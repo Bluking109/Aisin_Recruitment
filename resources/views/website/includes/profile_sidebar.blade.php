@@ -4,7 +4,7 @@ $user = auth()->guard('job_seekers')->user();
 <div class="profile-sidebar">
 	<span class="close-profile"><i class="la la-close"></i></span>
 	<div class="can-detail-s">
-		<div class="cst"><img src="{{ $user->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.jpg') }}" alt="" /></div>
+		<div class="cst"><img src="{{ $user->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.png') }}" alt="" /></div>
 		<h3>{{ $user->name }}</h3>
 		<p>{{ $user->email }}</p>
 		<p><i class="la la-map-marker"></i>{{ $user->address ?? '-' }}</p>

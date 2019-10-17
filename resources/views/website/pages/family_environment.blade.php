@@ -39,7 +39,9 @@ $siblingWoman = App\Models\Sibling::GENDER_WOMAN;
 				 				<input type="hidden" name="recaptcha_key" id="recaptcha-key">
 				 				<div class="row no-margin-row">
 				 					<div class="col-md-12">
-				 						<span class="pf-title education-title"><b>Data Sesuai KTP</b></span>
+				 						<span class="pf-title education-title"><b>Data Sesuai KTP</b>
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 					</div>
 				 					<div class="col-md-6">
 				 						<span class="pf-title">Status</span>
@@ -75,7 +77,9 @@ $siblingWoman = App\Models\Sibling::GENDER_WOMAN;
 				 				</div>
 				 				<div class="row no-margin-row">
 				 					<div class="col-md-12">
-				 						<span class="pf-title education-title"><b>Data Aktual</b></span>
+				 						<span class="pf-title education-title"><b>Data Aktual</b>
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 					</div>
 				 					<div class="col-md-6">
 				 						<span class="pf-title">Status</span>
@@ -136,7 +140,7 @@ $siblingWoman = App\Models\Sibling::GENDER_WOMAN;
 				 						<div class="pf-field">
 				 							<p class="remember-label">
 				 								<input type="Radio" name="partner_gender" id="partner-gender-man" value="{{ $partnerMan }}" @if($partner) @if($partner->gender == $partnerMan) checked @endif @else checked @endif><label for="partner-gender-man">Laki-Laki</label>
-												<input type="Radio" name="partner_gender" id="partner-gender-women" value="{{ $partnerMan }}" @if($partner) @if($partner->gender == $partnerMan) checked @endif @endif><label for="partner-gender-women">Perempuan</label>
+												<input type="Radio" name="partner_gender" id="partner-gender-women" value="{{ $partnerWoman }}" @if($partner) @if($partner->gender == $partnerWoman) checked @endif @endif><label for="partner-gender-women">Perempuan</label>
 											</p>
 				 						</div>
 				 					</div>

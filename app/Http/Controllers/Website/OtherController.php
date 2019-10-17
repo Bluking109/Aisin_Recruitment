@@ -48,7 +48,7 @@ class OtherController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error, tolong ulangi lagi',
+                'message' => 'ReCaptcha Error, mohon ulangi lagi',
                 'success' => false
             ], 400);
         }

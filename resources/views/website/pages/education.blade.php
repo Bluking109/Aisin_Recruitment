@@ -162,7 +162,25 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="text" placeholder="Jurusan" name="educations[{{ $seniorHighSchool }}][major]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->major : old('educations['.$seniorHighSchool.'][major]') }}" />
 				 						</div>
 				 					</div>
+				 					@if($jobSeeker->educationLevel->isAssociateForm())
 				 					<div class="col-md-4">
+				 						<span class="pf-title">Masuk
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
+				 						<div class="pf-field">
+				 							<input type="text" placeholder="Periode Masuk" class="year-input" name="educations[{{ $seniorHighSchool }}][start_year]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->start_year : old('educations['.$seniorHighSchool.'][start_year]') }}" />
+				 						</div>
+				 					</div>
+				 					<div class="col-md-4">
+				 						<span class="pf-title">Lulus
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
+				 						<div class="pf-field">
+				 							<input type="text" placeholder="Periode Lulus" class="year-input" name="educations[{{ $seniorHighSchool }}][end_year]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->end_year : old('educations['.$seniorHighSchool.'][end_year]') }}" />
+				 						</div>
+				 					</div>
+				 					@else
+									<div class="col-md-4">
 				 						<span class="pf-title">Tahun Lulus
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
@@ -170,6 +188,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="text" placeholder="Tahun Lulus" class="year-input" name="educations[{{ $seniorHighSchool }}][end_year]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->end_year : old('educations['.$seniorHighSchool.'][end_year]') }}" />
 				 						</div>
 				 					</div>
+				 					@endif
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Kota
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -178,6 +197,16 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="text" placeholder="Kota" name="educations[{{ $seniorHighSchool }}][city]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->city : old('educations['.$seniorHighSchool.'][city]') }}" />
 				 						</div>
 				 					</div>
+				 					@if($jobSeeker->educationLevel->isAssociateForm())
+									<div class="col-md-4">
+				 						<span class="pf-title">NEM
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
+				 						<div class="pf-field">
+				 							<input type="number" placeholder="NEM" name="educations[{{ $seniorHighSchool }}][grade_point]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->grade_point : old('educations['.$seniorHighSchool.'][grade_point]') }}" />
+				 						</div>
+				 					</div>
+				 					@else
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Nilai Rata-rata MTK (6 Semester)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -194,6 +223,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="number" placeholder="Nilai UN MTK" name="educations[{{ $seniorHighSchool }}][un_math_score]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->un_math_score : old('educations['.$seniorHighSchool.'][un_math_score]') }}" />
 				 						</div>
 				 					</div>
+				 					@endif
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Keterangan</span>
 				 						<div class="pf-field">

@@ -8,16 +8,6 @@ class Position extends Model
 {
     protected $fillable = [
     	'code',
-    	'name',
-    	'section_id'
+    	'name'
     ];
-
-    /**
-     * [section description]
-     * @return [type] [description]
-     */
-    public function section()
-    {
-        return $this->belongsTo('App\Models\Section', 'section_id');
-    }
 }

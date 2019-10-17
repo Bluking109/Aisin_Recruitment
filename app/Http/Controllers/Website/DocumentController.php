@@ -45,7 +45,7 @@ class DocumentController extends Controller
 
         if (!$response->isSuccess()) {
             return response()->json([
-                'message' => 'ReCaptcha Error, tolong ulangi lagi',
+                'message' => 'ReCaptcha Error, mohon ulangi lagi',
                 'success' => false
             ], 400);
         }
@@ -56,14 +56,6 @@ class DocumentController extends Controller
         	$document = [];
         } else {
         	$document = new Document();
-        }
-
-        if ($cl = $request->file('cover_letter')) {
-        	if ($jobSeekerDoc) {
-        		$document['cover_letter'] = $this->uploadFiles($cl, 'cover_letter', $jobSeeker->name, $jobSeekerDoc->cover_letter);
-        	} else {
-        		$document->cover_letter = $this->uploadFiles($cl, 'cover_letter', $jobSeeker->name);
-        	}
         }
 
         if ($cv = $request->file('cv')) {
