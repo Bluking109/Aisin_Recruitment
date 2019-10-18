@@ -176,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class, //spatie laravel permission
+        Barryvdh\DomPDF\ServiceProvider::class, //PDFDom
 
         // Provider helper
         App\Providers\SettingServiceProvider::class,
@@ -233,6 +234,8 @@ return [
 
         // alias setting
         'AIIASetting' => App\Helpers\Setting::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class, //PDFDom
 
     ],
 

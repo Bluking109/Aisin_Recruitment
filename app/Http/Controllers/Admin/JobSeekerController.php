@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JobSeeker;
 use App\Traits\FileHandler;
 use DataTables;
+use PDF;
 
 class JobSeekerController extends Controller
 {
@@ -188,5 +189,12 @@ class JobSeekerController extends Controller
         }
 
         return response()->download(storage_path('app/' . $path));
+    }
+
+    public function test()
+    {
+        // return view('admin.pdf.job_seeker');
+        $pdf = PDF::loadView('admin.pdf.job_seeker');
+        return $pdf->download('Pelamar.pdf');
     }
 }
