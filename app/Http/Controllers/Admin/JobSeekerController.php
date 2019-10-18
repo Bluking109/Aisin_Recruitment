@@ -22,8 +22,8 @@ class JobSeekerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $abouts = JobSeeker::with('educationLevel');
-            return DataTables::eloquent($abouts)->toJson();
+            $jobSeekers = JobSeeker::with('educationLevel');
+            return DataTables::eloquent($jobSeekers)->toJson();
         }
 
         return view('admin.pages.job_seekers.index');
@@ -172,5 +172,21 @@ class JobSeekerController extends Controller
         return redirect()->route('admin.pages.job_seekers.index')
             ->with('success', true)
             ->with('message', 'Job seekers have been blacklisted successfully');
+    }
+
+    /**
+     * Download document
+     * @return Illuminate\Http\Response
+     */
+    public function getDocument($job_seeker, $type)
+    {
+        $jobSeeker = JobSeeker::findOrFail($job_seeker);
+        $path = 'uploads/'.$type.'/' . $jobSeeker->document->{$type};
+
+        if (!Storage::exists($path)) {
+            abort(404);
+        }
+
+        return response()->download(storage_path('app/' . $path));
     }
 }

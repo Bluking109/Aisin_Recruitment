@@ -29,4 +29,27 @@ class InterestConcept extends Model
     {
         $this->attributes['join_date'] = date('Y-m-d', strtotime($value));
     }
+
+    /**
+     * Acessor religion label
+     * @return string
+     */
+    public function getPlaceOutsideLabelAttribute()
+    {
+        $place = $this->place_outside;
+
+        switch ($place) {
+            case self::PLACE_OUTSIDE_YES:
+                return 'Yes';
+                break;
+
+            case self::PLACE_OUTSIDE_NO:
+                return 'No';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
 }

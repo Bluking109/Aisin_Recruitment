@@ -19,7 +19,11 @@
 | Untuk base admin route bisa di setting melalui menu setting
 */
 Route::namespace('Admin')->group(function() {
-	Route::group(['prefix' => AIIASetting::getValue('admin_base_route', config('aiia.default_url_admin')), 'as' => 'admin.'], function() {
+	Route::group([
+		'prefix' => AIIASetting::getValue('admin_base_route', 
+		config('aiia.default_url_admin')), 
+		'as' => 'admin.'
+	], function() {
 		Auth::routes();
 
 		Route::group(['middleware' => ['auth', 'admin.locale']], function() {
@@ -60,6 +64,9 @@ Route::namespace('Admin')->group(function() {
 				->name('job-seekers.updatewhitelist');
 			Route::get('job-seekers/{job_seeker}/photo', 'JobSeekerController@getPhoto')
 				->name('job-seekers.photo');
+			
+			Route::get('job-seekers/{job_seeker}/document/{type}', 'JobSeekerController@getDocument')
+				->name('job-seekers.getdocument');
 		});
 	});
 });

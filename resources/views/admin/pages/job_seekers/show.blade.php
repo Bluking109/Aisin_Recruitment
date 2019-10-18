@@ -655,25 +655,28 @@
                         <div class="col-sm-6" style="padding-left: 30px;">
                             @php
                             $interest = $jobSeeker->interestConcept;
+                            if($interest) {
+                                $fields = json_decode($interest->field_of_works, true);
+                            }
                             @endphp
                             @if($interest)
                             <p><b>1. Goal : </b></p>
-                            <p>{{ $workDetail->position_description }}</p>
+                            <p>{{ $interest->future_goals ?? '-' }}</p>
                             <br>
                             <p><b>2. Work motivation : </b></p>
-                            <p>{{ $workDetail->problems_and_solutions }}</p>
+                            <p>{{ $interest->working_motivation ?? '-' }}</p>
                             <br>
                             <p><b>3. Reasons for wanting to work at AIIA : </b></p>
-                            <p>{{ $workDetail->impression_on_company }}</p>
+                            <p>{{ $interest->working_reason ?? '-' }}</p>
                             <br>
                             <p><b>4. Facilities expected : </b></p>
-                            <p>{{ $workDetail->who_pushed }}</p>
+                            <p>{{ $interest->expected_facility ?? '-' }}</p>
                             <br>
                             <p><b>5. Can start working at : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->join_date ?? '-' }}</p>
                             <br>
                             <p><b>6. Expected Salary : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>Rp. {{ $interest->expected_salary ?? '-' }}</p>
                             @else
                             <p class="text-center"><b>No Data</b></p>
                             @endif
@@ -681,25 +684,151 @@
                         <div class="col-sm-6">
                             @if($interest)
                             <p><b>7. Placement outside the city : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->placeOutsideLabel ?? '-' }}</p>
                             <br>
                             <p><b>8. Preferred work environment : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->favored_environment ?? '-' }}</p>
                             <br>
                             <p><b>9. Undesirable work environment : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->unfavored_environment ?? '-' }}</p>
                             <br>
                             <p><b>10. Type of person who is preferred : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->like_people ?? '-' }}</p>
                             <br>
                             <p><b>11. Things that make it difficult to make decisions : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <p>{{ $interest->dificult_decisions ?? '-' }}</p>
                             <br>
                             <p><b>12. Priority field of work : </b></p>
-                            <p>{{ $workDetail->how_make_decisions }}</p>
+                            <ol>
+                                @foreach ($fields as $item)
+                                 <li>{{ $item }}</li>
+                                @endforeach
+                            </ol>
                             @else
                             <p class="text-center"><b>No Data</b></p>
                             @endif
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12">
+                            <h3 class="subtitle-panel">F. Dokumen Pribadi</h3>
+                        </div>
+                        <div class="col-sm-12" style="padding-left: 30px;">
+                            @php
+                            $document = $jobSeeker->document;
+                            @endphp
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>File</th>
+                                            <th>Nama File</th>
+                                            <th class="text-center">Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $files = config('aiia.document_types');
+                                        @endphp
+                                        @foreach ($files as $item)
+                                        <tr>
+                                            <td>{{ $item['display_name'] }}</td>
+                                            <td>{{ $document->{$item['name']} ?? '-' }}</td>
+                                            <td class="text-center">
+                                                @if($document->{$item['name']})
+                                                <a href="{{ route('admin.job-seekers.getdocument', ['job_seeker' => $jobSeeker->id, 'type' => $item['name']]) }}"><i class="mdi mdi-cloud-download"></i></a>
+                                                @else
+                                                No Data Uploaded
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12">
+                            <h3 class="subtitle-panel">G. Social Activity</h3>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4 class="subtitle-panel">1. Friend at AIIA</h4>
+                        </div>
+                        <div class="col-sm-12" style="padding-left: 30px;">
+                            @php
+                            $friends = $jobSeeker->friends;
+                            @endphp
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Telephone Number</th>
+                                            <th>Relationship</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if($friends->count())
+                                        @foreach ($friends as $key => $item)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->position }}</td>
+                                            <td>{{ $item->telephone_number }}</td>
+                                            <td>{{ $item->relationship }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4 class="subtitle-panel">2. Organizational Experience</h4>
+                        </div>
+                        <div class="col-sm-12" style="padding-left: 30px;">
+                            @php
+                            $organizations = $jobSeeker->organizations;
+                            @endphp
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Place</th>
+                                            <th>Position</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if($organizations->count())
+                                        @foreach ($organizations as $key => $item)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->place }}</td>
+                                            <td>{{ $item->position }}</td>
+                                            <td>{{ $item->start_date }}</td>
+                                            <td>{{ $item->end_date }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No Data</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
