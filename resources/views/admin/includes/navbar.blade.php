@@ -23,7 +23,7 @@
                 <div class="submenu">
                     <ul>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-seekers.index') }}">List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-seekers.indexblacklist') }}">Black List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-seekers.index', ['blacklist' => 1]) }}">Black List</a></li>
                     </ul>
                 </div>
             </li>

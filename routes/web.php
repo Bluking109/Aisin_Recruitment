@@ -61,6 +61,8 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('job-seekers', 'JobSeekerController')->only('index', 'show', 'destroy');
 			Route::put('job-seekers/{job_seeker}/black-list', 'JobSeekerController@updateBlacklist')
 				->name('job-seekers.updateblacklist');
+			Route::put('job-seekers/{job_seeker}/unblack-list', 'JobSeekerController@updateUnblacklist')
+				->name('job-seekers.updateunblacklist');
 			Route::put('job-seekers/{job_seeker}/white-list', 'JobSeekerController@updateWhiteList')
 				->name('job-seekers.updatewhitelist');
 			Route::get('job-seekers/{job_seeker}/photo', 'JobSeekerController@getPhoto')

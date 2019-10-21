@@ -104,4 +104,70 @@ class OtherRecruitment extends Model
     {
         $this->attributes['date'] = date('Y-m-d', strtotime($value));
     }
+
+    /**
+     * Acessor process label
+     * @return string
+     */
+    public function getProcessLabelAttribute()
+    {
+        $process = $this->process;
+
+        switch ($process) {
+            case self::PROCESS_ADMINISTRASI:
+                return 'Administrasi';
+                break;
+
+            case self::PROCESS_PSIKOTEST:
+                return 'Psikotest';
+                break;
+
+            case self::PROCESS_INTERVIEW_HRD:
+                return 'Interview HRD';
+                break;
+
+            case self::PROCESS_INTERVIEW_USER:
+                return 'Interview User';
+                break;
+
+            case self::PROCESS_MCU:
+                return 'MCU';
+                break;
+
+            case self::PROCESS_OTHER:
+                return 'Lain - Lain';
+                break;
+
+            default:
+                return 'Undefined';
+                break;
+        }
+    }
+
+    /**
+     * Acessor status label
+     * @return string
+     */
+    public function getStatusLabelAttribute()
+    {
+        $status = $this->status;
+
+        switch ($status) {
+            case self::STATUS_IN_PROGRESS:
+                return 'Dalam Proses';
+                break;
+
+            case self::STATUS_ACCEPTED:
+                return 'Diterima';
+                break;
+
+            case self::STATUS_REJECTED:
+                return 'Ditolak';
+                break;
+
+            default:
+                return 'Undefined';
+                break;
+        }
+    }
 }

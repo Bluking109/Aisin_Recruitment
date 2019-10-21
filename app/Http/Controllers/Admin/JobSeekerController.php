@@ -22,8 +22,17 @@ class JobSeekerController extends Controller
      */
     public function index(Request $request)
     {
+        $blacklist = $request->query('blacklist');
+
         if ($request->ajax()) {
-            $jobSeekers = JobSeeker::with('educationLevel');
+            $jobSeekers = JobSeeker::allData()
+                ->when($blacklist, function($q) {
+                    $q->blacklist();
+                }, function($q) {
+                    $q->unBlacklist();
+                })
+                ->with('educationLevel');
+
             return DataTables::eloquent($jobSeekers)->toJson();
         }
 
@@ -59,7 +68,7 @@ class JobSeekerController extends Controller
      */
     public function show($id)
     {
-        $jobSeeker = JobSeeker::findOrFail($id);
+        $jobSeeker = JobSeeker::allData()->findOrFail($id);
 
         return view('admin.pages.job_seekers.show', compact('jobSeeker'));
     }
@@ -132,7 +141,7 @@ class JobSeekerController extends Controller
      */
     public function getPhoto($id)
     {
-        $jobSeeker = JobSeeker::findOrFail($id);
+        $jobSeeker = JobSeeker::allData()->findOrFail($id);
 
         $path = public_path('admin/images/avatar/avatar.jpg');
 
@@ -155,7 +164,7 @@ class JobSeekerController extends Controller
      */
     public function updateBlacklist(Request $request, $id)
     {
-        $jobSeeker = JobSeeker::findOrFail($id);
+        $jobSeeker = JobSeeker::allData()->findOrFail($id);
 
         $jobSeeker->update([
             'is_blacklist' => JobSeeker::STATUS_BLACKLIST,
@@ -176,12 +185,40 @@ class JobSeekerController extends Controller
     }
 
     /**
+     * Set jobseeker to whitelist
+     * @param  Request $request
+     * @param  int  $id
+     * @return Illuminate\Http\Response
+     */
+    public function updateUnblacklist(Request $request, $id)
+    {
+        $jobSeeker = JobSeeker::allData()->findOrFail($id);
+
+        $jobSeeker->update([
+            'is_blacklist' => JobSeeker::STATUS_UNBLACKLIST,
+            'blacklist_until' => null
+        ]);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Updated !',
+                'message' => 'Job seekers have been unblacklisted successfully'
+            ], 200);
+        }
+
+        return redirect()->route('admin.pages.job_seekers.index')
+            ->with('success', true)
+            ->with('message', 'Job seekers have been unblacklisted successfully');
+    }
+
+    /**
      * Download document
      * @return Illuminate\Http\Response
      */
     public function getDocument($job_seeker, $type)
     {
-        $jobSeeker = JobSeeker::findOrFail($job_seeker);
+        $jobSeeker = JobSeeker::allData()->findOrFail($job_seeker);
         $path = 'uploads/'.$type.'/' . $jobSeeker->document->{$type};
 
         if (!Storage::exists($path)) {

@@ -15,6 +15,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Form Type</th>
+                                    <th>Hierarchy</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -54,6 +55,7 @@
                  return meta.row + meta.settings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
                 { data : 'form_type', name : 'form_type' },
+                { data : 'hierarchy', name : 'hierarchy' },
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
@@ -121,6 +123,7 @@
             $('#title-modal').text('Update Education Level');
             let educationLevels = $(this).data('education');
             $('#name').val(educationLevels.name);
+            $('#hierarchy').val(educationLevels.hierarchy);
             $('#form_type').val(educationLevels.form_type);
             $('#mdl-insert-update').modal('show');
         } );
@@ -156,6 +159,20 @@
                             'Error, data not found',
                             'error'
                         )
+                    },
+                    422 : function (data) {
+                        let response = data.responseJSON;
+                        if (response.error === 'no changes') {
+                            $('#mdl-insert-update').modal('hide');
+                            return ;
+                        }
+                        let errors = response.errors
+                        for (error in errors){
+                            let element = $("#frm-insert").find('[name="'+error+'"]');
+                            element.closest('.input-wrapper').find('span.text-error').remove();
+                            element.closest('.input-wrapper').append('<span class="text-danger text-error">'+errors[error].join('. ')+'</span>');
+
+                        }
                     }
                 }
             });

@@ -10,7 +10,7 @@ $url = url()->current();
 			{{-- Jika user login --}}
 			@if(auth()->guard('job_seekers')->check())
 			<div class="my-profiles-sec">
-				<span><img src="{{ $user->photo ?? asset('website/images/avatar/avatar.png') }}" class="profile-img" alt="" /> {{ auth()->guard('job_seekers')->user()->name }} <i class="la la-bars"></i></span>
+				<span><img src="{{ auth()->guard('job_seekers')->user()->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.png') }}" class="profile-img" alt="" /> {{ auth()->guard('job_seekers')->user()->name }} <i class="la la-bars"></i></span>
 			</div>
 			@else
 			<div class="btn-extars">

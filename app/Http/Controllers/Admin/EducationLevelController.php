@@ -19,7 +19,7 @@ class EducationLevelController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $educationLevels = EducationLevel::select('id', 'name', 'form_type', 'created_at' );
+            $educationLevels = EducationLevel::select('id', 'name', 'form_type', 'hierarchy', 'created_at' );
             return DataTables::eloquent($educationLevels)->toJson();
         }
 
@@ -75,13 +75,14 @@ class EducationLevelController extends Controller
         $updateEducationLevel = EducationLevel::findOrFail($id);
         $updateEducationLevel->fill([
             'name' => $request->name,
-            'form_type' => $request->form_type
+            'form_type' => $request->form_type,
+            'hierarchy' => $request->hierarchy
         ]);
 
         if ($updateEducationLevel->isClean()) {
             if ($request->ajax()) {
                 return response()->json([
-                    'error' => 'At least one value must change'
+                    'error' => 'no changes'
                 ], 422);
             }
             return redirect()->back()->with([

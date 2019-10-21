@@ -398,3 +398,12 @@ input[type="radio"]:disabled + label::before {
     border-color: #4f95ff;
 	cursor: default;
 }
+
+.job-details ul {
+	margin-left: 15px;
+	list-style-type: circle;
+}
+
+.job-details ol {
+	margin-left: 15px;
+}

@@ -24,7 +24,8 @@ class EducationLevel extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|max:50'
+            'name' => 'required|max:50',
+            'hierarchy' => 'required|integer|between:0,3'
         ];
 
         return $rules;

@@ -405,4 +405,23 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     {
         return $this->parents()->where('is', BiologicalParent::IS_MOTHER)->first();
     }
+
+    /**
+     * Check can apply or not
+     */
+    public function scopeCanApply()
+    {
+        if ($this->identity_number &&
+            $this->formalEducations->count() &&
+            $this->maritalStatus &&
+            $this->parents->count() &&
+            $this->interestConcept &&
+            $this->document &&
+            $this->other
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 }

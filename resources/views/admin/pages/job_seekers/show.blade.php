@@ -831,6 +831,131 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12">
+                            <h3 class="subtitle-panel">H. Others</h3>
+                        </div>
+                        <div class="col-sm-6" style="padding-left: 30px;">
+                            @php
+                            $other = $jobSeeker->other;
+                            @endphp
+                            <p><b>1. Hobby : </b></p>
+                            <p>{{ $other->hobby ?? '-' }}</p>
+                            <br>
+                            <p><b>2. How to fill spare time : </b></p>
+                            <p>{{ $other->fill_spare_time ?? '-' }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><b>3. Strong point : </b></p>
+                            <p>{{ $other->strong_point ?? '-' }}</p>
+                            <br>
+                            <p><b>4. Weak point : </b></p>
+                            <p>{{ $other->weak_point ?? '-' }}</p>
+                        </div>
+                        <div class="col-sm-4" style="padding-left: 30px;">
+                            <br>
+                            <p><b>5. Wearing glasses</b></p>
+                            <p>{{ $other->use_glasses == 0 ? 'No' : 'Yes' }}</p>
+                        </div>
+                        @if ($other->use_glasses == 1)
+                        @php
+                        $rightEye = json_decode($other->right_eye, true);
+                        $leftEye = json_decode($other->left_eye, true);
+                        @endphp
+                        <div class="col-sm-4">
+                            <br>
+                            <p><b>A. Rigth Eye</b></p>
+                            <p>{{ $rightEye['type'] . ' ' . $rightEye['size'] }}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <br>
+                            <p><b>B. Left Eye</b></p>
+                            <p>{{ $leftEye['type'] . ' ' . $leftEye['size'] }}</p>
+                        </div>
+                        @endif
+                        <div class="col-sm-12 mt-3">
+                            <h4 class="subtitle-panel">1. Another recruitment process</h4>
+                        </div>
+                        <div class="col-sm-12" style="padding-left: 30px;">
+                            @php
+                            $otherRecruitments = $jobSeeker->otherRecruitments;
+                            @endphp
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Organizer</th>
+                                            <th>Astra Group</th>
+                                            <th>Process</th>
+                                            <th>Place</th>
+                                            <th>Date</th>
+                                            <th>Position</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if($otherRecruitments->count())
+                                        @foreach ($otherRecruitments as $key => $item)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $item->organizer }}</td>
+                                            <td>{{ $item->is_astra == 1 ? 'Ya' : 'Bukan' }}</td>
+                                            <td>{{ $item->process_label }}</td>
+                                            <td>{{ $item->place }}</td>
+                                            <td>{{ $item->date }}</td>
+                                            <td>{{ $item->position }}</td>
+                                            <td>{{ $item->status_label }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="8" class="text-center">No Data</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-3">
+                            <h4 class="subtitle-panel">2. Disease History</h4>
+                        </div>
+                        <div class="col-sm-12" style="padding-left: 30px;">
+                            @php
+                            $diseases = $jobSeeker->diseases;
+                            @endphp
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>From</th>
+                                            <th>Until</th>
+                                            <th>Note</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if($diseases->count())
+                                        @foreach ($diseases as $key => $item)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->from_date }}</td>
+                                            <td>{{ $item->end_date }}</td>
+                                            <td>{{ $item->note }}</td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

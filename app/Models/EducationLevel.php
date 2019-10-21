@@ -17,6 +17,7 @@ class EducationLevel extends Model
     protected $fillable = [
     	'name',
     	'form_type',
+        'hierarchy'
     ];
 
     /**
