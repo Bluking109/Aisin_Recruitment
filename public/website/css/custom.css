@@ -407,3 +407,23 @@ input[type="radio"]:disabled + label::before {
 .job-details ol {
 	margin-left: 15px;
 }
+
+.already-apply-text {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px 40px;
+	background-color: #2ecc71;
+	color: #fff;
+	font-family: 'Quicksand', serif !important;
+	border-radius: 50px;
+}
+
+.already-apply-text {
+	font-size: 12px;
+	text-align: center;
+	padding: 3px 4px;
+	background-color: #2ecc71;
+	color: #fff;
+	font-family: 'Quicksand', serif !important;
+	border-radius: 50px;
+}

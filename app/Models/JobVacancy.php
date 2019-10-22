@@ -138,4 +138,14 @@ class JobVacancy extends Model
                 break;
         }
     }
+
+    /**
+     * Relation has many application
+     *
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public function applications()
+    {
+        return $this->hasMany('App\Models\JobApplication', 'job_vacancy_id');
+    }
 }

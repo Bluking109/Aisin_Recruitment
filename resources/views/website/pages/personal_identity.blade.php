@@ -58,7 +58,11 @@ $drivingLicences = $jobSeeker->driving_licences;
 				 						</span>
 				 						<div class="pf-field">
 				 							<input type="text" class="disabled" placeholder="Email" disabled="disabled" name="email" value="{{ $jobSeeker->email ?? old('email') }}" />
+				 							@if($jobSeeker->hasVerifiedEmail())
+											<small class="text-success">Email sudah terkonfirmasi.</small>
+				 							@else
 				 							<small class="text-danger">Email belum terkonfirmasi. <a href="{{ route('verification.resend') }}" class="text-info">Kirim ulang email konfirmasi</a></small>
+				 							@endif
 				 						</div>
 				 					</div>
 				 					<div class="col-md-6">
@@ -340,4 +344,12 @@ $drivingLicences = $jobSeeker->driving_licences;
 
 @push('additional_js')
 <script type="text/javascript" src="{{ asset('website/js/dynamic_page/personal-identity.min.js') }}"></script>
+<script type="text/javascript">
+	@if (session('resent'))
+	Toast.fire({
+	    type: 'success',
+	    title: 'Email verifikasi berhasil dikirim ke email Anda'
+	});
+	@endif
+</script>
 @endpush

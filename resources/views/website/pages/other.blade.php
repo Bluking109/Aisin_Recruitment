@@ -25,25 +25,33 @@
 				 				<input type="hidden" name="recaptcha_key" id="recaptcha-key">
 				 				<div class="row" data-index="0">
 				 					<div class="col-md-12">
-				 						<span class="pf-title">Hobi / Kegemaran Anda</span>
+				 						<span class="pf-title">Hobi / Kegemaran Anda
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 						<div class="pf-field">
 				 							<textarea placeholder="Hobi dan Kegemaran" name="hobby">{{ $other->hobby ?? old('hobby') }}</textarea>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-12">
-				 						<span class="pf-title">Bagaimana cara Anda mengisi waktu luang ?</span>
+				 						<span class="pf-title">Bagaimana cara Anda mengisi waktu luang ?
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 						<div class="pf-field">
 				 							<textarea placeholder="Cara mengisi waktu luang" name="fill_spare_time">{{ $other->fill_spare_time ?? old('fill_spare_time') }}</textarea>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-12">
-				 						<span class="pf-title">Sebutkan minimal 3 kelebihan sifat Anda (Strong Point) !</span>
+				 						<span class="pf-title">Sebutkan minimal 3 kelebihan sifat Anda (Strong Point) !
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 						<div class="pf-field">
 				 							<textarea placeholder="Kelebihan" name="strong_point">{{ $other->strong_point ?? old('strong_point') }}</textarea>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-12">
-				 						<span class="pf-title">Sebutkan minimal 3 kelemahan sifat Anda (Weak Point) !</span>
+				 						<span class="pf-title">Sebutkan minimal 3 kelemahan sifat Anda (Weak Point) !
+											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
+				 						</span>
 				 						<div class="pf-field">
 				 							<textarea placeholder="Kelemahan" name="weak_point">{{ $other->weak_point ?? old('weak_point') }}</textarea>
 				 						</div>

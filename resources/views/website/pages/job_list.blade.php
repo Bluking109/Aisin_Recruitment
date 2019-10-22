@@ -52,7 +52,17 @@
 			 		</div>
 			 		<div class="job-grid-sec">
 						<div class="row">
-							@foreach($jobs as $job)
+							@foreach($jobs as $key => $job)
+							@php
+							$jobSeeker = auth()->guard('job_seekers')->user();
+							$alreadyApplied = null;
+
+							if ($jobSeeker) {
+								$alreadyApplied = $jobSeeker->applications()
+									->where('job_vacancy_id', $job->id)
+									->first();
+							}
+							@endphp
 							<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 								<div class="job-grid border">
 									<div class="job-title-sec">
@@ -67,7 +77,17 @@
 										<span><i class="fa fa-clock-o"></i> Ditutup : {{ date('d M Y', strtotime($job->close_date)) }}</span>
 									</div>
 									<span class="job-lctn">Minimal Pendidikan {{ $job->educationLevel->name }}</span>
-									<a  href="#" title="">Lamar</a>
+
+									@if(!$alreadyApplied)
+			 						<a  href="#" title="" class="apply-job" data-target="#form-sumbit-vacancy-{{$key}}">Lamar</a>
+			 						@else
+			 						<a  href="#" title="" class="apply-job">Sudah Dilamar</a>
+			 						@endif
+
+									<form class="d-none" method="post" id="form-sumbit-vacancy-{{$key}}" action="{{ route('job-vacancies.apply', ['slug' => $job->slug]) }}">
+			 							@csrf
+			 							<button id="btn-sumbit-vacancy"></button>
+			 						</form>
 								</div><!-- JOB Grid -->
 							</div>
 							@endforeach
@@ -86,6 +106,29 @@
 	$(function() {
 		let url = new URL(window.location.href);
         let params = new URLSearchParams(url.search.slice(1));
+
+        $('.apply-job').on('click', function(e) {
+			e.preventDefault();
+			@if(auth()->guard('job_seekers')->check())
+			$($(this).data('target')).submit();
+			@else
+			$('.signin-popup').trigger('click');
+			@endif
+		});
+
+        @if (session('error'))
+		Toast.fire({
+		    type: 'error',
+		    title: "{{ session('error') }}"
+		});
+		@endif
+
+        @if (session('success'))
+		Toast.fire({
+		    type: 'success',
+		    title: "{{ session('success') }}"
+		});
+		@endif
 
 		$('#filter-edu').on('change', function() {
             let val = $(this).val();

@@ -151,6 +151,12 @@ Route::namespace('Website')->group(function() {
 	});
 
 	Route::group([
+		'middleware' => 'auth:job_seekers'
+	], function() {
+		Route::post('job-vacancies/{slug}/apply', 'JobVacancyController@applyJob')->name('job-vacancies.apply');
+	});
+
+	Route::group([
 		'as' => 'contact.',
 		'prefix' => 'contact'
 	], function() {

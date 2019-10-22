@@ -407,6 +407,14 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Relation has many applications
+     */
+    public function applications()
+    {
+        return $this->hasMany('App\Models\JobApplication', 'job_seeker_id');
+    }
+
+    /**
      * Check can apply or not
      */
     public function scopeCanApply()
