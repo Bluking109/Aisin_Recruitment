@@ -60,6 +60,10 @@
 			width: 33%;
 		}
 
+		.c40 {
+			width: 40%;
+		}
+
 		.c45 {
 			width: 45%;
 		}
@@ -98,6 +102,13 @@
 			font-size: 10px;
 			margin-top: 2px;
    			margin-bottom: 2px;
+		}
+
+		.descriptionpadding {
+			font-size: 10px;
+			margin-top: 2px;
+   			margin-bottom: 2px;
+   			padding-left: 15px;
 		}
 
 		.photo-profile {
@@ -642,6 +653,211 @@
 				<br>
 				<p class="description">6. Pernahkah anda melakukan pembaharuan/perubahan di perusahaan tersebut ?</p>
 				<p> isi </p>
+				<br>
+				<p class="description">7. Siapakah yang mendorong anda hingga samapai pada taraf kemajuan seperti sekarang ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">8. Bagaimana bila anda menghadapi persoalan dalam pekerjaan dan harus mengambil keputusan ?</p>
+				<p> isi </p>
+
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="c100">
+			<p class="sub-tittle c50">E. MINAT DAN KONSEP PRIBADI</p>
+			<div class="c100">
+				<p class="description">1. Uraikan apa yang menjadi cita-cita anda ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">2. Apa yang mendorong anda ingin bekerja ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">3. Mengapa anda ingin bekerja di perusahaan kami ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">4. Sebutkan gaji yang anda inginkan ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">5. Sebutkan fasilitas lainnya yang anda harapkan ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">6. Kapan anda dapat mulai bekerja ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">7. Pilih jenis pekerjaan yang sesuai dengan prioritas minat Anda ( 3 jenis )</p>
+				<p> isi </p>
+				<br>
+				<div>
+					<p class="description">8. Lingkungan kerja :  </p>
+					<div class="descriptionpadding">
+						<p class="description"> a) Lingkungan kerja yang disenangi : </p>
+						<p class="description"> Sebutkan : </p>
+						<br>
+						<p class="description"> b) Lingkungan kerja yang tidak disenangi : </p>
+						<p class="description"> Sebutkan : </p>
+						<br>
+					</div>
+
+				</div>
+				<p class="description">9. Bersediakah anda ditempatkan diluar daerah ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">10. Sebutkan tipe orang yang anda senangi ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">11. Terhadap hal apa anda sulit mengambil keputusan ?</p>
+				<p> isi </p>
+				<br>
+			</div>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="c100">
+			<p class="sub-tittle c50">F. AKTIVITAS SOSIAL</p>
+			<div class="c100">
+				<p class="description">1. Adakah kenalan anda di perusahaan kami ?</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Nama</td>
+							<td class="c25">Perusahaan</td>
+							<td class="c25">Jabatan</td>
+							<td class="c10">No Telepon</td>
+							<td>Hubungan</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<br>
+				<p class="description">2. Sebutkan referensi anda di luar perusahaan kami :</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Nama</td>
+							<td class="c25">Perusahaan</td>
+							<td class="c25">Jabatan</td>
+							<td class="c10">No Telepon</td>
+							<td>Hubungan</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<p class="description">3. Hobby / Kegemaran anda :</p>
+				<p> isi </p>
+				<br>
+				<p class="description">4. Bagaimana cara anda mengisi waktu luang ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">5. Organisasi yang pernah anda ikuti :</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Nama Organisasi</td>
+							<td class="c25">Tempat</td>
+							<td class="c25">Jabatan</td>
+							<td>..s/d..</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<div class="c100">
+			<p class="sub-tittle c50">G. LAIN-LAIN</p>
+			<div class="c100">
+				<p class="description">1. Pernahkah anda mengikuti psikotest sebelumnya ?</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Waktu</td>
+							<td class="c25">Penyelenggara</td>
+							<td class="c25">Tempat</td>
+							<td>Tujuan</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<p class="description">2. Apakah saat ini sedang mengikuti proses rekruitment di perusahaan lain? Jika Ya, Silahkan isi tabel berikut ini.</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Waktu</td>
+							<td class="c25">Penyelenggara</td>
+							<td class="c25">Tempat</td>
+							<td>Tujuan</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<p class="description">3. Apakah saat ini sedang mengikuti proses rekruitment di perusahaan lain? Jika Ya, Silahkan isi tabel berikut ini.</p>
 
 			</div>
 		</div>
