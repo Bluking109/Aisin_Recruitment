@@ -824,25 +824,37 @@
 						</tr>
 					</table>
 				</div>
+				<br>
 				<p class="description">2. Apakah saat ini sedang mengikuti proses rekruitment di perusahaan lain? Jika Ya, Silahkan isi tabel berikut ini.</p>
 				<div>
 					<table class="c100 description bordered">
 						<tr>
-							<td class="c6">No</td>
-							<td class="c25">Waktu</td>
-							<td class="c25">Penyelenggara</td>
-							<td class="c25">Tempat</td>
-							<td>Tujuan</td>
+							<td rowspan="2" class="c6">No</td>
+							<td colspan="2" class="c18">penyelenggara</td>
+							<td colspan="6" class="c50">Proses</td>
+							<td rowspan="2" class="c10">Waktu & tempat</td>
+							<td rowspan="2" class="c10">Posisi</td>
+							<td rowspan="2">Status</td>
 						</tr>
 						<tr>
-							<td>1</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>Astra Group</td>
+							<td>Non Astra Group</td>
+							<td>Administrasi</td>
+							<td>Psikotes</td>
+							<td>Interview HRD</td>
+							<td>Interview User</td>
+							<td>MCU</td>
+							<td>Lain-lain</td>
 						</tr>
 						<tr>
 							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -854,10 +866,59 @@
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</table>
 				</div>
-				<p class="description">3. Apakah saat ini sedang mengikuti proses rekruitment di perusahaan lain? Jika Ya, Silahkan isi tabel berikut ini.</p>
+				<br>
+				<p class="description">3. Apa yang menjadi Kekuatan / Kelebihan Sifat ( Strong point ) anda ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">4. Apa yang menjadi Kelemahan / kekurangan  Sifat ( Weak point ) anda ?</p>
+				<p> isi </p>
+				<br>
+				<p class="description">5. Apakah anda menggunakan kacamata ?</p>
+				<p> isi </p>
+				<p class="descriptionpadding">*) Jika ya tuliskan besaran minus/silinder/plus</p>
+				<p class="descriptionpadding"> isi </p>
+				<br>
+				<p class="description">6. Pernahkah anda menderita penyakit yang lama sembuh (ex. TBC, Typhus, Hepatitis dll) ?</p>
+				<div>
+					<table class="c100 description bordered">
+						<tr>
+							<td class="c6">No</td>
+							<td class="c25">Nama Penyakit</td>
+							<td class="c18">..s/d..</td>
+							<td>Akibatnya</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<br>
+				<p class="description">Diisi dengan sesungguhnya. Apabila dikemudian hari ternyata ada hal-hal yang bertentangan, maka saya bersedia</p>
+				<p class="description">dituntut sesuai dengan hukuman yang berlaku dan lamaran ini dapat dibatalkan</p>
+				<br><br>
+				<p class="description" style="text-align: right;">Tanggal</p>
+
+
+
 
 			</div>
 		</div>
