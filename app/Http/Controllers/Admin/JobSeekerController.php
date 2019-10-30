@@ -230,8 +230,8 @@ class JobSeekerController extends Controller
 
     public function test()
     {
-        // return view('admin.pdf.job_seeker');
-        $pdf = PDF::loadView('admin.pdf.job_seeker');
-        return $pdf->download('Pelamar.pdf');
+        return view('admin.pdf.job_seeker_smk');
+        // $pdf = PDF::loadView('admin.pdf.job_seeker_smk');
+        // return $pdf->download('Pelamar.pdf');
     }
 }
