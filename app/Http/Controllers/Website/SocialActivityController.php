@@ -52,25 +52,29 @@ class SocialActivityController extends Controller
             $jobSeeker = auth()->user();
 
             $jobSeeker->friends()->delete();
-            foreach ($request->friends as $key => $value) {
-                $jobSeeker->friends()->create([
-                    'name' => $value['name'],
-                    'position' => $value['position'],
-                    'telephone_number' => $value['telephone_number'],
-                    'relationship' => $value['relationship']
-                ]);
+            if ($request->friends) {
+                foreach ($request->friends as $key => $value) {
+                    $jobSeeker->friends()->create([
+                        'name' => $value['name'],
+                        'position' => $value['position'],
+                        'telephone_number' => $value['telephone_number'],
+                        'relationship' => $value['relationship']
+                    ]);
+                }
             }
 
             $jobSeeker->organizations()->delete();
-            foreach ($request->organizations as $key => $value) {
-                if ($value['name']) {
-                    $jobSeeker->organizations()->create([
-                        'name' => $value['name'],
-                        'place' => $value['place'],
-                        'position' => $value['position'],
-                        'start_date' => $value['start_date'],
-                        'end_date' => $value['end_date']
-                    ]);
+            if ($request->organizations) {
+                foreach ($request->organizations as $key => $value) {
+                    if ($value['name']) {
+                        $jobSeeker->organizations()->create([
+                            'name' => $value['name'],
+                            'place' => $value['place'],
+                            'position' => $value['position'],
+                            'start_date' => $value['start_date'],
+                            'end_date' => $value['end_date']
+                        ]);
+                    }
                 }
             }
 
