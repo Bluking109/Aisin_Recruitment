@@ -73,10 +73,10 @@
 					 						</div>
 					 					</td>
 					 					<td>
-					 						<span>{{ date('d F Y', strtotime($testAt)) }}</span><br />
+					 						<span>{{ !$stages->count() ? '-' : date('d F Y', strtotime($testAt)) }}</span><br />
 					 					</td>
 					 					<td>
-					 						<span>{{ date('H:i', strtotime($testAt)) }}</span><br />
+					 						<span>{{ !$stages->count() ? '-' : date('H:i', strtotime($testAt)) }}</span><br />
 					 					</td>
 					 					<td>
 					 						@if($v->status == App\Models\JobApplication::STATUS_DRAFT || $v->status == App\Models\JobApplication::STATUS_IN_PROCESS)
