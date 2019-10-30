@@ -77,6 +77,8 @@ class Handler extends ExceptionHandler
         $guard = array_get($exception->guards(), 0);
         switch ($guard) {
             case 'job_seekers':
+                session()->put('redirect_to_sess', url()->current());
+                session()->flash('need_login', true);
                 $login = 'home';
                 break;
             default:

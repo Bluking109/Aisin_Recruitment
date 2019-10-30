@@ -30,9 +30,26 @@
 							</div>
 						</div>
 						<div class="form-group row">
+							<label for="name" class="col-sm-3 col-form-label">Switch Vacancy When Fail</label>
+							<div class="col-sm-9 input-wrapper">
+								<div class="form-check">
+		                            <label class="form-check-label">
+		                              	<input type="radio" class="form-check-input" name="switch_vacancy" id="radioCan" value="1">
+		                              	Can
+		                            </label>
+	                          	</div>
+	                          	<div class="form-check">
+	                            	<label class="form-check-label">
+	                              		<input type="radio" class="form-check-input" name="switch_vacancy" id="radioCanNot" value="0" checked>
+	                              		Can Not
+	                            	</label>
+	                          	</div>
+							</div>
+						</div>
+						<div class="form-group row">
 							<label for="name" class="col-sm-3 col-form-label">Note</label>
 							<div class="col-sm-9 input-wrapper">
-								<textarea name="note" id="note" rows="5" class="form-control"></textarea>
+								<textarea name="note" id="note" rows="5" class="form-control" placeholder="Note"></textarea>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>

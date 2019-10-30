@@ -40,6 +40,7 @@
 			 	<div class="col-lg-12">
 			 		<div class="filterbar">
 			 			<h5>{{ $jobs->total() }} Lowongan Pekerjaan Tersedia</h5>
+			 			@if(!auth()->guard('job_seekers')->check())
 			 			<div class="sortby-sec">
 			 				<span>Filter</span>
 			 				<select data-placeholder="Pendidikan" class="chosen" id="filter-edu">
@@ -49,6 +50,7 @@
 			 					@endforeach
 							</select>
 			 			</div>
+			 			@endif
 			 		</div>
 			 		<div class="job-grid-sec">
 						<div class="row">

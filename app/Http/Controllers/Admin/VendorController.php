@@ -115,4 +115,18 @@ class VendorController extends Controller
             'message' => 'success'
         ]);
     }
+
+    /**
+     * get vendor
+     * @return Illuminate\Http\Response
+     */
+    public function getVendor(Request $request)
+    {
+        $search = $request->search;
+        $vendors = Vendor::select('id', 'name as text')
+            ->where('name','like', '%'.$search.'%',)
+            ->get();
+
+        return response()->json($vendors);
+    }
 }

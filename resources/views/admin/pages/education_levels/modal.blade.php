@@ -23,9 +23,14 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="hierarchy" class="col-sm-3 col-form-label">Hierarchy (0-3)</label>
+							<label for="hierarchy" class="col-sm-3 col-form-label">Hierarchy (For validation data)</label>
 							<div class="col-sm-9 input-wrapper">
-								<input type="number" name="hierarchy" class="form-control" placeholder="Hierarchy" id="hierarchy">
+								<select class="form-control" id="hierarchy" name="hierarchy" style="width: 100%; height: auto;">
+									<option value="3">SMA</option>
+									<option value="4">D3</option>
+									<option value="5">S1</option>
+									<option value="6">S2</option>
+								</select>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>

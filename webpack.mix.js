@@ -83,4 +83,9 @@ mix.scripts([
     'public/website/js/dynamic_page/other.js',
 ], 'public/website/js/dynamic_page/other.min.js');
 
+mix.scripts([
+    'public/website/js/dynamic_page/profile.js',
+    'public/website/js/dynamic_page/applied-job.js',
+], 'public/website/js/dynamic_page/applied-job.min.js');
+
 

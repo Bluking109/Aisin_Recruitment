@@ -38,9 +38,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($request->ajax()) {
+            $redirectTo = session()->get('redirect_to_sess');
+            session()->forget('redirect_to_sess');
+
             return response()->json([
                 'message' => 'Log in success',
-                'success' => true
+                'success' => true,
+                'redirect' => $redirectTo
             ]);
         }
     }

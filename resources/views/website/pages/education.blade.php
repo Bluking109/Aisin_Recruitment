@@ -66,7 +66,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (6 Semester)</span>
+				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)</span>
 				 						<div class="pf-field">
 				 							<input type="number" placeholder="Nilai MTK" name="educations[{{ $primarySchool }}][average_math_score]" value="{{ isset($formalEducations[$primarySchool]) ? $formalEducations[$primarySchool]->average_math_score : old('educations['.$primarySchool.'][average_math_score]') }}" />
 				 						</div>
@@ -119,7 +119,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (6 Semester)
+				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
@@ -208,7 +208,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 					</div>
 				 					@else
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (6 Semester)
+				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">

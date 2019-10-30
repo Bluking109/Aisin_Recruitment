@@ -40,6 +40,6 @@ class JobApplication extends Model
      */
     public function jobApplicationStages()
     {
-        return $this->belongsTo('App\Models\JobApplicationStage', 'job_application_id');
+        return $this->hasMany('App\Models\JobApplicationStage', 'job_application_id');
     }
 }

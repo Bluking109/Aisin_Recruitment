@@ -138,8 +138,26 @@ if ($jobVacancy) {
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="min_gpa" class="col-sm-3 col-form-label">Max Age</label>
+                                    <div class="col-sm-9 input-wrapper">
+                                        <input type="number" class="form-control" id="max_age" name="max_age" placeholder="Max Age" value="{{ $jobVacancy->max_age ?? old('max_age') }}">
+                                        @error('max_age')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="min_gpa" class="col-sm-3 col-form-label">Min Math Score</label>
+                                    <div class="col-sm-9 input-wrapper">
+                                        <input type="number" class="form-control" id="min_math_score" name="min_math_score" placeholder="Min Math Score" value="{{ $jobVacancy->min_math_score ?? old('min_math_score') }}">
+                                        @error('min_math_score')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label for="min_gpa" class="col-sm-3 col-form-label">Min GPA</label>
                                     <div class="col-sm-9 input-wrapper">

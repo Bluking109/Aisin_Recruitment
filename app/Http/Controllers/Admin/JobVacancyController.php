@@ -20,7 +20,9 @@ class JobVacancyController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $jobvacancies = JobVacancy::with('position', 'educationLevel', 'section')->orderBy('id', 'desc')->get();
+            $jobvacancies = JobVacancy::with('position', 'educationLevel', 'section')
+                ->orderBy('id', 'desc')
+                ->get();
             return DataTables::collection($jobvacancies)->toJson();
         }
 
@@ -50,6 +52,8 @@ class JobVacancyController extends Controller
                 'close_date' => $request->close_date,
                 'gender' => $request->gender,
                 'min_gpa' => $request->min_gpa,
+                'max_age' => $request->max_age,
+                'min_math_score' => $request->min_math_score,
                 'descriptions' => $request->descriptions,
                 'requirements' => $request->requirements,
             ]);
@@ -132,6 +136,8 @@ class JobVacancyController extends Controller
                 'close_date' => $request->close_date,
                 'gender' => $request->gender,
                 'min_gpa' => $request->min_gpa,
+                'max_age' => $request->max_age,
+                'min_math_score' => $request->min_math_score,
                 'descriptions' => $request->descriptions,
                 'requirements' => $request->requirements,
             ]);
@@ -186,5 +192,28 @@ class JobVacancyController extends Controller
         return redirect()->back()->with([
             'message' => 'success'
         ]);
+    }
+
+    /**
+     * Display listing of job vacancy
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getJobVacancies(Request $request)
+    {
+        $search = $request->search;
+        $jobVacancies = JobVacancy::with('position', 'section')
+            ->when($search, function($q, $search) {
+                $q->whereHas('position', function($q) use($search) {
+                    $q->where('name', 'like', '%'.$search.'%');
+                })->orWhereHasMorph('section',
+                    ['App\Models\Section', 'App\Models\Department'], function($q) use($search) {
+                    $q->where('name', 'LIKE', '%'. $search .'%')
+                        ->orWhere('code', 'LIKE', '%'. $search .'%');
+                });
+            })
+            ->get();
+
+        return response()->json($jobVacancies, 200);
     }
 }

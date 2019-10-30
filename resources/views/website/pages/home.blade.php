@@ -157,6 +157,10 @@
 		  	fade: true,
 		  	cssEase: 'linear'
 		});
+
+		@if(session()->has('need_login'))
+		$('.signin-popup-box').fadeIn('fast');
+		@endif
 	});
 </script>
 @endpush

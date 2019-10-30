@@ -26,6 +26,7 @@ class RecruitmentStage extends FormRequest
         return [
             'name' => 'required|max:191',
             'by_vendor' => 'required|in:1,0',
+            'switch_vacancy' => 'required|in:1,0',
             'note' => 'nullable|max:500'
         ];
     }

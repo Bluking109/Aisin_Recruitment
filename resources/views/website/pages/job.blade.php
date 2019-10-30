@@ -79,6 +79,11 @@ if ($jobSeeker) {
 							 				<li><i class="fa fa-mars-double"></i><h3>Jenis Kelamin</h3><span>{{ $job->gender_label }}</span></li>
 							 				{{-- <li><i class="fa fa-shield"></i><h3>Minimal Pengalaman</h3><span>2 Years</span></li> --}}
 							 				<li><i class="fa fa-graduation-cap"></i><h3>Pendidikan</h3><span>{{ $job->educationLevel->name }}</span></li>
+							 				@if($job->educationLevel->hierarchy > 3)
+							 				<li><i class="fa fa-book"></i><h3>Min IPK</h3><span>{{ $job->min_gpa }}</span></li>
+							 				@else
+											<li><i class="fa fa-book"></i><h3>Nilai Rata-Rata MTK</h3><span>{{ $job->min_math_score }}</span></li>
+							 				@endif
 							 			</ul>
 							 		</div><!-- Job Overview -->
 						 		</div>

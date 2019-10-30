@@ -18,7 +18,7 @@ class RecruitmentStageController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $stages = RecruitmentStage::select('id', 'name', 'by_vendor', 'note', 'created_at' );
+            $stages = RecruitmentStage::select('id', 'name', 'by_vendor', 'note', 'created_at', 'switch_vacancy');
             return DataTables::eloquent($stages)->toJson();
         }
 
@@ -52,6 +52,7 @@ class RecruitmentStageController extends Controller
         $stage = RecruitmentStage::create([
             'name' => $request->name,
             'by_vendor' => $request->by_vendor,
+            'switch_vacancy' => $request->switch_vacancy,
             'note' => $request->note
         ]);
 
@@ -81,6 +82,7 @@ class RecruitmentStageController extends Controller
         $updateStage->fill([
             'name' => $request->name,
             'by_vendor' => $request->by_vendor,
+            'switch_vacancy' => $request->switch_vacancy,
             'note' => $request->note
         ]);
 

@@ -26,6 +26,8 @@ class JobVacancy extends Model
         'image',
         'section_type',
         'section_id',
+        'max_age',
+        'min_math_score',
         'slug'
     ];
 
@@ -70,7 +72,7 @@ class JobVacancy extends Model
      */
     public function stages()
     {
-        return $this->belongsToMany('App\Models\RecruitmentStage', 'job_vacancy_stages', 'job_vacancy_id', 'recruitment_stage_id')->withPivot('order_index');
+        return $this->belongsToMany('App\Models\RecruitmentStage', 'job_vacancy_stages', 'job_vacancy_id', 'recruitment_stage_id')->withPivot('order_index')->orderBy('order_index');
     }
 
     /**

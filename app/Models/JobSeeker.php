@@ -141,15 +141,19 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
      */
     public function getDrivingLicencesAttribute($value)
     {
-        $licences = json_decode($value, true);
-        $returnData = [];
-        if ($licences) {
-            foreach ($licences as $key => $value) {
-                $returnData[$value['type']] = $value['value'];
+        if(is_string($value)) {
+            $licences = json_decode($value, true);
+            $returnData = [];
+            if ($licences) {
+                foreach ($licences as $key => $value) {
+                    $returnData[$value['type']] = $value['value'];
+                }
             }
+
+            return $this->attributes['driving_licences'] = $returnData;
         }
 
-        return $this->attributes['driving_licences'] = $returnData;
+        return $this->attributes['driving_licences'] = $value;
     }
 
     /**
@@ -412,6 +416,14 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     public function applications()
     {
         return $this->hasMany('App\Models\JobApplication', 'job_seeker_id');
+    }
+
+    /**
+     * acessor age
+     */
+    public function getAgeAttribute()
+    {
+        return date_diff(date_create($this->date_of_birth), date_create('today'))->y;
     }
 
     /**

@@ -15,7 +15,7 @@ class JobApplicationStage extends Model
      */
     public function stage()
     {
-        return $this->belongsTo('App\Models\JobSeeker', 'job_seeker_id');
+        return $this->belongsTo('App\Models\RecruitmentStage', 'stage_id');
     }
 
     /**

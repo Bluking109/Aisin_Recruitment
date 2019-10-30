@@ -24,9 +24,7 @@ class JobVacancyController extends Controller
 
     	$jobs = JobVacancy::active()
             ->when($jobSeeker, function($q, $jobSeeker) {
-                $q->whereHas('educationLevel', function($q) use($jobSeeker) {
-                    $q->where('hierarchy', '<=', $jobSeeker->educationLevel->hierarchy);
-                });
+                $q->where('education_level_id', $jobSeeker->educationLevel->id);
             })
             ->when($search, function($q, $search) {
     			$q->whereHas('position', function($q) use($search) {
@@ -80,9 +78,7 @@ class JobVacancyController extends Controller
 
     	$job = JobVacancy::active()->slug($slug)
             ->when($jobSeeker, function($q, $jobSeeker) {
-                $q->whereHas('educationLevel', function($q) use($jobSeeker) {
-                    $q->where('hierarchy', '<=', $jobSeeker->educationLevel->hierarchy);
-                });
+                $q->where('education_level_id', $jobSeeker->educationLevel->id);
             })
             ->first();
 
@@ -124,9 +120,7 @@ class JobVacancyController extends Controller
     {
         $jobSeeker = auth()->user();
         $job = JobVacancy::active()->slug($slug)
-            ->whereHas('educationLevel', function($q) use($jobSeeker) {
-                $q->where('hierarchy', '<=', $jobSeeker->educationLevel->hierarchy);
-            })
+            ->where('education_level_id', $jobSeeker->educationLevel->id)
             ->first();
 
         if (!$job) {
@@ -160,6 +154,31 @@ class JobVacancyController extends Controller
 
         if (!$genderValidation) {
             return back()->with('error', 'Mohon maaf jenis kelamin Anda tidak sesuai dengan kualifikasi !');
+        }
+
+        // check umur
+        if ($jobSeeker->age >= $job->max_age) {
+            return back()->with('error', 'Mohon maaf umur Anda melebiihi batas yang di bolehkan');
+        }
+
+        $eduLevel = $job->educationLevel->hierarchy;
+        $edu = $jobSeeker->formalEducations()->where('class', $eduLevel)->first();
+        // check ipk apabila D3/S1
+        if ($jobSeeker->educationLevel->isAssociateForm()) {
+            if ($edu) {
+                if ($edu->grade_point < $job->min_gpa) {
+                    return back()->with('error', 'Mohon maaf IPK Anda tidak memenuhi kualifikasi');
+                }
+            }
+        }
+
+        // check matematika apabila SMA
+        if ($jobSeeker->educationLevel->isHighSchoolForm()) {
+            if ($edu) {
+                if (($edu->un_math_score + $edu->average_math_score) / 2 < $job->min_math_score) {
+                    return back()->with('error', 'Mohon maaf Nilai Rata-rata MTK Anda tidak memenuhi kualifikasi');
+                }
+            }
         }
 
         // maksimal melamar loker adalah 3

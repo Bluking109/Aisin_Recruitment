@@ -28,7 +28,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="pages/icons/mdi.html" class="nav-link">
+                <a href="{{ route('admin.job-applications.index') }}" class="nav-link">
                     <i class="mdi mdi-file-document menu-icon"></i>
                     <span class="menu-title">Job Applications</span>
                     <i class="menu-arrow"></i>

@@ -72,7 +72,8 @@ $(function() {
             data: $(this).serialize(),
             dataType: "json",
             success: function (data) {
-                window.location.href = '/profiles/personal-identity';
+                let redirect = data.redirect == null ? '/profiles/personal-identity' : data.redirect;
+                window.location.href = redirect;
             },
             statusCode: {
                 422 : function (data) {

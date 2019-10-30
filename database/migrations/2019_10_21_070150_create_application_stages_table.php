@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApplicationStageTable extends Migration
+class CreateApplicationStagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateApplicationStageTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_application_stage', function (Blueprint $table) {
+        Schema::create('job_application_stages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('job_application_id')->nullable();
             $table->foreign('job_application_id')
@@ -32,6 +32,7 @@ class CreateApplicationStageTable extends Migration
                 ->onDelete('cascade');
             $table->dateTime('exam_at');
             $table->string('note', 191)->nullable();
+            $table->enum('status', ['0', '1', '2'])->comment = '0 = waiting, 1 = confirmed, 2 = reject';
             $table->timestamps();
         });
     }
@@ -43,6 +44,6 @@ class CreateApplicationStageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_stage');
+        Schema::dropIfExists('application_stages');
     }
 }

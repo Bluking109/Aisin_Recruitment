@@ -19,7 +19,6 @@
 | Untuk base admin route bisa di setting melalui menu setting
 */
 Route::namespace('Admin')->group(function() {
-	Route::get('test', 'JobSeekerController@test');
 	Route::group([
 		'prefix' => AIIASetting::getValue('admin_base_route',
 		config('aiia.default_url_admin')),
@@ -33,6 +32,7 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
 			Route::resource('settings', 'SettingController')->only('index', 'store');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
+			Route::get('vendors/get-vendor', 'VendorController@getVendor')->name('vendors.getvendor');
 			Route::resource('education-levels', 'EducationLevelController')->except('edit', 'show', 'create');
 			Route::get('education-levels/get-education-level', 'EducationLevelController@getEducationLevel')->name('education-levels.geteducationlevel');
 			Route::resource('permissions', 'PermissionController')->except('edit', 'show', 'create');
@@ -45,7 +45,10 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('subdistricts', 'SubDistrictController')->except('edit', 'show', 'create');
 			Route::get('subdistricts/get-subdistrict', 'SubDistrictController@getSubDistrict')->name('subdistricts.getsubdistrict');
 			Route::resource('villages', 'VillageController')->except('edit', 'show', 'create');
+
+			Route::get('job-vacancies/get-job-vacancies', 'JobVacancyController@getJobVacancies')->name('job-vacancies.getjobvacancies');
 			Route::resource('job-vacancies', 'JobVacancyController');
+
 			Route::resource('departments', 'DepartmentController')->except('edit', 'show', 'create');
 			Route::get('departments/get-department', 'DepartmentController@getDepartment')->name('departments.getdepartment');
 			Route::resource('sections', 'SectionController')->except('edit', 'show', 'create');
@@ -70,6 +73,12 @@ Route::namespace('Admin')->group(function() {
 
 			Route::get('job-seekers/{job_seeker}/document/{type}', 'JobSeekerController@getDocument')
 				->name('job-seekers.getdocument');
+
+			Route::get('job-applications', 'JobApplicationController@index')->name('job-applications.index');
+			Route::get('job-applications/{job_application}', 'JobApplicationController@show')->name('job-applications.show');
+			Route::put('job-applications/{job_application}/reject', 'JobApplicationController@reject')->name('job-applications.reject');
+			Route::put('job-applications/{job_application}/accept', 'JobApplicationController@acceptApplication')->name('job-applications.accept');
+			Route::put('job-applications/{job_application}/next-stage', 'JobApplicationController@nextStage')->name('job-applications.next-stage');
 		});
 	});
 });
@@ -148,6 +157,9 @@ Route::namespace('Website')->group(function() {
 
 		Route::get('other', 'OtherController@index')->name('other.index');
 		Route::put('other', 'OtherController@update')->name('other.update');
+
+		Route::get('applied-jobs', 'AppliedJobController@index')->name('applied-jobs.index');
+		Route::put('applied-jobs/{id}', 'AppliedJobController@update')->name('applied-jobs.update');
 	});
 
 	Route::group([
@@ -168,6 +180,4 @@ Route::namespace('Website')->group(function() {
 	Route::get('home', 'PageController@home')->name('home');
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
-
-	Route::get('profiles/applied-jobs', 'ProfileController@indexAppliedJob')->name('profiles.applied-jobs.show');
 });

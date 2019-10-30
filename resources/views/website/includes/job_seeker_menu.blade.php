@@ -43,8 +43,8 @@ $currentUrl = url()->current();
 		</a>
 	</li>
 	<li class="divider"></li>
-	<li @if($currentUrl === route('profiles.applied-jobs.show'))class="active"@endif>
-		<a href="{{ route('profiles.applied-jobs.show') }}" title="">
+	<li @if($currentUrl === route('profiles.applied-jobs.index'))class="active"@endif>
+		<a href="{{ route('profiles.applied-jobs.index') }}" title="">
 			<i class="fa fa-send"></i>Pekerajaan yang Dilamar
 		</a>
 	</li>

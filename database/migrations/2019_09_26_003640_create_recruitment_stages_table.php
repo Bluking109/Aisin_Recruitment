@@ -17,6 +17,7 @@ class CreateRecruitmentStagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->enum('by_vendor', ['1', '0'])->default('0')->comment = '1 = By Vendor, 0 = Internal';
+            $table->enum('switch_vacancy', ['1', '0'])->default('0')->comment = 'Pindah ke lowongan lain ketika gagal';
             $table->text('note')->nullable();
             $table->timestamps();
         });

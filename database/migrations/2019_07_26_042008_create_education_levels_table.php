@@ -17,7 +17,9 @@ class CreateEducationLevelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->enum('form_type', ['1', '2'])->comment = " 1 = Formulir tipe 1 (SMA) , 2 = Formulir tipe 2 (D3/S1) ";
-            $table->unsignedTinyInteger('hierarchy')->default(0);
+            $table->enum('hierarchy', ['3', '4', '5', '6'])
+                ->default('3')
+                ->comment = '3 = SMA/SMK, 4 = D3, 5 = S1, 6 = S2';
             $table->timestamps();
         });
     }

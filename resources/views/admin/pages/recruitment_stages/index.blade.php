@@ -160,6 +160,14 @@
                 $('#radioVendor').prop('checked', false);
                 $('#radioInternal').prop('checked', true);
             }
+            if (stage.switch_vacancy == '1') {
+                $('#radioCan').prop('checked', true);
+                $('#radioCanNot').prop('checked', false);
+            } else {
+                $('#radioCan').prop('checked', false);
+                $('#radioCanNot').prop('checked', true);
+            }
+
             $('#note').val(stage.note);
             $('#mdl-insert-update').modal('show');
         } );
@@ -175,8 +183,7 @@
 
         // DRY : Don't repeat yourself
         $("#frm-insert").submit(function(e){
-            e.preventDefault()
-            console.log($(this).serialize());
+            e.preventDefault();
             $.ajax({
                 url: $(this).attr('action'),
                 type: $(this).attr('method'),

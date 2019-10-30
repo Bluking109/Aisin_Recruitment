@@ -33,7 +33,7 @@ class SettingsSeeder extends Seeder
                 'description' => 'The email address that will receive the message, when there is a message from the visitor',
                 'value' => 'ali.usman@aiia.co.id',
                 'type' => 'text'
-            ],
+            ]
         ];
 
         DB::table('settings')->insert($settings);

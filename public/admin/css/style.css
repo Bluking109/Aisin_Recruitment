@@ -10023,7 +10023,7 @@ pre code {
 .table td {
   padding: 1.25rem 0.9375rem;
   vertical-align: top;
-  border-top: 1px solid #f1f6f8;
+  border-top: 1px solid #d8e0e8;
 }
 
 .table thead th {
@@ -10041,12 +10041,12 @@ pre code {
 }
 
 .table-bordered {
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
 }
 
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
 }
 
 .table-bordered thead th,
@@ -11589,7 +11589,7 @@ input[type="button"].btn-block {
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   border-radius: 0.25rem;
 }
 
@@ -11742,7 +11742,7 @@ input[type="button"].btn-block {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #f1f6f8;
+  border-top: 1px solid #d8e0e8;
 }
 
 .dropdown-item {
@@ -14976,23 +14976,23 @@ button.bg-dark:focus {
 }
 
 .border {
-  border: 1px solid #f1f6f8 !important;
+  border: 1px solid #d8e0e8 !important;
 }
 
 .border-top {
-  border-top: 1px solid #f1f6f8 !important;
+  border-top: 1px solid #d8e0e8 !important;
 }
 
 .border-right {
-  border-right: 1px solid #f1f6f8 !important;
+  border-right: 1px solid #d8e0e8 !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #f1f6f8 !important;
+  border-bottom: 1px solid #d8e0e8 !important;
 }
 
 .border-left {
-  border-left: 1px solid #f1f6f8 !important;
+  border-left: 1px solid #d8e0e8 !important;
 }
 
 .border-0 {
@@ -18679,7 +18679,7 @@ h6, .h6 {
 
 .blockquote {
   padding: 1.25rem;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
 }
 
 address p {
@@ -18942,37 +18942,37 @@ code {
 
 @media (min-width: 576px) {
   .border-right-sm {
-    border-right: 1px solid #f1f6f8;
+    border-right: 1px solid #d8e0e8;
   }
 }
 
 @media (min-width: 768px) {
   .border-right-md {
-    border-right: 1px solid #f1f6f8;
+    border-right: 1px solid #d8e0e8;
   }
 }
 
 @media (min-width: 992px) {
   .border-right-lg {
-    border-right: 1px solid #f1f6f8;
+    border-right: 1px solid #d8e0e8;
   }
 }
 
 @media (min-width: 576px) {
   .border-left-sm {
-    border-left: 1px solid #f1f6f8;
+    border-left: 1px solid #d8e0e8;
   }
 }
 
 @media (min-width: 768px) {
   .border-left-md {
-    border-left: 1px solid #f1f6f8;
+    border-left: 1px solid #d8e0e8;
   }
 }
 
 @media (min-width: 992px) {
   .border-left-lg {
-    border-left: 1px solid #f1f6f8;
+    border-left: 1px solid #d8e0e8;
   }
 }
 
@@ -18999,7 +18999,7 @@ code {
 .template-demo > h5,
 .template-demo > h6,
 .template-demo > h1 {
-  border-top: 1px solid #f1f6f8;
+  border-top: 1px solid #d8e0e8;
   padding: 0.5rem 0 0;
 }
 
@@ -20721,14 +20721,14 @@ select.tt-query,
 select.tt-hint {
   padding: .4375rem .75rem;
   border: 0;
-  outline: 1px solid #f1f6f8;
+  outline: 1px solid #d8e0e8;
   color: #c9c8c8;
 }
 
 select.form-control:focus, select.typeahead:focus,
 select.tt-query:focus,
 select.tt-hint:focus {
-  outline: 1px solid #f1f6f8;
+  outline: 1px solid #d8e0e8;
 }
 
 select.form-control.border-primary, select.border-primary.typeahead,
@@ -20938,7 +20938,7 @@ dl li {
 
 .solid-bullet-list:after {
   content: "";
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -20985,7 +20985,7 @@ dl li {
 
 .bullet-line-list:after {
   content: "";
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -21044,14 +21044,14 @@ dl li {
 }
 
 .table.table-bordered {
-  border-top: 1px solid #f1f6f8;
+  border-top: 1px solid #d8e0e8;
 }
 
 .nav-tabs .nav-link {
   background: #f6f8fa;
   color: #000000;
   border-radius: 0;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   padding: .75rem 1.5rem;
 }
 
@@ -21132,12 +21132,12 @@ dl li {
 }
 
 .nav-pills {
-  border-bottom: 1px solid #f1f6f8;
+  border-bottom: 1px solid #d8e0e8;
   padding-bottom: 1rem;
 }
 
 .nav-pills .nav-link {
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   padding: .5rem 1.75rem;
 }
 
@@ -21252,14 +21252,14 @@ dl li {
 }
 
 .tab-content {
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   border-top: 0;
   padding: 2rem 1rem;
   text-align: justify;
 }
 
 .tab-content.tab-content-vertical {
-  border-top: 1px solid #f1f6f8;
+  border-top: 1px solid #d8e0e8;
 }
 
 .tab-content.tab-content-vertical-custom {
@@ -21279,14 +21279,14 @@ dl li {
 
 /* Icons */
 .icons-list {
-  border-left: 1px solid #f1f6f8;
-  border-top: 1px solid #f1f6f8;
+  border-left: 1px solid #d8e0e8;
+  border-top: 1px solid #d8e0e8;
 }
 
 .icons-list > div {
   background: #ffffff;
-  border-bottom: 1px solid #f1f6f8;
-  border-right: 1px solid #f1f6f8;
+  border-bottom: 1px solid #d8e0e8;
+  border-right: 1px solid #d8e0e8;
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
@@ -21540,7 +21540,7 @@ dl li {
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 34px;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
 }
 
 .toggle-switch .toggle-slider:before {
@@ -21679,7 +21679,7 @@ dl li {
 .preview-list .preview-item .preview-item-content p .content-category {
   font-family: 'source-sans-pro-semibold', sans-serif;
   padding-right: 15px;
-  border-right: 1px solid #f1f6f8;
+  border-right: 1px solid #d8e0e8;
 }
 
 .rtl .preview-list .preview-item .preview-item-content {
@@ -21723,7 +21723,7 @@ dl li {
 }
 
 .preview-list.bordered .preview-item {
-  border-bottom: 1px solid #f1f6f8;
+  border-bottom: 1px solid #d8e0e8;
 }
 
 .preview-list.bordered .preview-item:last-child {
@@ -21782,7 +21782,7 @@ dl li {
   margin: 12px 0;
   padding: 8px 0;
   background-color: #ffffff;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
@@ -21981,7 +21981,7 @@ dl li {
 .horizontal-menu .top-navbar {
   font-weight: 400;
   background: #ffffff;
-  border-bottom: 1px solid #f1f6f8;
+  border-bottom: 1px solid #d8e0e8;
 }
 
 .horizontal-menu .top-navbar .navbar-brand-wrapper {
@@ -22161,7 +22161,7 @@ dl li {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   padding: .5rem;
-  border: 1px solid #f1f6f8;
+  border: 1px solid #d8e0e8;
   height: 34px;
 }
 
@@ -22789,7 +22789,7 @@ dl li {
 }
 
 .horizontal-menu.fixed-on-scroll .bottom-navbar {
-  border-bottom: 1px solid #f1f6f8;
+  border-bottom: 1px solid #d8e0e8;
 }
 
 @media (max-width: 991px) {
@@ -22873,11 +22873,11 @@ li.nav-item {
 }
 
 .select2-container--default .select2-selection--single {
-    border: 1px solid #f1f6f8;
+    border: 1px solid #d8e0e8;
 }
 
 .select2-dropdown {
-    border: 1px solid #f1f6f8;
+    border: 1px solid #d8e0e8;
 }
 
 .datepicker {

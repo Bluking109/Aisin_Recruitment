@@ -17,6 +17,9 @@
                                     <th>Email</th>
                                     <th>HP</th>
                                     <th>Education Level</th>
+                                    @if(request()->query('blacklist'))
+                                    <th>Blacklist Until</th>
+                                    @endif
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -78,6 +81,12 @@
                     data : 'education_level.name',
                     name : 'educationLevel.name'
                 },
+                @if(request()->query('blacklist'))
+                {
+                    data : 'blacklist_until',
+                    name : 'blacklist_until'
+                },
+                @endif
                 {
                     data: null,
                     className: "center",
