@@ -281,6 +281,11 @@
             window.location = "{{ url(AIIASetting::getValue('admin_base_route').'/job-seekers') }}/"+id;
         });
 
+        $('#job-seeker-table').on('click', '.btn-print', function(){
+            let id = $(this).data('id');
+            window.location = "{{ url(AIIASetting::getValue('admin_base_route').'/job-seekers/getpdf') }}/"+id;
+        });
+
     } );
 </script>
 @endpush

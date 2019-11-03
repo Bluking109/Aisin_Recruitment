@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\JobSeeker;
+use App\Models\JobApplication;
 use App\Traits\FileHandler;
 use DataTables;
 use PDF;
@@ -230,8 +231,19 @@ class JobSeekerController extends Controller
 
     public function test()
     {
-        return view('admin.pdf.job_seeker_smk');
         // $pdf = PDF::loadView('admin.pdf.job_seeker_smk');
         // return $pdf->download('Pelamar.pdf');
+    }
+
+    /**
+     * download pdf jobseekers
+     * @return file
+     */
+    public function getPdf($id)
+    {
+        $jobSeeker = JobSeeker::allData()->findOrFail($id);
+        // dd($jobSeeker);
+        $pdf = PDF::loadView('admin.pdf.job_seeker_d3_s1', compact('jobSeeker'));
+        return $pdf->download('Pelamar.pdf');
     }
 }

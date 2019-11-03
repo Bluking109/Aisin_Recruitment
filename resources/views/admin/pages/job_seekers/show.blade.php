@@ -369,7 +369,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-sm-12">
-                            <h3 class="subtitle-panel">C. Family Environment</h3>
+                            <h3 class="subtitle-panel">C. Parent Family</h3>
                         </div>
                         <div class="col-sm-12">
                             <h4 class="subtitle-panel">1. Marital Status</h4>
@@ -644,6 +644,9 @@
                                     <br>
                                     <p><b>5. How to deal with problems and make decisions : </b></p>
                                     <p>{{ $workDetail->how_make_decisions ?? '-' }}</p>
+                                    <br>
+                                    <p><b>6. Improvement on company : </b></p>
+                                    <p>{{ $workDetail->improvement_on_company ?? '-' }}</p>
                                 </div>
                             </div>
                         </div>
