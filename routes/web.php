@@ -62,6 +62,8 @@ Route::namespace('Admin')->group(function() {
 			Route::get('job-seekers/black-list', 'JobSeekerController@indexBlacklist')
 				->name('job-seekers.indexblacklist');
 			Route::resource('job-seekers', 'JobSeekerController')->only('index', 'show', 'destroy');
+			Route::get('job-seekers/getpdf/{job_seeker}', 'JobSeekerController@getPdf')
+				->name('job-seekers.download-pdf');
 			Route::put('job-seekers/{job_seeker}/black-list', 'JobSeekerController@updateBlacklist')
 				->name('job-seekers.updateblacklist');
 			Route::put('job-seekers/{job_seeker}/unblack-list', 'JobSeekerController@updateUnblacklist')
