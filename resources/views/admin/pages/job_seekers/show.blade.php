@@ -666,19 +666,22 @@
                             <p><b>1. Goal : </b></p>
                             <p>{{ $interest->future_goals ?? '-' }}</p>
                             <br>
-                            <p><b>2. Work motivation : </b></p>
+                            <p><b>2. Expertise : </b></p>
+                            <p>{{ $interest->expertise ?? '-' }}</p>
+                            <br>
+                            <p><b>3. Work motivation : </b></p>
                             <p>{{ $interest->working_motivation ?? '-' }}</p>
                             <br>
-                            <p><b>3. Reasons for wanting to work at AIIA : </b></p>
+                            <p><b>4. Reasons for wanting to work at AIIA : </b></p>
                             <p>{{ $interest->working_reason ?? '-' }}</p>
                             <br>
-                            <p><b>4. Facilities expected : </b></p>
+                            <p><b>5. Facilities expected : </b></p>
                             <p>{{ $interest->expected_facility ?? '-' }}</p>
                             <br>
-                            <p><b>5. Can start working at : </b></p>
+                            <p><b>6. Can start working at : </b></p>
                             <p>{{ $interest->join_date ?? '-' }}</p>
                             <br>
-                            <p><b>6. Expected Salary : </b></p>
+                            <p><b>7. Expected Salary : </b></p>
                             <p>Rp. {{ $interest->expected_salary ?? '-' }}</p>
                             @else
                             <p class="text-center"><b>No Data</b></p>
@@ -686,22 +689,22 @@
                         </div>
                         <div class="col-sm-6">
                             @if($interest)
-                            <p><b>7. Placement outside the city : </b></p>
+                            <p><b>8. Placement outside the city : </b></p>
                             <p>{{ $interest->placeOutsideLabel ?? '-' }}</p>
                             <br>
-                            <p><b>8. Preferred work environment : </b></p>
+                            <p><b>9. Preferred work environment : </b></p>
                             <p>{{ $interest->favored_environment ?? '-' }}</p>
                             <br>
-                            <p><b>9. Undesirable work environment : </b></p>
+                            <p><b>10. Undesirable work environment : </b></p>
                             <p>{{ $interest->unfavored_environment ?? '-' }}</p>
                             <br>
-                            <p><b>10. Type of person who is preferred : </b></p>
+                            <p><b>11. Type of person who is preferred : </b></p>
                             <p>{{ $interest->like_people ?? '-' }}</p>
                             <br>
-                            <p><b>11. Things that make it difficult to make decisions : </b></p>
+                            <p><b>12. Things that make it difficult to make decisions : </b></p>
                             <p>{{ $interest->dificult_decisions ?? '-' }}</p>
                             <br>
-                            <p><b>12. Priority field of work : </b></p>
+                            <p><b>13. Priority field of work : </b></p>
                             <ol>
                                 @foreach ($fields as $item)
                                  <li>{{ $item }}</li>
@@ -738,7 +741,7 @@
                                             <td>{{ $item['display_name'] }}</td>
                                             <td>{{ $document->{$item['name']} ?? '-' }}</td>
                                             <td class="text-center">
-                                                @if($document->{$item['name']})
+                                                @if(isset($document->{$item['name']}))
                                                 <a href="{{ route('admin.job-seekers.getdocument', ['job_seeker' => $jobSeeker->id, 'type' => $item['name']]) }}"><i class="mdi mdi-cloud-download"></i></a>
                                                 @else
                                                 No Data Uploaded
@@ -858,8 +861,13 @@
                         <div class="col-sm-4" style="padding-left: 30px;">
                             <br>
                             <p><b>5. Wearing glasses</b></p>
+                            @if (isset($other->use_glasses))
                             <p>{{ $other->use_glasses == 0 ? 'No' : 'Yes' }}</p>
+                            @else
+                            <p>No</p>
+                            @endif
                         </div>
+                        @if(isset($other->use_glasses))
                         @if ($other->use_glasses == 1)
                         @php
                         $rightEye = json_decode($other->right_eye, true);
@@ -875,6 +883,7 @@
                             <p><b>B. Left Eye</b></p>
                             <p>{{ $leftEye['type'] . ' ' . $leftEye['size'] }}</p>
                         </div>
+                        @endif
                         @endif
                         <div class="col-sm-12 mt-3">
                             <h4 class="subtitle-panel">1. Another recruitment process</h4>
