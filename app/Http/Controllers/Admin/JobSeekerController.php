@@ -242,8 +242,28 @@ class JobSeekerController extends Controller
     public function getPdf($id)
     {
         $jobSeeker = JobSeeker::allData()->findOrFail($id);
-        // dd($jobSeeker);
-        $pdf = PDF::loadView('admin.pdf.job_seeker_d3_s1', compact('jobSeeker'));
-        return $pdf->download('Pelamar.pdf');
+
+        $path = public_path('admin/images/avatar/avatar.jpg');
+
+        if ($jobSeeker->photo) {
+            $path = 'uploads/foto/' . $jobSeeker->photo;
+            if (!Storage::exists($path)) {
+                abort(404);
+            }
+
+            $path = storage_path('app/' . $path);
+        }
+
+        $imagedata = file_get_contents($path);
+             // alternatively specify an URL, if PHP settings allow
+        $profilPhoto = 'data:image/jpg;base64,' . base64_encode($imagedata);
+
+        if ($jobSeeker->educationLevel->isAssociateForm()) {
+            $pdf = PDF::loadView('admin.pdf.job_seeker_d3_s1', compact('jobSeeker', 'profilPhoto'));
+            return $pdf->download('Data-'.$jobSeeker->name.'.pdf');
+        } elseif ($jobSeeker->educationLevel->isHighSchoolForm()) {
+            $pdf = PDF::loadView('admin.pdf.job_seeker_smk', compact('jobSeeker', 'profilPhoto'));
+            return $pdf->download('Data-'.$jobSeeker->name.'.pdf');
+        }
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>1/4</title>
+	<title>Data - {{ $jobSeeker->name ?? '-' }}</title>
 	<style type="text/css">
 		p {
 			font-size: 12px;
@@ -145,7 +145,7 @@
 			<p class="sub-tittle">ISILAH DENGAN HURUF CETAK</p>
 		</div>
 		<div class="col c20">
-			<img class="photo-profile" src="{{ public_path('admin/images/avatar/avatar.jpg') }}">
+			<img class="photo-profile" src="{{ $profilPhoto }}">
 		</div>
 	</div>
 	<div class="row">
@@ -333,13 +333,6 @@
 		                        <td>{{ $s2['grade_point'] ?? '-' }}</td>
 							</tr>
 						</table>
-					@elseif($jobSeeker->educationLevel->isHighSchoolForm())
-		                @php
-		                $sd = array_values($education->where('class', App\Models\FormalEducation::EDU_PRIMARY_SCHOOL)->toArray());
-		                $sd = isset($sd[0]) ? $sd[0] : null;
-		                $smp = array_values($education->where('class', App\Models\FormalEducation::EDU_JUNIOR_HIGH_SCHOOL)->toArray());
-		                $smp = isset($smp[0]) ? $smp[0] : null;
-		                @endphp
 	                @endif
                 @else
                 @endif
@@ -654,9 +647,13 @@
 				<br>
 				<p class="description">7. Pilih jenis pekerjaan yang sesuai dengan prioritas minat Anda ( 3 jenis )</p>
 					<ol class="description">
-					@foreach ($fields as $item)
-                    	<li class="description">{{ $item }}</li>
-                    @endforeach
+						@if(isset($fields))
+							@foreach ($fields as $item)
+		                    	<li class="description">{{ $item }}</li>
+		                    @endforeach
+		                @else
+		                	<li class="description"> - </li>
+		                @endif
                     </ol>
 				<br>
 				<div>
