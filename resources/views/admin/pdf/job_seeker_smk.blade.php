@@ -725,11 +725,10 @@
 				<p class="description">Diisi dengan sesungguhnya. Apabila dikemudian hari ternyata ada hal-hal yang bertentangan, maka saya bersedia</p>
 				<p class="description">dituntut sesuai dengan hukuman yang berlaku dan lamaran ini dapat dibatalkan</p>
 				<br><br>
-				<p class="description" style="text-align: right;">Tanggal</p>
-
-
-
-
+				<div>
+					<p class="description" style="text-align: right;"> {{date("d-m-Y")}} </p>
+					<p class="description" style="text-align: right;">{{ $jobSeeker->name ?? '-' }}</p>
+				</div>
 			</div>
 		</div>
 	</div>
