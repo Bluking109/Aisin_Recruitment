@@ -51,9 +51,9 @@ class JobVacancyController extends Controller
                 'open_date' => $request->open_date,
                 'close_date' => $request->close_date,
                 'gender' => $request->gender,
-                'min_gpa' => $request->min_gpa,
+                'min_gpa' => $request->min_gpa ?? 0,
                 'max_age' => $request->max_age,
-                'min_math_score' => $request->min_math_score,
+                'min_math_score' => $request->min_math_score ?? 0,
                 'descriptions' => $request->descriptions,
                 'requirements' => $request->requirements,
             ]);

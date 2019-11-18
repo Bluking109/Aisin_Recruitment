@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\JobApplicationExport;
 use App\Http\Controllers\Controller;
 use App\Models\JobApplication;
 use App\Models\JobSeeker;
 use App\Http\Requests\Admin\RejectApplication;
 use App\Http\Requests\Admin\NextStageApplication;
 use App\Mail\ApplicationAccepted;
+use DB;
 use DataTables;
 
 class JobApplicationController extends Controller
@@ -19,46 +22,47 @@ class JobApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function indexInProcess(Request $request)
     {
     	 if ($request->ajax()) {
-    	 	$stage = $request->stage;
-    	 	$job = $request->job;
-            $confirm = $request->confirm;
-            $examDate = $request->exam_date;
+    	 	$applications = $this->getData($request);
 
-    	 	$applications = JobApplication::with('jobSeeker', 'jobApplicationStages.stage')
-    	 		->with(['jobVacancy' => function($q) {
-    	 			$q->with('position', 'section', 'stages');
-    	 		}])
-    	 		->when($stage, function($q, $stage) {
-    	 			$q->whereHas('jobApplicationStages', function($q) use($stage) {
-    	 				$q->where('stage_id', $stage);
-    	 			})->where('status', JobApplication::STATUS_IN_PROCESS);
-    	 		})
-                ->has('jobSeeker')
-    	 		->when($job, function($q, $job) {
-    	 			$q->where('job_vacancy_id', $job);
-    	 		})->get();
-
-            if ($confirm) {
-                $applications = $applications->filter(function($value, $key) use($confirm) {
-                    $lastStage = $value->jobApplicationStages->last();
-                    return $lastStage->status == $confirm;
-                });
-            }
-
-            if ($examDate) {
-                $applications = $applications->filter(function($value, $key) use($examDate) {
-                    $lastStage = $value->jobApplicationStages->last();
-                    return date('Y-m-d', strtotime($lastStage->exam_at)) == $examDate;
-                });
-            }
-
-            return DataTables::collection($applications)->toJson();
+            return DataTables::eloquent($applications)->toJson();
         }
 
-    	return view('admin.pages.job_applications.index');
+    	return view('admin.pages.job_applications.index_in_process');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexRejected(Request $request)
+    {
+         if ($request->ajax()) {
+            $applications = $this->getData($request, JobApplication::STATUS_REJECT);
+
+            return DataTables::eloquent($applications)->toJson();
+        }
+
+        return view('admin.pages.job_applications.index_rejected');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAccepted(Request $request)
+    {
+         if ($request->ajax()) {
+            $applications = $this->getData($request, JobApplication::STATUS_ACCEPTED);
+
+            return DataTables::eloquent($applications)->toJson();
+        }
+
+        return view('admin.pages.job_applications.index_accepted');
     }
 
     /**
@@ -78,6 +82,7 @@ class JobApplicationController extends Controller
     /**
      * Reject application.
      *
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -92,7 +97,8 @@ class JobApplicationController extends Controller
     	if (!$stages->count()) {
     		// jika gagal tapi dalam proses seleksi dokumen
     		$application->update([
-				'status' => JobApplication::STATUS_REJECT
+				'status' => JobApplication::STATUS_REJECT,
+                'finished_at' => date('Y-m-d H:i:s')
     		]);
 
     		return response()->json(['title' => 'Success Reject', 'message' => 'Job application successfully rejected']);
@@ -101,7 +107,7 @@ class JobApplicationController extends Controller
     	$lastStage = $stages->last();
 
     	if ($lastStage->stage->switch_vacancy == '1') {
-    		$applicationId = $request->job_vacancy;
+    		$vacancyId = $request->job_vacancy;
     		$date = $request->date_test;
     		$time = $request->time_test;
 
@@ -109,19 +115,20 @@ class JobApplicationController extends Controller
     			// application di alihkan ke vacancy lain
     			$hasApply = $application->jobSeeker
     				->applications()
-                    ->whereHas('jobVacancy', function($q) use($applicationId) {
-                        $q->where('id', $applicationId);
-                    })
+                    ->where('job_vacancy_id', $vacancyId)
     				->first();
 
     			if ($hasApply) {
     				// jika aplikasi sudah di lamar oleh js maka salin stagenya ke aplikasi yang dilamar tersebut
+                    $hasApply->jobApplicationStages()->delete();
                     foreach ($stages as $key => $value) {
                         $stageToSave = [
                             'stage_id' => $value->stage_id,
                             'vendor_id' => $value->vendor_id,
                             'note' => $value->note,
-                            'exam_at' => $value->exam_at
+                            'exam_at' => $value->exam_at,
+                            'accepted_at' => $value->accepted_at,
+                            'rejected_at' => $value->rejected_at
                         ];
                         // exam at yang diupdate hanya yang stage terakhir
                         if ($key == ($stages->count() - 1)) {
@@ -129,16 +136,21 @@ class JobApplicationController extends Controller
                         }
 
                         $hasApply->jobApplicationStages()->create($stageToSave);
+                        $hasApply->update([
+                            'status' => JobApplication::STATUS_IN_PROCESS
+                        ]);
                     }
 
                     $application->update([
-                        'status' => JobApplication::STATUS_REJECT
+                        'status' => JobApplication::STATUS_REJECT,
+                        'finished_at' => date('Y-m-d H:i:s')
                     ]);
+                    $application = $hasApply;
     			} else {
     				if ($application->jobSeeker->applications->count() >= 3) {
     					// timpa $application dengan vacancy yang baru
     					$application->update([
-	    					'job_vacancy_id' => $applicationId
+	    					'job_vacancy_id' => $vacancyId
 	    				]);
 
 	    				$lastStage->update([
@@ -148,7 +160,7 @@ class JobApplicationController extends Controller
     					// tambahkan vacancy ke application jobseeker dengan merubah status application sebelumnya menjadi reject
                         $jobSeeker = $application->jobSeeker;
                         $newApplication = $jobSeeker->applications()->create([
-                            'job_vacancy_id' => $applicationId,
+                            'job_vacancy_id' => $vacancyId,
                             'status' => JobApplication::STATUS_IN_PROCESS,
                         ]);
 
@@ -157,7 +169,9 @@ class JobApplicationController extends Controller
                                 'stage_id' => $value->stage_id,
                                 'vendor_id' => $value->vendor_id,
                                 'note' => $value->note,
-                                'exam_at' => $value->exam_at
+                                'exam_at' => $value->exam_at,
+                                'accepted_at' => $value->accepted_at,
+                                'rejected_at' => $value->rejected_at
                             ];
                             // exam at yang diupdate hanya yang stage terakhir
                             if ($key == ($stages->count() - 1)) {
@@ -168,15 +182,23 @@ class JobApplicationController extends Controller
                         }
 
                         $application->update([
-                            'status' => JobApplication::STATUS_REJECT
+                            'status' => JobApplication::STATUS_REJECT,
+                            'finished_at' => date('Y-m-d H:i:s')
                         ]);
+
+                        $application = $newApplication;
     				}
     			}
 
                 $message = 'Job applications successfully rejected and replaced with other job';
+
+                $application = $application->fresh();
+                Mail::to($application->jobSeeker->email)->send(new ApplicationAccepted($application));
     		} else {
-                $application->update([
-                    'status' => JobApplication::STATUS_REJECT
+                // Reject semua application
+                $application->jobSeeker->applications()->update([
+                    'status' => JobApplication::STATUS_REJECT,
+                    'finished_at' => date('Y-m-d H:i:s')
                 ]);
 
                 $application->jobSeeker->update([
@@ -189,9 +211,11 @@ class JobApplicationController extends Controller
 
     	} else {
     		// reject application dan masukan jobseeker ke dalam daftar blacklist selama 1 tahun
-    		$application->update([
-				'status' => JobApplication::STATUS_REJECT
-    		]);
+            // Reject semua application
+    		$application->jobSeeker->applications()->update([
+                'status' => JobApplication::STATUS_REJECT,
+                'finished_at' => date('Y-m-d H:i:s')
+            ]);
 
     		$application->jobSeeker->update([
     			'is_blacklist' => JobSeeker::STATUS_BLACKLIST,
@@ -200,6 +224,9 @@ class JobApplicationController extends Controller
 
             $message = 'Job application successfully rejected';
     	}
+
+        $lastStage->rejected_at = date('Y-m-d H:i:s');
+        $lastStage->update();
 
         return response()->json([
             'title' => 'Success Reject',
@@ -214,8 +241,21 @@ class JobApplicationController extends Controller
     {
         $application = JobApplication::find($id);
 
+        $currentStage = $application->jobApplicationStages->last();
+        $currentStage->accepted_at = date('Y-m-d H:i:s');
+        $currentStage->update();
+
+        $application->jobSeeker
+            ->applications()
+            ->where('id', '!=', $id)
+            ->update([
+                'status' => JobApplication::STATUS_REJECT,
+                'finished_at' => date('Y-m-d H:i:s')
+            ]);
+
         $application->update([
-            'status' => JobApplication::STATUS_ACCEPTED
+            'status' => JobApplication::STATUS_ACCEPTED,
+            'finished_at' => date('Y-m-d H:i:s')
         ]);
 
         return response()->json([
@@ -249,11 +289,23 @@ class JobApplicationController extends Controller
                 }
             }
 
+            $currentStage = $application->jobApplicationStages->last();
+            $currentStage->accepted_at = date('Y-m-d H:i:s');
+            $currentStage->update();
+
             $nextStage = $vacancyStages[$nextIndex];
         } else {
             $application->update([
                 'status' => JobApplication::STATUS_IN_PROCESS
             ]);
+
+            $application->jobSeeker
+                ->applications()
+                ->where('id', '!=', $id)
+                ->update([
+                    'status' => JobApplication::STATUS_REJECT,
+                    'finished_at' => date('Y-m-d H:i:s')
+                ]);
         }
 
         if ($application->jobApplicationStages->count() == $vacancyStages->count()) {
@@ -281,6 +333,119 @@ class JobApplicationController extends Controller
         return response()->json([
             'title' => 'Success',
             'message' => 'Job application has been successfully accepted'
+        ]);
+    }
+
+    /**
+     * Export excel based on filter
+     */
+    public function export(Request $request)
+    {
+        $status = $request->status ?? JobApplication::STATUS_IN_PROCESS;
+
+        $filename = 'applications_in_process.xlsx';
+
+        if ($status == JobApplication::STATUS_REJECT) {
+            $filename = 'applications_rejected.xlsx';
+        } elseif ($status == JobApplication::STATUS_ACCEPTED) {
+            $filename = 'applications_accepted.xlsx';
+        }
+
+        $applications = $this->getData($request, $status)->get();
+
+        return Excel::download(new JobApplicationExport($applications, $status), $filename);
+    }
+
+    /**
+     * Get data filter
+     */
+    protected function getData($request, $status = '1')
+    {
+        $stage = $request->stage;
+        $job = $request->job;
+        $confirm = $request->confirm;
+        $examDate = $request->exam_date;
+        $finishedAt = $request->finish_at;
+
+        $applications = JobApplication::with('jobSeeker', 'jobApplicationStages.stage')
+            ->with(['jobVacancy' => function($q) {
+                $q->with('position', 'section', 'stages');
+            }])
+            ->when($stage, function($q, $stage) use($status) {
+                if ($stage == 'none') {
+                    $q->doesntHave('jobApplicationStages');
+                } else {
+                    $q->whereHas('jobApplicationStages', function($q) use($stage, $status) {
+                        $q->where('stage_id', $stage);
+
+                        if ($status == JobApplication::STATUS_REJECT) {
+                            $q->whereNull('accepted_at')
+                                ->whereNotNull('rejected_at');
+                        }
+
+                        if ($status == JobApplication::STATUS_IN_PROCESS) {
+                            $q->whereNull('accepted_at')
+                                ->whereNull('rejected_at');
+                        }
+                    });
+                }
+            })
+            ->has('jobSeeker')
+            ->when($job, function($q, $job) {
+                $q->where('job_vacancy_id', $job);
+            })
+            ->when($confirm != null, function($q) use($confirm) {
+                $q->whereHas('jobApplicationStages', function($q) use($confirm) {
+                    $q->where('accepted_at', null)
+                        ->where('rejected_at', null)
+                        ->where('status', $confirm);
+                });
+            })
+            ->when($examDate, function($q) use($examDate) {
+                $q->whereHas('jobApplicationStages', function($q) use($examDate) {
+                    $q->where('accepted_at', null)
+                        ->where('rejected_at', null)
+                        ->whereDate('exam_at', $examDate);
+                });
+            })
+            ->when($finishedAt, function($q) use($finishedAt) {
+                $q->whereDate('finished_at', $finishedAt);
+            })
+            ->where('status', $status);
+
+        return $applications;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $application = JobApplication::findOrFail($id);
+
+        if ($application->status != JobApplication::STATUS_REJECT) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Error',
+                'message' => 'Data cannot be deleted!'
+            ], 400);
+        }
+
+        $application->delete();
+
+        if (request()->ajax()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Deleted !',
+                'message' => 'Data has been deleted'
+            ], 200);
+        };
+
+        return redirect()->back()->with([
+            'message' => 'success'
         ]);
     }
 

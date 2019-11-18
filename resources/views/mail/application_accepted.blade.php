@@ -54,7 +54,7 @@ switch($day){
 
 @endphp
 <br>
-Selamat hasil {{ $stageBeforeName }} Anda lolos, bersama ini PT Aisin Indonesia Automotive mengundang Anda untuk mengikuti proses berikutnya yaitu {{ $stageAfterName }} pada <b>{{ $today }}, {{ $date }} pukul {{ $time }}</b>, bertempat di :
+Selamat hasil {{ $stageBeforeName }} untuk posisi {{ $application->jobVacancy->position->name . ' - ' . $application->jobVacancy->section->name }} Anda lolos, bersama ini PT Aisin Indonesia Automotive mengundang Anda untuk mengikuti proses berikutnya yaitu {{ $stageAfterName }} pada <b>{{ $today }}, {{ $date }} pukul {{ $time }}</b>, bertempat di :
 <br>
 
 @if($vendor = $stageAfter->vendor)

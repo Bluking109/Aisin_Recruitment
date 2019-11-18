@@ -24,9 +24,10 @@
                         </div>
                         <div class="col-sm-3 col-md-2 mb-2">
                             <select class="form-control" id="filter-confirm" style="width: 100%; height: auto;">
-                                <option value="0" @if(request()->query('confirm') == 0) selected @endif>Not Confirmed</option>
-                                <option value="1" @if(request()->query('confirm') == 1) selected @endif>Confirmed</option>
-                                <option value="2" @if(request()->query('confirm') == 2) selected @endif>Rejected</option>
+                                <option></option>
+                                <option value="0" @if(request()->query('confirm') == '0') selected @endif>Not Confirmed</option>
+                                <option value="1" @if(request()->query('confirm') == '1') selected @endif>Confirmed</option>
+                                <option value="2" @if(request()->query('confirm') == '2') selected @endif>Rejected</option>
                             </select>
                         </div>
                         <div class="col-sm-3 col-md-2 mb-2">
@@ -42,7 +43,7 @@
                         <div class="col-sm-3 col-md-4">
                             <button class="btn btn-primary" id="apply-filter"><i class="mdi mdi-filter"></i> Apply Filter</button>
                             <button class="btn btn-danger" id="remove-filter"><i class="mdi mdi-filter-remove"></i> Reset Filter</button>
-                            <button class="btn btn-success"><i class="mdi mdi-printer"></i> Export Excel</button>
+                            <button class="btn btn-success" id="export-excel"><i class="mdi mdi-printer"></i> Export Excel</button>
                         </div>
                     </form>
                     </div>
@@ -56,7 +57,6 @@
                                     <th>Email</th>
                                     <th>HP</th>
                                     <th>Job Vacancy</th>
-                                    <th>Status</th>
                                     <th>Stage</th>
                                     <th>Confirm</th>
                                     <th>Exam Date</th>
@@ -104,8 +104,39 @@
         return query;
     };
 
+    let generateQueryStringParam = function() {
+        let job = $('#filter-job').select2('data')[0];
+        let stage = $('#filter-stage').select2('data')[0];
+        let confirm = $('#filter-confirm').select2('data')[0];
+        let dateFilter = $('#filter-date').val();
+
+        let params = {};
+
+        if (job != null && job != undefined && job != '') {
+            params['job'] = job.id;
+            params['job_label'] = job.text;
+        }
+
+        if (stage != null && stage != undefined && stage != '') {
+            params['stage'] = stage.id;
+            params['stage_label'] = stage.text;
+        }
+
+        if (confirm != null && confirm != undefined && confirm != '') {
+            params['confirm'] = confirm.id;
+        }
+
+        if (dateFilter != null && dateFilter != undefined && dateFilter != '') {
+            params['exam_date'] = dateFilter;
+        }
+
+        return httpBuildQuery(params);
+    }
+
     $(document).ready(function() {
-        $('#filter-confirm').select2();
+        $('#filter-confirm').select2({
+            placeholder : 'Confirmation Status'
+        });
 
         $('.datepicker').datepicker({
             orientation : 'bottom',
@@ -125,6 +156,11 @@
                     };
                 },
                 processResults: function (data) {
+                    data.unshift({
+                        id : 'none',
+                        text : 'Document Selection'
+                    });
+
                     return {
                         results: data
                     };
@@ -140,34 +176,14 @@
         });
 
         $('#apply-filter').on('click', function() {
-            let job = $('#filter-job').select2('data')[0];
-            let stage = $('#filter-stage').select2('data')[0];
-            let confirm = $('#filter-confirm').select2('data')[0];
-            let dateFilter = $('#filter-date').val();
-
-            let params = {};
-
-            if (job != null && job != undefined && job != '') {
-                params['job'] = job.id;
-                params['job_label'] = job.text;
-            }
-
-            if (stage != null && stage != undefined && stage != '') {
-                params['stage'] = stage.id;
-                params['stage_label'] = stage.text;
-            }
-
-            if (confirm != null && confirm != undefined && confirm != '') {
-                params['confirm'] = confirm.id;
-            }
-
-            if (dateFilter != null && dateFilter != undefined && dateFilter != '') {
-                params['exam_date'] = dateFilter;
-            }
-
             let url = window.location.href.split('?')[0];
+            window.location.href = url + generateQueryStringParam();
+        });
 
-            window.location.href = url + httpBuildQuery(params);
+        $('#export-excel').on('click', function() {
+            let url = "{{ route('admin.job-applications.export') }}";
+
+            window.location.href = url + generateQueryStringParam();
         });
 
         $('#filter-job').select2({
@@ -238,7 +254,7 @@
                     orderable : false,
                     searchable : false,
                     render : function(data) {
-                        return `<img src="job-seekers/${data.job_seeker.id}/photo" class="img-fluid">`
+                        return `<img src="{{ url(AIIASetting::getValue('admin_base_route')) }}/job-seekers/${data.job_seeker.id}/photo" class="img-fluid">`
                     }
                 },
                 {
@@ -268,35 +284,10 @@
                     orderable: false,
                     searchable: false,
                     render: function(data){
-                        let status = data.status;
-                        let textLabel = 'Unprocess';
-
-                        if (status == 1) {
-                            textLabel = 'In Process';
-                        } else if (status == 2) {
-                            textLabel = 'Accepted';
-                        } else if (status == 3) {
-                            textLabel = 'Rejected';
-                        }
-
-                        return textLabel
-                    }
-                },
-                {
-                    data: null,
-                    className: "center",
-                    orderable: false,
-                    searchable: false,
-                    render: function(data){
                         let stages = data.job_application_stages;
-                        let status = data.status;
-
-                        if (status == 2) {
-                            return 'Complete';
-                        }
 
                         if (stages.length < 1) {
-                            return '-';
+                            return 'Document Selection';
                         } else {
                             return stages[stages.length - 1].stage.name;
                         }
@@ -406,13 +397,15 @@
                                 nextButton = `<button type="button" data-id="${data.id}" class="btn btn-outline-success btn-fw btn-accept-stage btn-sm" data-toggle="tooltip" title="Accept this jobseeker">
                                     <i class="mdi mdi-check-all"></i>
                                 </button>`
-                            } else {
-                                nextButton = '';
                             }
                         }
 
+                        if (data.status != 1) {
+                            nextButton = '';
+                        }
+
                         if (stages.length > 0) {
-                            if (stages[stages.length - 1].status == 0 || stages[stages.length - 1].status == 3) {
+                            if (stages[stages.length - 1].status == 0 || stages[stages.length - 1].status == 2) {
                                 nextButton = '';
                             }
                         }
@@ -529,6 +522,7 @@
                 cancelButtonText: 'No, cancel!',
                 confirmButtonText: 'Yes, I am sure!',
                 showConfirmButton: true,
+                showLoaderOnConfirm: true,
                 onOpen: function() {
                     $('#select-vendor').select2({
                         placeholder: 'Select Job Vacancy',
@@ -777,12 +771,6 @@
                 })
             }
         })
-
-        $('#job-seeker-table').on('click', '.btn-show', function(){
-            let id = $(this).data('id');
-            window.location = "{{ url(AIIASetting::getValue('admin_base_route').'/job-seekers') }}/"+id;
-        });
-
     } );
 </script>
 @endpush

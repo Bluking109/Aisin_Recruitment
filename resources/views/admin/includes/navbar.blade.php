@@ -28,11 +28,19 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.job-applications.index') }}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="mdi mdi-file-document menu-icon"></i>
                     <span class="menu-title">Job Applications</span>
                     <i class="menu-arrow"></i>
                 </a>
+                <div class="submenu">
+                    <ul>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.in-process') }}">In Process</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.accepted') }}">Accepted</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.rejected') }}">Rejected</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.in-process') }}">Assign Application</a></li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">

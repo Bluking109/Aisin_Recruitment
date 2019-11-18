@@ -20,6 +20,7 @@ class CreateJobApplicationsTable extends Migration
             $table->unsignedBigInteger('job_seeker_id')->nullable();
             $table->foreign('job_seeker_id')->references('id')->on('job_seekers')->onDelete('restrict');
             $table->enum('status', ['0', '1', '2', '3'])->default('0')->comment = '0 = Belum di proses, 1 = in proses, 2 = lolos, 3 = reject';
+            $table->dateTime('finished_at')->nullable();
             $table->timestamps();
         });
     }

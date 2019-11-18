@@ -33,6 +33,8 @@ class CreateApplicationStagesTable extends Migration
             $table->dateTime('exam_at');
             $table->string('note', 191)->nullable();
             $table->enum('status', ['0', '1', '2'])->comment = '0 = waiting, 1 = confirmed, 2 = reject';
+            $table->dateTime('accepted_at')->nullable();
+            $table->dateTime('rejected_at')->nullable();
             $table->timestamps();
         });
     }

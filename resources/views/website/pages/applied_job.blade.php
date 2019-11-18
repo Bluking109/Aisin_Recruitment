@@ -58,6 +58,7 @@
 											<span class="text-danger"><i class="fa fa-times-rectangle-o"></i> Ditolak</span>
 					 						@endif
 					 						@else
+					 						#
 					 						@endif
 					 						@else
 					 						#

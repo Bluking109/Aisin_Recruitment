@@ -9,16 +9,64 @@
                     <h1 class="card-title">Job Application ({{ $jobApplication->jobVacancy->position->name }} - {{ $jobApplication->jobVacancy->section->name }})</h1>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button type="button" data-id="" class="btn btn-outline-success btn-fw btn-print btn-sm" data-toggle="tooltip" title="Print Data">
+                            <button type="button" data-id="{{ $jobApplication->jobSeeker->id }}" class="btn btn-outline-success btn-fw btn-print btn-sm" data-toggle="tooltip" title="Print Data">
                                 <i class="mdi mdi-printer"></i>
                             </button>
-                            <button type="button" data-by-vendor="${nextStage.by_vendor}" data-next-stage="${nextStage.name}" data-id="${data.id}" class="btn btn-outline-primary btn-fw btn-next-stage btn-sm" data-toggle="tooltip" title="Proceed to the next stage">
+                            @php
+                            $lastStage = $jobApplication->jobApplicationStages->last();
+                            // last akan mengembalikan null apabila
+                            $canSwitch = 0;
+                            $lastStageName = 'Seleksi Dokumen';
+                            $vacancyId = $jobApplication->jobVacancy->id;
+                            $vacancyStages = $jobApplication->jobVacancy->stages;
+                            $firstVacancyStage = $vacancyStages->first();
+                            $lastVacancyStage = $vacancyStages->last();
+                            $nextStage = $vacancyStages[0];
+
+                            if ($lastStage) {
+                                $lastStageName = $lastStage->stage->name;
+                                $canSwitch = $lastStage->stage->switch_vacancy;
+                            }
+                            @endphp
+                            @if($jobApplication->status == 1 || $jobApplication->status == 0)
+                            @if($lastStage)
+                            @if($lastStage->stage_id == $lastVacancyStage->id)
+                            @if($lastStage->status == 1)
+                            <button type="button" data-id="{{ $jobApplication->id }}" class="btn btn-outline-primary btn-fw btn-accept-stage btn-sm" data-toggle="tooltip" title="Accept this jobseeker">
+                                <i class="mdi mdi-check-all"></i>
+                            </button>
+                            @endif
+                            @else
+                            @php
+                            $keyNextStage = 0;
+                            foreach ($vacancyStages as $key => $value) {
+                                if ($lastStage->stage_id == $value->id) {
+                                    $keyNextStage = $key + 1;
+                                    break;
+                                }
+                            }
+
+                            $nextStage = $vacancyStages[$keyNextStage];
+                            @endphp
+                            @if($lastStage->status == 1)
+                            <button type="button" data-by-vendor="{{ $nextStage->by_vendor }}" data-next-stage="{{ $nextStage->name }}" data-id="{{ $jobApplication->id }}" class="btn btn-outline-primary btn-fw btn-next-stage btn-sm" data-toggle="tooltip" title="Proceed to the next stage" id="btn-next-stage">
                                 <i class="mdi mdi-send"></i>
                             </button>
-                            <button type="button" data-id="${data.id}" data-switch="${canSwitch}" data-stage="${lastStageName}" data-vacancy="${data.job_vacancy.id}" class="btn btn-outline-warning btn-fw btn-reject btn-sm" data-toggle="tooltip" title="Reject">
+                            @endif
+                            @endif
+                            @else
+                            {{-- Seleksi Dokumen --}}
+                            <button type="button" data-by-vendor="{{ $nextStage->by_vendor }}" data-next-stage="{{ $nextStage->name }}" data-id="{{ $jobApplication->id }}" class="btn btn-outline-primary btn-fw btn-next-stage btn-sm" data-toggle="tooltip" title="Proceed to the next stage" id="btn-next-stage">
+                                <i class="mdi mdi-send"></i>
+                            </button>
+                            @endif
+                            @endif
+                            @if($jobApplication->status != 2 && $jobApplication->status != 3)
+                            <button type="button" id="btn-reject" data-id="{{ $jobApplication->id }}" data-switch="{{ $canSwitch }}" data-stage="${lastStageName}" data-vacancy="{{ $vacancyId }}" class="btn btn-outline-warning btn-fw btn-reject btn-sm" data-toggle="tooltip" title="Reject">
                                 <i class="mdi mdi-block-helper"></i>
                             </button>
-                            <button type="button" data-stages="{{ json_encode($jobApplication->jobApplicationStages()->with('stage')->get()->toArray()) }}" class="btn btn-outline-danger btn-fw btn-reject btn-sm" data-toggle="tooltip" id="btn-history" title="History Application">
+                            @endif
+                            <button type="button" data-status="{{ $jobApplication->status }}" data-stages="{{ json_encode($jobApplication->jobApplicationStages()->with('stage')->get()->toArray()) }}" class="btn btn-outline-danger btn-fw btn-sm" data-toggle="tooltip" id="btn-history" title="History Application">
                                 <i class="mdi mdi-format-list-bulleted"></i>
                             </button>
                         </div>
@@ -992,6 +1040,7 @@
                                         <th>Stage</th>
                                         <th>Exam Date</th>
                                         <th>Exam Time</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody id="body-history">
@@ -1012,8 +1061,8 @@
 @endsection
 
 @push('bottom_scripts')
-
 <script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
+<script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset('admin/js/bootstrap-datepicker.js') }}"></script>
 <script>
     $(document).ready(function() {
@@ -1025,14 +1074,367 @@
                 buttonsStyling: false,
             })
 
+        $('body').on('change', '#switch-select', function() {
+            if($(this).is(":checked")) {
+                $('#select-vacancy, #date-switch, #time-switch').prop('disabled', false);
+            } else {
+                $('#select-vacancy, #date-switch, #time-switch').prop('disabled', true);
+            }
+        });
+
+        $('.btn-accept-stage').on('click', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                data: {
+                    _token: "{{ csrf_token() }}"
+                },
+                url: "{{ url(AIIASetting::getValue('admin_base_route').'/job-applications') }}/"+id+"/accept",
+                type: "put",
+                dataType: "json",
+                success: function (data) {
+                    swalWithBootstrapButtons.fire(
+                        data.title,
+                        data.message,
+                        'success'
+                    )
+                    window.location.href = "{{ route('admin.job-applications.in-process') }}";
+                },
+                statusCode: {
+                    400 : function (data) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            data.responseJSON.message,
+                            'error'
+                        )
+                    },
+                    404 : function (data) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Error, Id Not Found',
+                            'error'
+                        )
+                    },
+                }
+            });
+        });
+
+        $('.btn-print').on('click', function() {
+            let id = $(this).data('id');
+            window.location = "{{ url(AIIASetting::getValue('admin_base_route').'/job-seekers/getpdf') }}/"+id;
+        });
+
+        $('#btn-next-stage').on('click', function() {
+            let id = $(this).data('id');
+            let byVendor = $(this).data('by-vendor');
+            let nextStage = $(this).data('next-stage');
+
+            let vendor = '';
+
+            if (byVendor == 1) {
+                vendor = `<p class="text-left">Vendor</p>
+                        <div class="text-left">
+                            <select class="form-control" id="select-vendor">
+                            </select>
+                        </div>
+                    <br>`
+            }
+
+            let html = `<br>
+                <p>Next Stage : <b>${nextStage}</b></p>
+                ${vendor}
+                <p class="text-left">${nextStage} Test</p>
+                <div>
+                    <input type="text" class="datepicker form-control" placeholder="{{ date('Y-m-d') }}" id="date-exam" style="width:calc(75% - 3px); margin-right:3px; float:left">
+                    <input type="text" class="form-control" style="width:calc(25% - 3px); margin-right:3px;  float:left" id="time-exam" placeholder="{{ date('H:i') }}" maxlength="5">
+                </div>
+                <br>`;
+
+            swalWithBootstrapButtons.fire({
+                title: 'You will continue this application to the next process !',
+                html: html,
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'Yes, I am sure!',
+                showConfirmButton: true,
+                onOpen: function() {
+                    $('#select-vendor').select2({
+                        placeholder: 'Select Job Vacancy',
+                        width: 'resolve',
+                        ajax: {
+                            url: "{{ route('admin.vendors.getvendor') }}",
+                            dataType: "json",
+                            data: function (params) {
+                                return {
+                                    search : $.trim(params.term)
+                                };
+                            },
+                            processResults: function (data) {
+                                return {
+                                    results: data
+                                };
+                            },
+                            cache: true
+                        }
+                    });
+                    $('.select2-container--open').css({"z-index": 9999999});
+                    $('.datepicker').blur();
+                    $('.datepicker').datepicker({
+                        orientation : 'bottom',
+                        format : 'yyyy-mm-dd',
+                        autoclose: true,
+                    });
+                }
+            }).then(function(result) {
+                if ( result.value ) {
+                    $.ajax({
+                        data: {
+                            _token : "{{ csrf_token() }}",
+                            vendor : $('#select-vendor').val(),
+                            date_exam : $('#date-exam').val(),
+                            time_exam : $('#time-exam').val(),
+                        },
+                        url: "{{ url(AIIASetting::getValue('admin_base_route').'/job-applications') }}/"+id+"/next-stage",
+                        type: "put",
+                        dataType: "json",
+                        success: function (data) {
+                            swalWithBootstrapButtons.fire(
+                                data.title,
+                                data.message,
+                                'success'
+                            )
+                            window.location.href = "{{ route('admin.job-applications.in-process') }}";
+                        },
+                        statusCode: {
+                            400 : function (data) {
+                                swalWithBootstrapButtons.fire(
+                                    'Cancelled',
+                                    data.responseJSON.message,
+                                    'error'
+                                )
+                            },
+                            422 : function (data) {
+                                swalWithBootstrapButtons.fire(
+                                    'Cancelled',
+                                    'Data invalid',
+                                    'error'
+                                )
+                            },
+                            404 : function (data) {
+                                swalWithBootstrapButtons.fire(
+                                    'Cancelled',
+                                    'Error, Id Not Found',
+                                    'error'
+                                )
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        $('#btn-reject').on('click', function() {
+            let canSwitch = $(this).data('switch');
+            let id = $(this).data('id');
+            let stageName = $(this).data('stage');
+            let vacancyId = $(this).data('vacancy');
+
+            if (canSwitch == 1) {
+                swalWithBootstrapButtons.fire({
+                    title: 'Reject this application ?',
+                    html: `<br><div class="text-left">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" id="switch-select"> Switch to other vacancy</label>
+                            </div>
+                        </div>
+                        <p class="text-left">Switch To</p>
+                        <div class="text-left">
+                            <select class="form-control" disabled id="select-vacancy">
+                            </select>
+                        </div>
+                        <br>
+                        <p class="text-left">${stageName} Test</p>
+                        <div>
+                            <input type="text" class="datepicker form-control" placeholder="{{ date('Y-m-d') }}" id="date-switch" style="width:calc(75% - 3px); margin-right:3px; float:left" disabled>
+                            <input type="text" class="form-control" style="width:calc(25% - 3px); margin-right:3px;  float:left" id="time-switch" placeholder="{{ date('H:i') }}" disabled maxlength="5">
+                        </div>
+                        <br>`,
+                    type: 'warning',
+                    showCancelButton: true,
+                    cancelButtonText: 'No, cancel!',
+                    confirmButtonText: 'Yes, I am sure!',
+                    showConfirmButton: true,
+                    onOpen: function() {
+                        $('#select-vacancy').select2({
+                            placeholder: 'Select Job Vacancy',
+                            width: 'resolve',
+                            ajax: {
+                                url: "{{ route('admin.job-vacancies.getjobvacancies') }}",
+                                dataType: "json",
+                                data: function (params) {
+                                    return {
+                                        search : $.trim(params.term)
+                                    };
+                                },
+                                processResults: function (data) {
+                                    let dataReturn = [];
+                                    data.forEach(e => {
+                                        if (vacancyId != e.id) {
+                                            dataReturn.push({
+                                                id : e.id,
+                                                text : e.position.name + ' - ' + e.section.name
+                                            })
+                                        }
+                                    });
+                                    return {
+                                        results: dataReturn
+                                    };
+                                },
+                                cache: true
+                            }
+                        });
+                        $('.select2-container--open').css({"z-index": 9999999});
+                        $('.datepicker').blur();
+                        $('.datepicker').datepicker({
+                            orientation : 'bottom',
+                            format : 'yyyy-mm-dd',
+                            autoclose: true,
+                        });
+                    }
+                }).then(function(result) {
+                    if ( result.value ) {
+                        $.ajax({
+                            data: {
+                                _token : "{{ csrf_token() }}",
+                                job_vacancy : $('#select-vacancy').val(),
+                                date_test : $('#date-switch').val(),
+                                time_test : $('#time-switch').val(),
+                            },
+                            url: "{{ url(AIIASetting::getValue('admin_base_route').'/job-applications') }}/"+id+"/reject",
+                            type: "put",
+                            dataType: "json",
+                            success: function (data) {
+                                swalWithBootstrapButtons.fire(
+                                    data.title,
+                                    data.message,
+                                    'success'
+                                )
+                                window.location.href = "{{ route('admin.job-applications.in-process') }}"
+                            },
+                            statusCode: {
+                                400 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        data.responseJSON.message,
+                                        'error'
+                                    )
+                                },
+                                422 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        'Data invalid',
+                                        'error'
+                                    )
+                                },
+                                404 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        'Error, Id Not Found',
+                                        'error'
+                                    )
+                                }
+                            }
+                        });
+                    }
+                });
+            } else {
+                // ini langsung konfirmasi aja
+                let id = $(this).data('id');
+
+                swalWithBootstrapButtons.fire({
+                    title: 'Are you sure?',
+                    text: "This application will be reject and jobseeker will be blacklist for 1 year",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, Sure!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true
+                }).then((result) => {
+                    if ( result.value ) {
+                        $.ajax({
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            url: "{{ url(AIIASetting::getValue('admin_base_route').'/job-applications') }}/"+id+"/reject",
+                            type: "put",
+                            dataType: "json",
+                            success: function (data) {
+                                swalWithBootstrapButtons.fire(
+                                    data.title,
+                                    data.message,
+                                    'success'
+                                )
+                                table.ajax.reload()
+                            },
+                            statusCode: {
+                                400 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        data.responseJSON.message,
+                                        'error'
+                                    )
+                                },
+                                404 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        'Error, Id Not Found',
+                                        'error'
+                                    )
+                                },
+                                422 : function (data) {
+                                    swalWithBootstrapButtons.fire(
+                                        'Cancelled',
+                                        'Data invalid',
+                                        'error'
+                                    )
+                                },
+                            }
+                        });
+                    } else if ( result.dismiss === Swal.DismissReason.cancel ) {
+                    }
+                })
+            }
+        })
+
         $('#btn-history').on('click', function() {
             let stages = $(this).data('stages');
             let tr = '';
-            stages.forEach(v => {
+            stages.forEach((v, i) => {
+                let status = 'Accepted';
+
+                if (i == stages.length - 1) {
+                    if (status == 2) {
+                        status = 'Accepted';
+                    } else if (status == 3) {
+                        status = 'Rejected';
+                    } else {
+                        status = 'In Process';
+                    }
+                }
+
+                if ($(this).data('status') == 2) {
+                    status = 'Accepted';
+                }
+
+                if ($(this).data('status') == 3 && i == stages.length - 1) {
+                    status = 'Rejected';
+                }
+
                 tr += `<tr>
                     <td>${v.stage.name}</td>
                     <td>${v.exam_at.split(' ')[0]}</td>
                     <td>${v.exam_at.split(' ')[1]}</td>
+                    <td>${status}</td>
                 </tr>`
             });
             if (tr == '') {
@@ -1208,4 +1610,10 @@
 
 @push('optional_vendor_css')
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/datatables/datatable.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
+<style type="text/css">
+    .select2-container--open {
+        z-index: 9999999 !important
+    }
+</style>
 @endpush

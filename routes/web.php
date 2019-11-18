@@ -76,8 +76,15 @@ Route::namespace('Admin')->group(function() {
 			Route::get('job-seekers/{job_seeker}/document/{type}', 'JobSeekerController@getDocument')
 				->name('job-seekers.getdocument');
 
-			Route::get('job-applications', 'JobApplicationController@index')->name('job-applications.index');
+			Route::get('job-applications/export', 'JobApplicationController@export')->name('job-applications.export');
+
+			Route::get('job-applications/in-process', 'JobApplicationController@indexInProcess')->name('job-applications.in-process');
+			Route::get('job-applications/rejected', 'JobApplicationController@indexRejected')->name('job-applications.rejected');
+			Route::get('job-applications/accepted', 'JobApplicationController@indexAccepted')->name('job-applications.accepted');
+			Route::get('job-applications/assign', 'JobApplicationController@indexAssign')->name('job-applications.assign');
+
 			Route::get('job-applications/{job_application}', 'JobApplicationController@show')->name('job-applications.show');
+			Route::delete('job-applications/{job_application}', 'JobApplicationController@destroy')->name('job-applications.destroy');
 			Route::put('job-applications/{job_application}/reject', 'JobApplicationController@reject')->name('job-applications.reject');
 			Route::put('job-applications/{job_application}/accept', 'JobApplicationController@acceptApplication')->name('job-applications.accept');
 			Route::put('job-applications/{job_application}/next-stage', 'JobApplicationController@nextStage')->name('job-applications.next-stage');

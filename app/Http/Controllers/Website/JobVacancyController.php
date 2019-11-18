@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\JobVacancy;
 use App\Models\JobSeeker;
+use App\Models\JobApplication;
 use App\Models\EducationLevel;
 
 class JobVacancyController extends Controller
@@ -172,6 +173,18 @@ class JobVacancyController extends Controller
             }
         }
 
+        // validasi tidak ada proses recruitment berjalan
+        $runningApp = $jobSeeker->applications()
+            ->whereHas('jobApplicationStages', function($q) {
+                $q->where('accepted_at', null)
+                    ->where('rejected_at', null);
+            })
+            ->first();
+
+        if ($runningApp) {
+            return back()->with('error', 'Mohon maaf Anda tidak dapat melamar pekerjaan karena sedang ada proses recruitment berjalan');
+        }
+
         // check matematika apabila SMA
         if ($jobSeeker->educationLevel->isHighSchoolForm()) {
             if ($edu) {
@@ -192,7 +205,8 @@ class JobVacancyController extends Controller
         }
 
         $jobSeeker->applications()->create([
-            'job_vacancy_id' => $job->id
+            'job_vacancy_id' => $job->id,
+            'status' => JobApplication::STATUS_IN_PROCESS
         ]);
 
         return back()->with('success', 'Terimakasih sudah melamar untuk pekerjaan ini :D');
