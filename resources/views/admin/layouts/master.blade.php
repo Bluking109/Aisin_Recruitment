@@ -18,6 +18,9 @@
         <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
     </head>
     <body>
+        <div class="loading" id="loading">
+            <img src="{{ asset('admin/images/loading.gif') }}" alt="placeholder+image">
+        </div>
         <div class="container-scroller">
             <!-- partial:partials/_horizontal-navbar.html -->
             <div class="horizontal-menu">

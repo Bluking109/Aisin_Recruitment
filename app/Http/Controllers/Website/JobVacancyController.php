@@ -185,6 +185,15 @@ class JobVacancyController extends Controller
             return back()->with('error', 'Mohon maaf Anda tidak dapat melamar pekerjaan karena sedang ada proses recruitment berjalan');
         }
 
+        // validasi apabila jobseeker punya applikasi yang sudah di terima.
+        $acceptedAt = $jobSeeker->applications()
+            ->where('status', JobApplication::STATUS_ACCEPTED)
+            ->first();
+
+        if ($acceptedAt) {
+            return back()->with('error', 'Mohon maaf Anda tidak dapat melamar pekerjaan karena pernah bekerja di AIIA');
+        }
+
         // check matematika apabila SMA
         if ($jobSeeker->educationLevel->isHighSchoolForm()) {
             if ($edu) {

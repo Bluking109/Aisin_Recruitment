@@ -1187,6 +1187,7 @@
                 }
             }).then(function(result) {
                 if ( result.value ) {
+                    $('#loading').show();
                     $.ajax({
                         data: {
                             _token : "{{ csrf_token() }}",
@@ -1198,6 +1199,7 @@
                         type: "put",
                         dataType: "json",
                         success: function (data) {
+                            $('#loading').hide();
                             swalWithBootstrapButtons.fire(
                                 data.title,
                                 data.message,
@@ -1207,6 +1209,7 @@
                         },
                         statusCode: {
                             400 : function (data) {
+                                $('#loading').hide();
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
                                     data.responseJSON.message,
@@ -1214,6 +1217,7 @@
                                 )
                             },
                             422 : function (data) {
+                                $('#loading').hide();
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
                                     'Data invalid',
@@ -1221,6 +1225,7 @@
                                 )
                             },
                             404 : function (data) {
+                                $('#loading').hide();
                                 swalWithBootstrapButtons.fire(
                                     'Cancelled',
                                     'Error, Id Not Found',
@@ -1303,6 +1308,7 @@
                     }
                 }).then(function(result) {
                     if ( result.value ) {
+                        $('#loading').show();
                         $.ajax({
                             data: {
                                 _token : "{{ csrf_token() }}",
@@ -1314,6 +1320,7 @@
                             type: "put",
                             dataType: "json",
                             success: function (data) {
+                                $('#loading').hide();
                                 swalWithBootstrapButtons.fire(
                                     data.title,
                                     data.message,
@@ -1323,6 +1330,7 @@
                             },
                             statusCode: {
                                 400 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         data.responseJSON.message,
@@ -1330,6 +1338,7 @@
                                     )
                                 },
                                 422 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         'Data invalid',
@@ -1337,6 +1346,7 @@
                                     )
                                 },
                                 404 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         'Error, Id Not Found',
@@ -1361,6 +1371,7 @@
                     reverseButtons: true
                 }).then((result) => {
                     if ( result.value ) {
+                        $('#loading').show();
                         $.ajax({
                             data: {
                                 _token: "{{ csrf_token() }}"
@@ -1369,6 +1380,7 @@
                             type: "put",
                             dataType: "json",
                             success: function (data) {
+                                $('#loading').hide();
                                 swalWithBootstrapButtons.fire(
                                     data.title,
                                     data.message,
@@ -1378,6 +1390,7 @@
                             },
                             statusCode: {
                                 400 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         data.responseJSON.message,
@@ -1385,6 +1398,7 @@
                                     )
                                 },
                                 404 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         'Error, Id Not Found',
@@ -1392,6 +1406,7 @@
                                     )
                                 },
                                 422 : function (data) {
+                                    $('#loading').hide();
                                     swalWithBootstrapButtons.fire(
                                         'Cancelled',
                                         'Data invalid',
@@ -1400,7 +1415,6 @@
                                 },
                             }
                         });
-                    } else if ( result.dismiss === Swal.DismissReason.cancel ) {
                     }
                 })
             }

@@ -88,6 +88,7 @@ Route::namespace('Admin')->group(function() {
 			Route::put('job-applications/{job_application}/reject', 'JobApplicationController@reject')->name('job-applications.reject');
 			Route::put('job-applications/{job_application}/accept', 'JobApplicationController@acceptApplication')->name('job-applications.accept');
 			Route::put('job-applications/{job_application}/next-stage', 'JobApplicationController@nextStage')->name('job-applications.next-stage');
+			Route::put('job-applications/{job_application}/assign', 'JobApplicationController@assignVacancy')->name('job-applications.assignvacancy');
 		});
 	});
 });

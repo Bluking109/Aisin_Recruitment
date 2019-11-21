@@ -38,7 +38,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.in-process') }}">In Process</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.accepted') }}">Accepted</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.rejected') }}">Rejected</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.in-process') }}">Assign Application</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.job-applications.assign') }}">Assign Application</a></li>
                     </ul>
                 </div>
             </li>

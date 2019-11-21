@@ -9,6 +9,7 @@ use App\Exports\JobApplicationExport;
 use App\Http\Controllers\Controller;
 use App\Models\JobApplication;
 use App\Models\JobSeeker;
+use App\Models\JobVacancy;
 use App\Http\Requests\Admin\RejectApplication;
 use App\Http\Requests\Admin\NextStageApplication;
 use App\Mail\ApplicationAccepted;
@@ -63,6 +64,27 @@ class JobApplicationController extends Controller
         }
 
         return view('admin.pages.job_applications.index_accepted');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexAssign(Request $request)
+    {
+         if ($request->ajax()) {
+            $jobSeekers = JobSeeker::has('applications', '<', 3)
+                ->whereDoesntHave('applications', function($q) {
+                    $q->where('status', JobApplication::STATUS_IN_PROCESS)
+                        ->orWhere('status', JobApplication::STATUS_ACCEPTED);
+                })
+                ->with('educationLevel');
+
+            return DataTables::eloquent($jobSeekers)->toJson();
+        }
+
+        return view('admin.pages.job_applications.index_assign');
     }
 
     /**
@@ -367,7 +389,10 @@ class JobApplicationController extends Controller
         $examDate = $request->exam_date;
         $finishedAt = $request->finish_at;
 
-        $applications = JobApplication::with('jobSeeker', 'jobApplicationStages.stage')
+        $applications = JobApplication::with('jobApplicationStages.stage')
+            ->with(['jobSeeker' => function($q) {
+                $q->allData();
+            }])
             ->with(['jobVacancy' => function($q) {
                 $q->with('position', 'section', 'stages');
             }])
@@ -390,7 +415,6 @@ class JobApplicationController extends Controller
                     });
                 }
             })
-            ->has('jobSeeker')
             ->when($job, function($q, $job) {
                 $q->where('job_vacancy_id', $job);
             })
@@ -446,6 +470,57 @@ class JobApplicationController extends Controller
 
         return redirect()->back()->with([
             'message' => 'success'
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function assignVacancy(Request $request, $id)
+    {
+        $jobVacancy = JobVacancy::findOrFail($id);
+        $jobSeeker = JobSeeker::findOrFail($request->job_seeker_id);
+
+        if ($jobSeeker->applications->count() >= 3) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Error',
+                'message' => 'Cannot assign job vacancy because job seeker has more than 2 applications'
+            ], 400);
+        }
+
+        if ($jobSeeker->applications()->where('id', $jobVacancy->id)->first()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Error',
+                'message' => 'Cannot assign job vacancy because job vacancy alredy assigned'
+            ], 400);
+        }
+
+        if ($jobSeeker->applications()->where('status', JobApplication::STATUS_IN_PROCESS)->first()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Error',
+                'message' => 'Cannot assign job vacancy because job seeker in another recruitment process'
+            ], 400);
+        }
+
+        if ($jobSeeker->applications()->where('status', JobApplication::STATUS_ACCEPTED)->first()) {
+            return response()->json([
+                'success' => true,
+                'title' => 'Error',
+                'message' => 'Cannot assign job vacancy because job seeker has accepted'
+            ], 400);
+        }
+
+        $jobSeeker->applications()->create([
+            'job_vacancy_id' => $jobVacancy->id,
+            'status' => JobApplication::STATUS_IN_PROCESS
+        ]);
+
+        return response()->json([
+            'title' => 'Success',
+            'message' => 'Job vacancy has been successfully assigned'
         ]);
     }
 

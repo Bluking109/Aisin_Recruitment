@@ -23045,3 +23045,14 @@ input[type="radio"]:disabled + label::before {
     margin-bottom: 16px;
     margin-left: 13px;
 }
+
+.loading {
+    position: fixed;
+    z-index: 99999;
+    padding-top: 30vh;
+    padding-left: 41vw;
+    background: rgba(255,255,255,0.7);
+    width: 100%;
+    height: 100%;
+    display: none
+}
