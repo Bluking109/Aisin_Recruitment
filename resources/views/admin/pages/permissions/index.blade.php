@@ -58,6 +58,8 @@
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
+                    searchable: false,
+                    orderable: false,
                     className: "center",
                     render: function(data){
                         return `<div class="text-center">

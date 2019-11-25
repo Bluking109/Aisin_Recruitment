@@ -19,7 +19,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $permissions = Permission::select('id', 'name', 'display_name', 'guard_name', 'created_at' );
+            $permissions = Permission::select('name', 'display_name', 'guard_name', 'created_at');
             return DataTables::eloquent($permissions)->toJson();
         }
 

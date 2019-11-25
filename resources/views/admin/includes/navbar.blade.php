@@ -42,6 +42,8 @@
                     </ul>
                 </div>
             </li>
+            {{-- Sementara about permission protect page karena sub menu hanya 1 --}}
+            @can('list_about')
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-book-open-page-variant menu-icon"></i>
@@ -54,6 +56,8 @@
                     </ul>
                 </div>
             </li>
+            @endcan
+            {{-- end about permission --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-database menu-icon"></i>

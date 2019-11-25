@@ -7,7 +7,9 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">About</h1>
+                    @can('store_about')
                     <button type="button" class="btn btn-primary btn-white-text mb-3 mt-3" id="btn-add">Add</button>
+                    @endcan
                     <div class="table-responsive">
                         <table id="about-table" class="table table-striped table-bordered" style="width:100%">
                             <thead>

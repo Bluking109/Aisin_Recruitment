@@ -47,7 +47,7 @@
 					<p class="remember-label">
 						<input type="checkbox" name="remember" id="cb1"><label for="cb1">Remember me</label>
 					</p>
-					<a href="#" title="">Lupa Password?</a>
+					{{-- <a href="#" title="">Lupa Password?</a> --}}
 					<button class="submit-button" type="submit"><span class="submit-text">Login</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
 				</form>
 				<div class="term-login">
