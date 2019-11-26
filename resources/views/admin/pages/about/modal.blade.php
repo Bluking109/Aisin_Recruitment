@@ -4,7 +4,7 @@
 			<div class="card">
 				<div class="card-body">
 				<h4 class="card-title"><span id="title-modal">  </span></h4>
-					<form class="forms-sample" id="frm-insert" action="{{ route('admin.about-us.store') }}" method="POST">
+					<form class="forms-sample" id="frm-insert" action="{{ route('admin.about-us.store') }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="form-group row">
 							<label for="name" class="col-sm-3 col-form-label">Title</label>

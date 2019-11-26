@@ -107,19 +107,20 @@ class AboutController extends Controller
             'is_active' => $request->is_active,
         ]);
 
-        if ($request->images) {
-            if (count($request->images) > 0) {
+        if ($request->file('images')) {
+            if (count($request->file('images')) > 0) {
                 $images = $about->images;
                 if (count($images) > 0) {
                     $images = array_map(function($n) {
-                        return 'public/pages/' . $n;
+                        return storage_path('app/public/pages/' . $n);
                     }, $images);
-                    $this->deleteFile($images);
 
-                    $about->update([
-                        'images' => $this->uploadFiles($request->file('images'), 'pages', 'about', null, true)
-                    ]);
+                    $this->deleteFile($images);
                 }
+
+                $about->update([
+                    'images' => $this->uploadFiles($request->file('images'), 'pages', 'about', null, true)
+                ]);
             }
         }
 
