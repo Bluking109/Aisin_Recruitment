@@ -9,6 +9,7 @@ use App\Http\Requests\Website\OtherRequest;
 use App\Models\OtherRecruitment;
 use App\Models\Other;
 use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class OtherController extends Controller
 {
@@ -41,16 +42,18 @@ class OtherController extends Controller
      */
     public function update(OtherRequest $request)
     {
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('other')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('other')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $profile = DB::transaction(function () use ($request) {

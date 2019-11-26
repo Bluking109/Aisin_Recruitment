@@ -10,6 +10,7 @@ use App\Http\Requests\Website\PersonalRequest;
 use App\Traits\FilterString;
 use App\Traits\FileHandler;
 use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class PersonalController extends Controller
 {
@@ -36,16 +37,18 @@ class PersonalController extends Controller
      */
     public function update(PersonalRequest $request)
     {
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('personal_identity')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('personal_identity')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $request->merge($this->filterSpace($request->all()));

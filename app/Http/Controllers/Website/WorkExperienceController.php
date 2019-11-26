@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\WorkExperienceRequest;
 use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class WorkExperienceController extends Controller
 {
@@ -37,16 +38,18 @@ class WorkExperienceController extends Controller
      */
     public function update(WorkExperienceRequest $request)
     {
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('work_experience')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('work_experience')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $message = 'Anda tidak menambah data pengalaman kerja';

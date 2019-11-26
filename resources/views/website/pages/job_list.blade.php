@@ -88,7 +88,7 @@
 
 									<form class="d-none" method="post" id="form-sumbit-vacancy-{{$key}}" action="{{ route('job-vacancies.apply', ['slug' => $job->slug]) }}">
 			 							@csrf
-			 							<button id="btn-sumbit-vacancy"></button>
+			 							<button type="submit"></button>
 			 						</form>
 								</div><!-- JOB Grid -->
 							</div>

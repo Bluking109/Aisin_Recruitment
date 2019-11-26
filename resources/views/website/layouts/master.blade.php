@@ -138,8 +138,8 @@
 			$(function() {
 				cleaveJsInit();
 
-				console.log('%c ITD Department is Hiring Now', 'font-weight: bold; font-size: 20px; color: #0066ff;');
-				console.log('%c Daripada coba-coba inspect element mending gabung dengan kami :)', 'font-size: 20px; color: #1c1c1c;');
+				// console.log('%c ITD Department is Hiring Now', 'font-weight: bold; font-size: 20px; color: #0066ff;');
+				// console.log('%c Daripada coba-coba inspect element mending gabung dengan kami :)', 'font-size: 20px; color: #1c1c1c;');
 			});
 		</script>
 

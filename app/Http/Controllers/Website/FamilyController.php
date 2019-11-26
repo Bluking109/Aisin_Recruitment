@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\FamilyRequest;
 use App\Models\BiologicalParent;
 use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class FamilyController extends Controller
 {
@@ -46,16 +47,18 @@ class FamilyController extends Controller
      */
     public function update(FamilyRequest $request)
     {
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('family')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('family')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $profile = DB::transaction(function () use ($request) {

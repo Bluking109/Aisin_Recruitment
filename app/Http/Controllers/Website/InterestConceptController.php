@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InterestConcept;
 use App\Http\Requests\Website\InterestConceptRequest;
 use ReCaptcha\ReCaptcha;
+use AIIASetting;
 
 class InterestConceptController extends Controller
 {
@@ -36,16 +37,18 @@ class InterestConceptController extends Controller
      */
     public function update(InterestConceptRequest $request)
     {
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('interest_concept')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('interest_concept')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $profile = DB::transaction(function () use ($request) {

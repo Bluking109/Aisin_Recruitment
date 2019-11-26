@@ -10,6 +10,7 @@ use App\Models\Document;
 use App\Http\Requests\Website\DocumentRequest;
 use ReCaptcha\ReCaptcha;
 use App\Traits\FileHandler;
+use AIIASetting;
 
 class DocumentController extends Controller
 {
@@ -38,16 +39,18 @@ class DocumentController extends Controller
     public function update(DocumentRequest $request)
     {
     	$jobSeeker = auth()->user();
-        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
-            ->setExpectedAction('document')
-            ->verify($request->recaptcha_key, $request->ip());
+        if (AIIASetting::getValue('recaptcha_validation')) {
+            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+                ->setExpectedHostname(env('APP_HOSTNAME'))
+                ->setExpectedAction('document')
+                ->verify($request->recaptcha_key, $request->ip());
 
-        if (!$response->isSuccess()) {
-            return response()->json([
-                'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                'success' => false
-            ], 400);
+            if (!$response->isSuccess()) {
+                return response()->json([
+                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                    'success' => false
+                ], 400);
+            }
         }
 
         $jobSeekerDoc = $jobSeeker->document;

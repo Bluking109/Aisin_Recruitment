@@ -133,7 +133,7 @@
 		<div class="container fluid">
 			<div class="row">
 				<div class="col-lg-12">
-					<a href="{{ route('contact.index') }}">
+					<a href="{{ route('job-vacancies.index') }}">
 						<div class="simple-text">
 							<h3>Lowongan Kerja</h3>
 							<span>Saat ini kami sedang membuka lowongan untuk beberapa posisi</span>
