@@ -108,14 +108,6 @@
 
 @push('additional_js')
 <script>
-let recaptchaReset = function() {
-    grecaptcha.ready(function() {
-        grecaptcha.execute(siteKey, {action: 'contact'}).then(function(token) {
-            $('#recaptcha-key').val(token);
-        });
-    });
-}
-
 $(function() {
 	recaptchaReset();
 
