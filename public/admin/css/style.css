@@ -19249,6 +19249,17 @@ code {
   bottom: 0;
 }
 
+.jobseeker-border:after {
+  content: '';
+  height: 5px;
+  width: 100%;
+  border-radius: 0 0 6px 6px;
+  background-color: #dc4a38;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
 .sale-visit-statistics-border:after {
   content: '';
   height: 5px;
