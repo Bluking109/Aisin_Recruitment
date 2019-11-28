@@ -40,7 +40,7 @@ if ($jobSeeker) {
 						 					<span><i class="la la-map-marker"></i>Karawang - Jawa Barat</span>
 						 					{{-- <span class="job-is ft">Full time</span> --}}
 						 					<ul class="tags-jobs">
-							 					<li><i class="fa fa-users"></i> 654 Pelamar</li>
+							 					<li><i class="fa fa-users"></i> {{ $job->applications->count() }} Pelamar</li>
 							 					<li><i class="fa fa-calendar"></i> Batas Lamaran: {{ date('d M Y', strtotime($job->close_date)) }}</li>
 							 				</ul>
 						 				</div>
@@ -77,7 +77,7 @@ if ($jobSeeker) {
 						 			<div class="job-overview">
 							 			<ul>
 							 				<li><i class="fa fa-mars-double"></i><h3>Jenis Kelamin</h3><span>{{ $job->gender_label }}</span></li>
-							 				{{-- <li><i class="fa fa-shield"></i><h3>Minimal Pengalaman</h3><span>2 Years</span></li> --}}
+							 				<li><i class="fa fa-shield"></i><h3>Batas Usia</h3><span>{{ $job->max_age }} Tahun</span></li>
 							 				<li><i class="fa fa-graduation-cap"></i><h3>Pendidikan</h3><span>{{ $job->educationLevel->name }}</span></li>
 							 				@if($job->educationLevel->hierarchy > 3)
 							 				<li><i class="fa fa-book"></i><h3>Min IPK</h3><span>{{ $job->min_gpa }}</span></li>

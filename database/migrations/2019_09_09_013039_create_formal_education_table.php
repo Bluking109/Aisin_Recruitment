@@ -19,7 +19,8 @@ class CreateFormalEducationTable extends Migration
             $table->foreign('job_seeker_id')->references('id')->on('job_seekers')->onDelete('cascade');
             $table->string('name_of_institution');
             $table->string('faculty')->nullable();
-            $table->string('major')->nullable();
+            $table->unsignedBigInteger('major_id')->nullable();
+            $table->foreign('major_id')->references('id')->on('majors')->onDelete('set null');
             $table->string('study_program')->nullable();
             $table->string('city');
             $table->float('average_math_score')->default(0);

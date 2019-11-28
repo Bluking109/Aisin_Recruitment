@@ -21,9 +21,8 @@
 						<div class="link_widgets">
 							<div class="row">
 								<div class="col-lg-6">
-									<a href="#" title="">Beranda </a>
-									<a href="#" title="">Tentang Kami </a>
-									<a href="#" title="">Lowongan </a>
+									<a href="{{ route('home') }}" title="">Beranda </a>
+									<a href="{{ route('job-vacancies.index') }}" title="">Lowongan </a>
 									<a href="{{ route('contact.index') }}" title="">Kontak Kami </a>
 								</div>
 							</div>

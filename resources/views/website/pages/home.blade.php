@@ -109,16 +109,18 @@
 			 		<div class="about-us">
 			 			<div class="row">
 			 				<div class="col-lg-12">
-			 					<h4>{{ $about->title }}<br><br></h4>
+			 					<h4>{{ $about ? $about->title : '' }}<br><br></h4>
 			 				</div>
 			 				<div class="col-lg-7">
-			 					{!! $about->content !!}
+			 					{!! $about ? $about->content : '' !!}
 			 				</div>
 			 				<div class="col-lg-5">
 			 					<div class="slick-img">
+			 						@if($about)
 			 						@foreach($about->images as $image)
 								  	<div><img src="{{ asset('storage/pages/' . $image) }}" alt="{{ $about->title }}" /></div>
 								  	@endforeach
+								  	@endif
 								</div>
 			 				</div>
 			 			</div>

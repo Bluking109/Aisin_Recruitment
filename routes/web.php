@@ -49,6 +49,8 @@ Route::namespace('Admin')->group(function() {
 			Route::get('job-vacancies/get-job-vacancies', 'JobVacancyController@getJobVacancies')->name('job-vacancies.getjobvacancies');
 			Route::resource('job-vacancies', 'JobVacancyController');
 
+			Route::resource('majors', 'MajorController')->except('edit', 'show', 'create');
+
 			Route::resource('departments', 'DepartmentController')->except('edit', 'show', 'create');
 			Route::get('departments/get-department', 'DepartmentController@getDepartment')->name('departments.getdepartment');
 			Route::resource('sections', 'SectionController')->except('edit', 'show', 'create');

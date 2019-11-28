@@ -71,6 +71,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.sections.index') }}">Sections</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.positions.index') }}">Positions</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.education-levels.index') }}">Education Levels</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.majors.index') }}">Major</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendors</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.provinces.index') }}">Provinces</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.districts.index') }}">Districts</a></li>

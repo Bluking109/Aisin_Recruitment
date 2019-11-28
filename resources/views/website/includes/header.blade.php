@@ -29,7 +29,7 @@ $url = url()->current();
 						<a href="{{ route('job-vacancies.index') }}" title="">Lowongan</a>
 					</li>
 					<li class="menu-item @if($url == route('contact.index')) active @endif">
-						<a href="{{ route('contact.index') }}" title="">Contact Us</a>
+						<a href="{{ route('contact.index') }}" title="">Kontak Kami</a>
 					</li>
 				</ul>
 			</nav><!-- Menus -->
