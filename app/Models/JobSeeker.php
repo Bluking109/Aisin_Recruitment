@@ -165,6 +165,17 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\FormalEducation', 'job_seeker_id');
     }
+    
+    /**
+     * Accessor lastest education
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function getLastEducationAttribute($value)
+    {
+        $max = $this->formalEducations()->max('class');
+        return $this->formalEducations->where('class', $max)->first();
+    }
 
     /**
      * non formal education relationship

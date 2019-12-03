@@ -17,13 +17,18 @@
 			<tr>
 				<th style="font-weight: bold">No</th>
 				<th style="font-weight: bold">Nama</th>
-				<th style="font-weight: bold">Nomer KTP</th>
-				<th style="font-weight: bold">Nomer HP</th>
-				<th style="font-weight: bold">Lowongan Kerja</th>
-				<th style="font-weight: bold">Stage</th>
-				<th style="font-weight: bold">Status Konfirmasi</th>
-				<th style="font-weight: bold">Tanggal Tes</th>
-				<th style="font-weight: bold">Waktu Tes</th>
+				<th style="font-weight: bold">Tempat Lahir</th>
+				<th style="font-weight: bold">Tanggal Lahir</th>
+				<th style="font-weight: bold">Usia</th>
+				<th style="font-weight: bold">Jenis Kelamin</th>
+				<th style="font-weight: bold">Alamat Domisili</th>
+				<th style="font-weight: bold">Agama</th>
+				<th style="font-weight: bold">Status Menikah</th>
+				<th style="font-weight: bold">Pendidikan</th>
+				<th style="font-weight: bold">Universitas</th>
+				<th style="font-weight: bold">Jurusan</th>
+				<th style="font-weight: bold">IPK</th>
+				<th style="font-weight: bold">Posisi yang dilamar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,22 +39,18 @@
 			<tr>
 				<td>{{ $key + 1 }}</td>
 				<td>{{ $datum->jobSeeker->name }}</td>
-				<td>{{ $datum->jobSeeker->identity_number }}</td>
-				<td>{{ $datum->jobSeeker->handphone_number }}</td>
-				<td>{{ $datum->jobVacancy->position->name . ' - ' . $datum->jobVacancy->section->name }}</td>
-				<td>{{ $lastStage ? $lastStage->stage->name : 'Seleksi Dokumen' }}</td>
-				@if($lastStage)
-				<td>{{ $lastStage->status == '1' ? 'Terkonfirmasi' : ($lastStage->status == '0' ? 'Belum Dikonfirmasi' : 'Ditolak') }}</td>
-				@else
-				<td>-</td>
-				@endif
-				@if($lastStage)
-				<td>{{ date('Y-m-d', strtotime($lastStage->exam_at)) }}</td>
-				<td>{{ date('H:i', strtotime($lastStage->exam_at)) }}</td>
-				@else
-				<td>-</td>
-				<td>-</td>
-				@endif
+				<td>{{ $datum->jobSeeker->place_of_birth }}</td>
+				<td>{{ $datum->jobSeeker->date_of_birth }}</td>
+				<td>{{ $datum->jobSeeker->age }}</td>
+				<td>{{ $datum->jobSeeker->gender == '1' ? 'Laki-laki' : $datum->jobSeeker->gender == '2' ? 'Wanita' : 'Waria' }}</td>
+				<td>{{ $datum->jobSeeker->domicile }}</td>
+				<td>{{ $datum->jobSeeker->religion_label }}</td>
+				<td>{{ $datum->jobSeeker->maritalStatus->marital_ktp_label_id }}</td>
+				<td>{{ $datum->jobSeeker->educationLevel->name }}</td>
+				<td>{{ $datum->jobSeeker->last_education->name_of_institution }}</td>
+				<td>{{ $datum->jobSeeker->last_education->major }}</td>
+				<td>{{ $datum->jobSeeker->last_education->grade_point }}</td>
+				<td>{{ $datum->jobVacancy->position->name }} {{ $datum->jobVacancy->section->name }}</td>
 			</tr>
 			@endforeach
 		</tbody>

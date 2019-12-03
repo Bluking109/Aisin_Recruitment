@@ -26,6 +26,7 @@ class JobApplicationExport implements FromView, ShouldAutoSize
     */
     public function view(): View
     {
+        // dd($this->data);
         return view('admin.excel.job_application_'.$this->status, [
             'data' => $this->data
         ]);

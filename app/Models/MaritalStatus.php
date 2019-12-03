@@ -84,6 +84,37 @@ class MaritalStatus extends Model
     }
 
     /**
+     * Accessor marital status label
+     * @return  string
+     */
+    public function getMaritalKtpLabelIdAttribute()
+    {
+        $status = $this->status_ktp;
+
+        switch ($status) {
+            case self::STATUS_SINGLE:
+                return 'Belum Menikah';
+                break;
+
+            case self::STATUS_ENGAGED:
+                return 'Bertunangan';
+                break;
+
+            case self::STATUS_MARRIED:
+                return 'Menikah';
+                break;
+
+            case self::STATUS_DIVORCED:
+                return 'Berceraii';
+                break;
+
+            default:
+                return null;
+                break;
+        }
+    }
+
+    /**
      * Accessor marital status actual label
      * @return  string
      */
