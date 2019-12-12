@@ -142,7 +142,7 @@
 			<h3 class="header-tittle">FORMULIR LAMARAN KERJA</h3>
 			<p class="header-sub-tittle">FRM-HRD-S1-003-01</p>
 			<br>
-			<p class="sub-tittle">ISILAH DENGAN HURUF CETAK</p>
+			<p class="sub-tittle">DATA PELAMAR KERJA</p>
 		</div>
 		<div class="col c20">
 			<img class="photo-profile" src="{{ $profilPhoto }}">
@@ -337,9 +337,9 @@
 			</div>
 			<br>
 			<p class="description">a) Uraikan dengan singkat, mengapa anda memilih jurusan tersebut di Peruruan Tinggi ?</p>
-			<p> {{ $jobSeeker->educationDetail->reason_choose_institute }} </p>
+			<p> {{ $jobSeeker->educationDetail ? $jobSeeker->educationDetail->reason_choose_institute : '-' }} </p>
 			<p class="description">b) Sebutkan Karya Ilmiah yang pernah anda buat (Skripsi, Artikel, Karya Tulis, dll)</p>
-			<p> {{ $jobSeeker->educationDetail->essay }} </p>
+			<p> {{ $jobSeeker->educationDetail ? $jobSeeker->educationDetail->essay : '-' }} </p>
 			<br>
 			<p class="description"><b>2. Pendidikan Non Formal</b></p>
 			<div class="c100">
@@ -802,6 +802,7 @@
 				<p class="description"> {{ $other->weak_point ?? '-' }} </p>
 				<br>
 				<p class="description">5. Apakah anda menggunakan kacamata ?</p>
+				@if($other)
 				<p class="description"> {{ $other->use_glasses == 0 ? 'No' : 'Yes' }} </p>
 				<p class="descriptionpadding">*) Jika ya tuliskan besaran minus/silinder/plus</p>
 				<p class="descriptionpadding">
@@ -818,6 +819,9 @@
                         <p class="description">{{ $leftEye['type'] . ' ' . $leftEye['size'] }}</p>
                     @endif
 				</p>
+				@else
+				<p class="description"> No </p>
+				@endif
 				<br>
 				<p class="description">6. Pernahkah anda menderita penyakit yang lama sembuh (ex. TBC, Typhus, Hepatitis dll) ?</p>
 				<div>

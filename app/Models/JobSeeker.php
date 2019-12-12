@@ -460,6 +460,10 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
      */
     public function getDomicileLabelAttribute()
     {
-        return $this->domicile . ', ' . $this->domicileVillage->name . ', ' . $this->domicileVillage->subDistrict->name . ', ' . $this->domicileVillage->subDistrict->district->name . ', ' . $this->domicileVillage->subDistrict->district->province->name;
+        if ($this->domicileVillage) {
+            return $this->domicile . ', ' . $this->domicileVillage->name . ', ' . $this->domicileVillage->subDistrict->name . ', ' . $this->domicileVillage->subDistrict->district->name . ', ' . $this->domicileVillage->subDistrict->district->province->name;
+        } else {
+            return $this->domicile ?? '-';
+        }
     }
 }
