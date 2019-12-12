@@ -32,8 +32,10 @@
 				<div class="col-lg-3 column">
 					<div class="widget">
 						<div class="download_widget">
-							<button class="btn btn-primary btn-footer btn-block"><i class="fa fa-user"></i> Daftar</button>
-							<button class="btn btn-danger btn-footer btn-block"><i class="fa fa-sign-in"></i> Login</button>
+							@if(!auth()->guard('job_seekers')->check())
+							<button class="btn btn-primary btn-footer btn-block signup-popup"><i class="fa fa-user"></i> Daftar</button>
+							<button class="btn btn-danger btn-footer btn-block signin-popup"><i class="fa fa-sign-in"></i> Login</button>
+							@endif
 						</div>
 					</div>
 				</div>

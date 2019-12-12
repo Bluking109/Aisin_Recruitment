@@ -53,6 +53,8 @@ class JobVacancy extends FormRequest
             'image' => 'required',
             'stages' => 'required',
             'stages.*' => 'exists:recruitment_stages,id',
+            'majors' => 'required',
+            'majors.*' => 'exists:majors,id',
             'requirements' => 'required|max:30000'
         ];
 

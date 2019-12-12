@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Major as Model;
 
 class Major extends FormRequest
 {
@@ -25,6 +26,7 @@ class Major extends FormRequest
     {
         return [
             'name' => 'required|max:50',
+            'type' => 'in:'.Model::TYPE_HIGH_SCHOOL.','.Model::TYPE_DIPLOMA
         ];
     }
 }

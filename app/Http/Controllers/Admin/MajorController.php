@@ -60,7 +60,8 @@ class MajorController extends Controller
     {
         $major = Major::findOrFail($id);
         $major->fill([
-            'name' => $request->name
+            'name' => $request->name,
+            'type' => $request->type
         ]);
 
         if ($major->isClean()) {

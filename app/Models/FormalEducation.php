@@ -24,4 +24,14 @@ class FormalEducation extends Model
     {
         return $this->belongsTo('App\Models\JobSeeker', 'job_seeker_id');
     }
+
+    /**
+     * Major relationship
+     *
+     * @return  Illuminate\Database\Eloquent\Model
+     */
+    public function major()
+    {
+        return $this->belongsTo('App\Models\Major', 'major_id');
+    }
 }

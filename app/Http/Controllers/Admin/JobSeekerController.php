@@ -258,7 +258,7 @@ class JobSeekerController extends Controller
              // alternatively specify an URL, if PHP settings allow
         $profilPhoto = 'data:image/jpg;base64,' . base64_encode($imagedata);
 
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
+        if ($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm()) {
             $pdf = PDF::loadView('admin.pdf.job_seeker_d3_s1', compact('jobSeeker', 'profilPhoto'));
             return $pdf->download('Data-'.$jobSeeker->name.'.pdf');
         } elseif ($jobSeeker->educationLevel->isHighSchoolForm()) {

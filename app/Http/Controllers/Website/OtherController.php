@@ -73,7 +73,7 @@ class OtherController extends Controller
             $rightEye = [];
             $leftEye = [];
 
-            if ($jobSeeker->educationLevel->isAssociateForm() && $request->use_glasses == '1') {
+            if ($jobSeeker->educationLevel->isDiplomaForm() && $request->use_glasses == '1') {
                 $rightEye = [
                     'type' => $request->right_eye_type,
                     'size' => $request->right_eye

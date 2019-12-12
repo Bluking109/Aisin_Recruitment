@@ -48,7 +48,7 @@ class OtherRequest extends FormRequest
             'diseases.*.note' => 'nullable|max:200'
         ];
 
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
+        if ($jobSeeker->educationLevel->isDiplomaForm()) {
             $rules['use_glasses'] = 'required|in:1,0';
             $rules['right_eye_type'] = 'required_if:with_glasses,1|in:minus,plus,silinder';
             $rules['left_eye_type'] = 'required_if:with_glasses,1|in:minus,plus,silinder';

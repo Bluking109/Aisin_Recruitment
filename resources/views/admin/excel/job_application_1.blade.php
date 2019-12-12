@@ -48,7 +48,7 @@
 				<td>{{ $datum->jobSeeker->maritalStatus->marital_ktp_label_id }}</td>
 				<td>{{ $datum->jobSeeker->educationLevel->name }}</td>
 				<td>{{ $datum->jobSeeker->last_education->name_of_institution }}</td>
-				<td>{{ $datum->jobSeeker->last_education->major }}</td>
+				<td>{{ $datum->jobSeeker->last_education->major->name }}</td>
 				<td>{{ $datum->jobSeeker->last_education->grade_point }}</td>
 				<td>{{ $datum->jobVacancy->position->name }} {{ $datum->jobVacancy->section->name }}</td>
 			</tr>

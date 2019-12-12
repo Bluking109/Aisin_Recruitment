@@ -67,6 +67,10 @@ class JobVacancyController extends Controller
 
             $newJob->stages()->attach($stages);
 
+            if (count($request->majors) > 0) {
+                $newJob->majors()->attach($request->majors);
+            }
+
             $newJob->update([
                 'slug' => Str::slug($newJob->position->name . ' ' . $newJob->section->name . ' ' . uniqid(), '-')
             ]);
@@ -151,6 +155,8 @@ class JobVacancyController extends Controller
             }
 
             $updtJob->stages()->sync($stages);
+
+            $updtJob->majors()->sync($request->majors);
 
             $updtJob->update([
                 'slug' => Str::slug($updtJob->position->name . ' ' . $updtJob->section->name . ' ' . uniqid(), '-')

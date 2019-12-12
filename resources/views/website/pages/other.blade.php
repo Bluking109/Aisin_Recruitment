@@ -56,7 +56,7 @@
 				 							<textarea placeholder="Kelemahan" name="weak_point">{{ $other->weak_point ?? old('weak_point') }}</textarea>
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					@php
 		 							$rightEyeType = '';
 		 							$leftEyeType = '';

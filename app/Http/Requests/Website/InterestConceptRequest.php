@@ -53,7 +53,7 @@ class InterestConceptRequest extends FormRequest
             'field_of_works.*' => 'required|in:' . implode(',', config('aiia.sections')),
         ];
 
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
+        if ($jobSeeker->educationLevel->isDiplomaForm()) {
             $rules['future_goals'] = 'required|max:500|min:5';
             $rules['place_outside'] = 'required|in:' . InterestConcept::PLACE_OUTSIDE_YES . ',' . InterestConcept::PLACE_OUTSIDE_NO;
             $rules['favored_environment'] = 'required|in:' . implode(',', config('aiia.working_environments')) . ',other';

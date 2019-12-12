@@ -18,7 +18,8 @@
 							<div class="col-sm-9 input-wrapper">
 								<select class="form-control" id="form_type" name="form_type" style="width: 100%; height: auto;">
 									<option value="1"> Form 1 (SMA/SMK)</option>
-									<option value="2"> Form 2 (D3/S1)</option>
+									<option value="2"> Form 2 (D3)</option>
+									<option value="3"> Form 3 (S1/D4)</option>
 								</select>
 							</div>
 						</div>

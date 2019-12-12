@@ -25,7 +25,7 @@
 				 				<input type="hidden" name="recaptcha_key" id="recaptcha-key">
 				 				<input type="file" name="photo" id="photo" class="d-none">
 				 				<div class="row">
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					<div class="col-md-12">
 				 						<span class="pf-title">Uraikan apa yang menjadi cita-cita Anda ?
 				 							<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -61,7 +61,7 @@
 				 							<textarea placeholder="Alasan ingin bekerja di AIIA" name="working_reason" maxlength="500">{{ $interest->working_reason ?? old('working_reason') }}</textarea>
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					<div class="col-md-12">
 				 						<span class="pf-title">Sebutkan fasilitas lainnya yang Anda harapkan !
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -87,7 +87,7 @@
 				 							<input type="text" placeholder="Gaji yang diharapkan" name="expected_salary" class="work-experience-salary thousand" value="{{ $interest->expected_salary ?? old('expected_salary') }}" />
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Bersedia Anda ditempatkan diluar daerah ?
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>

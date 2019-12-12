@@ -25,7 +25,16 @@ class JobVacancyController extends Controller
 
     	$jobs = JobVacancy::active()
             ->when($jobSeeker, function($q, $jobSeeker) {
-                $q->where('education_level_id', $jobSeeker->educationLevel->id);
+                $formalEducations = $jobSeeker->formalEducations;
+                $majors = [];
+
+                foreach ($formalEducations as $key => $value) {
+                    $majors[] = $value->major->id;
+                }
+                $q->where('education_level_id', $jobSeeker->educationLevel->id)
+                    ->whereHas('majors', function($q) use($majors) {
+                        $q->whereIn('id', $majors);
+                    });
             })
             ->when($search, function($q, $search) {
     			$q->whereHas('position', function($q) use($search) {
@@ -84,6 +93,24 @@ class JobVacancyController extends Controller
             abort(404);
         }
 
+        $formalEducations = $jobSeeker->formalEducations;
+
+        $majorPass = false;
+
+        foreach ($formalEducations as $key => $value) {
+            $majors = $job->majors;
+
+            foreach ($majors as $k => $v) {
+                if ($v->id == $value->major->id) {
+                    $majorPass = true;
+                }
+            }
+        }
+
+        if (!$majorPass) {
+            return back()->with('error', 'Mohon maaf jurusan pendidikan Anda tidak sesuai kualifikasi');
+        }
+
         if (!$jobSeeker->canApply()) {
             return back()->with('error', 'Mohon lengkapi profil Anda terlebih dahulu !');
         }
@@ -121,7 +148,7 @@ class JobVacancyController extends Controller
         $eduLevel = $job->educationLevel->hierarchy;
         $edu = $jobSeeker->formalEducations()->where('class', $eduLevel)->first();
         // check ipk apabila D3/S1
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
+        if ($jobSeeker->educationLevel->isDiplomaForm()) {
             if ($edu) {
                 if ($edu->grade_point < $job->min_gpa) {
                     return back()->with('error', 'Mohon maaf IPK Anda tidak memenuhi kualifikasi');

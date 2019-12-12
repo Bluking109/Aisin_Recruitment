@@ -27,7 +27,7 @@ mix.styles([
     'public/website/css/custom.css'
 ], 'public/website/css/all.css');
 
-mix.scripts([
+mix.babel([
     'public/website/js/jquery.min.js',
     'public/website/js/modernizr.js',
     'public/website/js/cleave.min.js',
@@ -39,51 +39,51 @@ mix.scripts([
     'public/website/js/bootstrap-datepicker.js'
 ], 'public/website/js/all.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/login-register.js',
 ], 'public/website/js/dynamic_page/login-register.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/personal-identity.js',
 ], 'public/website/js/dynamic_page/personal-identity.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/education.js',
 ], 'public/website/js/dynamic_page/education.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/family.js',
 ], 'public/website/js/dynamic_page/family.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/work-experience.js',
 ], 'public/website/js/dynamic_page/work-experience.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/interest-concept.js',
 ], 'public/website/js/dynamic_page/interest-concept.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/document.js',
 ], 'public/website/js/dynamic_page/document.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/social-activity.js',
 ], 'public/website/js/dynamic_page/social-activity.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/other.js',
 ], 'public/website/js/dynamic_page/other.min.js');
 
-mix.scripts([
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/applied-job.js',
 ], 'public/website/js/dynamic_page/applied-job.min.js');

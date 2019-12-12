@@ -70,9 +70,7 @@ class EducationController extends Controller
                 if (isset($value['name_of_institution'])) {
                     $jobSeeker->formalEducations()->create([
                         'name_of_institution' => $value['name_of_institution'],
-                        'faculty' => isset($value['faculty']) ? $value['faculty'] : null,
-                        'major' => isset($value['major']) ? $value['major'] : null,
-                        'study_program' => isset($value['study_program']) ? $value['study_program'] : null,
+                        'major_id' => isset($value['major_id']) ? $value['major_id'] : null,
                         'city' => isset($value['city']) ? $value['city'] : null,
                         'average_math_score' => isset($value['average_math_score']) ? $value['average_math_score'] : 0,
                         'un_math_score' => isset($value['un_math_score']) ? $value['un_math_score'] : 0,
@@ -111,7 +109,7 @@ class EducationController extends Controller
             }
 
             $jobSeeker->educationDetail()->delete();
-            if ($jobSeeker->educationLevel->isAssociateForm()) {
+            if ($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm()) {
                 $jobSeeker->educationDetail()->create([
                     'reason_choose_institute' => $request->reason_choose_institute,
                     'essay' => $request->essay

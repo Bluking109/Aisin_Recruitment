@@ -16,6 +16,7 @@ class CreateMajorsTable extends Migration
         Schema::create('majors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
+            $table->enum('type', ['1', '2'])->default('1')->comment = "1 = SMK / SMA, 2 = D3, S1, S2";
             $table->timestamps();
         });
     }

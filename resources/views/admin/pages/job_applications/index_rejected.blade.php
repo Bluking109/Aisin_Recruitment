@@ -44,10 +44,13 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>HP</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Domicile</th>
+                                    <th>Religion</th>
+                                    <th>Univ</th>
+                                    <th>Major</th>
                                     <th>Job Vacancy</th>
                                     <th>Reject On Stage</th>
                                     <th>Rejected At</th>
@@ -285,24 +288,44 @@
                     }
                 },
                 {
-                    data : null,
-                    orderable : false,
-                    searchable : false,
-                    render : function(data) {
-                        return `<img src="{{ url(AIIASetting::getValue('admin_base_route')) }}/job-seekers/${data.job_seeker.id}/photo" class="img-fluid">`
-                    }
-                },
-                {
                     data : 'job_seeker.name',
-                    name : 'job_seeker.name'
+                    name : 'jobSeeker.name'
                 },
                 {
-                    data : 'job_seeker.email',
-                    name : 'job_seeker.email'
+                    data : 'job_seeker.age',
+                    name : 'jobSeeker.age',
+                    searchable : false,
+                    orderable : false
                 },
                 {
-                    data : 'job_seeker.handphone_number',
-                    name : 'job_seeker.handphone_number'
+                    data : 'job_seeker.gender_label',
+                    name : 'jobSeeker.gender_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.domicile_label',
+                    name : 'jobSeeker.domicile_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.religion_label',
+                    name : 'jobSeeker.religion_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.last_education.name_of_institution',
+                    name : 'jobSeeker.lastEducation.name_of_institution',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.last_education.major.name',
+                    name : 'jobSeeker.lastEducation.major.name',
+                    searchable : false,
+                    orderable : false
                 },
                 {
                     data: null,

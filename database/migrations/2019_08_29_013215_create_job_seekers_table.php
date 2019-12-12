@@ -48,7 +48,7 @@ class CreateJobSeekersTable extends Migration
             $table->string('photo')->nullable();
             $table->date('blacklist_until')->nullable();
             $table->unsignedBigInteger('education_level_id')->nullable();
-            $table->foreign('education_level_id')->references('id')->on('education_levels')->onDelete('restrict');
+            $table->foreign('education_level_id')->references('id')->on('education_levels')->onDelete('set null');
             $table->timestamps();
         });
     }

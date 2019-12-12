@@ -14,6 +14,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
+                                    <th>For</th>
                                     <th>Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -31,7 +32,6 @@
 @endsection
 
 @push('bottom_scripts')
-
 <script src="{{ asset('admin/vendors/datatables/datatable.min.js') }}"></script>
 <script>
     $(document).ready(function() {
@@ -52,6 +52,7 @@
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
                  return meta.row + meta.settings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
+                { data : 'type_label', name : 'type' },
                 { data : 'created_at', name : 'created_at' },
                 {
                     data: null,
@@ -121,12 +122,12 @@
             $('#title-modal').text('Update Major');
             let major = $(this).data('major');
             $('#name').val(major.name);
+            $('#type').val(major.type);
             $('#mdl-insert-update').modal('show');
         } );
 
         $('#btn-add').on('click', function() {
             $('#frm-insert').find('.text-error').remove();
-            $('#frm-insert').find('option').remove();
             $('#frm-insert').attr('action', "{{ route('admin.majors.store') }}").attr('method', 'POST');
             $('#title-modal').text('Add Major');
             $('#frm-insert')[0].reset();

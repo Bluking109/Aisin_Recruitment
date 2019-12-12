@@ -150,4 +150,14 @@ class JobVacancy extends Model
     {
         return $this->hasMany('App\Models\JobApplication', 'job_vacancy_id');
     }
+
+    /**
+     * Relation major
+     *
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public function majors()
+    {
+        return $this->belongsToMany('App\Models\Major', 'job_vacancy_majors', 'job_vacancy_id', 'major_id');
+    }
 }

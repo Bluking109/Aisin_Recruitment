@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Job Applications</h1>
-                    <div class="row mb-3 mt-3 pt-2 pb-2">
+                    <div class="row mt-3 pt-2 pb-2">
                         <div class="col-sm-3 col-md-2 mb-2">
                             <select class="form-control" id="filter-job" style="width: 100%; height: auto;">
                                 @if(request()->query('job') && request()->query('job_label'))
@@ -31,6 +31,20 @@
                             </select>
                         </div>
                         <div class="col-sm-3 col-md-2 mb-2">
+                            <select class="form-control" id="filter-district" style="width: 100%; height: auto;">
+                                @if(request()->query('district') && request()->query('district_label'))
+                                <option value="{{ request()->query('district') }}">{{ request()->query('district_label') }}</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 mb-2">
+                            <select class="form-control" id="filter-major" style="width: 100%; height: auto;">
+                                @if(request()->query('major') && request()->query('major_label'))
+                                <option value="{{ request()->query('major') }}">{{ request()->query('major_label') }}</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="col-sm-3 col-md-2 mb-2">
                             <input type="text" name="exam_at" id="filter-date" class="form-control datepicker" placeholder="Exam Date" value="{{ request()->query('exam_date') }}">
                         </div>
                         {{-- <div class="col-sm-3 col-md-2 mb-2">
@@ -40,28 +54,32 @@
                                 <option>Reject</option>
                             </select>
                         </div> --}}
-                        <div class="col-sm-3 col-md-4">
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
                             <button class="btn btn-primary" id="apply-filter"><i class="mdi mdi-filter"></i> Apply Filter</button>
                             <button class="btn btn-danger" id="remove-filter"><i class="mdi mdi-filter-remove"></i> Reset Filter</button>
                             <button class="btn btn-success" id="export-excel"><i class="mdi mdi-printer"></i> Export Excel</button>
                         </div>
-                    </form>
                     </div>
                     <div class="table-responsive">
                         <table id="application-table" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>HP</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Domicile</th>
+                                    <th>Religion</th>
+                                    <th>Univ</th>
+                                    <th>Major</th>
                                     <th>Job Vacancy</th>
                                     <th>Stage</th>
                                     <th>Confirm</th>
                                     <th>Exam Date</th>
                                     <th>Exam Time</th>
-                                    <th class="text-center">Action</th>
+                                    <th class="text-center" style="width:11%">Action</th>
                                 </tr>
                             </thead>
                         </table>
@@ -108,6 +126,8 @@
         let job = $('#filter-job').select2('data')[0];
         let stage = $('#filter-stage').select2('data')[0];
         let confirm = $('#filter-confirm').select2('data')[0];
+        let major = $('#filter-major').select2('data')[0];
+        let district = $('#filter-district').select2('data')[0];
         let dateFilter = $('#filter-date').val();
 
         let params = {};
@@ -120,6 +140,16 @@
         if (stage != null && stage != undefined && stage != '') {
             params['stage'] = stage.id;
             params['stage_label'] = stage.text;
+        }
+
+        if (major != null && major != undefined && major != '') {
+            params['major'] = major.id;
+            params['major_label'] = major.text;
+        }
+
+        if (district != null && district != undefined && district != '') {
+            params['district'] = district.id;
+            params['district_label'] = district.text;
         }
 
         if (confirm != null && confirm != undefined && confirm != '') {
@@ -161,6 +191,46 @@
                         text : 'Document Selection'
                     });
 
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
+
+        $('#filter-district').select2({
+            placeholder: 'Filter District',
+            width: 'resolve',
+            ajax: {
+                url: "{{ route('ajax.districts.get') }}",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        search : $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
+
+        $('#filter-major').select2({
+            placeholder: 'Filter Major',
+            width: 'resolve',
+            ajax: {
+                url: "{{ route('ajax.majors.get') }}",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        search : $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
                     return {
                         results: data
                     };
@@ -250,24 +320,44 @@
                     }
                 },
                 {
-                    data : null,
-                    orderable : false,
-                    searchable : false,
-                    render : function(data) {
-                        return `<img src="{{ url(AIIASetting::getValue('admin_base_route')) }}/job-seekers/${data.job_seeker.id}/photo" class="img-fluid">`
-                    }
-                },
-                {
                     data : 'job_seeker.name',
-                    name : 'job_seeker.name'
+                    name : 'jobSeeker.name'
                 },
                 {
-                    data : 'job_seeker.email',
-                    name : 'job_seeker.email'
+                    data : 'job_seeker.age',
+                    name : 'jobSeeker.age',
+                    searchable : false,
+                    orderable : false
                 },
                 {
-                    data : 'job_seeker.handphone_number',
-                    name : 'job_seeker.handphone_number'
+                    data : 'job_seeker.gender_label',
+                    name : 'jobSeeker.gender_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.domicile_label',
+                    name : 'jobSeeker.domicile_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.religion_label',
+                    name : 'jobSeeker.religion_label',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.last_education.name_of_institution',
+                    name : 'jobSeeker.lastEducation.name_of_institution',
+                    searchable : false,
+                    orderable : false
+                },
+                {
+                    data : 'job_seeker.last_education.major.name',
+                    name : 'jobSeeker.lastEducation.major.name',
+                    searchable : false,
+                    orderable : false
                 },
                 {
                     data: null,

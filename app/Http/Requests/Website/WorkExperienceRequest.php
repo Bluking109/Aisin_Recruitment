@@ -57,7 +57,7 @@ class WorkExperienceRequest extends FormRequest
             'work_experiences.*.reason_to_move' => 'required_with:work_experiences.*.company|max:500',
         ];
 
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
+        if ($jobSeeker->educationLevel->isDiplomaForm()) {
             $rules['position_description'] = 'required_with:work_experiences.0.company|max:500';
             $rules['problems_and_solutions'] = 'required_with:work_experiences.0.company|max:500';
             $rules['impression_on_company'] = 'required_with:work_experiences.0.company|max:500';

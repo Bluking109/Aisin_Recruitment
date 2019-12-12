@@ -44,12 +44,6 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Jurusan</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $primarySchool }}][major]" value="{{ isset($formalEducations[$primarySchool]) ? $formalEducations[$primarySchool]->major : old('educations['.$primarySchool.'][major]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
 				 						<span class="pf-title">Tahun Lulus
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
@@ -94,12 +88,6 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</span>
 				 						<div class="pf-field">
 				 							<input type="text" placeholder="Nama Sekolah" name="educations[{{ $juniorHighSchool }}][name_of_institution]" value="{{ isset($formalEducations[$juniorHighSchool]) ? $formalEducations[$juniorHighSchool]->name_of_institution : old('educations['.$juniorHighSchool.'][name_of_institution]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Jurusan</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $juniorHighSchool }}][major]" value="{{ isset($formalEducations[$juniorHighSchool]) ? $formalEducations[$juniorHighSchool]->major : old('educations['.$juniorHighSchool.'][major]') }}" />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
@@ -159,10 +147,14 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $seniorHighSchool }}][major]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->major : old('educations['.$seniorHighSchool.'][major]') }}" />
+				 							<select data-placeholder="Jurusan" id="major-sma-select" name="educations[{{ $seniorHighSchool }}][major_id]">
+				 								@if(isset($formalEducations[$seniorHighSchool]))
+												<option value="{{ $formalEducations[$seniorHighSchool]->major_id }}" selected>{{ $formalEducations[$seniorHighSchool]->major->name }}</option>
+												@endif
+											</select>
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Masuk
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -197,7 +189,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="text" placeholder="Kota" name="educations[{{ $seniorHighSchool }}][city]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->city : old('educations['.$seniorHighSchool.'][city]') }}" />
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
 									<div class="col-md-4">
 				 						<span class="pf-title">NEM
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
@@ -231,7 +223,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 				</div>
-				 				@if($jobSeeker->educationLevel->isAssociateForm())
+				 				@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
 				 				<div class="row no-margin-row">
 				 					<div class="col-md-12">
 				 						<span class="pf-title education-title"><b>D3</b></span>
@@ -243,21 +235,13 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Fakultas</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Fakultas" name="educations[{{ $diploma }}][faculty]" value="{{ isset($formalEducations[$diploma]) ? $formalEducations[$diploma]->faculty : old('educations['.$diploma.'][faculty]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
 				 						<span class="pf-title">Jurusan</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $diploma }}][major]" value="{{ isset($formalEducations[$diploma]) ? $formalEducations[$diploma]->major : old('educations['.$diploma.'][major]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Program Studi</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Program Studi" name="educations[{{ $diploma }}][study_program]" value="{{ isset($formalEducations[$diploma]) ? $formalEducations[$diploma]->study_program : old('educations['.$diploma.'][study_program]') }}" />
+				 							<select data-placeholder="Jurusan" id="major-d3-select" name="educations[{{ $diploma }}][major_id]">
+				 								@if(isset($formalEducations[$diploma]))
+												<option value="{{ $formalEducations[$diploma]->major_id }}" selected>{{ $formalEducations[$diploma]->major->name }}</option>
+												@endif
+											</select>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
@@ -285,6 +269,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 				</div>
+								@if($jobSeeker->educationLevel->isBachelorForm())
 				 				<div class="row no-margin-row">
 				 					<div class="col-md-12">
 				 						<span class="pf-title education-title"><b>D4/S1</b></span>
@@ -296,21 +281,13 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Fakultas</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Fakultas" name="educations[{{ $bachelor }}][faculty]" value="{{ isset($formalEducations[$bachelor]) ? $formalEducations[$bachelor]->faculty : old('educations['.$bachelor.'][faculty]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
 				 						<span class="pf-title">Jurusan</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $bachelor }}][major]" value="{{ isset($formalEducations[$bachelor]) ? $formalEducations[$bachelor]->major : old('educations['.$bachelor.'][major]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Program Studi</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Program Studi" name="educations[{{ $bachelor }}][study_program]" value="{{ isset($formalEducations[$bachelor]) ? $formalEducations[$bachelor]->study_program : old('educations['.$bachelor.'][study_program]') }}" />
+				 							<select data-placeholder="Jurusan" id="major-s1-select" name="educations[{{ $bachelor }}][major_id]">
+				 								@if(isset($formalEducations[$bachelor]))
+												<option value="{{ $formalEducations[$bachelor]->major_id }}" selected>{{ $formalEducations[$bachelor]->major->name }}</option>
+												@endif
+											</select>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
@@ -338,7 +315,8 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 				</div>
-				 				<div class="row no-margin-row">
+								@endif
+				 				{{-- <div class="row no-margin-row">
 				 					<div class="col-md-12">
 				 						<span class="pf-title education-title"><b>S2</b></span>
 				 					</div>
@@ -349,21 +327,13 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Fakultas</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Fakultas" name="educations[{{ $master }}][faculty]" value="{{ isset($formalEducations[$master]) ? $formalEducations[$master]->faculty : old('educations['.$master.'][faculty]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
 				 						<span class="pf-title">Jurusan</span>
 				 						<div class="pf-field">
-				 							<input type="text" placeholder="Jurusan" name="educations[{{ $master }}][major]" value="{{ isset($formalEducations[$master]) ? $formalEducations[$master]->major : old('educations['.$master.'][major]') }}" />
-				 						</div>
-				 					</div>
-				 					<div class="col-md-4">
-				 						<span class="pf-title">Program Studi</span>
-				 						<div class="pf-field">
-				 							<input type="text" placeholder="Program Studi" name="educations[{{ $master }}][study_program]" value="{{ isset($formalEducations[$master]) ? $formalEducations[$master]->study_program : old('educations['.$master.'][study_program]') }}" />
+				 							<select data-placeholder="Jurusan" id="major-s2-select" name="educations[{{ $master }}][major_id]">
+				 								@if(isset($formalEducations[$master]))
+												<option value="{{ $formalEducations[$master]->major_id }}" selected>{{ $formalEducations[$master]->major->name }}</option>
+												@endif
+											</select>
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
@@ -390,11 +360,11 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 							<input type="number" placeholder="IPK" name="educations[{{ $master }}][grade_point]" value="{{ isset($formalEducations[$master]) ? $formalEducations[$master]->grade_point : old('educations['.$master.'][grade_point]') }}" />
 				 						</div>
 				 					</div>
-				 				</div>
+				 				</div> --}}
 				 				@endif
 				 			</form>
 				 		</div>
-				 		@if($jobSeeker->educationLevel->isAssociateForm())
+				 		@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
 				 		<div class="profile-title">
 				 			<h3></h3>
 				 		</div>

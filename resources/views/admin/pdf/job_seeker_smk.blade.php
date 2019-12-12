@@ -265,7 +265,7 @@
 			<div class="c100">
 				@if($jobSeeker->formalEducations->count())
 	                @php
-	                $education = collect($jobSeeker->formalEducations->toArray());
+	                $education = collect($jobSeeker->formalEducations()->with('major')->get()->toArray());
 	                $sma = array_values($education->where('class', App\Models\FormalEducation::EDU_SENIOR_HIGH_SCHOOL)->toArray())[0];
 	                @endphp
 	                @if($jobSeeker->educationLevel->isHighSchoolForm())
@@ -309,7 +309,7 @@
 							<tr>
 								<td>SMA</td>
                                 <td>{{ $sma['name_of_institution'] ?? '-' }}</td>
-                                <td>{{ $sma['major'] ?? '-' }}</td>
+                                <td>{{ $sma['major']['name'] ?? '-' }}</td>
                                 <td>{{ $sma['end_year'] ?? '-' }}</td>
                                 <td>{{ $sma['city'] ?? '-' }}</td>
                                 <td>{{ $sma['average_math_score'] ?? '-' }}</td>

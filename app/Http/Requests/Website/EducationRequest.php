@@ -30,12 +30,12 @@ class EducationRequest extends FormRequest
         $juniorHighSchool = FormalEducation::EDU_JUNIOR_HIGH_SCHOOL;
         $diploma = FormalEducation::EDU_DIPLOMA;
         $bachelor = FormalEducation::EDU_BACHELOR;
-        $master = FormalEducation::EDU_MASTER;
+        // $master = FormalEducation::EDU_MASTER;
 
         $rules = [
             'educations' => 'required|array',
             'educations' . '.' . $seniorHighSchool . '.name_of_institution' => 'required|max:100',
-            'educations' . '.' . $seniorHighSchool . '.major' => 'required|max:100',
+            'educations' . '.' . $seniorHighSchool . '.major_id' => 'required|exists:majors,id',
             'educations' . '.' . $seniorHighSchool . '.end_year' => 'required|date_format:Y',
             'educations' . '.' . $seniorHighSchool . '.city' => 'required|max:100',
             'educations' . '.' . $seniorHighSchool . '.note' => 'nullable|max:300',
@@ -53,36 +53,42 @@ class EducationRequest extends FormRequest
         ];
 
         // Apabila jenis form  =  D4/S1
-        if ($jobSeeker->educationLevel->isAssociateForm()) {
-            $rules['educations' . '.' . $seniorHighSchool . '.start_year'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|date_format:Y|nullable';
-            $rules['educations' . '.' . $seniorHighSchool . '.grade_point'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|between:0,100|numeric|nullable';
+        if ($jobSeeker->educationLevel->isDiplomaForm()) {
+            $rules['educations' . '.' . $diploma . '.name_of_institution'] = 'required|max:100';
+            $rules['educations' . '.' . $diploma . '.major_id'] = 'required|exists:majors,id';
+            $rules['educations' . '.' . $diploma . '.start_year'] = 'required|date_format:Y';
+            $rules['educations' . '.' . $diploma . '.end_year'] = 'required|date_format:Y';
+            $rules['educations' . '.' . $diploma . '.city'] = 'required|max:100';
+            $rules['educations' . '.' . $diploma . '.grade_point'] = 'required|between:0,100|numeric';
+        }
 
-            $rules['educations' . '.' . $diploma . '.name_of_institution'] = 'required_without_all:educations' . '.' . $bachelor . '.name_of_institution,educations' . '.' . $master . '.name_of_institution|nullable|max:100';
-            $rules['educations' . '.' . $diploma . '.faculty'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $diploma . '.major'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $diploma . '.study_program'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
+        if ($jobSeeker->educationLevel->isBachelorForm()) {
+            $rules['educations' . '.' . $bachelor . '.name_of_institution'] = 'required|max:100';
+            $rules['educations' . '.' . $bachelor . '.major_id'] = 'required|exists:majors,id';
+            $rules['educations' . '.' . $bachelor . '.start_year'] = 'required|date_format:Y';
+            $rules['educations' . '.' . $bachelor . '.end_year'] = 'required|date_format:Y';
+            $rules['educations' . '.' . $bachelor . '.city'] = 'required|max:100';
+            $rules['educations' . '.' . $bachelor . '.grade_point'] = 'required|between:0,100|numeric';
+
+            $rules['educations' . '.' . $diploma . '.name_of_institution'] = 'nullable|max:100';
+            $rules['educations' . '.' . $diploma . '.major_id'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|nullable|exists:majors,id';
             $rules['educations' . '.' . $diploma . '.start_year'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|date_format:Y|nullable';
             $rules['educations' . '.' . $diploma . '.end_year'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|date_format:Y|nullable';
             $rules['educations' . '.' . $diploma . '.city'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|max:100';
             $rules['educations' . '.' . $diploma . '.grade_point'] = 'required_with:educations' . '.' . $diploma . '.name_of_institution|between:0,100|numeric|nullable';
 
-            $rules['educations' . '.' . $bachelor . '.name_of_institution'] = 'nullable|max:100';
-            $rules['educations' . '.' . $bachelor . '.faculty'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $bachelor . '.major'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $bachelor . '.study_program'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $bachelor . '.start_year'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|date_format:Y|nullable';
-            $rules['educations' . '.' . $bachelor . '.end_year'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|date_format:Y|nullable';
-            $rules['educations' . '.' . $bachelor . '.city'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $bachelor . '.grade_point'] = 'required_with:educations' . '.' . $bachelor . '.name_of_institution|between:0,100|numeric|nullable';
+            // Untuk master sementara di komen
+            // $rules['educations' . '.' . $master . '.name_of_institution'] = 'nullable|max:100';
+            // $rules['educations' . '.' . $master . '.major_id'] = 'required_with:educations' . '.' . $master . '.name_of_institution|nullable|exists:majors,id';
+            // $rules['educations' . '.' . $master . '.start_year'] = 'required_with:educations' . '.' . $master . '.name_of_institution|date_format:Y|nullable';
+            // $rules['educations' . '.' . $master . '.end_year'] = 'required_with:educations' . '.' . $master . '.name_of_institution|date_format:Y|nullable';
+            // $rules['educations' . '.' . $master . '.city'] = 'required_with:educations' . '.' . $master . '.name_of_institution|max:100';
+            // $rules['educations' . '.' . $master . '.grade_point'] = 'required_with:educations' . '.' . $master . '.name_of_institution|between:0,100|numeric|nullable';
+        }
 
-            $rules['educations' . '.' . $master . '.name_of_institution'] = 'nullable|max:100';
-            $rules['educations' . '.' . $master . '.faculty'] = 'required_with:educations' . '.' . $master . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $master . '.major'] = 'required_with:educations' . '.' . $master . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $master . '.study_program'] = 'required_with:educations' . '.' . $master . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $master . '.start_year'] = 'required_with:educations' . '.' . $master . '.name_of_institution|date_format:Y|nullable';
-            $rules['educations' . '.' . $master . '.end_year'] = 'required_with:educations' . '.' . $master . '.name_of_institution|date_format:Y|nullable';
-            $rules['educations' . '.' . $master . '.city'] = 'required_with:educations' . '.' . $master . '.name_of_institution|max:100';
-            $rules['educations' . '.' . $master . '.grade_point'] = 'required_with:educations' . '.' . $master . '.name_of_institution|between:0,100|numeric|nullable';
+        if ($jobSeeker->educationLevel->isBachelorForm() || $jobSeeker->educationLevel->isDiplomaForm()) {
+            $rules['educations' . '.' . $seniorHighSchool . '.start_year'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|date_format:Y|nullable';
+            $rules['educations' . '.' . $seniorHighSchool . '.grade_point'] = 'required_with:educations' . '.' . $seniorHighSchool . '.name_of_institution|between:0,100|numeric|nullable';
 
             $rules['reason_choose_institute'] = 'required|max:500';
             $rules['essay'] = 'required|max:500';
@@ -94,7 +100,6 @@ class EducationRequest extends FormRequest
             $rules['educations' . '.' . $seniorHighSchool . '.un_math_score'] = 'required|between:0,100|numeric';
 
             $rules['educations' . '.' . $primarySchool . '.name_of_institution'] = 'required|max:100';
-            $rules['educations' . '.' . $primarySchool . '.major'] = 'nullable|max:100';
             $rules['educations' . '.' . $primarySchool . '.end_year'] = 'required|date_format:Y';
             $rules['educations' . '.' . $primarySchool . '.city'] = 'required|max:100';
             $rules['educations' . '.' . $primarySchool . '.average_math_score'] = 'nullable|between:0,100|numeric';
@@ -102,7 +107,6 @@ class EducationRequest extends FormRequest
             $rules['educations' . '.' . $primarySchool . '.note'] = 'nullable|max:300';
 
             $rules['educations' . '.' . $juniorHighSchool . '.name_of_institution'] = 'required|max:100';
-            $rules['educations' . '.' . $juniorHighSchool . '.major'] = 'nullable|max:100';
             $rules['educations' . '.' . $juniorHighSchool . '.end_year'] = 'required|date_format:Y';
             $rules['educations' . '.' . $juniorHighSchool . '.city'] = 'required|max:100';
             $rules['educations' . '.' . $juniorHighSchool . '.average_math_score'] = 'required|between:0,100|numeric';

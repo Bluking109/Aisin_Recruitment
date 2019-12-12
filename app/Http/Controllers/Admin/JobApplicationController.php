@@ -96,7 +96,7 @@ class JobApplicationController extends Controller
     public function show($id)
     {
     	$jobApplication = JobApplication::findOrFail($id);
-    	$jobSeeker = $jobApplication->jobSeeker;
+        $jobSeeker = $jobApplication->jobSeeker;
 
         return view('admin.pages.job_applications.show', compact('jobSeeker', 'jobApplication'));
     }
@@ -384,18 +384,38 @@ class JobApplicationController extends Controller
     protected function getData($request, $status = '1')
     {
         $stage = $request->stage;
+        $district = $request->district;
+        $major = $request->major;
         $job = $request->job;
         $confirm = $request->confirm;
         $examDate = $request->exam_date;
         $finishedAt = $request->finish_at;
 
-        $applications = JobApplication::with('jobApplicationStages.stage')
-            ->with(['jobSeeker' => function($q) {
+        $applications = JobApplication::with(['jobApplicationStages' => function($q) {
+                $q->with('stage');
+            }])
+            ->with(['jobSeeker' => function($q) use($district) {
                 $q->allData();
             }])
             ->with(['jobVacancy' => function($q) {
                 $q->with('position', 'section', 'stages');
             }])
+            ->when($district, function($q, $district) {
+                $q->whereHas('jobSeeker', function($q) use($district) {
+                    $q->whereHas('domicileVillage', function($p) use($district) {
+                        $p->whereHas('subDistrict', function($r) use($district) {
+                            $r->where('district_id', $district);
+                        });
+                    });
+                });
+            })
+            ->when($major, function($q, $major) {
+                $q->whereHas('jobSeeker', function($q) use($major) {
+                    $q->whereHas('formalEducations', function($p) use($major) {
+                        $p->where('major_id', $major);
+                    });
+                });
+            })
             ->when($stage, function($q, $stage) use($status) {
                 if ($stage == 'none') {
                     $q->doesntHave('jobApplicationStages');

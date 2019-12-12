@@ -222,10 +222,10 @@
                         <div class="col-sm-12">
                             @if($jobSeeker->formalEducations->count())
                             @php
-                            $education = collect($jobSeeker->formalEducations->toArray());
+                            $education = collect($jobSeeker->formalEducations()->with('major')->get()->toArray());
                             $sma = array_values($education->where('class', App\Models\FormalEducation::EDU_SENIOR_HIGH_SCHOOL)->toArray())[0];
                             @endphp
-                            @if($jobSeeker->educationLevel->isAssociateForm())
+                            @if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
                             @php
                             $d3 = array_values($education->where('class', App\Models\FormalEducation::EDU_DIPLOMA)->toArray());
                             $d3 = isset($d3[0]) ? $d3[0] : null;
@@ -240,9 +240,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name Of Institution</th>
-                                            <th>Faculty</th>
+                                            {{-- <th>Faculty</th> --}}
                                             <th>Major</th>
-                                            <th>Study Program</th>
+                                            {{-- <th>Study Program</th> --}}
                                             <th>City</th>
                                             <th>Join s/d Graduate</th>
                                             <th>NEM/IPK</th>
@@ -253,9 +253,9 @@
                                         <tr>
                                             <td>SMA</td>
                                             <td>{{ $sma['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $sma['faculty'] ?? '-' }}</td>
-                                            <td>{{ $sma['major'] ?? '-' }}</td>
-                                            <td>{{ $sma['study_program'] ?? '-' }}</td>
+                                            {{-- <td>{{ $sma['faculty'] ?? '-' }}</td> --}}
+                                            <td>{{ $sma['major']['name'] ?? '-' }}</td>
+                                            {{-- <td>{{ $sma['study_program'] ?? '-' }}</td> --}}
                                             <td>{{ $sma['city'] ?? '-' }}</td>
                                             <td>{{ $sma['start_year'] . ' - ' . $sma['end_year'] }}</td>
                                             <td>{{ $sma['grade_point'] ?? '-' }}</td>
@@ -264,26 +264,28 @@
                                         <tr>
                                             <td>D3</td>
                                             <td>{{ $d3['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $d3['faculty'] ?? '-' }}</td>
-                                            <td>{{ $d3['major'] ?? '-' }}</td>
-                                            <td>{{ $d3['study_program'] ?? '-' }}</td>
+                                            {{-- <td>{{ $d3['faculty'] ?? '-' }}</td> --}}
+                                            <td>{{ $d3['major']['name'] ?? '-' }}</td>
+                                            {{-- <td>{{ $d3['study_program'] ?? '-' }}</td> --}}
                                             <td>{{ $d3['city'] ?? '-' }}</td>
                                             <td>{{ $d3['start_year'] . ' - ' . $d3['end_year'] }}</td>
                                             <td>{{ $d3['grade_point'] ?? '-' }}</td>
                                             <td>{{ $d3['note'] }}</td>
                                         </tr>
+                                        @if($jobSeeker->educationLevel->isBachelorForm())
                                         <tr>
                                             <td>S1</td>
                                             <td>{{ $s1['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $s1['faculty'] ?? '-' }}</td>
-                                            <td>{{ $s1['major'] ?? '-' }}</td>
-                                            <td>{{ $s1['study_program'] ?? '-' }}</td>
+                                            {{-- <td>{{ $s1['faculty'] ?? '-' }}</td> --}}
+                                            <td>{{ $s1['major']['name'] ?? '-' }}</td>
+                                            {{-- <td>{{ $s1['study_program'] ?? '-' }}</td> --}}
                                             <td>{{ $s1['city'] ?? '-' }}</td>
                                             <td>{{ $s1['start_year'] . ' - ' . $s1['end_year'] }}</td>
                                             <td>{{ $s1['grade_point'] ?? '-' }}</td>
                                             <td>{{ $s1['note'] }}</td>
                                         </tr>
-                                        <tr>
+                                        @endif
+                                        {{-- <tr>
                                             <td>S2</td>
                                             <td>{{ $s2['name_of_institution'] ?? '-' }}</td>
                                             <td>{{ $s2['faculty'] ?? '-' }}</td>
@@ -293,7 +295,7 @@
                                             <td>{{ $s2['start_year'] . ' - ' . $s2['end_year'] }}</td>
                                             <td>{{ $s2['grade_point'] ?? '-' }}</td>
                                             <td>{{ $s2['note'] }}</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -657,7 +659,7 @@
                                             <th>Salary</th>
                                             <th>Join Date</th>
                                             <th>End Date</th>
-                                            @if($jobSeeker->educationLevel->isAssociateForm())
+                                            @if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
                                             <th>Boss Name</th>
                                             <th>Boss Position</th>
                                             <th>Subordinates</th>
@@ -675,7 +677,7 @@
                                             <td>{{ $v->salary ?? '0' }}</td>
                                             <td>{{ $v->join_date ?? '-' }}</td>
                                             <td>{{ $v->end_date ?? '-' }}</td>
-                                            @if($jobSeeker->educationLevel->isAssociateForm())
+                                            @if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
                                             <td>{{ $v->boss_name ?? '-' }}</td>
                                             <td>{{ $v->boss_position ?? '-' }}</td>
                                             <td>{{ $v->number_of_subordinates ?? '-' }}</td>
@@ -685,7 +687,7 @@
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan="@if($jobSeeker->educationLevel->isAssociateForm()) 10 @else 7 @endif" class="text-center">No Data</td>
+                                            <td colspan="@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm()) 10 @else 7 @endif" class="text-center">No Data</td>
                                         </tr>
                                         @endif
                                     </tbody>

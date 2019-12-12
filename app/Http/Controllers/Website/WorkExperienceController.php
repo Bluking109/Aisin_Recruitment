@@ -81,7 +81,7 @@ class WorkExperienceController extends Controller
             }
 
             $jobSeeker->workExperienceDetail()->delete();
-            if ($jobSeeker->educationLevel->isAssociateForm() && isset($request->work_experiences[0]['company'])) {
+            if ($jobSeeker->educationLevel->isDiplomaForm() && isset($request->work_experiences[0]['company'])) {
                 $jobSeeker->workExperienceDetail()->create([
                     'position_description' => $request->position_description,
                     'problems_and_solutions' => $request->problems_and_solutions,

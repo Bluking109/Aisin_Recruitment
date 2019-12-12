@@ -59,7 +59,7 @@
 				 							<input type="text" placeholder="Tanggal Keluar" name="work_experiences[{{ $key }}][end_date]" class="work-experience-end-date datepicker" value="{{ date('d-m-Y', strtotime($workExperience->end_date)) }}" />
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Nama Atasan</span>
 				 						<div class="pf-field">
@@ -129,7 +129,7 @@
 				 							<input type="text" placeholder="Tanggal Keluar" name="work_experiences[0][end_date]" class="work-experience-end-date datepicker" />
 				 						</div>
 				 					</div>
-				 					@if($jobSeeker->educationLevel->isAssociateForm())
+				 					@if($jobSeeker->educationLevel->isDiplomaForm())
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Nama Atasan</span>
 				 						<div class="pf-field">
@@ -169,7 +169,7 @@
 				 				@endif
 				 			</form>
 				 		</div>
-				 		@if($jobSeeker->educationLevel->isAssociateForm())
+				 		@if($jobSeeker->educationLevel->isDiplomaForm())
 			 			<div class="profile-title">
 				 			<h3></h3>
 				 		</div>

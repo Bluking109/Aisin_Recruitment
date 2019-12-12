@@ -168,6 +168,21 @@ if ($jobVacancy) {
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="position_id" class="col-sm-3 col-form-label">Majors Allowed</label>
+                                    <div class="col-sm-9 input-wrapper">
+                                        <select class="majors-ajax form-control" @if(!$jobVacancy) disabled @endif id="majors" name="majors[]" style="width: 100%; height: auto;" @if($jobVacancy) multiple @endif>
+                                            @if($jobVacancy)
+                                            @foreach($jobVacancy->majors as $value)
+                                            <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
+                                            @endforeach
+                                            @endif
+                                        </select>
+                                        @error('majors[]')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="descriptions" class="col-sm-3 col-form-label">Descriptions</label>
                                     <div class="col-sm-9 input-wrapper">
                                         <textarea id="descriptions" name="descriptions">{{ $jobVacancy->descriptions ?? old('descriptions') }}</textarea>
@@ -188,7 +203,7 @@ if ($jobVacancy) {
                                 <div class="form-group row">
                                     <div class="col-sm-12 text-right">
                                         <button type="button" class="btn btn-primary btn-white-text" id="add-new-btn">Submit</button>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <a href="{{ route('admin.job-vacancies.index') }}" class="btn btn-secondary">Cancel</a>
                                     </div>
                                 </div>
                             </div>
@@ -266,10 +281,45 @@ if ($jobVacancy) {
         CKEDITOR.replace( 'requirements' );
     }
 
+    const majorInit = function(val) {
+        if (val != null && val != '' && val != undefined) {
+            $('#majors').prop('disabled', false);
+
+            $('#majors').prop('multiple', 'multiple');
+
+            $('#majors').select2({
+                placeholder: 'Select Majors',
+                width: 'resolve',
+                ajax: {
+                    url: "{{ route('ajax.majors.get') }}?" + "education_level=" + val,
+                    dataType: "json",
+                    data: function (params) {
+                        return {
+                            search : $.trim(params.term)
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                }
+            });
+        } else {
+            $('#majors').prop('disabled', true);
+        }
+    }
+
     $(document).ready(function() {
         initRangeMonthDatePicker();
 
         initCKEditor();
+
+        @if($jobVacancy)
+        let majorId = $('.educationlevel-ajax').val();
+        majorInit(majorId);
+        @endif
         const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-primary ml-1 mr-1',
@@ -398,6 +448,11 @@ if ($jobVacancy) {
                 },
                 cache: true
             }
+        });
+
+        $('.educationlevel-ajax').on('change', function() {
+            let val = $(this).val();
+            majorInit(val);
         });
     });
 </script>

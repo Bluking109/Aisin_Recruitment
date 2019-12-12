@@ -161,7 +161,7 @@
                             $education = collect($jobSeeker->formalEducations->toArray());
                             $sma = array_values($education->where('class', App\Models\FormalEducation::EDU_SENIOR_HIGH_SCHOOL)->toArray())[0];
                             @endphp
-                            @if($jobSeeker->educationLevel->isAssociateForm())
+                            @if($jobSeeker->educationLevel->isDiplomaForm())
                             @php
                             $d3 = array_values($education->where('class', App\Models\FormalEducation::EDU_DIPLOMA)->toArray());
                             $d3 = isset($d3[0]) ? $d3[0] : null;
@@ -593,7 +593,7 @@
                                             <th>Salary</th>
                                             <th>Join Date</th>
                                             <th>End Date</th>
-                                            @if($jobSeeker->educationLevel->isAssociateForm())
+                                            @if($jobSeeker->educationLevel->isDiplomaForm())
                                             <th>Boss Name</th>
                                             <th>Boss Position</th>
                                             <th>Subordinates</th>
@@ -611,7 +611,7 @@
                                             <td>{{ $v->salary ?? '0' }}</td>
                                             <td>{{ $v->join_date ?? '-' }}</td>
                                             <td>{{ $v->end_date ?? '-' }}</td>
-                                            @if($jobSeeker->educationLevel->isAssociateForm())
+                                            @if($jobSeeker->educationLevel->isDiplomaForm())
                                             <td>{{ $v->boss_name ?? '-' }}</td>
                                             <td>{{ $v->boss_position ?? '-' }}</td>
                                             <td>{{ $v->number_of_subordinates ?? '-' }}</td>
@@ -621,7 +621,7 @@
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan="@if($jobSeeker->educationLevel->isAssociateForm()) 10 @else 7 @endif" class="text-center">No Data</td>
+                                            <td colspan="@if($jobSeeker->educationLevel->isDiplomaForm()) 10 @else 7 @endif" class="text-center">No Data</td>
                                         </tr>
                                         @endif
                                     </tbody>

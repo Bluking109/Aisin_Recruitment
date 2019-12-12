@@ -109,6 +109,7 @@ Route::namespace('Ajax')->group(function() {
 		Route::get('districts', 'DistrictController@getAll')->name('districts.get');
 		Route::get('sub-districts', 'SubDistrictController@getAll')->name('sub-districts.get');
 		Route::get('villages', 'VillageController@getAll')->name('villages.get');
+		Route::get('majors', 'MajorController@getAll')->name('majors.get');
 	});
 });
 

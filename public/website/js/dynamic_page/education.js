@@ -47,6 +47,66 @@ $(function(){
 	recaptchaReset('education');
 	initRangeMonthDatePicker();
 
+	// major
+	$.ajax({
+        url: '/ajax/majors',
+        type: 'GET',
+        success: function (data) {
+        	let smaOpts = '<option></option>';
+
+        	let smaSelect = $('#major-sma-select');
+        	let selects = ['d3', 's1', 's2'];
+
+        	data.forEach(v => {
+        		if (v.type == '1') {
+        			let smaVal = smaSelect.val();
+
+        			if (smaVal != '' && smaVal != null && smaVal != undefined) {
+        				if (smaVal != v.id) {
+        					smaOpts += `<option value="${v.id}">${v.text}</option>`;
+        				}
+        			} else {
+        				smaOpts += `<option value="${v.id}">${v.text}</option>`;
+        			}
+        		}
+        	});
+
+        	selects.forEach(v => {
+        		let d3Opts = '<option></option>';
+        		let elem = $('#major-'+v+'-select');
+        		let elemVal = elem.val();
+
+        		data.forEach(val => {
+        			if (val.type == '2') {
+	        			if (elemVal != '' && elemVal != null && elemVal != undefined) {
+	        				if (elemVal != val.id) {
+	        					d3Opts += `<option value="${val.id}">${val.text}</option>`;
+	        				}
+	        			} else {
+	        				d3Opts += `<option value="${val.id}">${val.text}</option>`;
+	        			}
+	        		}
+        		});
+
+        		elem.append(d3Opts);
+        		elem.chosen();
+        	});
+
+        	smaSelect.append(smaOpts).chosen();
+        },
+        statusCode: {
+        	422 : function (data) {
+
+        	},
+        	400 : function (data) {
+
+        	},
+            500 : function (data) {
+
+            }
+        }
+    });
+
 	$('#non-formal-form').on('click', '.add-non-formal', function() {
 		let parentRow = $(this).closest('form').find('.non-formal-row');
 
@@ -185,8 +245,8 @@ $(function(){
 				    		errorName = error;
 				    	}
 
-				        let element = form.find('[name="'+errorName+'"]');
-				        element.after(`<span class="text-danger error-update">${errors[error].join('. ')}</span>`);
+				        let element = form.find('[name="'+errorName+'"]').parent();
+				        element.append(`<span class="text-danger error-update">${errors[error].join('. ')}</span>`);
 				    }
 	        	},
 	        	400 : function (data) {

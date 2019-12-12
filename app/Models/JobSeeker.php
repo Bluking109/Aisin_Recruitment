@@ -45,7 +45,7 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
      * Append attribute
      * @var array
      */
-    protected $appends = ['gender_label', 'religion_label'];
+    protected $appends = ['gender_label', 'religion_label', 'age', 'domicile_label', 'last_education'];
 
     /**
      * The "booting" method of the model.
@@ -165,7 +165,7 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Models\FormalEducation', 'job_seeker_id');
     }
-    
+
     /**
      * Accessor lastest education
      *
@@ -173,8 +173,7 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
      */
     public function getLastEducationAttribute($value)
     {
-        $max = $this->formalEducations()->max('class');
-        return $this->formalEducations->where('class', $max)->first();
+        return $this->formalEducations()->with('major')->get()->last();
     }
 
     /**
@@ -454,5 +453,13 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
         }
 
         return false;
+    }
+
+    /**
+     * Get domicile address label
+     */
+    public function getDomicileLabelAttribute()
+    {
+        return $this->domicile . ', ' . $this->domicileVillage->name . ', ' . $this->domicileVillage->subDistrict->name . ', ' . $this->domicileVillage->subDistrict->district->name . ', ' . $this->domicileVillage->subDistrict->district->province->name;
     }
 }
