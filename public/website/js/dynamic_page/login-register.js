@@ -1,14 +1,3 @@
-let recaptchaReset = function() {
-    grecaptcha.ready(function() {
-        grecaptcha.execute(siteKey, {action: 'homepage'}).then(function(token) {
-            $('#modal-register').addClass('signup-popup-box');
-            $('#modal-login').addClass('signin-popup-box');
-            $('#register-recaptcha-key').val(token);
-            $('#login-recaptcha-key').val(token);
-        });
-    });
-}
-
 const showErrorValidation = function(form, data) {
     let response = data.responseJSON;
     let errors = response.errors

@@ -36,6 +36,17 @@ const Toast = Swal.mixin({
     timer: 6000
 });
 
+let recaptchaReset = function() {
+    grecaptcha.ready(function() {
+        grecaptcha.execute(siteKey, {action: 'homepage'}).then(function(token) {
+            $('#modal-register').addClass('signup-popup-box');
+            $('#modal-login').addClass('signin-popup-box');
+            $('#register-recaptcha-key').val(token);
+            $('#login-recaptcha-key').val(token);
+        });
+    });
+}
+
 $(document).on('ready',function(){
     "use strict";
 
@@ -96,12 +107,14 @@ $(document).on('ready',function(){
 
     /* Signin Popup */
     $('.signin-popup').on('click', function(){
+        recaptchaReset();
         $('.signin-popup-box').fadeIn('fast');
         $('html').addClass('no-scroll');
     });
 
     /* Signup Popup */
     $('.signup-popup').on('click', function(){
+        recaptchaReset();
         $('.signup-popup-box').fadeIn('fast');
         $('html').addClass('no-scroll');
     });

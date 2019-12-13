@@ -4,23 +4,36 @@
 
 <table style="width: 100%">
     <tr>
-        <td>Nama</td>
-        <td> : </td>
+        <td><b>Nama : </b></td>
+    </tr>
+    <tr>
         <td>{{ $name }}</td>
     </tr>
     <tr>
-        <td>Email</td>
-        <td> : </td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><b>Email : </b></td>
+    </tr>
+    <tr>
         <td>{{ $email }}</td>
     </tr>
     <tr>
-        <td>Subject</td>
-        <td> : </td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><b>Subject : </b></td>
+    </tr>
+    <tr>
         <td>{{ $subject }}</td>
     </tr>
     <tr>
-        <td>Message</td>
-        <td> : </td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td><b>Message : </b></td>
+    </tr>
+    <tr>
         <td>{{ $message }}</td>
     </tr>
 </table>
