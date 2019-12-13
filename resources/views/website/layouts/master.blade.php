@@ -7,6 +7,8 @@
 		<meta name="description" content="PT. Aisin Indonesia Automotive merupakan perusahaan yang bergerak di bidang manufaktur komponen otomotive">
 		<meta name="keywords" content="Lowongan Kerja Karawang PT Aisin Indonesia Automotive {{ date('Y') }}">
 		<meta name="author" content="PT. Aisin Indonesia Automotive">
+		{{-- Google Tag --}}
+		<meta name="google-site-verification" content="1yUO5_rFMFclFBDAYtTLsAxfKPm-E64k1V7vaqyZa9o" />
 
 		<link rel="shortcut icon" href="{{ asset('website/images/favicon.ico') }}" />
 
