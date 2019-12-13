@@ -33,6 +33,13 @@ class SettingsSeeder extends Seeder
                 'description' => 'The email address that will receive the message, when there is a message from the visitor',
                 'value' => 'ali.usman@aiia.co.id',
                 'type' => 'text'
+            ],
+            [
+                'name' => 'recaptcha_validation',
+                'display_name' => 'Recaptcha Validation',
+                'description' => 'Validation of recaptcha',
+                'value' => '0',
+                'type' => 'boolean'
             ]
         ];
 

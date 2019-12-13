@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'About Us')
+@section('title', 'Job Seekers')
 @section('pages')
 <div class="content-wrapper">
     <div class="row">

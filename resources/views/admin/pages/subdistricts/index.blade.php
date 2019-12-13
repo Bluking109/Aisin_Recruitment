@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Districts')
+@section('title', 'Sub Districts')
 @push('optional_vendor_css')
 <link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
