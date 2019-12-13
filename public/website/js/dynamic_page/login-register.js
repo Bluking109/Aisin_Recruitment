@@ -61,8 +61,6 @@ $(function() {
         }
     });
 
-    $('.page-loading').fadeOut();
-
 	$('#form-login').on('submit', function(e) {
 		e.preventDefault();
         let form = $(this);

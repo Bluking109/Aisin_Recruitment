@@ -35,7 +35,7 @@
 }
 
 .primary-bg-image {
-	background-image: url('../images/primary-bg.png') !important;
+	background-image: url('../images/primary-bg.jpg') !important;
 }
 
 .error-bg {
@@ -112,7 +112,7 @@
 }
 
 .sub-header {
-	background-image: url('../images/subheader-bg.png') !important;
+	background-image: url('../images/subheader-bg.jpg') !important;
 }
 
 .overlay-grey {
