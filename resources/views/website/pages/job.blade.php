@@ -1,5 +1,5 @@
 @extends('website.layouts.master')
-@section('title', 'ITD Staff')
+@section('title', $job->position->name . ' - ' . $job->section->name)
 
 @section('pages')
 @php

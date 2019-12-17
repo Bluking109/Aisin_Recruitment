@@ -18,8 +18,8 @@
 						</div>
 						<div class="job-search-sec">
 							<div class="job-search">
-								<h3>PT. Aisin Indonesia Automotive</h3>
-								<span>Perusahaan Manufaktur</span>
+								<h3>{{ AIIASetting::getValue('home_header_title') }}</h3>
+								<span>{{ AIIASetting::getValue('home_header_sub_title') }}</span>
 							</div>
 						</div>
 						<div class="scroll-to">
