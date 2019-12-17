@@ -33,7 +33,7 @@
     @enderror
 </div>
 <div class="my-2 d-flex justify-content-between align-items-center">
-    <a href="#" class="auth-link text-black">Forgot password?</a>
+    <a href="#" class="auth-link text-black" data-toggle="modal" data-target="#modal-reset">Forgot password?</a>
 </div>
 <div class="my-3">
     <button class="btn btn-block btn-lg font-weight-medium auth-form-btn" type="submit">LOGIN</button>

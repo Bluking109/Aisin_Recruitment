@@ -40,6 +40,20 @@ class SettingsSeeder extends Seeder
                 'description' => 'Validation of recaptcha',
                 'value' => '0',
                 'type' => 'boolean'
+            ],
+            [
+                'name' => 'home_header_title',
+                'display_name' => 'Home Header Title',
+                'description' => 'Home Header Title',
+                'value' => 'PT. AISIN INDONESIA AUTOMOTIVE',
+                'type' => 'text'
+            ],
+            [
+                'name' => 'home_header_sub_title',
+                'display_name' => 'Home Header Sub Title',
+                'description' => 'Home Header Sub Title',
+                'value' => 'Automotive Component Manufacturing Company',
+                'type' => 'text'
             ]
         ];
 
