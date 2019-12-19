@@ -58,6 +58,7 @@ Route::namespace('Admin')->group(function() {
 			Route::resource('positions', 'PositionController')->except('edit', 'show', 'create');
 			Route::get('positions/get-position', 'PositionController@getPosition')->name('positions.getposition');
 			Route::resource('about-us', 'AboutController')->except('edit', 'show', 'create');
+			Route::resource('how-to-applies', 'HowToApplyController')->except('edit', 'show', 'create');
 			Route::resource('recruitment-stages', 'RecruitmentStageController')->except('edit', 'show', 'create');
 			Route::get('recruitment-stages/get-stages', 'RecruitmentStageController@getStage')->name('recruitment-stages.getstage');
 
@@ -193,4 +194,5 @@ Route::namespace('Website')->group(function() {
 	Route::get('home', 'PageController@home')->name('home');
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
+	Route::get('how-to-apply', 'PageController@howToApply')->name('how-to-apply.index');
 });

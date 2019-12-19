@@ -28,6 +28,9 @@ $url = url()->current();
 					<li class="menu-item @if($url == route('job-vacancies.index')) active @endif">
 						<a href="{{ route('job-vacancies.index') }}" title="">Lowongan</a>
 					</li>
+					<li class="menu-item @if($url == route('job-vacancies.index')) active @endif">
+						<a href="{{ route('how-to-apply.index') }}" title="">Cara  Melamar</a>
+					</li>
 					<li class="menu-item @if($url == route('contact.index')) active @endif">
 						<a href="{{ route('contact.index') }}" title="">Kontak Kami</a>
 					</li>

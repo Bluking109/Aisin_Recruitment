@@ -43,7 +43,7 @@
                 </div>
             </li>
             {{-- Sementara about permission protect page karena sub menu hanya 1 --}}
-            @can('list_about')
+            @canany(['list_about', 'list_how_to_apply'])
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="mdi mdi-book-open-page-variant menu-icon"></i>
@@ -52,11 +52,16 @@
                 </a>
                 <div class="submenu">
                     <ul>
+                        @can('list_about')
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.about-us.index') }}">About</a></li>
+                        @endcan
+                        @can('list_how_to_apply')
+                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.how-to-applies.index') }}">How To Apply</a></li>
+                        @endcan
                     </ul>
                 </div>
             </li>
-            @endcan
+            @endcanany
             {{-- end about permission --}}
             <li class="nav-item">
                 <a href="#" class="nav-link">

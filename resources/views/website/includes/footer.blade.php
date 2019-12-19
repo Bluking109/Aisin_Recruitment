@@ -23,6 +23,7 @@
 								<div class="col-lg-6">
 									<a href="{{ route('home') }}" title="">Beranda </a>
 									<a href="{{ route('job-vacancies.index') }}" title="">Lowongan </a>
+									<a href="{{ route('how-to-apply.index') }}" title="">Cara Melamar </a>
 									<a href="{{ route('contact.index') }}" title="">Kontak Kami </a>
 								</div>
 							</div>

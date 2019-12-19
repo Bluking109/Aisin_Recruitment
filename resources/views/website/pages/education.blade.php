@@ -132,7 +132,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 				@endif
 				 				<div class="row no-margin-row">
 				 					<div class="col-md-12">
-				 						<span class="pf-title education-title"><b>SMA</b></span>
+				 						<span class="pf-title education-title"><b>SMA / SMK</b></span>
 				 					</div>
 				 					<div class="col-md-4">
 				 						<span class="pf-title">Nama Sekolah
