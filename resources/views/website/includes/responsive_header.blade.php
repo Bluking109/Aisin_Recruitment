@@ -31,6 +31,9 @@
 					<a href="{{ route('job-vacancies.index') }}" title=""><i class="fa fa-hashtag"></i> Lowongan</a>
 				</li>
 				<li class="menu-item">
+					<a href="{{ route('how-to-apply.index') }}" title=""><i class="fa fa-hashtag"></i> Cara Melamar</a>
+				</li>
+				<li class="menu-item">
 					<a href="{{ route('contact.index') }}" title=""><i class="fa fa-phone"></i> Kontak Kami</a>
 				</li>
 				@if(auth()->guard('job_seekers')->check())
