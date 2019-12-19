@@ -5,8 +5,8 @@
 @endpush
 @section('pages')
 @include('website.includes.sub_header', [
-	'title' => $howToApply->title,
-	'sub_title' => $howToApply->sub_title,
+	'title' => $howToApply->title ?? 'Cara Melamar Kerja',
+	'sub_title' => $howToApply->sub_title ?? 'Cara Melamar Kerja PT. Aisin Indonesia Automotive',
 	'breadcrumbs' => [
 		[
 			'url' => route('home'),
@@ -14,7 +14,7 @@
 		],
 		[
 			'url' => '#',
-			'title' => $howToApply->title
+			'title' => $howToApply->title ?? 'Cara Melamar Kerja'
 		],
 	]
 ])
@@ -26,7 +26,7 @@
 			 		<div class="about-us">
 			 			<div class="row">
 			 				<div class="col-sm-12">
-								<img src="{{ asset('storage/pages/' . $howToApply->image) }}">
+								<img src="@if($howToApply) {{ asset('storage/pages/' . $howToApply->image) }} @endif">
 							</div>
 			 			</div>
 			 		</div>
