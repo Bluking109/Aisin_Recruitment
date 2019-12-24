@@ -42,7 +42,7 @@
 				<td>{{ $datum->jobSeeker->place_of_birth }}</td>
 				<td>{{ $datum->jobSeeker->date_of_birth }}</td>
 				<td>{{ $datum->jobSeeker->age }}</td>
-				<td>{{ $datum->jobSeeker->gender == '1' ? 'Laki-laki' : $datum->jobSeeker->gender == '2' ? 'Wanita' : 'Waria' }}</td>
+				<td>{{ $datum->jobSeeker->gender == '1' ? 'Laki-laki' : 'Wanita' }}</td>
 				<td>{{ $datum->jobSeeker->domicile }}</td>
 				<td>{{ $datum->jobSeeker->religion_label }}</td>
 				<td>{{ $datum->jobSeeker->maritalStatus->marital_ktp_label_id }}</td>
