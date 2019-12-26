@@ -64,7 +64,7 @@ class InterestConceptController extends Controller
                 'expected_facility' => $request->expected_facility,
                 'join_date' => $request->join_date,
                 'expected_salary' => $request->expected_salary,
-                'place_outside' => $request->place_outside,
+                'place_outside' => $request->place_outside ?? InterestConcept::PLACE_OUTSIDE_NO,
                 'favored_environment' => $request->favored_environment_other ? $request->favored_environment_other : $request->favored_environment,
                 'unfavored_environment' => $request->unfavored_environment_other ? $request->unfavored_environment_other : $request->unfavored_environment,
                 'like_people' => $request->like_people,
