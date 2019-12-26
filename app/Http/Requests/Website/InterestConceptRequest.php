@@ -46,7 +46,6 @@ class InterestConceptRequest extends FormRequest
         $rules = [
             'working_motivation' => 'required|max:500|min:5',
             'working_reason' => 'required|max:500|min:5',
-            'expected_facility' => 'required|max:500|min:5',
             'join_date' => 'required|date',
             'expected_salary' => 'required|numeric',
             'field_of_works' => 'required|array',
@@ -55,6 +54,7 @@ class InterestConceptRequest extends FormRequest
 
         if ($jobSeeker->educationLevel->isDiplomaForm()) {
             $rules['future_goals'] = 'required|max:500|min:5';
+            $rules['expected_facility'] = 'required|max:500|min:5';
             $rules['place_outside'] = 'required|in:' . InterestConcept::PLACE_OUTSIDE_YES . ',' . InterestConcept::PLACE_OUTSIDE_NO;
             $rules['favored_environment'] = 'required|in:' . implode(',', config('aiia.working_environments')) . ',other';
             $rules['favored_environment_other'] = 'required_if:favored_environment,other|max:100';
