@@ -25,16 +25,14 @@ class JobVacancyController extends Controller
 
     	$jobs = JobVacancy::active()
             ->when($jobSeeker, function($q, $jobSeeker) {
-                $formalEducations = $jobSeeker->formalEducations;
-                $majors = [];
+                $lastFormalEducation = $jobSeeker->formalEducations->last();
 
-                foreach ($formalEducations as $key => $value) {
-                    $majors[] = $value->major->id;
+                if ($lastFormalEducation) {
+                    $q->where('education_level_id', $jobSeeker->educationLevel->id)
+                        ->whereHas('majors', function($q) use($lastFormalEducation) {
+                            $q->where('id', $lastFormalEducation->major_id);
+                        });
                 }
-                $q->where('education_level_id', $jobSeeker->educationLevel->id)
-                    ->whereHas('majors', function($q) use($majors) {
-                        $q->whereIn('id', $majors);
-                    });
             })
             ->when($search, function($q, $search) {
     			$q->whereHas('position', function($q) use($search) {
@@ -93,22 +91,22 @@ class JobVacancyController extends Controller
             abort(404);
         }
 
-        $formalEducations = $jobSeeker->formalEducations;
+        $lastFormalEducation = $jobSeeker->formalEducations->last();
 
-        $majorPass = false;
+        if ($lastFormalEducation) {
+            $majorPass = false;
 
-        foreach ($formalEducations as $key => $value) {
             $majors = $job->majors;
 
             foreach ($majors as $k => $v) {
-                if ($v->id == $value->major->id) {
+                if ($v->id == $lastFormalEducation->major_id) {
                     $majorPass = true;
                 }
             }
-        }
 
-        if (!$majorPass) {
-            return back()->with('error', 'Mohon maaf jurusan pendidikan Anda tidak sesuai kualifikasi');
+            if (!$majorPass) {
+                return back()->with('error', 'Mohon maaf jurusan pendidikan Anda tidak sesuai kualifikasi');
+            }
         }
 
         if (!$jobSeeker->canApply()) {
@@ -201,6 +199,6 @@ class JobVacancyController extends Controller
             'status' => JobApplication::STATUS_IN_PROCESS
         ]);
 
-        return back()->with('success', 'Terimakasih sudah melamar untuk pekerjaan ini :D');
+        return back()->with('success', 'Terimakasih sudah melamar untuk pekerjaan ini');
     }
 }

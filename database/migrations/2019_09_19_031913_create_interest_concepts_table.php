@@ -24,9 +24,9 @@ class CreateInterestConceptsTable extends Migration
             $table->text('expected_facility', 500)->nullable();
             $table->date('join_date');
             $table->double('expected_salary')->default(0);
-            $table->enum('place_outside', ['0', '1'])->default(0)->comment = '0 = tidak mau, 1 = mau';
-            $table->string('favored_environment', 190)->default('lapangan');
-            $table->string('unfavored_environment', 190)->default('lapangan');
+            $table->enum('place_outside', ['0', '1'])->nullable()->default(0)->comment = '0 = tidak mau, 1 = mau';
+            $table->string('favored_environment', 190)->nullable()->default('lapangan');
+            $table->string('unfavored_environment', 190)->nullable()->default('lapangan');
             $table->text('like_people', 500)->nullable();
             $table->text('dificult_decisions', 500)->nullable();
             $table->text('field_of_works', 500)->nullable();
