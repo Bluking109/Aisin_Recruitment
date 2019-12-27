@@ -66,7 +66,7 @@ class OtherController extends Controller
                 'fill_spare_time' => $request->fill_spare_time,
                 'strong_point' => $request->strong_point,
                 'weak_point' => $request->weak_point,
-                'use_glasses' => $request->use_glasses,
+                'use_glasses' => $request->use_glasses ?? '0',
                 'agreement' => $request->agreement,
             ];
 
