@@ -71,6 +71,14 @@ if ($jobSeeker) {
 						 				<div>
 						 					{!! $job->requirements !!}
 						 				</div>
+										<h3>Jurusan Yang Diijinkan</h3>
+						 				<div>
+										 	@if($job->majors->count())
+						 					@foreach ($job->majors as $major)
+											<span class="badge badge-primary badge-major">{{ $major->name }}</span>
+											@endforeach
+											@endif
+						 				</div>
 						 			</div>
 						 		</div>
 						 		<div class="col-lg-4 column">

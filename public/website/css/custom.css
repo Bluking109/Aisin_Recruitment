@@ -417,3 +417,13 @@ input[type="radio"]:disabled + label::before {
 	font-family: 'Quicksand', serif !important;
 	border-radius: 50px;
 }
+
+.badge-major {
+	font-weight: normal;
+	padding: 4px;
+	font-size: 13px;
+}
+
+.bg-major {
+	background: #e8ecec;
+}
