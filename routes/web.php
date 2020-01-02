@@ -59,6 +59,7 @@ Route::namespace('Admin')->group(function() {
 			Route::get('positions/get-position', 'PositionController@getPosition')->name('positions.getposition');
 			Route::resource('about-us', 'AboutController')->except('edit', 'show', 'create');
 			Route::resource('how-to-applies', 'HowToApplyController')->except('edit', 'show', 'create');
+			Route::resource('announcements', 'AnnouncementController')->except('edit', 'show', 'create');
 			Route::resource('recruitment-stages', 'RecruitmentStageController')->except('edit', 'show', 'create');
 			Route::get('recruitment-stages/get-stages', 'RecruitmentStageController@getStage')->name('recruitment-stages.getstage');
 
