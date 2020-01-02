@@ -13,6 +13,7 @@ use App\Models\JobVacancy;
 use App\Http\Requests\Admin\RejectApplication;
 use App\Http\Requests\Admin\NextStageApplication;
 use App\Mail\ApplicationAccepted;
+use App\Models\WaNotification;
 use DB;
 use DataTables;
 
@@ -215,6 +216,22 @@ class JobApplicationController extends Controller
                 $message = 'Job applications successfully rejected and replaced with other job';
 
                 $application = $application->fresh();
+
+                $hpNumber = $application->jobSeeker->handphone_number;
+
+                if ($hpNumber[0] == '+') {
+                    $hpNumber = ltrim($hpNumber, '+');
+                }
+
+                if ($hpNumber[0] == '0') {
+                    $hpNumber = '62' . ltrim($hpNumber, '0');
+                }
+
+                WaNotification::create([
+                    'handphone_number' => $hpNumber,
+                    'message' => $this->generateMessage($application),
+                ]);
+
                 Mail::to($application->jobSeeker->email)->send(new ApplicationAccepted($application));
     		} else {
                 // Reject semua application
@@ -349,6 +366,21 @@ class JobApplicationController extends Controller
         ]);
 
         $application = $application->fresh();
+
+        $hpNumber = $application->jobSeeker->handphone_number;
+
+        if ($hpNumber[0] == '+') {
+            $hpNumber = ltrim($hpNumber, '+');
+        }
+
+        if ($hpNumber[0] == '0') {
+            $hpNumber = '62' . ltrim($hpNumber, '0');
+        }
+
+        WaNotification::create([
+            'handphone_number' => $hpNumber,
+            'message' => $this->generateMessage($application),
+        ]);
 
         Mail::to($application->jobSeeker->email)->send(new ApplicationAccepted($application));
 
@@ -545,17 +577,78 @@ class JobApplicationController extends Controller
     }
 
     /**
-     * Send SMS
+     * generate wa message
+     *
+     * @return void
      */
-    protected function sendSMS()
+    protected function generateMessage($application)
     {
-        // $this->client->request('GET', 'plain', [
-        //     'query' => [
-        //         'user'      => env('SMS_GATEWAY_USER'),
-        //         'password'  => env('SMS_GATEWAY_PASSWORD'),
-        //         'SMSText'   => 'REAL TIME ALERT: '.$error.', LINE: '.$line.', STATUS: '.$textstatus. ', DOWNTIME: '.$time.' Minutes',
-        //         'GSM'       => $user->phone_number,
-        //     ],
-        // ]);
+        $jobSeekerName = $application->jobSeeker->name;
+
+        $applicationStages = $application->jobApplicationStages;
+        $stageBefore = null;
+        if ($applicationStages->count() > 1) {
+            $stageBefore = $applicationStages[$applicationStages->count() - 2];
+            $stageBeforeName = $stageBefore->stage->name;
+        } else {
+            $stageBeforeName = 'Seleksi Dokumen';
+        }
+
+        $stageAfter = $applicationStages[$applicationStages->count() - 1];
+        $stageAfterName = $stageAfter->stage->name;
+
+        $day = date('D', strtotime($stageAfter->exam_at));
+        $date = date('d F Y', strtotime($stageAfter->exam_at));
+        $time = date('H:i', strtotime($stageAfter->exam_at));
+
+        switch($day){
+            case 'Sun':
+                $today = "Minggu";
+            break;
+
+            case 'Mon':
+                $today = "Senin";
+            break;
+
+            case 'Tue':
+                $today = "Selasa";
+            break;
+
+            case 'Wed':
+                $today = "Rabu";
+            break;
+
+            case 'Thu':
+                $today = "Kamis";
+            break;
+
+            case 'Fri':
+                $today = "Jumat";
+            break;
+
+            case 'Sat':
+                $today = "Sabtu";
+            break;
+
+            default:
+                $today = "Tidak di ketahui";
+            break;
+        }
+
+        $position = $application->jobVacancy->position->name . ' - ' . $application->jobVacancy->section->name;
+
+        $placeName = 'PT. Aisin Indonesia Automotive';
+        $placeAddress = 'Jl. Harapan VIII Lot LL No. 9-10. Kawasan KIIC, Karawang, Jawa Barat';
+        if ($vendor = $stageAfter->vendor) {
+            $placeName = $vendor->name;
+        }
+
+        if ($vendor) {
+            $placeAddress = $vendor->address;
+        }
+
+        $message = 'Hai '.$jobSeekerName.',%0aSelamat hasil '.$stageBeforeName.' untuk posisi '.$position.' Anda lolos, bersama ini PT Aisin Indonesia Automotive mengundang Anda untuk mengikuti proses berikutnya yaitu '.$stageAfterName.' pada '.$today.', '.$date.' pukul '.$time.', bertempat di :%0a%0a'.$placeName.'%0a'.$placeAddress.'%0a%0aUntuk konfirmasi silahkan kunjungi halaman profil Anda di website AIIA atau klik link berikut :%0a'.route('profiles.applied-jobs.index').'%0a%0aNote: Dilarang Menggunakan Baju Hitam Putih%0a%0aTerimakasih%0a(HRD PT Aisin Indonesia Automotive)';
+
+        return $message;
     }
 }
