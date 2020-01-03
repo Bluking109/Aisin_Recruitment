@@ -11,6 +11,7 @@ use App\Traits\FilterString;
 use App\Traits\FileHandler;
 use ReCaptcha\ReCaptcha;
 use AIIASetting;
+use App\Models\Announcement;
 
 class PersonalController extends Controller
 {
@@ -24,8 +25,9 @@ class PersonalController extends Controller
     public function index()
     {
         $jobSeeker = auth()->user();
+        $announcements = Announcement::active()->get();
 
-        return view('website.pages.personal_identity', compact('jobSeeker'));
+        return view('website.pages.personal_identity', compact('jobSeeker', 'announcements'));
     }
 
     /**
