@@ -120,20 +120,16 @@
                                     <td>: {{ date('d F Y', strtotime($jobSeeker->date_of_birth)) ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td><b>Birth Order</b></td>
-                                    <td>: {{ $jobSeeker->birth_order ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Gender</b></td>
-                                    <td>: {{ $jobSeeker->gender_label ?? '-' }}</td>
+                                    <td><b>Age</b></td>
+                                    <td>: {{ $jobSeeker->age ?? '-' }}</td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col-sm-6">
                             <table class="table">
                                 <tr>
-                                    <td><b>Birth Order</b></td>
-                                    <td>: {{ $jobSeeker->birth_order ?? '-' }}</td>
+                                    <td><b>Gender</b></td>
+                                    <td>: {{ $jobSeeker->gender_label ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td><b>Address</b></td>
@@ -331,7 +327,7 @@
                                         <tr>
                                             <td>SD</td>
                                             <td>{{ $sd['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $sd['major'] ?? '-' }}</td>
+                                            <td>{{ $sd['major']['name'] ?? '-' }}</td>
                                             <td>{{ $sd['end_year'] ?? '-' }}</td>
                                             <td>{{ $sd['city'] ?? '-' }}</td>
                                             <td>{{ $sd['average_math_score'] ?? '-' }}</td>
@@ -341,7 +337,7 @@
                                         <tr>
                                             <td>SMP</td>
                                             <td>{{ $smp['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $smp['major'] ?? '-' }}</td>
+                                            <td>{{ $smp['major']['name'] ?? '-' }}</td>
                                             <td>{{ $smp['end_year'] ?? '-' }}</td>
                                             <td>{{ $smp['city'] ?? '-' }}</td>
                                             <td>{{ $smp['average_math_score'] ?? '-' }}</td>
@@ -351,7 +347,7 @@
                                         <tr>
                                             <td>SMA</td>
                                             <td>{{ $sma['name_of_institution'] ?? '-' }}</td>
-                                            <td>{{ $sma['major'] ?? '-' }}</td>
+                                            <td>{{ $sma['major']['name'] ?? '-' }}</td>
                                             <td>{{ $sma['end_year'] ?? '-' }}</td>
                                             <td>{{ $sma['city'] ?? '-' }}</td>
                                             <td>{{ $sma['average_math_score'] ?? '-' }}</td>
