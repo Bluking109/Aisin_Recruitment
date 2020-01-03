@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +49,45 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof TokenMismatchException) {
+            return redirect()->back();
+        }
+
+        if (!env('APP_DEBUG', true)) {
+            if ($exception instanceof FatalThrowableError) {
+                abort(500);
+            }
+        }
+
         return parent::render($request, $exception);
+    }
+
+    /**
+     * Redirect if authenticated
+     * @param  [type]                  $request   [description]
+     * @param  AuthenticationException $exception [description]
+     * @return [type]                             [description]
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+
+        $guard = array_get($exception->guards(), 0);
+        switch ($guard) {
+            case 'job_seekers':
+                session()->put('redirect_to_sess', url()->current());
+                session()->flash('need_login', true);
+                $login = 'home';
+                break;
+            default:
+                $login = 'admin.login';
+                break;
+        }
+
+        session()->forget('url.intented');
+
+        return redirect()->route($login);
     }
 }

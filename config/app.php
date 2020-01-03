@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => env('APP_LANGUAGE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +176,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class, //spatie laravel permission
+        Barryvdh\DomPDF\ServiceProvider::class, //PDFDom
+
+        // Provider helper
+        App\Providers\SettingServiceProvider::class,
 
     ],
 
@@ -227,6 +231,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // alias setting
+        'AIIASetting' => App\Helpers\Setting::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class, //PDFDom
 
     ],
 
