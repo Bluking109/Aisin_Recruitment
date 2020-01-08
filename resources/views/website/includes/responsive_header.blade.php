@@ -1,6 +1,6 @@
 <div class="responsive-header">
 	<div class="responsive-menubar">
-		<div class="res-logo"><a href="index.html" title=""><img class="mini-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a></div>
+		<div class="res-logo"><a href="{{ route('home') }}" title=""><img class="mini-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a></div>
 		<div class="menu-resaction">
 			<div class="res-openmenu">
 				<img src="{{ asset('website/images/icon.png') }}" alt="" /> Menu
