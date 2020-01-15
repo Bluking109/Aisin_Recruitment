@@ -197,4 +197,17 @@ Route::namespace('Website')->group(function() {
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
 	Route::get('how-to-apply', 'PageController@howToApply')->name('how-to-apply.index');
+
+	Route::group([
+		'as' => 'password.',
+		'prefix' => 'password'
+	], function() {
+		Route::namespace('Auth')->group(function() {
+			Route::get('reset', 'ForgotPasswordController@showLinkRequestForm')->name('request');
+			Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('reset');
+			Route::post('reset', 'ResetPasswordController@reset')->name('update');
+			Route::post('email', 'ForgotPasswordController@sendResetLinkEmail')->name('email');
+			Route::put('password/change', 'ResetPasswordController@change')->name('change');
+		});
+	});
 });

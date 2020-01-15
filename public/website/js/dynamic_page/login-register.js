@@ -30,6 +30,78 @@ const prepareValidation = function (form) {
 $(function() {
     recaptchaReset();
 
+    $('#forget-password').on('click', function() {
+        $('.signin-popup-box').fadeOut('fast');
+        $('#modal-reset-password').fadeIn('normal');
+    });
+
+    $('#form-reset-password').on('submit', function(e) {
+        e.preventDefault();
+
+        let form = $(this);
+        prepareValidation(form);
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            dataType: "json",
+            data: $(this).serialize(),
+            success: function (data) {
+                $('#form-reset-password').remove();
+                $('#reset-title').text('Berhasil')
+                $('#modal-reset-password').find('.account-popup').append(`<div>
+                        <br><hr>
+                        <p class="text-success text-center">Reset password berhasil, silahkan check email Anda untuk melanjutkan proses penggantian password.</p>
+                    </div>`);
+            },
+            statusCode: {
+                422 : function (data) {
+                	resetErrorValidation(form);
+                    showErrorValidation(form, data);
+                    recaptchaReset();
+                },
+                400 : function (data) {
+                    resetErrorValidation(form);
+                    showRecaptchaError('#reset-title');
+                    recaptchaReset();
+                }
+            }
+        });
+    });
+
+    $('#form-change-password-reset').on('submit', function(e) {
+        e.preventDefault();
+        let form = $(this);
+        prepareValidation(form);
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            dataType: "json",
+            data: $(this).serialize(),
+            success: function (data) {
+                $('#form-change-password-reset').remove();
+                $('#change-password-title').text('Berhasil')
+                $('#modal-change-password-reset').find('.account-popup').append(`<div>
+                        <br><hr>
+                        <p class="text-success text-center">Password Anda telah diperbaharui.</p>
+                    </div>`);
+            },
+            statusCode: {
+                422 : function (data) {
+                	resetErrorValidation(form);
+                    showErrorValidation(form, data);
+                    recaptchaReset();
+                },
+                400 : function (data) {
+                    resetErrorValidation(form);
+                    showRecaptchaError('#change-password-title');
+                    recaptchaReset();
+                }
+            }
+        });
+    });
+
     $.ajax({
         url: '/ajax/education-levels',
         type: 'GET',
