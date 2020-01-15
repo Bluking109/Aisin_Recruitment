@@ -49,7 +49,7 @@
 					<p class="remember-label">
 						<input type="checkbox" name="remember" id="cb1"><label for="cb1">Remember me</label>
 					</p>
-					{{-- <a href="#" title="">Lupa Password?</a> --}}
+					<a href="#" title="" id="forget-password">Lupa Password?</a>
 					<button class="submit-button" type="submit"><span class="submit-text">Login</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
 				</form>
 				<div class="term-login">
@@ -102,29 +102,52 @@
 				</div>
 			</div>
 		</div><!-- SIGNUP POPUP -->
-		@else
-		{{-- Validasi jika login --}}
-		<div class="account-popup-area change-password-popup-box" id="modal-change-password">
+		<div class="account-popup-area reset-password-popup" id="modal-reset-password">
 			<div class="account-popup">
 				<span class="close-popup"><i class="la la-close"></i></span>
-				<h3>Ganti Password</h3>
-				<form>
+				<h3 id="reset-title">Reset Password</h3>
+				<form action="{{ route('password.email') }}" method="post" id="form-reset-password">
+					@csrf
 					<div class="cfield">
-						<input type="password" placeholder="Password Lama" />
-						<i class="fa fa-unlock-alt"></i>
+						<input type="text" placeholder="Email" name="email" />
+						<i class="fa fa-at"></i>
 					</div>
-					<div class="cfield">
-						<input type="password" placeholder="Password Baru" />
-						<i class="fa fa-unlock-alt"></i>
-					</div>
-					<div class="cfield">
-						<input type="password" placeholder="Konfirmasi Password Baru" />
-						<i class="fa fa-unlock-alt"></i>
-					</div>
-					<button type="submit">Submit</button>
+					<button class="submit-button" type="submit"><span class="submit-text">Reset</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
 				</form>
 			</div>
-		</div><!-- CHANGE PASSWORD POPUP -->
+		</div> {{-- Reset Password Pop up --}}
+		@endif
+		@if(auth()->guard('job_seekers')->check() || session()->has('reset_password'))
+		{{-- Validasi jika login --}}
+		{{-- Change Password Popup --}}
+		<div class="account-popup-area change-password-popup-box" @if(session()->has('reset_password')) id="modal-change-password-reset" @else id="modal-change-password" @endif>
+			<div class="account-popup">
+				<span class="close-popup"><i class="la la-close"></i></span>
+				<h3 id="change-password-title">Ganti Password</h3>
+				<form  @if(session()->has('reset_password')) id="form-change-password-reset" action="{{ route('password.update') }}" method="post" @else action="{{ route('password.change') }}" method="post" id="form-change-password" @endif>
+					@csrf
+					@if(session()->has('reset_password'))
+					<input type="hidden" name="token" value="{{ session()->get('token') }}">
+					<input type="hidden" class="form-control form-control-lg border-left-0" id="email" value="{{ session()->get('email') }}" name="email">
+					@else
+					@method('put')
+					<div class="cfield">
+						<input type="password" placeholder="Password Lama" name="old_password" />
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					@endif
+					<div class="cfield">
+						<input type="password" name="password" placeholder="Password Baru" />
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					<div class="cfield">
+						<input type="password" placeholder="Konfirmasi Password Baru" name="password_confirmation" />
+						<i class="fa fa-unlock-alt"></i>
+					</div>
+					<button class="submit-button" type="submit"><span class="submit-text">Submit</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
+				</form>
+			</div>
+		</div>
 		@endif
 
 		@if(auth()->guard('job_seekers')->check())
@@ -139,7 +162,6 @@
 
 			$(function() {
 				cleaveJsInit();
-
 				// console.log('%c ITD Department is Hiring Now', 'font-weight: bold; font-size: 20px; color: #0066ff;');
 				// console.log('%c Daripada coba-coba inspect element mending gabung dengan kami :)', 'font-size: 20px; color: #1c1c1c;');
 			});
@@ -147,6 +169,8 @@
 
 		@if(!auth()->guard('job_seekers')->check())
 		<script src="{{ asset('website/js/dynamic_page/login-register.min.js') }}" type="text/javascript"></script>
+		@else
+		<script src="{{ asset('website/js/dynamic_page/change-password.min.js') }}" type="text/javascript"></script>
 		@endif
 		@stack('additional_js')
 	</body>

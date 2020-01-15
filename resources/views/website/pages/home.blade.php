@@ -163,6 +163,11 @@
 		@if(session()->has('need_login'))
 		$('.signin-popup-box').fadeIn('fast');
 		@endif
+
+		@if(session()->has('reset_password'))
+		{{-- Form Change Password terdapat di layout master --}}
+		$('#modal-change-password-reset').fadeIn('fast');
+		@endif
 	});
 </script>
 @endpush
