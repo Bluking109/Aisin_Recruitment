@@ -20,6 +20,13 @@ class MailResetPasswordNotification extends Notification
     public $token;
 
     /**
+     * The password reset route
+     *
+     * @var string
+     */
+    public $route;
+
+    /**
      * The callback that should be used to build the mail message.
      *
      * @var \Closure|null
@@ -32,9 +39,10 @@ class MailResetPasswordNotification extends Notification
      * @param  string  $token
      * @return void
      */
-    public function __construct($token)
+    public function __construct($token, $route)
     {
         $this->token = $token;
+        $this->route = $route;
     }
 
     /**
@@ -64,11 +72,8 @@ class MailResetPasswordNotification extends Notification
         $mailMessage->markdown('notifications::email_password');
 
         return ($mailMessage)
-            ->subject(Lang::getFromJson('Reset Password Notification'))
-            ->line(Lang::getFromJson('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::getFromJson('Reset Password'), url(config('app.url').route('admin.password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
-            ->line(Lang::getFromJson('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
+            ->subject(Lang::getFromJson('Notifikasi Reset Password'))
+            ->action(Lang::getFromJson('Reset Password'), url(config('app.url').route($this->route, ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)));
     }
 
     /**

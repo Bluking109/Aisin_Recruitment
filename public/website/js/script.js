@@ -131,6 +131,7 @@ $(document).on('ready',function(){
         $('.signin-popup-box').fadeOut('fast');
         $('.signup-popup-box').fadeOut('fast');
         $('.change-password-popup-box').fadeOut('fast');
+        $('.reset-password-popup').fadeOut('fast');
         $('html').removeClass('no-scroll');
     });
 

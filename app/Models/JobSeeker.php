@@ -8,11 +8,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Yadahan\AuthenticationLog\AuthenticationLogable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword as ResetPasswordContract;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use App\Models\BiologicalParent;
+use App\Notifications\MailResetPasswordNotification;
 
-class JobSeeker extends Authenticatable implements MustVerifyEmail
+class JobSeeker extends Authenticatable implements MustVerifyEmail, ResetPasswordContract
 {
-	use Notifiable, AuthenticationLogable;
+	use Notifiable, AuthenticationLogable, CanResetPassword;
 
 	const STATUS_BLACKLIST = '1';
 	const STATUS_UNBLACKLIST = '0';
@@ -465,5 +468,13 @@ class JobSeeker extends Authenticatable implements MustVerifyEmail
         } else {
             return $this->domicile ?? '-';
         }
+    }
+
+    /**
+     * Send a password reset email to the user
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MailResetPasswordNotification($token, 'password.reset'));
     }
 }

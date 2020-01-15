@@ -44,6 +44,10 @@ mix.babel([
 ], 'public/website/js/dynamic_page/login-register.min.js');
 
 mix.babel([
+    'public/website/js/dynamic_page/change-password.js',
+], 'public/website/js/dynamic_page/change-password.min.js');
+
+mix.babel([
     'public/website/js/dynamic_page/profile.js',
     'public/website/js/dynamic_page/personal-identity.js',
 ], 'public/website/js/dynamic_page/personal-identity.min.js');

@@ -31,7 +31,8 @@ Reset
 @endisset
 
 {{-- Outro Lines --}}
-Jika Anda tidak merasa melupakan password Anda, mohon untuk mengabaikan email ini.
+Jika Anda tidak merasa melupakan password Anda, mohon untuk mengabaikan email ini. <br>
+Note: Tautan ini akan kadaluarsa dalam {{ config('auth.passwords.'.config('auth.defaults.passwords').'.expire') }} Menit
 
 {{-- Salutation --}}
 @if (! empty($salutation))
