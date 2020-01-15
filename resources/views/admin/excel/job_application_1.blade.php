@@ -17,6 +17,7 @@
 			<tr>
 				<th style="font-weight: bold">No</th>
 				<th style="font-weight: bold">Nama</th>
+				<th style="font-weight: bold">Nomor HP</th>
 				<th style="font-weight: bold">Tempat Lahir</th>
 				<th style="font-weight: bold">Tanggal Lahir</th>
 				<th style="font-weight: bold">Usia</th>
@@ -29,6 +30,8 @@
 				<th style="font-weight: bold">Jurusan</th>
 				<th style="font-weight: bold">IPK</th>
 				<th style="font-weight: bold">Posisi yang dilamar</th>
+				<th style="font-weight: bold">Rapor Mtk</th>
+				<th style="font-weight: bold">UN Mtk</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,6 +42,7 @@
 			<tr>
 				<td>{{ $key + 1 }}</td>
 				<td>{{ $datum->jobSeeker->name }}</td>
+				<td>{{ $datum->jobSeeker->handphone_number }}</td>
 				<td>{{ $datum->jobSeeker->place_of_birth }}</td>
 				<td>{{ $datum->jobSeeker->date_of_birth }}</td>
 				<td>{{ $datum->jobSeeker->age }}</td>
@@ -51,6 +55,8 @@
 				<td>{{ $datum->jobSeeker->last_education->major->name }}</td>
 				<td>{{ $datum->jobSeeker->last_education->grade_point }}</td>
 				<td>{{ $datum->jobVacancy->position->name }} {{ $datum->jobVacancy->section->name }}</td>
+				<td>{{ $datum->jobSeeker->last_education->average_math_score }}</td>
+				<td>{{ $datum->jobSeeker->last_education->un_math_score }}</td>
 			</tr>
 			@endforeach
 		</tbody>
