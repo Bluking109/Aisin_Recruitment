@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JobVacancy;
 use App\Models\JobApplication;
 use App\Models\JobSeeker;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -37,17 +38,7 @@ class DashboardController extends Controller
 
         $totalJobSeekers = JobSeeker::get()->count();
 
-        $jobApplication = JobApplication::with('jobSeeker')
-            ->with(['jobVacancy' => function($q) {
-                $q->with('position', 'section');
-            }])
-            ->whereHas('jobVacancy', function($q) {
-                $q->active();
-            })
-            ->get()
-            ->toArray();
-
-        $jobApplication = collect($jobApplication)->groupBy('job_vacancy_id')->toArray();
+        $jobApplication = DB::table('v_total_application')->get()->toArray();
 
         $todayApplications = JobApplication::with('jobSeeker.educationLevel')
             ->with(['jobVacancy' => function($q) {
