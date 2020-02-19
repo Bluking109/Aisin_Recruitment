@@ -97,11 +97,16 @@
         let data = [];
         let colors = [];
 
-        for (let i in applicationData) {
-           labels.push(applicationData[i][0].job_vacancy.position.name + ' - ' + applicationData[i][0].job_vacancy.section.name);
-           data.push(applicationData[i].length);
-           colors.push(dynamicColors());
-        }
+        applicationData.forEach((v) => {
+            if (v.section_type == 'department') {
+                labels.push(v.dept_position_name);
+            } else {
+                labels.push(v.sec_position_name);
+            }
+
+            data.push(v.total);
+            colors.push(dynamicColors());
+        });
 
         let myPieChart = new Chart(ctx, {
             type: 'pie',
