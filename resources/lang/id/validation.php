@@ -211,6 +211,7 @@ return [
         'educations.4.end_year' => 'Tahun lulus',
         'educations.5.end_year' => 'Tahun lulus',
         'educations.6.end_year' => 'Tahun lulus',
+        'educations.3.grade_point' => 'Nilai UN',
         'educations.4.grade_point' => 'IPK',
         'educations.5.grade_point' => 'IPK',
         'educations.6.grade_point' => 'IPK',

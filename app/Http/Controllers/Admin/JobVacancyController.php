@@ -23,6 +23,7 @@ class JobVacancyController extends Controller
             $jobvacancies = JobVacancy::with('position', 'educationLevel', 'section')
                 ->orderBy('id', 'desc')
                 ->get();
+
             return DataTables::collection($jobvacancies)->toJson();
         }
 

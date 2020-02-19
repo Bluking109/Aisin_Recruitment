@@ -39,7 +39,7 @@
 			 <div class="row">
 			 	<div class="col-lg-12">
 			 		<div class="filterbar">
-			 			<h5>{{ $jobs->total() }} Lowongan Pekerjaan Tersedia</h5>
+			 			<h5>{{ $jobs->total() }} Lowongan Pekerjaan Tersedia @if(auth()->guard('job_seekers')->check()) Untuk Lulusan {{ auth()->guard('job_seekers')->user()->educationLevel->name }} @endif</h5>
 			 			@if(!auth()->guard('job_seekers')->check())
 			 			<div class="sortby-sec">
 			 				<span>Filter</span>
