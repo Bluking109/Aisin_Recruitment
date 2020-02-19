@@ -150,7 +150,7 @@ if ($jobVacancy) {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="min_gpa" class="col-sm-3 col-form-label">Min Math Score</label>
+                                    <label for="min_gpa" class="col-sm-3 col-form-label">Min Math Score (0-100)</label>
                                     <div class="col-sm-9 input-wrapper">
                                         <input type="number" class="form-control" id="min_math_score" name="min_math_score" placeholder="Min Math Score" value="{{ $jobVacancy->min_math_score ?? old('min_math_score') }}">
                                         @error('min_math_score')
@@ -159,7 +159,7 @@ if ($jobVacancy) {
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="min_gpa" class="col-sm-3 col-form-label">Min GPA</label>
+                                    <label for="min_gpa" class="col-sm-3 col-form-label">Min GPA (0-4)</label>
                                     <div class="col-sm-9 input-wrapper">
                                         <input type="number" class="form-control" id="min_gpa" name="min_gpa" placeholder="Min GPA" value="{{ $jobVacancy->min_gpa ?? old('min_gpa') }}">
                                         @error('min_gpa')

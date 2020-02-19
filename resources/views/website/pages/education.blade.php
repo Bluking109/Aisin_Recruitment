@@ -60,13 +60,13 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)</span>
+				 						<span class="pf-title">Nilai Rata-rata MTK Raport (0-100)</span>
 				 						<div class="pf-field">
 				 							<input type="number" placeholder="Nilai MTK" name="educations[{{ $primarySchool }}][average_math_score]" value="{{ isset($formalEducations[$primarySchool]) ? $formalEducations[$primarySchool]->average_math_score : old('educations['.$primarySchool.'][average_math_score]') }}" />
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai UN MTK</span>
+				 						<span class="pf-title">Nilai UN MTK (0-100)</span>
 				 						<div class="pf-field">
 				 							<input type="number" placeholder="Nilai UN MTK" name="educations[{{ $primarySchool }}][un_math_score]" value="{{ isset($formalEducations[$primarySchool]) ? $formalEducations[$primarySchool]->un_math_score : old('educations['.$primarySchool.'][un_math_score]') }}" />
 				 						</div>
@@ -107,7 +107,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)
+				 						<span class="pf-title">Nilai Rata-rata MTK Raport (0-100)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
@@ -115,7 +115,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai UN MTK
+				 						<span class="pf-title">Nilai UN MTK (0-100)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
@@ -191,16 +191,16 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 					</div>
 				 					@if($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm())
 									<div class="col-md-4">
-				 						<span class="pf-title">NEM
+				 						<span class="pf-title">Nilai UN (0-100)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
-				 							<input type="number" placeholder="NEM" name="educations[{{ $seniorHighSchool }}][grade_point]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->grade_point : old('educations['.$seniorHighSchool.'][grade_point]') }}" />
+				 							<input type="number" placeholder="Nilai UN" name="educations[{{ $seniorHighSchool }}][grade_point]" value="{{ isset($formalEducations[$seniorHighSchool]) ? $formalEducations[$seniorHighSchool]->grade_point : old('educations['.$seniorHighSchool.'][grade_point]') }}" />
 				 						</div>
 				 					</div>
 				 					@else
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai Rata-rata MTK (Raport)
+				 						<span class="pf-title">Nilai Rata-rata MTK Raport (0-100)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
@@ -208,7 +208,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">Nilai UN MTK
+				 						<span class="pf-title">Nilai UN MTK (0-100)
 											<sup class="text-danger" data-toggle="tooltip" title="Required">* &nbsp;</sup>
 				 						</span>
 				 						<div class="pf-field">
@@ -263,7 +263,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">IPK</span>
+				 						<span class="pf-title">IPK (0-4)</span>
 				 						<div class="pf-field">
 				 							<input type="number" placeholder="IPK" name="educations[{{ $diploma }}][grade_point]" value="{{ isset($formalEducations[$diploma]) ? $formalEducations[$diploma]->grade_point : old('educations['.$diploma.'][grade_point]') }}" />
 				 						</div>
@@ -309,7 +309,7 @@ $master = App\Models\FormalEducation::EDU_MASTER;
 				 						</div>
 				 					</div>
 				 					<div class="col-md-4">
-				 						<span class="pf-title">IPK</span>
+				 						<span class="pf-title">IPK (0-4)</span>
 				 						<div class="pf-field">
 				 							<input type="number" placeholder="IPK" name="educations[{{ $bachelor }}][grade_point]" value="{{ isset($formalEducations[$bachelor]) ? $formalEducations[$bachelor]->grade_point : old('educations['.$bachelor.'][grade_point]') }}" />
 				 						</div>
