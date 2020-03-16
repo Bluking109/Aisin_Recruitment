@@ -56,7 +56,7 @@ class DocumentRequest extends FormRequest
             'npwp' => [
                 'bail',
                 'file',
-                Rule::requiredIf(!$this->attributeExist('npwp')),
+                'nullable',
                 'mimes:jpg,jpeg',
                 'max:200'
             ],
