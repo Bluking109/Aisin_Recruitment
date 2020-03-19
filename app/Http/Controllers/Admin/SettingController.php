@@ -38,7 +38,7 @@ class SettingController extends Controller
 
         foreach ($data['settings'] as $key => $value) {
             Setting::findOrFail($value['id'])->update([
-                'value' => isset($value['value']) ? $value['value'] : 'false'
+                'value' => isset($value['value']) ? $value['value'] : 0
             ]);
         }
 
