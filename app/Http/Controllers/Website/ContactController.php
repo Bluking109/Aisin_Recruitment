@@ -30,15 +30,13 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        if (AIIASetting::getValue('recaptcha_validation')) {
-            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-                ->setExpectedHostname(env('APP_HOSTNAME'))
-                ->setExpectedAction('contact')
-                ->verify($request->recaptcha_key, $request->ip());
+        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+            ->setExpectedHostname(env('APP_HOSTNAME'))
+            ->setExpectedAction('contact')
+            ->verify($request->recaptcha_key, $request->ip());
 
-            if (!$response->isSuccess()) {
-                return redirect()->back()->with('error', 'ReCaptcha Error');
-            }
+        if (!$response->isSuccess()) {
+            return redirect()->back()->with('error', 'ReCaptcha Error');
         }
 
         $data = $request->all();

@@ -109,7 +109,11 @@
 @push('additional_js')
 <script>
 $(function() {
-	recaptchaReset();
+	grecaptcha.ready(function() {
+        grecaptcha.execute(siteKey, {action : 'contact'}).then(function(token) {
+            $('#recaptcha-key').val(token);
+        });
+    });
 
 	@if (session('error'))
 		Toast.fire({
