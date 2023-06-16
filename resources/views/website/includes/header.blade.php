@@ -5,7 +5,7 @@ $url = url()->current();
 	<div class="menu-sec">
 		<div class="container">
 			<div class="logo">
-				<a href="index.html"><img class="showsticky primary-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a>
+				<a href="{{ route('home') }}"><img class="showsticky primary-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a>
 			</div><!-- Logo -->
 			{{-- Jika user login --}}
 			@if(auth()->guard('job_seekers')->check())
