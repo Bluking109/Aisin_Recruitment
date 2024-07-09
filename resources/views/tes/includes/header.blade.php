@@ -1,9 +1,9 @@
   <!-- globalHeader -->
   <header class="globalHeader">
     <div class="globalHeaderInner">
-      <div class="logo">
+      <div class="logo" style="margin-bottom: 60px">
         <a href= "" tess="over">
-          <img src="{{ asset('tes/img/common/logo.svg')}}" alt="サイト名">
+          <img src="{{ asset('website/images/logo/satu-aisin-final.png') }}" alt="サイト名" style="width: 100%; max-width: 200px; height: auto;">
         </a>
       </div>
   
@@ -116,7 +116,7 @@
             </li>
   
             <li class="xxx parent ">
-              <a href="">Career</a>
+              <a href="/job-vacancies">Career</a>
               <!-- megaNavSlide -->
               <div class="megaNavSlide">
                 <div class="megaNavSlideInner">

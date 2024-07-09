@@ -1,90 +1,43 @@
-
 @extends('tes.layouts.master')
 @section('title', 'News')
-@section('pages')
-
-  
-  <!-- newsSection -->
-  <section id="whatsnew" class="newsSection">
-    <div class="newsHeader">
-      <h2 class="newsTtl">
-        <span class="en">News</span>
-      </h2>
-    </div><!-- /newsHeader -->
-  
-    <ul class="newsTab">
-      <li><a href="javascript:void(0)" class="newsScroll active">Awards</a></li>
-      <li><a href="javascript:void(0)" class="newsScroll">Events</a></li>
-      <li><a href="javascript:void(0)" class="newsScroll">Others</a></li>
-    </ul>
-  
-    <div class="newsContent">
-      <div id="category1" class="newsBox active">
-        <div class="newsList">
-          <div class="entryVox">
-            <time datetime="0000-00-00">2024.01.20</time>
-            <div class="category">Awards</div>
-            <div class="title">
-              <a href="xxx"><span>To achieve a mobility society that is friendly</span></a>
-            </div>
-          </div><!-- /entryVox -->
-          <div class="entryVox">
-            <time datetime="0000-00-00">0000.00.00</time>
-            <div class="category">Awards</div>
-            <div class="title">
-              <a href="xxx"><span>Title</span></a>
-            </div>
-          </div><!-- /entryVox -->
-          <div class="entryVox">
-            <time datetime="0000-00-00">0000.00.00</time>
-            <div class="category">Awards</div>
-            <div class="title">
-              <a href="xxx"><span>Title</span></a>
-            </div>
-          </div><!-- /entryVox -->
+@section('pages')  
+  <!-- News Section -->
+  {{-- <section id="whatsnew" class="newsSection"> --}}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="{{ asset('website/images/aii.png') }}" data-color="lightblue" alt="First Image">
+          <div class="carousel-caption d-md-block">
+            <h5>PT Aisin Indonesia</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="{{ asset('website/images/aiia.jpeg') }}" data-color="firebrick" alt="Second Image">
+          <div class="carousel-caption d-md-block">
+            <h5>PT Aisin Indonesia Automotive</h5>
+          </div>
         </div>
       </div>
-      <!-- category1 -->
-  
-      <div id="category2" class="newsBox">
-        <p class="empty">Article does not exist.</p>
-        <p class="moreLink"><a href="">Read more</a></p>
-      </div>
-      <!-- category2 -->
-  
-      <div id="category3" class="newsBox">
-        <div class="newsList">
-          <div class="entryVox">
-            <time datetime="0000-00-00">0000.00.00</time>
-            <div class="category">Others</div>
-            <div class="title">
-              <a href="xxx"><span>Title</span></a>
-            </div>
-          </div><!-- /entryVox -->
-          <div class="entryVox">
-            <time datetime="0000-00-00">0000.00.00</time>
-            <div class="category">Others</div>
-            <div class="title">
-              <a href="xxx"><span>Title</span></a>
-            </div>
-          </div><!-- /entryVox -->
-          <div class="entryVox">
-            <time datetime="0000-00-00">0000.00.00</time>
-            <div class="category">Others</div>
-            <div class="title">
-              <a href="xxx"><span>Title</span></a>
-            </div>
-          </div><!-- /entryVox -->
-        </div>
-        <p class="moreLink"><a href="">Read more</a></p>
-      </div>
-      <!-- category3 -->
+      <!-- Controls -->
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <!-- <span class="sr-only">Previous</span> -->
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <!-- <span class="sr-only">Next</span> -->
+      </a>
     </div>
-    <!-- newsContent -->
-  </section>
-  <!-- /newsSection -->
+  {{-- </section> --}}
+  <!-- /News Section -->
   
-  <!-- mainpageSection -->
+  <!-- Main Page Section -->
   <section class="mainpageSection" id="menu1">
     <div class="inner">
       <h2>
@@ -103,9 +56,9 @@
       </div>
     </div>
   </section>
-  <!-- /mainpageSection -->
+  <!-- /Main Page Section -->
   
-  <!-- mainpageSection -->
+  <!-- Main Page Section -->
   <section class="mainpageSection" id="menu2">
     <div class="inner">
       <h2>
@@ -124,9 +77,9 @@
       </div>
     </div>
   </section>
-  <!-- /mainpageSection -->
+  <!-- /Main Page Section -->
   
-  <!-- mainpageSection -->
+  <!-- Main Page Section -->
   <section class="mainpageSection" id="menu3">
     <div class="inner">
       <h2>
@@ -145,9 +98,9 @@
       </div>
     </div>
   </section>
-  <!-- /mainpageSection -->
+  <!-- /Main Page Section -->
   
-  <!-- subpageSection -->
+  <!-- Subpage Section -->
   <section class="subpageSection" id="submenu1">
     <a href="">
       <div class="pageContent">
@@ -160,9 +113,9 @@
       </div>
     </a>
   </section>
-  <!-- /subpageSection -->
+  <!-- /Subpage Section -->
   
-  <!-- subpageSection -->
+  <!-- Subpage Section -->
   <section class="subpageSection" id="submenu2">
     <a href="">
       <div class="pageContent">
@@ -175,9 +128,9 @@
       </div>
     </a>
   </section>
-  <!-- /subpageSection -->
+  <!-- /Subpage Section -->
   
-  <!-- subpageSection -->
+  <!-- Subpage Section -->
   <section class="subpageSection" id="other1">
     <div class="inner">
       <div class="pageContent">
@@ -193,9 +146,9 @@
       </div>
     </div>
   </section>
-  <!-- /subpageSection -->
+  <!-- /Subpage Section -->
   
-  <!-- notice -->
+  <!-- Notice Section -->
   <section class="noticeSection" id="notice">
     <div class="inner">
       <div class="noticeHeader">
@@ -230,6 +183,40 @@
       </div>
     </div>
   </section>
-  <!-- notice -->
+  <!-- /Notice Section -->
 
-  @endsection
+@endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://unpkg.com/popper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    var $item = $('.carousel-item'); 
+    var $wHeight = $(window).height();
+    $item.eq(0).addClass('active');
+    $item.height($wHeight); 
+    $item.addClass('full-screen');
+
+    $('.carousel img').each(function() {
+      var $src = $(this).attr('src');
+      var $color = $(this).attr('data-color');
+      $(this).parent().css({
+        'background-image' : 'url(' + $src + ')',
+        'background-color' : $color
+      });
+      $(this).remove();
+    });
+
+    $(window).on('resize', function (){
+      $wHeight = $(window).height();
+      $item.height($wHeight);
+    });
+
+    $('.carousel').carousel({
+      interval: 6000,
+      pause: "false"
+    });
+  });
+</script>
