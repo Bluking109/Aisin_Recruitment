@@ -12,15 +12,15 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="{{ asset('website/images/aii.png') }}" data-color="lightblue" alt="First Image">
+          <img class="d-block w-100" src="{{ asset('website/images/aiia.png') }}" data-color="lightblue" alt="First Image">
           <div class="carousel-caption d-md-block">
-            <h5>PT Aisin Indonesia</h5>
+            <h5>PT Aisin Indonesia Automotive</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="{{ asset('website/images/aiia.jpeg') }}" data-color="firebrick" alt="Second Image">
+          <img class="d-block w-100" src="{{ asset('website/images/aii.png') }}" data-color="firebrick" alt="Second Image">
           <div class="carousel-caption d-md-block">
-            <h5>PT Aisin Indonesia Automotive</h5>
+            <h5>PT Aisin Indonesia</h5>
           </div>
         </div>
       </div>
