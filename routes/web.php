@@ -194,7 +194,9 @@ Route::namespace('Website')->group(function () {
 		Route::post('/', 'ContactController@store')->name('store');
 	});
 
-	Route::get('/', 'PageController@home');
+	Route::get('/news', 'NewsController@index');
+	Route::get('/', 'NewsController@index');
+	// Route::get('/', 'PageController@home');
 	Route::get('home', 'PageController@home')->name('home');
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
@@ -213,5 +215,3 @@ Route::namespace('Website')->group(function () {
 		});
 	});
 });
-
-Route::get('/news', 'NewsController@index');
