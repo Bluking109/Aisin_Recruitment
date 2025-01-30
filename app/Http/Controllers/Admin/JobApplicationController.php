@@ -647,7 +647,7 @@ class JobApplicationController extends Controller
             $placeAddress = $vendor->address;
         }
 
-        $message = 'Hai '.$jobSeekerName.',%0aSelamat hasil '.$stageBeforeName.' untuk posisi '.$position.' Anda lolos, bersama ini PT Aisin Indonesia Automotive mengundang Anda untuk mengikuti proses berikutnya yaitu '.$stageAfterName.' pada '.$today.', '.$date.' pukul '.$time.', bertempat di :%0a%0a'.$placeName.'%0a'.$placeAddress.'%0a%0aUntuk konfirmasi silahkan kunjungi halaman profil Anda di website AIIA atau klik link berikut :%0a'.route('profiles.applied-jobs.index').'%0a%0aNote: Dilarang Menggunakan Baju Hitam Putih%0a%0aTerimakasih%0a(HRD PT Aisin Indonesia Automotive)';
+        $message = 'Hai '.$jobSeekerName.',%0aSelamat hasil '.$stageBeforeName.' untuk posisi '.$position.' Anda lolos, bersama ini PT Aisin Indonesia  mengundang Anda untuk mengikuti proses berikutnya yaitu '.$stageAfterName.' pada '.$today.', '.$date.' pukul '.$time.', bertempat di :%0a%0a'.$placeName.'%0a'.$placeAddress.'%0a%0aUntuk konfirmasi silahkan kunjungi halaman profil Anda di website AIIA atau klik link berikut :%0a'.route('profiles.applied-jobs.index').'%0a%0aNote: Dilarang Menggunakan Baju Hitam Putih%0a%0aTerimakasih%0a(HRD PT Aisin Indonesia Automotive)';
 
         return $message;
     }

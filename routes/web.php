@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Requests\Admin\Setting;
 
 
 /*
@@ -24,8 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::namespace('Admin')->group(function() {
 	Route::group([
-		'prefix' => AIIASetting::getValue('admin_base_route',
-		config('aiia.default_url_admin')),
+		'prefix' => 'admin-aisin',
 		'as' => 'admin.'
 	], function() {
 		Auth::routes();

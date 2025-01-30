@@ -4,11 +4,11 @@
 
 <header class="globalHeader forsticky new-header">
     <div class="globalHeaderInner">
-        <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
-            <a href="#" tess="over">
+        <div class="logo d-flex align-items-center gap-3">
+            <a href="#">
                 <img src="{{ asset('website/images/logo/Aisin.png') }}" alt="">
             </a>
-            <span>| Indonesia </span>
+            <span  class="logo">| Indonesia </span>
         </div>
 
         <!-- drawerMenu -->
@@ -16,7 +16,7 @@
             <div class="drawerMenu">
                 <!-- megaNav -->
                 <nav class="megaNav">
-                    <ul class="megaNavParent">
+                    <ul class="megaNavParent" style="align-items: center">
                         <li class="menu-item @if ($url == route('job-vacancies.index')) active @endif">
                             <a href="{{ route('job-vacancies.index') }}" title="">Lowongan</a>
                         </li>
@@ -24,16 +24,17 @@
                             <a href="{{ route('how-to-apply.index') }}" title="">Cara Melamar</a>
                         </li>
                         @if (auth()->guard('job_seekers')->check())
-                            <li class="menu-item my-profiles-sec d-flex align-items-center">
+                        <li class="menu-item my-profiles-sec">
+                            <span class="container-profile">
+                                <img src="{{ auth()->guard('job_seekers')->user()->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.png') }}"
+                                    class="profile-img" alt="Profile Image" />
+                                <span class="user-name">{{ auth()->guard('job_seekers')->user()->name ?? 'User' }}</span>
+                            </span>
+                        </li>
 
-                                <span> <img
-                                        src="{{ auth()->guard('job_seekers')->user()->photo ? route('profiles.personal-identity.getphoto') : asset('website/images/avatar/avatar.png') }}"
-                                        class="profile-img" alt="" />
-                                    {{ auth()->guard('job_seekers')->user()->name }}</span>
-                            </li>
                         @else
                             <div class="btn-extars">
-                                <ul class="account-btns d-flex align-items-center">
+                                <ul class="account-btns d-flex align-items-center" >
                                     <li class="signup-popup"><a href="#"><b><i class="fa fa-user"></i>
                                                 Daftar</b></a></li>
                                     <li class="signin-popup"><a href="#"><b><i class="fa fa-sign-in"></i>

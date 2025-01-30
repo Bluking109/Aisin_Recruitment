@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AIIA - @yield('title')</title>
+    <title>AISIN - @yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="PT. Aisin Indonesia Automotive merupakan perusahaan yang bergerak di bidang manufaktur komponen otomotive">
@@ -33,13 +33,19 @@
         <img src="{{ asset('website/images/loader.gif') }}" alt="" />
     </div>
 
-    <div class="theme-layout" id="scrollup">
+    <div class="home" id="home">
         @include('website.includes.responsive_header')
         @include('website.includes.header')
 
-        @yield('pages')
 
-        @include('website.includes.footer')
+            @yield('pages')
+
+
+        <div class="footInr">
+
+            @include('website.includes.footer')
+        </div>
+
     </div>
     @if (!auth()->guard('job_seekers')->check())
         <div class="account-popup-area signin-popup-box" id="modal-login">

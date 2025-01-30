@@ -102,13 +102,16 @@ table{
 html{overflow-x:hidden}
 body{
     height: 100%;  /* Mengatur tinggi HTML dan body menjadi 100% dari tinggi viewport */
-    margin: 0;   
+    margin: 0;
     color:#555555;
     letter-spacing:0;
     font-family:'Open Sans', sans-serif;;
     overflow-x:hidden;
     position:relative;
 
+}
+.footInr {
+    margin-top: auto;
 }
 button,a,input[type="submit"], input[type="button"]{
     cursor: pointer;
@@ -150,7 +153,7 @@ header {
 
 /* Theme Layout */
 .theme-layout{
-   
+
     overflow:hidden;
     position:relative;
     width:100%;
@@ -424,6 +427,11 @@ button{
 .slick-vertical .slick-slide {display: block; height: auto; border: 1px solid transparent; }
 .slick-arrow.slick-hidden {display: none; }
 /* Page Loading */
+.home {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .page-loading {
     background-color: #ffffff;
     content: "";
@@ -609,15 +617,14 @@ label::after {
 .globalHeader {
     background-color: #fff;
     border-bottom: 1px solid #e5e5e5;
-    position: absolute;
+    position: relative;
     left: 0;
     height: 110px;
     top: 0;
     width: 100%;
     position: fixed;
-    
     width: 100%;
-    
+
 }
 .globalHeader .globalHeaderInner {
     display: flex;
@@ -626,7 +633,11 @@ label::after {
     height: 100%;
     padding:  20px 40px;
     position: relative;
-    
+
+}
+.drawerMenu {
+    display: flex;
+    align-items: center;
 }
 #acdBtn {
     display: flex;
@@ -643,7 +654,7 @@ label::after {
 }
 .megaNav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 .megaNavParent {
     display: flex;
@@ -651,6 +662,10 @@ label::after {
     list-style: none;
     margin: 0;
     padding: 0
+}
+.drawerMenu {
+    display: flex;
+    align-items: center; /* Pastikan menu dan profil sejajar secara vertikal */
 }
 .megaNavParent li a {
     text-decoration: none;
@@ -8937,6 +8952,13 @@ header.gradient{
     line-height: 50px;
     cursor: pointer;
 }
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara foto dan nama */
+    justify-content: center;
+    height: 100%;
+}
 .my-profiles-sec > span > img {
     float: left;
 
@@ -8961,10 +8983,10 @@ header.gradient{
     margin-left: 12px;
 }
 .user-name {
+    font-size: 14px;
     font-weight: bold;
-    color: #ffffff;
-    white-space: nowrap; /* Mencegah nama terpotong */
-    line-height: 40px; /* Tinggi sejajar dengan ikon dan gambar */
+    color: #333; /* Pastikan warna kontras */
+    white-space: nowrap;
 }
 .profile-sidebar {
     position: fixed;

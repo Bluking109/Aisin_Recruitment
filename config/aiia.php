@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default_url_admin' => 'admin-aiia',
+    'default_url_admin' => 'admin-aisin',
     'working_environments' => [
     	'lapangan',
     	'kantor',

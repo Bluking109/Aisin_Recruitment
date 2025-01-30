@@ -22438,19 +22438,28 @@ dl li {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    max-width: 650px;
+    max-width: 800px; /* Lebarkan area dropdown agar lebih fleksibel */
     width: calc(100% - 300px);
+    gap: 20px; /* Jarak antar kolom */
+    padding: 10px;
 }
 .megaNavSub {
-    width: 246px;
+    width: 250px;
 }
 .megaNavSubTtl {
     font-size: 1.4rem;
     letter-spacing: 0.08em;
     margin-bottom: 15px;
+    font-weight: bold;
 }
 .megaNavContent > ul {
     margin-right: 60px;
+    display: flex;
+    flex-wrap: wrap; /* Agar item bisa turun ke baris baru */
+    gap: 10px 40px; /* Atur jarak antar item */
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 .megaNavContent > ul:last-child {
     margin-right: 0;
@@ -22458,6 +22467,7 @@ dl li {
 .megaNavContent > ul > li {
     margin-bottom: 5px;
     line-height: 1.6;
+    white-space: nowrap;
 }
 .megaNavContent .megaNavSlide {
     padding: 0 0 0 1em;
@@ -22469,7 +22479,7 @@ dl li {
     font-size: 1rem;
     letter-spacing: 1px;
     text-decoration: none;
-    padding: 5px 0;
+    padding: 5px 10px;
     position: relative;
     transition: all 0.2s ease;
 }
