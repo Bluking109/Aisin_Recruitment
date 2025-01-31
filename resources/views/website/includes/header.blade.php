@@ -12,7 +12,7 @@
         </div>
 
         <!-- drawerMenu -->
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" style="align-items: center">
             <div class="drawerMenu">
                 <!-- megaNav -->
                 <nav class="megaNav">

@@ -11603,17 +11603,36 @@ footer.ft .scrollup {
 }
 .cand-extralink > li.active a {
     border-bottom: 2px solid #0066ff;
-}
-.responsive-header {
-    float: left;
-    width: 100%;
-    position: relative;
-    background: #0b1b46;
-    padding: 0 25px;
-    z-index: 99;
-    display: none;
-}
+}@media (max-width: 991px) {
+    /* Sembunyikan header utama di layar kecil */
+    .globalHeader {
+        display: none;
+    }
 
+    /* Pastikan header responsif muncul */
+    .responsive-header {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #0b1b46;
+        z-index: 9999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Pastikan menu responsif bisa terbuka */
+    .responsive-opensec {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0b1b46;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+}
 .responsive-header.three {
     background: #FFF !important;
 }
@@ -11693,17 +11712,7 @@ footer.ft .scrollup {
     opacity: 0;
     visibility: hidden;
 }
-.responsive-opensec {
-    width: 100%;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background: #0b1b46;
-    padding: 0 30px;
-    overflow-y: scroll;
-    height: 620px;
-}
+
 .responsive-opensec .btn-extars {
     float: left;
     width: 100%;

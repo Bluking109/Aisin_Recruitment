@@ -38,7 +38,7 @@
         @include('website.includes.header')
 
 
-            @yield('pages')
+        @yield('pages')
 
 
         <div class="footInr">
@@ -198,5 +198,29 @@
     @endif
     @stack('additional_js')
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const openMenu = document.querySelector(".res-openmenu");
+        const closeMenu = document.querySelector(".res-closemenu");
+        const menuSection = document.querySelector(".responsive-opensec");
+
+        if (openMenu && closeMenu && menuSection) {
+            openMenu.addEventListener("click", function() {
+                menuSection.style.display = "block"; // Tampilkan menu responsif
+                openMenu.style.display = "none"; // Sembunyikan tombol "Menu"
+                closeMenu.style.opacity = "1"; // Tampilkan tombol "Close"
+                closeMenu.style.visibility = "visible";
+            });
+
+            closeMenu.addEventListener("click", function() {
+                menuSection.style.display = "none"; // Sembunyikan menu responsif
+                openMenu.style.display = "block"; // Tampilkan tombol "Menu"
+                closeMenu.style.opacity = "0"; // Sembunyikan tombol "Close"
+                closeMenu.style.visibility = "hidden";
+            });
+        }
+    });
+</script>
+
 
 </html>

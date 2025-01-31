@@ -21,7 +21,7 @@
 		@endif
 		<div class="responsivemenu">
 			<ul>
-				
+
 				{{-- <li class="menu-item">
 					<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
 				</li> --}}
@@ -32,7 +32,7 @@
 					<a href="{{ route('how-to-apply.index') }}" title=""><i class="fa fa-sitemap"></i> Cara Melamar</a>
 				</li>
 				<li class="menu-item">
-				
+
 				@if(auth()->guard('job_seekers')->check())
 				<li class="menu-item">
 					<a href="{{ route('profiles.personal-identity.index') }}" title=""><i class="fa fa-user-secret"></i> Profile</a>
