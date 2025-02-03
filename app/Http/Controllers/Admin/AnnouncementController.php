@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Announcement as AnnouncementReq;
 use App\Models\Announcement;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 use App\Traits\FileHandler;
 
 

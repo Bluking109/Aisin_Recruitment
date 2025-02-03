@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Requests\Admin\Setting;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,23 +21,20 @@
 | Admin Routes
 |--------------------------------------------------------------------------
 |
-| Untuk base admin route bisa di setting melalui menu setting
+| Untuk base admin route bisa di AIIASetting melalui menu AIIASetting
 */
-Route::namespace('Admin')->group(function () {
+Route::namespace('Admin')->group(function() {
 	Route::group([
-		'prefix' => AIIASetting::getValue(
-			'admin_base_route',
-			config('aiia.default_url_admin')
-		),
+		'prefix' => 'admin-aisin',
 		'as' => 'admin.'
-	], function () {
+	], function() {
 		Auth::routes();
 
-		Route::group(['middleware' => ['auth', 'admin.locale']], function () {
+		Route::group(['middleware' => ['auth', 'admin.locale']], function() {
 			Route::get('/', 'DashboardController@index');
 			Route::get('home', 'DashboardController@index')->name('home');
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
-			Route::resource('settings', 'SettingController')->only('index', 'store');
+			Route::resource('AIIASettings', 'AIIASettingController')->only('index', 'store');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::get('vendors/get-vendor', 'VendorController@getVendor')->name('vendors.getvendor');
 			Route::resource('education-levels', 'EducationLevelController')->except('edit', 'show', 'create');
@@ -106,8 +108,8 @@ Route::namespace('Admin')->group(function () {
 |
 | Untuk route yang di gunakan di admin ataupun website via ajax
 */
-Route::namespace('Ajax')->group(function () {
-	Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
+Route::namespace('Ajax')->group(function() {
+	Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function() {
 		Route::get('education-levels', 'EducationLevelController@getAll')->name('education-levels.get');
 		Route::get('provinces', 'ProvinceController@getAll')->name('provinces.get');
 		Route::get('districts', 'DistrictController@getAll')->name('districts.get');
@@ -123,23 +125,23 @@ Route::namespace('Ajax')->group(function () {
 | Website Routes
 |--------------------------------------------------------------------------
 |
-| Untuk base admin route bisa di setting melalui menu setting
+| Untuk base admin route bisa di AIIASetting melalui menu AIIASetting
 */
 
-Route::namespace('Website')->group(function () {
-	Route::namespace('Auth')->group(function () {
+Route::namespace('Website')->group(function() {
+	Route::namespace('Auth')->group(function() {
 		// overide laravel mail verification
 		Route::get('email/resend', 'VerificationController@resend')->name('verification.resend');
 		Route::get('email/verify', 'VerificationController@show')->name('verification.notice');
 		Route::get('email/verify/{id}', 'VerificationController@verify')->name('verification.verify');
 	});
 
-	Route::group(['as' => 'auth.'], function () {
-		Route::namespace('Auth')->group(function () {
+	Route::group(['as' => 'auth.'], function() {
+		Route::namespace('Auth')->group(function() {
 			Route::post('login', 'LoginController@login')->name('login.post');
 			Route::post('register', 'RegisterController@register')->name('register.post');
 
-			Route::group(['middleware' => 'auth:job_seekers'], function () {
+			Route::group(['middleware' => 'auth:job_seekers'], function() {
 				Route::post('logout', 'LoginController@logout')->name('logout');
 			});
 		});
@@ -149,7 +151,7 @@ Route::namespace('Website')->group(function () {
 		'as' => 'profiles.',
 		'prefix' => 'profiles',
 		'middleware' => 'auth:job_seekers'
-	], function () {
+	], function() {
 		Route::get('personal-identity', 'PersonalController@index')->name('personal-identity.index');
 		Route::put('personal-identity', 'PersonalController@update')->name('personal-identity.update');
 		Route::get('personal-identity/photo', 'PersonalController@getPhoto')->name('personal-identity.getphoto');
@@ -182,29 +184,29 @@ Route::namespace('Website')->group(function () {
 
 	Route::group([
 		'middleware' => 'auth:job_seekers'
-	], function () {
+	], function() {
 		Route::post('job-vacancies/{slug}/apply', 'JobVacancyController@applyJob')->name('job-vacancies.apply');
 	});
 
 	Route::group([
 		'as' => 'contact.',
 		'prefix' => 'contact'
-	], function () {
+	], function() {
 		Route::get('/', 'ContactController@index')->name('index');
 		Route::post('/', 'ContactController@store')->name('store');
 	});
 
 	Route::get('/', 'PageController@home');
 	Route::get('home', 'PageController@home')->name('home');
-	Route::get('about-us', 'PageController@aboutUs')->name('about-us');
+	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');
 	Route::get('how-to-apply', 'PageController@howToApply')->name('how-to-apply.index');
 
 	Route::group([
 		'as' => 'password.',
 		'prefix' => 'password'
-	], function () {
-		Route::namespace('Auth')->group(function () {
+	], function() {
+		Route::namespace('Auth')->group(function() {
 			Route::get('reset', 'ForgotPasswordController@showLinkRequestForm')->name('request');
 			Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('reset');
 			Route::post('reset', 'ResetPasswordController@reset')->name('update');
@@ -213,7 +215,3 @@ Route::namespace('Website')->group(function () {
 		});
 	});
 });
-
-// Route::get('/news', 'NewsController@index');
-// Route::get('/', 'NewsController@index');
-// Route::get('home', 'NewsController@index')->name('home');

@@ -50,7 +50,7 @@
             ajax : "{{ route('admin.majors.index') }}",
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
-                 return meta.row + meta.settings._iDisplayStart + 1;} },
+                 return meta.row + meta.AIIASettings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
                 { data : 'type_label', name : 'type' },
                 { data : 'created_at', name : 'created_at' },

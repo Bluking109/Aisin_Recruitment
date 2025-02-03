@@ -54,8 +54,8 @@ class InterestConceptController extends Controller
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
 
-            $jobSeeker->interestConcept()->delete();
-            $jobSeeker->interestConcept()->create([
+            $jobSeeker->interestConcept->delete();
+            $jobSeeker->interestConcept->create([
                 'future_goals' => $request->future_goals,
                 'expertise' => $request->expertise,
                 'expertise' => $request->expertise,

@@ -8,7 +8,7 @@ use App\Http\Requests\Admin\Role as RoleRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class RolesController extends Controller
 {

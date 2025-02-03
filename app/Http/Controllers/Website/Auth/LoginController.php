@@ -59,11 +59,18 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        // $secretKey = env('RECAPTCHA_SECRET_KEY');
+        // $hostname = env('APP_HOSTNAME');
+
+        // $recaptcha = new ReCaptcha($secretKey);
+        // $response = $recaptcha->verify($request->recaptcha_key, request()->ip());
+        // dd($response);
+
+
         $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
+            // ->setExpectedHostname(env('APP_HOSTNAME'))
             ->setExpectedAction('homepage')
             ->verify($request->recaptcha_key, $request->ip());
-
         if (!$response->isSuccess()) {
             return response()->json([
                 'message' => 'ReCaptcha Error, mohon ulangi lagi',
@@ -76,8 +83,10 @@ class LoginController extends Controller
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
+        if (
+            method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)
+        ) {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);

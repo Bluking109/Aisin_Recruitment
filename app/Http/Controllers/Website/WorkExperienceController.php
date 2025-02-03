@@ -63,10 +63,10 @@ class WorkExperienceController extends Controller
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
 
-            $jobSeeker->workExperiences()->delete();
+            $jobSeeker->workExperiences->delete();
             foreach ($request->work_experiences as $value) {
                 if (isset($value['company'])) {
-                    $jobSeeker->workExperiences()->create([
+                    $jobSeeker->workExperiences->create([
                         'company' => $value['company'],
                         'position' => $value['position'],
                         'salary' => $value['salary'],
@@ -80,9 +80,9 @@ class WorkExperienceController extends Controller
                 }
             }
 
-            $jobSeeker->workExperienceDetail()->delete();
+            $jobSeeker->workExperienceDetail->delete();
             if ($jobSeeker->educationLevel->isDiplomaForm() && isset($request->work_experiences[0]['company'])) {
-                $jobSeeker->workExperienceDetail()->create([
+                $jobSeeker->workExperienceDetail->create([
                     'position_description' => $request->position_description,
                     'problems_and_solutions' => $request->problems_and_solutions,
                     'impression_on_company' => $request->impression_on_company,

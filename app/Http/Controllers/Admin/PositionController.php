@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Position as PositionRequest;
 use App\Models\Position;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class PositionController extends Controller
 {

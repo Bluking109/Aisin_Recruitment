@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Setting as Model;
-use Schema;
+use Illuminate\Support\Facades\Schema;
 
 class Setting
 {

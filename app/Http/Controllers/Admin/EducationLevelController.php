@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EducationLevel as EducationLevelRequest;
 use App\Models\EducationLevel;
 use Illuminate\Support\Facades\Hash;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class EducationLevelController extends Controller
 {

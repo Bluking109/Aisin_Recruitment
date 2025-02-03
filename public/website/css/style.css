@@ -101,12 +101,17 @@ table{
 }
 html{overflow-x:hidden}
 body{
+    height: 100%;  /* Mengatur tinggi HTML dan body menjadi 100% dari tinggi viewport */
+    margin: 0;
     color:#555555;
     letter-spacing:0;
     font-family:'Open Sans', sans-serif;;
     overflow-x:hidden;
     position:relative;
 
+}
+.footInr {
+    margin-top: auto;
 }
 button,a,input[type="submit"], input[type="button"]{
     cursor: pointer;
@@ -144,11 +149,28 @@ header {
     z-index: 3;
     position: relative;
 }
+.career-text {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 42px; /* Sesuaikan dengan ukuran font yang terlihat di gambar */
+    font-weight: 400;
+    display: flex;
+    gap: 10px;
+}
+
+.career-text span {
+    font-size: 38px; /* Ukuran font untuk "Job Opportunities" */
+    font-weight: 300;
+    color: #ffffffb3; /* Warna lebih terang sesuai dengan contoh */
+}
 
 
 /* Theme Layout */
 .theme-layout{
-    float:left;
+
     overflow:hidden;
     position:relative;
     width:100%;
@@ -263,7 +285,7 @@ iframe{
     border:0;
 }
 i{font-style:italic}
-{/*! float:left; *//*! height:auto */}
+
 :-webkit-input-placeholder{opacity:1}
 :-moz-placeholder{opacity:1}
 :-ms-input-placeholder{opacity:1}
@@ -422,6 +444,11 @@ button{
 .slick-vertical .slick-slide {display: block; height: auto; border: 1px solid transparent; }
 .slick-arrow.slick-hidden {display: none; }
 /* Page Loading */
+.home {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .page-loading {
     background-color: #ffffff;
     content: "";
@@ -604,6 +631,103 @@ label::after {
 }
 
 /* Header */
+.globalHeader {
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    left: 0;
+    height: 110px;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    width: 100%;
+
+}
+.globalHeader .globalHeaderInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    padding:  20px 40px;
+    position: relative;
+
+}
+.drawerMenu {
+    display: flex;
+    align-items: center;
+}
+#acdBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+.btnDesign {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 2px;
+}
+.megaNav {
+    display: flex;
+    flex-direction: row;
+}
+.megaNavParent {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+.drawerMenu {
+    display: flex;
+    align-items: center; /* Pastikan menu dan profil sejajar secara vertikal */
+}
+.megaNavParent li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+.megaNavParent .menu-item a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.megaNavParent .menu-item.active a {
+    color: #007bff; /* Warna untuk menu aktif */
+}
+.searchBtn {
+    margin-left: auto;
+    display: none;
+}
+.view-pc .searchBtn {
+    display: block;
+}
+.view-notpc .searchVox {
+    display: none;
+}
+@media (max-width: 768px) {
+    .view-pc {
+        display: none;
+    }
+    .view-notpc {
+        display: block;
+    }
+}
+.d-flex.align-items-center {
+    display: flex;
+    align-items: center;
+    line-height: 3;
+    /* width: 135px; */
+    height: 26px;
+    gap: 4;
+    margin-bottom: 20px;
+}
+.border-dark-subtle {
+    border-color: #ccc;
+}
+
 .stick-top {
     position: absolute;
     left: 0;
@@ -618,15 +742,51 @@ label::after {
     margin-bottom: 0;
 }
 .logo {
-    float: left;
-    margin: 3px 0;
-    position: relative;
+    line-height: 1;
+    /* width: 135px; */
+    height: 26px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.menu-user-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 .logo a {
     float: left;
 }
 .btn-extars {
-    float: right;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.btn-extars .account-btns {
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.btn-extars .account-btns a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
 }
 .post-job-btn {
     float: left;
@@ -718,6 +878,11 @@ label::after {
     font-size: 9px;
     top: 50%;
     margin-top: -4px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+
 }
 .menu-sec nav > ul > li > ul {
     opacity: 0;
@@ -1858,10 +2023,100 @@ label::after {
     color: #ffffff;
     margin: 0;
 }
-footer {
-    float: left;
+
+#footer {
+    color: #fff;
     width: 100%;
-    background: #24324a;
+    background: #333;
+    box-sizing: border-box;
+    position: sticky;
+}
+#footer #pageTop {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 35px;
+    bottom: 15%;
+    z-index: 10;
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+}
+#footer #pageTop.active {
+    visibility: visible;
+    opacity: 1;
+}
+#footer #pageTop a {
+    display: block;
+    text-indent: -9999px;
+    height: 100%;
+    background: url(../img/common/pagetop.svg) no-repeat center center / cover;
+}
+#footer .footTop {
+    max-width: 1100px;
+    padding: 85px 0 35px 0;
+    margin: 0 auto;
+}
+#footer .snsVox {
+    margin-bottom: 50px;
+}
+#footer .snsVox .snsTtl {
+    display: block;
+    color: #fff;
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+#footer .snsList {
+    display: flex;
+    justify-content: flex-start;
+}
+#footer .snsList li {
+    min-width: 36px;
+    margin-right: 40px;
+}
+#footer .footList {
+    letter-spacing: -0.4em;
+}
+#footer .footList li {
+    display: inline-block;
+    letter-spacing: normal;
+    margin-right: 20px;
+}
+#footer .footList li a {
+    display: block;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+#footer .footBottom {
+    background: #001a72;
+}
+#footer .copyright {
+    display: block;
+    text-align: right;
+    color: #99a3c7;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    max-width: 1100px;
+    padding: 5px 30px;
+    margin: 0 auto;
+}
+.over {
+    display: inline-block;
+    opacity: 1;
+    -moz-transition: opacity 0.2s ease-in;
+    -o-transition: opacity 0.2s ease-in;
+    -webkit-transition: opacity 0.2s ease-in;
+    transition: opacity 0.2s ease-in;
+    text-decoration: none;
+}
+.over:hover {
+    opacity: 0.6;
+    text-decoration: none;
 }
 .widget {
     float: left;
@@ -8698,7 +8953,13 @@ header.gradient{
     margin: 0;
 }
 .my-profiles-sec {
-    float: right;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara gambar, nama, dan ikon */
+    font-family: Open Sans, sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    cursor: pointer;
 }
 .my-profiles-sec > span {
     float: left;
@@ -8707,6 +8968,13 @@ header.gradient{
     font-family: Open Sans;
     line-height: 50px;
     cursor: pointer;
+}
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara foto dan nama */
+    justify-content: center;
+    height: 100%;
 }
 .my-profiles-sec > span > img {
     float: left;
@@ -8719,12 +8987,23 @@ header.gradient{
 
     border: 2px solid #ffffff;
     margin-right: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
 }
 .my-profiles-sec > span > i {
     float: right;
     line-height: 50px;
     font-size: 20px;
     margin-left: 12px;
+}
+.user-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333; /* Pastikan warna kontras */
+    white-space: nowrap;
 }
 .profile-sidebar {
     position: fixed;
@@ -11341,17 +11620,36 @@ footer.ft .scrollup {
 }
 .cand-extralink > li.active a {
     border-bottom: 2px solid #0066ff;
-}
-.responsive-header {
-    float: left;
-    width: 100%;
-    position: relative;
-    background: #0b1b46;
-    padding: 0 25px;
-    z-index: 99;
-    display: none;
-}
+}@media (max-width: 991px) {
+    /* Sembunyikan header utama di layar kecil */
+    .globalHeader {
+        display: none;
+    }
 
+    /* Pastikan header responsif muncul */
+    .responsive-header {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #0b1b46;
+        z-index: 9999;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Pastikan menu responsif bisa terbuka */
+    .responsive-opensec {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0b1b46;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+}
 .responsive-header.three {
     background: #FFF !important;
 }
@@ -11431,17 +11729,7 @@ footer.ft .scrollup {
     opacity: 0;
     visibility: hidden;
 }
-.responsive-opensec {
-    width: 100%;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background: #0b1b46;
-    padding: 0 30px;
-    overflow-y: scroll;
-    height: 620px;
-}
+
 .responsive-opensec .btn-extars {
     float: left;
     width: 100%;

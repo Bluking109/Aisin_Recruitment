@@ -23,7 +23,7 @@ class RolePermissionSeeder extends Seeder
         ];
 
         $models = [
-            'setting'
+            'AIIASetting'
         ];
 
         foreach ($defaultPerms as $value) {
@@ -44,11 +44,11 @@ class RolePermissionSeeder extends Seeder
         // Assign permission to role
         $admin->givePermissionTo(Permission::all());
         $hrd->givePermissionTo([
-            'list_setting',
-            'view_setting',
-            'update_setting',
-            'store_setting',
-            'delete_setting'
+            'list_AIIASetting',
+            'view_AIIASetting',
+            'update_AIIASetting',
+            'store_AIIASetting',
+            'delete_AIIASetting'
         ]);
 
         // Assign role to user

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\HowToApply as HowToApplyReq;
 use App\Models\HowToApply;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 use App\Traits\FileHandler;
 
 class HowToApplyController extends Controller

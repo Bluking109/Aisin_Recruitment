@@ -109,12 +109,12 @@ class JobVacancyController extends Controller
             }
         }
 
-        if (!$jobSeeker->canApply()) {
+        if (!$jobSeeker->canApply) {
             return back()->with('error', 'Mohon lengkapi profil Anda terlebih dahulu !');
         }
 
         // check verifikasi email
-        if (!$jobSeeker->hasVerifiedEmail()) {
+        if (!$jobSeeker->hasVerifiedEmail) {
             return back()->with('error', 'Mohon verifikasi email Anda terlebih dahulu, apabila tidak ada email kunjungi halaman profil Anda untuk mengirim ulang email verifikasi.');
         }
 
@@ -144,7 +144,7 @@ class JobVacancyController extends Controller
         }
 
         $eduLevel = $job->educationLevel->hierarchy;
-        $edu = $jobSeeker->formalEducations()->where('class', $eduLevel)->first();
+        $edu = $jobSeeker->formalEducations->where('class', $eduLevel)->first();
         // check ipk apabila D3/S1
         if ($jobSeeker->educationLevel->isDiplomaForm()) {
             if ($edu) {
@@ -155,7 +155,7 @@ class JobVacancyController extends Controller
         }
 
         // validasi tidak ada proses recruitment berjalan
-        $runningApp = $jobSeeker->applications()
+        $runningApp = $jobSeeker->applications
             ->whereHas('jobApplicationStages', function($q) {
                 $q->where('accepted_at', null)
                     ->where('rejected_at', null);
@@ -167,7 +167,7 @@ class JobVacancyController extends Controller
         }
 
         // validasi apabila jobseeker punya applikasi yang sudah di terima.
-        $acceptedAt = $jobSeeker->applications()
+        $acceptedAt = $jobSeeker->applications
             ->where('status', JobApplication::STATUS_ACCEPTED)
             ->first();
 
@@ -190,11 +190,11 @@ class JobVacancyController extends Controller
         }
 
         // validasi apakah sudah pernah di apply sebelumnya
-        if ($jobSeeker->applications()->where('job_vacancy_id', $job->id)->first()) {
+        if ($jobSeeker->applications->where('job_vacancy_id', $job->id)->first()) {
             return back()->with('error', 'Anda sudah melamar lowongan ini');
         }
 
-        $jobSeeker->applications()->create([
+        $jobSeeker->applications->create([
             'job_vacancy_id' => $job->id,
             'status' => JobApplication::STATUS_IN_PROCESS
         ]);

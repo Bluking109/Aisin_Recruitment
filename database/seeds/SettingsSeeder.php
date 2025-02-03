@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SettingsSeeder extends Seeder
+class AIIASettingsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class SettingsSeeder extends Seeder
      */
     public function run()
     {
-        $settings = [
+        $AIIASettings = [
         	[
         		'name' => 'admin_base_route',
         		'display_name' => 'Panel Admin Base Url',
@@ -57,6 +57,6 @@ class SettingsSeeder extends Seeder
             ]
         ];
 
-        DB::table('settings')->insert($settings);
+        DB::table('AIIASettings')->insert($AIIASettings);
     }
 }

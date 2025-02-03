@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Department as DepartmentRequest;
 use App\Models\Department;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class DepartmentController extends Controller
 {

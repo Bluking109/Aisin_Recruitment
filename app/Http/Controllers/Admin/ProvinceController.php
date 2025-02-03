@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Province as ProvinceRequest;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProvinceController extends Controller
 {

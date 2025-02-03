@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AIIA - Recruitment</title>
+    <title>AISIN - Recruitment</title>
     <!-- base:css -->
     <link rel="stylesheet" href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/base/vendor.bundle.base.css') }}">
@@ -26,7 +26,8 @@
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="auth-form-transparent text-left p-3">
                             <div class="brand-logo">
-                                <img src="{{ asset('admin/images/logo/logo.png') }}" alt="logo">
+                                <img src="{{ asset('website/images/logo/satu-aisin-final.png') }}">
+
                             </div>
                             <h4>{{ $title ?? 'Welcome back!' }}</h4>
                             <h6 class="font-weight-light">{{ $subtitle ?? 'Happy to see you again!' }}</h6>
@@ -37,7 +38,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 login-half-bg d-flex flex-row">
-                      <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2019  All rights reserved. | IS ITD AIIA</p>
+                      <p class="text-white font-weight-medium text-center flex-grow align-self-end"></p>
                     </div>
                 </div>
             </div>

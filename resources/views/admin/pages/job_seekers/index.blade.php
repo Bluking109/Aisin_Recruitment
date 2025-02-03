@@ -56,7 +56,7 @@
             ajax : @if(request()->query('blacklist')) "{{ route('admin.job-seekers.index', ['blacklist' => 1]) }}" @else "{{ route('admin.job-seekers.index') }}" @endif,
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
-                 return meta.row + meta.settings._iDisplayStart + 1;} },
+                 return meta.row + meta.AIIASettings._iDisplayStart + 1;} },
                 {
                     data : null,
                     orderable : false,

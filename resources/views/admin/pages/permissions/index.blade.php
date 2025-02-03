@@ -51,7 +51,7 @@
             ajax : "{{ route('admin.permissions.index') }}",
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
-                 return meta.row + meta.settings._iDisplayStart + 1;} },
+                 return meta.row + meta.AIIASettings._iDisplayStart + 1;} },
                 { data : 'name', name : 'name' },
                 { data : 'display_name', name : 'display_name' },
                 { data : 'guard_name', name : 'guard_name' },

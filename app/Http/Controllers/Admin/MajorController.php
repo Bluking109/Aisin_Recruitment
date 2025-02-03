@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Major;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Major as MajorRequest;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class MajorController extends Controller
 {

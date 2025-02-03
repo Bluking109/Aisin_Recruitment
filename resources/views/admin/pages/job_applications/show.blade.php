@@ -1463,7 +1463,7 @@
             ajax : "{{ route('admin.job-seekers.index') }}",
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
-                 return meta.row + meta.settings._iDisplayStart + 1;} },
+                 return meta.row + meta.AIIASettings._iDisplayStart + 1;} },
                 {
                     data : null,
                     orderable : false,

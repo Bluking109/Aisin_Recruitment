@@ -103,7 +103,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Markdown Mail Settings
+    | Markdown Mail AIIASettings
     |--------------------------------------------------------------------------
     |
     | If you are using Markdown based email rendering, you may configure your

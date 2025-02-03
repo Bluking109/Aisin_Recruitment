@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\District as DistrictRequest;
 use App\Models\District;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class DistrictController extends Controller
 {

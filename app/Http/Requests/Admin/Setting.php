@@ -24,7 +24,7 @@ class Setting extends FormRequest
     public function rules()
     {
         return [
-            'settings' => 'required|array',
+            'AIIASettings' => 'required|array',
         ];
     }
 }

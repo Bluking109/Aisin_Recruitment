@@ -787,11 +787,11 @@
 				this.viewDate = this.o.defaultViewDate;
 
 			if (fromArgs){
-				// setting date by clicking
+				// AIIASetting date by clicking
 				this.setValue();
 			}
 			else if (dates.length){
-				// setting date by typing
+				// AIIASetting date by typing
 				if (String(oldDates) !== String(this.dates))
 					this._trigger('changeDate');
 			}
@@ -1400,7 +1400,7 @@
 					return new_month !== new_date.getUTCMonth();
 				};
 			}
-			// Common date-resetting loop -- if date is beyond end of month, make it
+			// Common date-reAIIASetting loop -- if date is beyond end of month, make it
 			// end of month
 			while (test()){
 				new_date.setUTCDate(--day);

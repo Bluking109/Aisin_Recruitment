@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\JobVacancy as JobVacanyRequest;
 use App\Models\JobVacancy;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class JobVacancyController extends Controller
 {

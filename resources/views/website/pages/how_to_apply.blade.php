@@ -23,13 +23,7 @@
 		<div class="container">
 			 <div class="row">
 			 	<div class="col-lg-12">
-			 		<div class="about-us">
-			 			<div class="row">
-			 				<div class="col-sm-12">
-								<img src="@if($howToApply) {{ asset('storage/pages/' . $howToApply->image) }} @endif">
-							</div>
-			 			</div>
-			 		</div>
+
 			 	</div>
 			 </div>
 		</div>

@@ -13,17 +13,15 @@
 				<div class="col-lg-12">
 					<div class="main-featured-sec">
 						<div class="new-slide-3 primary-bg-image">
-							<div class="overlay-bg"></div>
-							{{-- <img src="{{ asset('website/images/prabowo1.png') }}" alt="" style="width: 400px" /> --}}
 						</div>
 						<div class="job-search-sec">
 							<div class="job-search">
 								<h3>{{ AIIASetting::getValue('home_header_title') }}</h3>
 								<span>{{ AIIASetting::getValue('home_header_sub_title') }}</span>
+                                <div class="career-text">
+                                    <span>Career</span> | <span>Job Opportunities</span>
+                                </div>
 							</div>
-						</div>
-						<div class="scroll-to">
-							<a href="#section-about" title=""><i class="la la-arrow-down"></i></a>
 						</div>
 					</div>
 				</div>
@@ -134,14 +132,6 @@
 	<div class="block no-padding">
 		<div class="container fluid">
 			<div class="row">
-				<div class="col-lg-12">
-					<a href="{{ route('job-vacancies.index') }}">
-						<div class="simple-text">
-							<h3>Lowongan Kerja</h3>
-							<span>Saat ini kami sedang membuka lowongan untuk beberapa posisi</span>
-						</div>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>

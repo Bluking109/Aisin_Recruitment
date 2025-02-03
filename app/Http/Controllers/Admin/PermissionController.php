@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Permission as PermissionRequest;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class PermissionController extends Controller
 {

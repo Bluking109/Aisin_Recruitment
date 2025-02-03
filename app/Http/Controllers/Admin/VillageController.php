@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Village as VillageRequest;
 use App\Models\Village;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class VillageController extends Controller
 {

@@ -62,7 +62,7 @@
                                     @foreach($todayApplications as $key => $value)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td><img src="{{ url(AIIASetting::getValue('admin_base_route').'/job-seekers/'.$value->jobSeeker->id.'/photo') }}"></td>
+                                        <td><img src="{{ url(AIIAAIIASetting::getValue('admin_base_route').'/job-seekers/'.$value->jobSeeker->id.'/photo') }}"></td>
                                         <td>{{ $value->jobSeeker->name }}</td>
                                         <td>{{ $value->jobVacancy->position->name . ' - ' . $value->jobVacancy->section->name }}</td>
                                         <td>{{ $value->jobSeeker->educationLevel->name }}</td>

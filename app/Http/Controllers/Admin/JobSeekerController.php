@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Models\JobSeeker;
 use App\Models\JobApplication;
 use App\Traits\FileHandler;
-use DataTables;
-use PDF;
+use Yajra\DataTables\Facades\DataTables;
+use Barryvdh\DomPDF\Facade\PDF; 
+
 
 class JobSeekerController extends Controller
 {
@@ -205,7 +206,7 @@ class JobSeekerController extends Controller
         }
 
         $imagedata = file_get_contents($path);
-             // alternatively specify an URL, if PHP settings allow
+             // alternatively specify an URL, if PHP AIIASettings allow
         $profilPhoto = 'data:image/jpg;base64,' . base64_encode($imagedata);
 
         if ($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm()) {

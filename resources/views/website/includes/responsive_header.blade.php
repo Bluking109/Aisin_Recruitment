@@ -1,6 +1,6 @@
 <div class="responsive-header">
 	<div class="responsive-menubar">
-		<div class="res-logo"><a href="{{ route('home') }}" title=""><img class="mini-logo" src="{{ asset('website/images/logo/aiia-logo.png') }}" alt="" /></a></div>
+		<div class="res-logo"><a href="#" title=""><img class="mini-logo" src="{{ asset('website/images/logo/Aisin.png') }}" alt="" /></a></div>
 		<div class="menu-resaction">
 			<div class="res-openmenu">
 				<img src="{{ asset('website/images/icon.png') }}" alt="" /> Menu
@@ -21,21 +21,18 @@
 		@endif
 		<div class="responsivemenu">
 			<ul>
-				<li class="menu-item">
-					<a href="{{ route('home') }}" title=""><i class="fa fa-home"></i> Beranda</a>
-				</li>
+
 				{{-- <li class="menu-item">
 					<a href="{{ route('about-us') }}" title="">Tentang Kami</a>
 				</li> --}}
 				<li class="menu-item">
-					<a href="{{ route('job-vacancies.index') }}" title=""><i class="fa fa-hashtag"></i> Lowongan</a>
+					<a href="{{ route('job-vacancies.index') }}" title=""><i class="fa fa-hashtag"></i> Job Vacancy</a>
 				</li>
 				<li class="menu-item">
-					<a href="{{ route('how-to-apply.index') }}" title=""><i class="fa fa-sitemap"></i> Cara Melamar</a>
+					<a href="{{ route('how-to-apply.index') }}" title=""><i class="fa fa-sitemap"></i>How To Apply</a>
 				</li>
 				<li class="menu-item">
-					<a href="{{ route('contact.index') }}" title=""><i class="fa fa-phone"></i> Kontak Kami</a>
-				</li>
+
 				@if(auth()->guard('job_seekers')->check())
 				<li class="menu-item">
 					<a href="{{ route('profiles.personal-identity.index') }}" title=""><i class="fa fa-user-secret"></i> Profile</a>

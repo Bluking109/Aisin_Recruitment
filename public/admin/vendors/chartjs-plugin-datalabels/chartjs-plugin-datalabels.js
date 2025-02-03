@@ -1120,7 +1120,7 @@ function dispatchEvent(chart, listeners, target) {
 		// Users are allowed to tweak the given context by injecting values that can be
 		// used in scriptable options to display labels differently based on the current
 		// event (e.g. highlight an hovered label). That's why we update the label with
-		// the output context and schedule a new chart render by setting it dirty.
+		// the output context and schedule a new chart render by AIIASetting it dirty.
 		chart[EXPANDO_KEY]._dirty = true;
 		label.update(context);
 	}

@@ -13,7 +13,17 @@
         <!-- plugin css for this page -->
         <!-- End plugin css for this page -->
         <!-- inject:css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+
+        <!-- Styles -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400|Quicksand:700">
         <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('website/css/style.css') }}" />
         <!-- endinject -->
         <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
     </head>
@@ -21,14 +31,14 @@
         <div class="loading" id="loading">
             <img src="{{ asset('admin/images/loading.gif') }}" alt="placeholder+image">
         </div>
-        <div class="container-scroller">
+        <div class="theme-layout" id="scrollup">
             <!-- partial:partials/_horizontal-navbar.html -->
-            <div class="horizontal-menu">
+
                 @include('admin.includes.header')
-                @include('admin.includes.navbar')
-            </div>
+                {{-- @include('admin.includes.navbar') --}}
+
             <!-- partial -->
-            <div class="container-fluid page-body-wrapper">
+            <div class="container-fluid page-body-wrapper" style="padding-top: 110px;">
                 <div class="main-panel">
                     @yield('pages')
                     <!-- content-wrapper ends -->

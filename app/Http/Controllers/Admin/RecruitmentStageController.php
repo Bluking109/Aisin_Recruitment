@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RecruitmentStage as RecruitmentStageRequest;
 use App\Models\RecruitmentStage;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class RecruitmentStageController extends Controller
 {

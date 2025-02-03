@@ -114,7 +114,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-            ->setExpectedHostname(env('APP_HOSTNAME'))
+            // ->setExpectedHostname(env('APP_HOSTNAME'))
             ->setExpectedAction('homepage')
             ->verify($request->recaptcha_key, $request->ip());
 
@@ -132,6 +132,6 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+            ?: redirect($this->redirectPath());
     }
 }

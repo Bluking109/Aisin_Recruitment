@@ -54,10 +54,10 @@ class SocialActivityController extends Controller
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
 
-            $jobSeeker->friends()->delete();
+            $jobSeeker->friends->delete();
             if ($request->friends) {
                 foreach ($request->friends as $key => $value) {
-                    $jobSeeker->friends()->create([
+                    $jobSeeker->friends->create([
                         'name' => $value['name'],
                         'position' => $value['position'],
                         'telephone_number' => $value['telephone_number'],
@@ -66,11 +66,11 @@ class SocialActivityController extends Controller
                 }
             }
 
-            $jobSeeker->organizations()->delete();
+            $jobSeeker->organizations->delete();
             if ($request->organizations) {
                 foreach ($request->organizations as $key => $value) {
                     if ($value['name']) {
-                        $jobSeeker->organizations()->create([
+                        $jobSeeker->organizations->create([
                             'name' => $value['name'],
                             'place' => $value['place'],
                             'position' => $value['position'],

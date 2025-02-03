@@ -1,8 +1,17 @@
-<footer class="footer">
-    <div class="footer-wrap">
-        <div class="w-100 clearfix">
-            <span class="d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="https://www.templatewatch.com/" target="_blank">templatewatch</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Custom by IS ITD Dept & made with <i class="mdi mdi-heart-outline"></i></span>
-        </div>
+<!-- footer -->
+<footer id="footer">
+    <div id="pageTop">
+      <a class="scroll over" href="#">PAGE TOP</a>
     </div>
-</footer>
+  
+    <div class="footInr">
+      <div class="footTop">
+        
+      </div>
+      <div class="footBottom">
+        <small class="copyright">Copyright &copy; AISIN Indonesia </small>
+      </div>
+    </div>
+    <!-- footInr -->
+  </footer>
+  <!-- footer -->

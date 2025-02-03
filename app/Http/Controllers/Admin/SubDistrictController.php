@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SubDistrict as SubDistrictRequest;
 use App\Models\SubDistrict;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Response;
 
 class SubDistrictController extends Controller
 {
@@ -33,7 +34,7 @@ class SubDistrictController extends Controller
     {
         $search = $request->search;
         $subdistricts = SubDistrict::select('id', 'name as text')->where('name','like', '%'.$search.'%',)->get()->toArray();
-        return \Response::json($subdistricts);
+        return Response::json($subdistricts);
 
     }
 

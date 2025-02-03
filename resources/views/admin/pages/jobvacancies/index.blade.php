@@ -65,7 +65,7 @@
             ajax : "{{ route('admin.job-vacancies.index') }}",
             columns : [
                 { data: null, name: 'no', orderable: false, searchable: false, render: function (data, type, row, meta) {
-                 return meta.row + meta.settings._iDisplayStart + 1;} },
+                 return meta.row + meta.AIIAAIIASetting._iDisplayStart + 1;} },
                 { data : 'position.name', name : 'position.name' },
                 { data : 'section.name', name: 'section.name' },
                 { data : 'education_level.name', name : 'education_level.name' },

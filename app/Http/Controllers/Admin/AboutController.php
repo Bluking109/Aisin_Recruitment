@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\About as AboutReq;
 use App\Models\About;
-use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 use App\Traits\FileHandler;
 
 class AboutController extends Controller
