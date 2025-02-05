@@ -111,9 +111,9 @@ class EducationLevelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($education_level)
     {
-        $educationLevel = EducationLevel::findOrFail($id);
+        $educationLevel = EducationLevel::findOrFail($education_level);
         $educationLevel->delete();
 
         if (request()->ajax()) {

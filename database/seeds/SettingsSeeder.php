@@ -12,7 +12,7 @@ class AIIASettingsSeeder extends Seeder
      */
     public function run()
     {
-        $AIIASettings = [
+        $Settings = [
         	[
         		'name' => 'admin_base_route',
         		'display_name' => 'Panel Admin Base Url',
@@ -45,7 +45,7 @@ class AIIASettingsSeeder extends Seeder
                 'name' => 'home_header_title',
                 'display_name' => 'Home Header Title',
                 'description' => 'Home Header Title',
-                'value' => 'PT. AISIN INDONESIA AUTOMOTIVE',
+                'value' => 'PT. AISIN INDONESIA',
                 'type' => 'text'
             ],
             [
@@ -57,6 +57,6 @@ class AIIASettingsSeeder extends Seeder
             ]
         ];
 
-        DB::table('AIIASettings')->insert($AIIASettings);
+        DB::table('Settings')->insert($Settings);
     }
 }

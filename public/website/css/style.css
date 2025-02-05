@@ -69,7 +69,7 @@ html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, sub, sup, tt,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -825,7 +825,8 @@ label::after {
 .account-btns > li a {
     font-family: Open Sans;
     font-size: 15px;
-    color: #ffffff;
+    color: black !important;
+    font-weight: bold;
     float: left;
     line-height: 22px;
 }
@@ -2051,7 +2052,7 @@ label::after {
     display: block;
     text-indent: -9999px;
     height: 100%;
-    background: url(../img/common/pagetop.svg) no-repeat center center / cover;
+
 }
 #footer .footTop {
     max-width: 1100px;
@@ -2077,20 +2078,18 @@ label::after {
     margin-right: 40px;
 }
 #footer .footList {
-    letter-spacing: -0.4em;
 }
 #footer .footList li {
-    display: inline-block;
-    letter-spacing: normal;
-    margin-right: 20px;
+    display: block;
+    margin-right: 0;
+    margin-bottom: 25px;
+}
+#footer .footList li:last-of-type {
+    margin-bottom: 0;
 }
 #footer .footList li a {
-    display: block;
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-decoration: none;
+    font-size: 1rem;
+    color:#B9B9B9;
 }
 #footer .footBottom {
     background: #001a72;
@@ -2483,6 +2482,7 @@ header.style2 nav {
 .job-grid-sec {
     float: left;
     width: 100%;
+    min-height: 150px;
     margin-top: -30px;
 }
 .job-grid {
@@ -4611,16 +4611,6 @@ footer.style3 span, footer.style3 a {
     height: 100%;
     content: "";
     z-index: -1;
-
-    background: rgb(139,145,221);
-    background: -moz-linear-gradient(45deg,  rgba(139,145,221,1) 0%, rgba(16,25,93,1) 71%, rgba(16,25,93,1) 100%);
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(139,145,221,1)), color-stop(71%,rgba(16,25,93,1)), color-stop(100%,rgba(16,25,93,1)));
-    background: -webkit-linear-gradient(45deg,  rgba(139,145,221,1) 0%,rgba(16,25,93,1) 71%,rgba(16,25,93,1) 100%);
-    background: -o-linear-gradient(45deg,  rgba(139,145,221,1) 0%,rgba(16,25,93,1) 71%,rgba(16,25,93,1) 100%);
-    background: -ms-linear-gradient(45deg,  rgba(139,145,221,1) 0%,rgba(16,25,93,1) 71%,rgba(16,25,93,1) 100%);
-    background: linear-gradient(45deg,  rgba(139,145,221,1) 0%,rgba(16,25,93,1) 71%,rgba(16,25,93,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0066ff', endColorstr='#10195d',GradientType=1 );
-    opacity: 0.8;
 }
 .inner-header::after {
     position: absolute;
@@ -4637,7 +4627,7 @@ footer.style3 span, footer.style3 a {
     float: left;
     width: 100%;
     position: relative;
-    padding-top: 240px; padding-bottom: 15px;
+    padding-top: 150px; padding-bottom: 15px;
     z-index: 0;
 }
 .inner-header.wform .job-search-sec {
@@ -11633,7 +11623,7 @@ footer.ft .scrollup {
         top: 0;
         left: 0;
         width: 100%;
-        background: #0b1b46;
+        background: #fff;
         z-index: 9999;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -11645,13 +11635,13 @@ footer.ft .scrollup {
         top: 100%;
         left: 0;
         width: 100%;
-        background: #0b1b46;
+        background: #fff;
         padding: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 }
 .responsive-header.three {
-    background: #FFF !important;
+    background: #fff !important;
 }
 
 .responsive-header.four {

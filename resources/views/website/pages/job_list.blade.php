@@ -4,7 +4,7 @@
 @section('pages')
 <section class="overlape sub-header mt-126">
 	<div class="block no-padding">
-		<div data-velocity="-.1" style="background: url(http://placehold.it/1600x800) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+		<div data-velocity="-.1"class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
 		<div class="container fluid">
 			<div class="row">
 				<div class="col-lg-12">
@@ -17,12 +17,15 @@
 										<div class="col-lg-7">
 											<div class="job-field">
 												<input type="text" placeholder="Cari" id="search-input" value="{{ request()->query('s') }}" />
-												<i class="la la-keyboard-o"></i>
+												<i class="la la-keyboard-o" style="color: #001a72"></i>
 											</div>
 										</div>
 										<div class="col-lg-1">
-											<button type="button" id="search-submit"><i class="la la-search"></i></button>
-										</div>
+                                            <button type="button" id="search-submit" style="background-color: #001a72; color: white; border: 2px solid #001a72;">
+                                              <i class="la la-search"></i>
+                                            </button>
+                                          </div>
+
 									</div>
 								</form>
 							</div>
@@ -34,7 +37,7 @@
 	</div>
 </section>
 <section>
-	<div class="block">
+	<div class="block" pad>
 		<div class="container">
 			 <div class="row">
 			 	<div class="col-lg-12">

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Requests\Admin\Setting;
+use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -34,7 +34,7 @@ Route::namespace('Admin')->group(function() {
 			Route::get('/', 'DashboardController@index');
 			Route::get('home', 'DashboardController@index')->name('home');
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
-			Route::resource('AIIASettings', 'AIIASettingController')->only('index', 'store');
+			// Route::resource('AIIASettings', 'AIIASettingController')->only('index', 'store');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::get('vendors/get-vendor', 'VendorController@getVendor')->name('vendors.getvendor');
 			Route::resource('education-levels', 'EducationLevelController')->except('edit', 'show', 'create');
@@ -196,7 +196,9 @@ Route::namespace('Website')->group(function() {
 		Route::post('/', 'ContactController@store')->name('store');
 	});
 
-	Route::get('/', 'PageController@home');
+	Route::get('/', function () {
+        return redirect()->route('job-vacancies.index'); // Ganti dengan route job-vacancy
+    });
 	Route::get('home', 'PageController@home')->name('home');
 	// Route::get('about-us', 'PageController@aboutUs')->name('about-us');
 	Route::resource('job-vacancies', 'JobVacancyController')->only('index', 'show');

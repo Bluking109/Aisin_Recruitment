@@ -16,7 +16,7 @@ if ($jobSeeker) {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="inner-header">
-						<h3>PT. AISIN INDONESIA AUTOMOTIVE</h3>
+						<h3>PT. AISIN INDONESIA</h3>
 					</div>
 				</div>
 			</div>

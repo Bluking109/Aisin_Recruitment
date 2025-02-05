@@ -177,7 +177,8 @@
     @if (auth()->guard('job_seekers')->check())
         @include('website.includes.profile_sidebar')
     @endif
-    <script src="{{ asset('website/css/style.css') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('website/css/style.css') }}">
+
     <script src="{{ asset('website/js/all.js') }}" type="text/javascript"></script>
     <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
 

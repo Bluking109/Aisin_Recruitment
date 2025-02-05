@@ -5,9 +5,9 @@
 <header class="globalHeader forsticky new-header">
     <div class="globalHeaderInner">
         <div class="logo d-flex align-items-center gap-3">
-            <a href="#">
+            <div>
                 <img src="{{ asset('website/images/logo/Aisin.png') }}" alt="">
-            </a>
+            </div>
             <span class="logo">| Indonesia</span>
         </div>
 
@@ -167,20 +167,17 @@
                 <div class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                            id="profileDropdown" style="color: #00008B !important; font-weight: 600 !important;">
+                            id="profileDropdown" style="color: #001a72 !important; font-weight: 600 !important;">
 
                             <img src="{{ asset('admin/images/avatar/avatar.jpg') }}" alt="profile"
                                 class="rounded-circle" style="height: 30px; width: 30px; margin-left: 40px;" />
-                                <span class="nav-profile-name">
-                                    {{ auth()->user()->name }}
-                                </span>
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="{{ route('admin.AIIASettings.index') }}">
+                            {{-- <a class="dropdown-item" href="{{ route('admin.AIIASettings.index') }}">
                                 <i class="mdi mdi-settings text-primary"></i> Settings
-                            </a>
+                            </a> --}}
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="mdi mdi-logout text-primary"></i> Logout
@@ -195,10 +192,10 @@
 
                 <!-- Satu Aisin Logo -->
                 <div class="d-none d-lg-flex align-items-center border-start border-dark-subtle px-2 ms-4">
-                    <a href="#">
+                    <div>
                         <img src="{{ asset('website/images/logo/satu-aisin-final.png') }}" alt="Satu Aisin Logo"
                             style="height: 50px;">
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
