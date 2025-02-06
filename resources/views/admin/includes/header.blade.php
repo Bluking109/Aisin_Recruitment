@@ -17,15 +17,15 @@
                 <nav class="megaNav">
                     <ul class="megaNavParent">
                         <!-- Menu About -->
-                        <li class="parent">
+                        <li class="menu-item">
                             <a href="{{ route('admin.home') }}">Dashboard</a>
 
                         </li>
-                        <li>
+                        <li class="menu-item">
                             <a href="{{ route('admin.job-vacancies.index') }}">Job Vacancy</a>
                         </li>
                         <!-- Menu Products -->
-                        <li class="parent">
+                        <li class="menu-item">
                             <a href="#">Job Seekers</a>
                             <div class="megaNavSlide">
                                 <div class="megaNavSlideInner">
@@ -47,7 +47,7 @@
 
 
                         <!-- Menu Contact -->
-                        <li class="parent">
+                        <li class="menu-item">
                             <a href="#">Job Applications</a>
                             <div class="megaNavSlide">
                                 <div class="megaNavSlideInner">
@@ -72,7 +72,7 @@
                             </div>
                         </li>
                         @canany(['list_about', 'list_how_to_apply', 'list_announcement'])
-                            <li class="parent">
+                            <li class="menu-item">
                                 <a href="#">Pages</a>
                                 <div class="megaNavSlide">
                                     <div class="megaNavSlideInner">
@@ -100,7 +100,7 @@
                                 </div>
                             </li>
                         @endcanany
-                        <li class="parent">
+                        <li class="menu-item">
                             <a href="#">Master Data</a>
                             <div class="megaNavSlide">
                                 <div class="megaNavSlideInner">
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="parent">
+                        <li class="menu-item">
                             <a href="#">User Management</a>
                             <div class="megaNavSlide">
                                 <div class="megaNavSlideInner">
@@ -175,9 +175,9 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
-                            {{-- <a class="dropdown-item" href="{{ route('admin.AIIASettings.index') }}">
+                            <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
                                 <i class="mdi mdi-settings text-primary"></i> Settings
-                            </a> --}}
+                            </a>
                             <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="mdi mdi-logout text-primary"></i> Logout

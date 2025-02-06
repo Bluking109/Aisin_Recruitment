@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +26,8 @@ use Illuminate\Support\Facades\Auth;
 */
 Route::namespace('Admin')->group(function() {
 	Route::group([
-		'prefix' => 'admin-aisin',
+		'prefix' => AIIASetting::getValue('admin_base_route',
+		config('aiia.default_url_admin')),
 		'as' => 'admin.'
 	], function() {
 		Auth::routes();
@@ -34,7 +36,7 @@ Route::namespace('Admin')->group(function() {
 			Route::get('/', 'DashboardController@index');
 			Route::get('home', 'DashboardController@index')->name('home');
 			Route::resource('users', 'UserController')->except('edit', 'show', 'create');
-			// Route::resource('AIIASettings', 'AIIASettingController')->only('index', 'store');
+			Route::resource('settings', 'SettingController')->only('index', 'store');
 			Route::resource('vendors', 'VendorController')->except('edit', 'show', 'create');
 			Route::get('vendors/get-vendor', 'VendorController@getVendor')->name('vendors.getvendor');
 			Route::resource('education-levels', 'EducationLevelController')->except('edit', 'show', 'create');

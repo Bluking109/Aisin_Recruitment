@@ -31,9 +31,9 @@
         <div class="loading" id="loading">
             <img src="{{ asset('admin/images/loading.gif') }}" alt="placeholder+image">
         </div>
-        <div class="theme-layout" id="scrollup">
+        <div class="home" id="home">
             <!-- partial:partials/_horizontal-navbar.html -->
-
+                 {{-- @include('admin.includes.responsiveheader') --}}
                 @include('admin.includes.header')
                 {{-- @include('admin.includes.navbar') --}}
 
