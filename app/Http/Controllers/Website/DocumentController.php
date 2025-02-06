@@ -10,8 +10,7 @@ use App\Models\Document;
 use App\Http\Requests\Website\DocumentRequest;
 use ReCaptcha\ReCaptcha;
 use App\Traits\FileHandler;
-use App\Models\AIIASetting;
-
+use AIIASetting;
 
 class DocumentController extends Controller
 {
@@ -111,9 +110,9 @@ class DocumentController extends Controller
         }
 
         if ($jobSeeker->document) {
-        	$jobSeeker->document->update($document);
+        	$jobSeeker->document()->update($document);
         } else {
-        	$jobSeeker->document->save($document);
+        	$jobSeeker->document()->save($document);
         }
 
         if ($request->ajax()) {

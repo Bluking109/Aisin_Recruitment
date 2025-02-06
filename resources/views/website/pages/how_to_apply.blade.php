@@ -6,16 +6,8 @@
 @section('pages')
 @include('website.includes.sub_header', [
 	'title' => $howToApply->title ?? 'Cara Melamar Kerja',
-	'sub_title' => $howToApply->sub_title ?? 'Cara Melamar Kerja PT. Aisin Indonesia Automotive',
+	'sub_title' => $howToApply->sub_title ?? 'Cara Melamar Kerja PT. Aisin Indonesia ',
 	'breadcrumbs' => [
-		[
-			'url' => route('home'),
-			'title' => 'Home'
-		],
-		[
-			'url' => '#',
-			'title' => $howToApply->title ?? 'Cara Melamar Kerja'
-		],
 	]
 ])
 <section>
@@ -23,7 +15,13 @@
 		<div class="container">
 			 <div class="row">
 			 	<div class="col-lg-12">
-
+			 		<div class="about-us">
+			 			<div class="row">
+			 				<div class="col-sm-12">
+								<img src="@if($howToApply) {{ asset('storage/pages/' . $howToApply->image) }} @endif">
+							</div>
+			 			</div>
+			 		</div>
 			 	</div>
 			 </div>
 		</div>

@@ -1,5 +1,4 @@
 <section class="sub-header primary-bg-image mt-126">
-    <div class="overlay-grey"></div>
     <div class="block no-padding">
         <div class="container">
             <div class="row">

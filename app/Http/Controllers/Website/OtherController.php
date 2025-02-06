@@ -89,15 +89,15 @@ class OtherController extends Controller
             }
 
             if (!$other) {
-                $jobSeeker->other->create($otherReq);
+                $jobSeeker->other()->create($otherReq);
             } else {
-                $jobSeeker->other->update($otherReq);
+                $jobSeeker->other()->update($otherReq);
             }
 
-            $jobSeeker->otherRecruitments->delete();
+            $jobSeeker->otherRecruitments()->delete();
             if ($otherReqs = $request->other_recruitments) {
                 foreach ($otherReqs as $key => $value) {
-                    $jobSeeker->otherRecruitments->create([
+                    $jobSeeker->otherRecruitments()->create([
                         'organizer' => $value['organizer'],
                         'is_astra' => $value['is_astra'],
                         'process' => $value['process'],
@@ -109,10 +109,10 @@ class OtherController extends Controller
                 }
             }
 
-            $jobSeeker->diseases->delete();
+            $jobSeeker->diseases()->delete();
             if ($diseases = $request->diseases) {
                 foreach ($diseases as $key => $value) {
-                    $jobSeeker->diseases->create([
+                    $jobSeeker->diseases()->create([
                         'name' => $value['name'],
                         'from_date' => $value['from_date'],
                         'end_date' => $value['end_date'],

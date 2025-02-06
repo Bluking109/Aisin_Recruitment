@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\FamilyRequest;
 use App\Models\BiologicalParent;
-use App\Models\JobSeeker;
 use ReCaptcha\ReCaptcha;
 use AIIASetting;
 
@@ -20,16 +19,13 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        
     	$jobSeeker = auth()->user();
-       
     	$maritalStatus = $jobSeeker->maritalStatus;
     	$partner = $jobSeeker->partner;
     	$children = $jobSeeker->children;
         $father = $jobSeeker->parents()->father()->first();
         $mother = $jobSeeker->parents()->mother()->first();
         $siblings = $jobSeeker->siblings;
-     
 
         return view('website.pages.family_environment', compact(
         	'jobSeeker',
@@ -68,17 +64,17 @@ class FamilyController extends Controller
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
 
-            $jobSeeker->maritalStatus ->delete();
-            $jobSeeker->maritalStatus->create([
+            $jobSeeker->maritalStatus()->delete();
+            $jobSeeker->maritalStatus()->create([
                 'status_ktp' => $request->marital_status_ktp,
                 'status_actual' => $request->marital_status_actual,
                 'date_ktp' => $request->marital_status_date_ktp,
                 'date_actual' => $request->marital_status_date_actual
             ]);
 
-            $jobSeeker->partner->delete();
+            $jobSeeker->partner()->delete();
             if ($request->partner_name) {
-                $jobSeeker->partner->create([
+                $jobSeeker->partner()->create([
                     'name' => $request->partner_name,
                     'place_of_birth' => $request->partner_place_of_birth,
                     'date_of_birth' => $request->partner_date_of_birth,
@@ -88,10 +84,10 @@ class FamilyController extends Controller
                 ]);
             }
 
-            $jobSeeker->children->delete();
+            $jobSeeker->children()->delete();
             foreach ($request->children as $key => $value) {
                 if (isset($value['name'])) {
-                    $jobSeeker->children->create([
+                    $jobSeeker->children()->create([
                         'name' => $value['name'],
                         'place_of_birth' => $value['place_of_birth'],
                         'date_of_birth' => $value['date_of_birth'],
@@ -102,8 +98,8 @@ class FamilyController extends Controller
                 }
             }
 
-            $jobSeeker->parents->delete();
-            $jobSeeker->parents->create([
+            $jobSeeker->parents()->delete();
+            $jobSeeker->parents()->create([
                 'name' => $request->father_name,
                 'place_of_birth' => $request->father_place_of_birth,
                 'date_of_birth' => $request->father_date_of_birth,
@@ -112,7 +108,7 @@ class FamilyController extends Controller
                 'is' => BiologicalParent::IS_FATHER
             ]);
 
-            $jobSeeker->parents->create([
+            $jobSeeker->parents()->create([
                 'name' => $request->mother_name,
                 'place_of_birth' => $request->mother_place_of_birth,
                 'date_of_birth' => $request->mother_date_of_birth,
@@ -121,10 +117,10 @@ class FamilyController extends Controller
                 'is' => BiologicalParent::IS_MOTHER
             ]);
 
-            $jobSeeker->siblings->delete();
+            $jobSeeker->siblings()->delete();
             foreach ($request->siblings as $key => $value) {
                 if (isset($value['name'])) {
-                    $jobSeeker->siblings->create([
+                    $jobSeeker->siblings()->create([
                         'name' => $value['name'],
                         'place_of_birth' => $value['place_of_birth'],
                         'date_of_birth' => $value['date_of_birth'],

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\EducationRequest;
 use ReCaptcha\ReCaptcha;
-use App\Helpers\AIIASetting;
+use AIIASetting;
 
 class EducationController extends Controller
 {
@@ -65,10 +65,10 @@ class EducationController extends Controller
         $profile = DB::transaction(function () use ($request) {
             $jobSeeker = auth()->user();
             // Formal education
-            $jobSeeker->formalEducations->delete();
+            $jobSeeker->formalEducations()->delete();
             foreach ($request->educations as $key => $value) {
                 if (isset($value['name_of_institution'])) {
-                    $jobSeeker->formalEducations->create([
+                    $jobSeeker->formalEducations()->create([
                         'name_of_institution' => $value['name_of_institution'],
                         'major_id' => isset($value['major_id']) ? $value['major_id'] : null,
                         'city' => isset($value['city']) ? $value['city'] : null,
@@ -83,10 +83,10 @@ class EducationController extends Controller
                 }
             }
             // Non formal education
-            $jobSeeker->nonFormalEducations->delete();
+            $jobSeeker->nonFormalEducations()->delete();
             foreach ($request->non_formal_educations as $key => $value) {
                 if (isset($value['training_name'])) {
-                    $jobSeeker->nonFormalEducations->create([
+                    $jobSeeker->nonFormalEducations()->create([
                         'training_name' => $value['training_name'],
                         'place' => $value['place'],
                         'note' => isset($value['note']) ? $value['note'] : null,
@@ -96,10 +96,10 @@ class EducationController extends Controller
                 }
             }
             // Language
-            $jobSeeker->foreignLanguages->delete();
+            $jobSeeker->foreignLanguages()->delete();
             foreach ($request->languages as $key => $value) {
                 if (isset($value['language'])) {
-                    $jobSeeker->foreignLanguages->create([
+                    $jobSeeker->foreignLanguages()->create([
                         'language' => $value['language'],
                         'writing' => $value['writing'],
                         'reading' => $value['reading'],
@@ -108,9 +108,9 @@ class EducationController extends Controller
                 }
             }
 
-            $jobSeeker->educationDetail->delete();
+            $jobSeeker->educationDetail()->delete();
             if ($jobSeeker->educationLevel->isDiplomaForm() || $jobSeeker->educationLevel->isBachelorForm()) {
-                $jobSeeker->educationDetail->create([
+                $jobSeeker->educationDetail()->create([
                     'reason_choose_institute' => $request->reason_choose_institute,
                     'essay' => $request->essay
                 ]);

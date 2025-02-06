@@ -35,62 +35,64 @@ class SocialActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SocialActivityRequest $request)
-    {
-        if (AIIASetting::getValue('recaptcha_validation')) {
-            $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
-                ->setExpectedHostname(env('APP_HOSTNAME'))
-                ->setExpectedAction('social_activity')
-                ->verify($request->recaptcha_key, $request->ip());
+   public function update(SocialActivityRequest $request)
+{
+    if (AIIASetting::getValue('recaptcha_validation')) {
+        $response = (new ReCaptcha(env('RECAPTCHA_SECRET_KEY')))
+            ->setExpectedHostname(env('APP_HOSTNAME'))
+            ->setExpectedAction('social_activity')
+            ->verify($request->recaptcha_key, $request->ip());
 
-            if (!$response->isSuccess()) {
-                return response()->json([
-                    'message' => 'ReCaptcha Error, mohon ulangi lagi',
-                    'success' => false
-                ], 400);
+        if (!$response->isSuccess()) {
+            return response()->json([
+                'message' => 'ReCaptcha Error, mohon ulangi lagi',
+                'success' => false
+            ], 400);
+        }
+    }
+
+    $profile = DB::transaction(function () use ($request) {
+        $jobSeeker = auth()->user();
+
+        // Menghapus data friends dan organizations terlebih dahulu
+        $jobSeeker->friends()->delete();  // Pastikan untuk menggunakan method () untuk akses relasi
+        if ($request->friends) {
+            foreach ($request->friends as $key => $value) {
+                $jobSeeker->friends()->create([
+                    'name' => $value['name'],
+                    'position' => $value['position'],
+                    'telephone_number' => $value['telephone_number'],
+                    'relationship' => $value['relationship']
+                ]);
             }
         }
 
-        $profile = DB::transaction(function () use ($request) {
-            $jobSeeker = auth()->user();
-
-            $jobSeeker->friends->delete();
-            if ($request->friends) {
-                foreach ($request->friends as $key => $value) {
-                    $jobSeeker->friends->create([
+        $jobSeeker->organizations()->delete();  // Pastikan untuk menggunakan method () untuk akses relasi
+        if ($request->organizations) {
+            foreach ($request->organizations as $key => $value) {
+                if ($value['name']) {
+                    $jobSeeker->organizations()->create([
                         'name' => $value['name'],
+                        'place' => $value['place'],
                         'position' => $value['position'],
-                        'telephone_number' => $value['telephone_number'],
-                        'relationship' => $value['relationship']
+                        'start_date' => $value['start_date'],
+                        'end_date' => $value['end_date']
                     ]);
                 }
             }
-
-            $jobSeeker->organizations->delete();
-            if ($request->organizations) {
-                foreach ($request->organizations as $key => $value) {
-                    if ($value['name']) {
-                        $jobSeeker->organizations->create([
-                            'name' => $value['name'],
-                            'place' => $value['place'],
-                            'position' => $value['position'],
-                            'start_date' => $value['start_date'],
-                            'end_date' => $value['end_date']
-                        ]);
-                    }
-                }
-            }
-
-            return $jobSeeker;
-        });
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Data berhasil diupdate'
-            ]);
         }
 
-        return redirect()->back()->with('message', 'Data berhasil diupdate');
+        return $jobSeeker;
+    });
+
+    if ($request->ajax()) {
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil diupdate'
+        ]);
     }
+
+    return redirect()->back()->with('message', 'Data berhasil diupdate');
+}
+
 }

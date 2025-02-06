@@ -137,45 +137,41 @@
             </div>
         </div> {{-- Reset Password Pop up --}}
     @endif
-    @if (auth()->guard('job_seekers')->check() || session()->has('reset_password'))
-        {{-- Validasi jika login --}}
-        {{-- Change Password Popup --}}
-        <div class="account-popup-area change-password-popup-box"
-            @if (session()->has('reset_password')) id="modal-change-password-reset" @else id="modal-change-password" @endif>
-            <div class="account-popup">
-                <span class="close-popup"><i class="la la-close"></i></span>
-                <h3 id="change-password-title">Ganti Password</h3>
-                <form
-                    @if (session()->has('reset_password')) id="form-change-password-reset" action="{{ route('password.update') }}" method="post" @else action="{{ route('password.change') }}" method="post" id="form-change-password" @endif>
-                    @csrf
-                    @if (session()->has('reset_password'))
-                        <input type="hidden" name="token" value="{{ session()->get('token') }}">
-                        <input type="hidden" class="form-control form-control-lg border-left-0" id="email"
-                            value="{{ session()->get('email') }}" name="email">
-                    @else
-                        @method('put')
-                        <div class="cfield">
-                            <input type="password" placeholder="Password Lama" name="old_password" />
-                            <i class="fa fa-unlock-alt"></i>
-                        </div>
-                    @endif
-                    <div class="cfield">
-                        <input type="password" name="password" placeholder="Password Baru" />
-                        <i class="fa fa-unlock-alt"></i>
-                    </div>
-                    <div class="cfield">
-                        <input type="password" placeholder="Konfirmasi Password Baru" name="password_confirmation" />
-                        <i class="fa fa-unlock-alt"></i>
-                    </div>
-                    <button class="submit-button" type="submit"><span class="submit-text">Submit</span><i
-                            class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
-                </form>
-            </div>
+    @if(auth()->guard('job_seekers')->check() || session()->has('reset_password'))
+    {{-- Validasi jika login --}}
+    {{-- Change Password Popup --}}
+    <div class="account-popup-area change-password-popup-box" @if(session()->has('reset_password')) id="modal-change-password-reset" @else id="modal-change-password" @endif>
+        <div class="account-popup">
+            <span class="close-popup"><i class="la la-close"></i></span>
+            <h3 id="change-password-title">Ganti Password</h3>
+            <form  @if(session()->has('reset_password')) id="form-change-password-reset" action="{{ route('password.update') }}" method="post" @else action="{{ route('password.change') }}" method="post" id="form-change-password" @endif>
+                @csrf
+                @if(session()->has('reset_password'))
+                <input type="hidden" name="token" value="{{ session()->get('token') }}">
+                <input type="hidden" class="form-control form-control-lg border-left-0" id="email" value="{{ session()->get('email') }}" name="email">
+                @else
+                @method('put')
+                <div class="cfield">
+                    <input type="password" placeholder="Password Lama" name="old_password" />
+                    <i class="fa fa-unlock-alt"></i>
+                </div>
+                @endif
+                <div class="cfield">
+                    <input type="password" name="password" placeholder="Password Baru" />
+                    <i class="fa fa-unlock-alt"></i>
+                </div>
+                <div class="cfield">
+                    <input type="password" placeholder="Konfirmasi Password Baru" name="password_confirmation" />
+                    <i class="fa fa-unlock-alt"></i>
+                </div>
+                <button class="submit-button" type="submit"><span class="submit-text">Submit</span><i class="fa fa-circle-o-notch fa-spin fa-fw loading"></i></button>
+            </form>
         </div>
+    </div>
     @endif
 
-    @if (auth()->guard('job_seekers')->check())
-        @include('website.includes.profile_sidebar')
+    @if(auth()->guard('job_seekers')->check())
+    @include('website.includes.profile_sidebar')
     @endif
     <link rel="stylesheet" type="text/css" href="{{ asset('website/css/style.css') }}">
 

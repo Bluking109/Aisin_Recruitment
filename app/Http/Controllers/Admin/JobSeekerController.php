@@ -10,7 +10,7 @@ use App\Models\JobSeeker;
 use App\Models\JobApplication;
 use App\Traits\FileHandler;
 use Yajra\DataTables\Facades\DataTables;
-use Barryvdh\DomPDF\Facade\PDF; 
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class JobSeekerController extends Controller
